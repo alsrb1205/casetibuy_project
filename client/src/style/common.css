@@ -1,0 +1,96 @@
+/**
+  Global
+*/
+:root {
+    /* color list */
+    --color-primary: rgb(220, 220, 220);
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray: #f7f7f7;
+    --color-bg: #f0ece1;
+    --color-detail-bg: #f6f6f6;
+    --color-name: #333333;
+    --color-pink: #fecad6;
+    --color-green: #21a664;
+    --color-blue: #2c5dab;
+    --color-red: #f15b41;
+    --color-yellow: #f6e163;
+}
+
+/**
+      Commons
+    */
+* {
+    box-sizing: border-box;
+    font-family: "Open Sans";
+}
+
+.header,
+.footer,
+.content,
+body,
+div,
+nav,
+ul,
+li,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.header,
+.footer,
+.content {
+    width: 100%;
+    margin: auto;
+}
+
+
+/**************************************************************************/
+
+
+/**
+  detailproduct
+*/
+.detail-bg {
+    background-color: var(--color-detail-bg);
+
+}
+.product-purchase{
+    padding: 32px;
+    border: 3px solid yellow;
+}
+.product-purchase-container{
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.customize {
+    width: 100%;
+    border: 1px solid red;
+    display: grid;
+    grid-template: "main-images main-selector" auto / calc(100% - 533px - 32px) 533px;
+    grid-gap: 32px;
+    max-width: 1382px;
+    }
+.customize-left {
+    display: flex;
+    border: 1px solid green;
+    flex-wrap: wrap;
+    /* width: 50%; */
+}
+
+.customize-left img {
+    width: 100%;
+    padding: 8.5px;
+    border: 1px solid blue;
+}
+.customize-right {
+    border: 1px solid purple;
+}
+
+
+@media only screen and (max-width: 1023px) and (min-width: 769px){
+
+}
