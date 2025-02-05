@@ -1,0 +1,45 @@
+/**
+  Global
+*/
+:root {
+    /* color list */
+    --color-primary: rgb(220, 220, 220);
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-gray: #f7f7f7;
+    --color-bg: #f0ece1;
+    --color-name: #333333;
+    --color-pink: #fecad6;
+    --color-green: #21a664;
+    --color-blue: #2c5dab;
+    --color-red: #f15b41;
+    --color-yellow: #f6e163;
+  }
+  
+  /**
+      Commons
+    */
+  * {
+    box-sizing: border-box;
+    font-family: "Open Sans";
+  }
+  
+  .header,
+  .footer,
+  .content,
+  body,
+  div,
+  nav,
+  ul,
+  li,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .header,
+  .footer,
+  .content {
+    margin: auto;
+  }
+  
