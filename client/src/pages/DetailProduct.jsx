@@ -2,19 +2,19 @@ import React from 'react';
 
 export default function DetailProduct() {
     return (
-        <div className='content detail-bg'>
-            <div className='product-purchase'>
-                <div className='product-purchase-container'>
-                    <div className='customize'>
-                        <div className='customize-left'>
-                            <img src="/images/1.webp" alt="" />
-                            <img src="/images/2.webp" alt="" />
-                            <img src="/images/2.webp" alt="" />
-                            <img src="/images/2.webp" alt="" />
-                            <img src="/images/2.webp" alt="" />
-                            <img src="/images/2.webp" alt="" />
+        <div className=''>
+            <div className=''>
+                <div className=''>
+                    <div className='flex justify-center gap-[100px] border-2 border-black '>
+                        <div className='view-port d-flex flex-nowrap flex-md-wrap'>
+                            <img src="/images/1.webp" alt="" className=''/>
+                            <img src="/images/2.webp" alt="" className=''/>
+                            <img src="/images/3.png" alt="" className=''/>
+                            <img src="/images/4.jpg" alt="" className=''/>
+                            <img src="/images/5.jpg" alt="" className=''/>
+                            <img src="/images/6.jpg" alt="" className=''/>
                         </div>
-                        <div className='customize-right'>
+                        <div className='border-2 border-red-900 w-[300px]'>
                             right
                         </div>
                     </div>

@@ -1,3 +1,4 @@
+
 /**
   Global
 */
@@ -48,47 +49,6 @@ p {
 
 /**************************************************************************/
 
-
-/**
-  detailproduct
-*/
-.detail-bg {
-    background-color: var(--color-detail-bg);
-
-}
-.product-purchase{
-    padding: 32px;
-    border: 3px solid yellow;
-}
-.product-purchase-container{
-    display: flex;
-    justify-content: center;
-    border: 1px solid black;
-}
-
-.customize {
-    width: 100%;
-    border: 1px solid red;
-    display: grid;
-    grid-template: "main-images main-selector" auto / calc(100% - 533px - 32px) 533px;
-    grid-gap: 32px;
-    max-width: 1382px;
-    }
-.customize-left {
-    display: flex;
-    border: 1px solid green;
-    flex-wrap: wrap;
-    /* width: 50%; */
-}
-
-.customize-left img {
-    width: 100%;
-    padding: 8.5px;
-    border: 1px solid blue;
-}
-.customize-right {
-    border: 1px solid purple;
-}
 
 
 @media only screen and (max-width: 1023px) and (min-width: 769px){
