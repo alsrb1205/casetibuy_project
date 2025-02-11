@@ -21,7 +21,7 @@ module.exports = {
         pink: '#fecad6',
         green: '#21a664',
         blue: '#2c5dab',
-        red: '#f15b41',
+        orange: '#f15b41',
         yellow: '#f6e163',
     },
     lineHeight: {

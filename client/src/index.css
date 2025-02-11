@@ -6,6 +6,8 @@
   * {
     @apply leading-normal;
     @apply mx-auto;
+    @apply m-0;
+    @apply p-0;
   }
 }
 
