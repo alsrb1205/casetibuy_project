@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './pages/Layout.jsx';
 import './style/common.css'
+import './style/style.css'
 import DetailProduct from './pages/DetailProduct.jsx';
 
 

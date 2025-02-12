@@ -1,0 +1,36 @@
+{
+    "featuredCollection": [
+      {
+        "pid": "01",
+        "title": "바운스 캐리어",
+        "image": "https://cdn-stamplib.casetify.com/cms/image/ad63df5cadcd88e2bc964d07dbf94060.jpg.webp",
+        "buttonText": "구매하기",
+        "layout": "even",
+        "bgColor": "yello"
+      },
+      {
+        "pid": "02",
+        "title": "[NEW] 갤럭시 S25 클리어 케이스",
+        "image": "https://cdn-stamplib.casetify.com/cms/image/3ceeff23d688e17e6e0615233c8e0a2a.jpg.webp",
+        "buttonText": "구매하기",
+        "layout": "even",
+        "bgColor": "blue"
+      },
+      {
+        "pid": "03",
+        "title": "BioVeg 시리즈",
+        "image": "https://cdn-stamplib.casetify.com/cms/image/dccbe375af1dbb515e7052c291588d65.jpg.webp",
+        "buttonText": "구매하기",
+        "layout": "odd",
+        "bgColor": "pink"
+      },
+      {
+        "pid": "04",
+        "title": "덱스's CHOiCE",
+        "image": "https://cdn-stamplib.casetify.com/cms/image/f5a43413db50ef3ca10b73c841e73ac8.png.webp",
+        "buttonText": "구매하기",
+        "layout": "odd",
+        "bgColor": "green"
+      }
+    ]
+  }
