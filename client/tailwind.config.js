@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+const px0_10 = { ...Array.from(Array(11)).map((_, i) => `${i}px`) };
+const px0_100 = { ...Array.from(Array(101)).map((_, i) => `${i}px`) };
+const px0_200 = { ...Array.from(Array(201)).map((_, i) => `${i}px`) };
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -9,8 +12,11 @@ module.exports = {
       normal: "1.2", // 기본값을 120%로 변경
       relaxed: "1.2",
       loose: "1.2",
-    },    extend: {
-      colors:{
+    }, extend: {
+      fontFamily : {
+        sans : ['PP Pangram Sans']
+      },
+      colors: {
         primary: '#dcdcdc',
         black: '#000000',
         white: '#ffffff',
@@ -23,11 +29,13 @@ module.exports = {
         blue: '#2c5dab',
         orange: '#f15b41',
         yellow: '#f6e163',
-    },
-    lineHeight: {
-
-    }
-
+      },
+      borderWidth: px0_10,
+      fontSize: px0_100,
+      lineHeight: px0_100,
+      minWidth: px0_200,
+      minHeight: px0_200,
+      spacing: px0_200,
     },
   },
   plugins: [],

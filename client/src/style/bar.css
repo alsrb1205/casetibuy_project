@@ -1,0 +1,42 @@
+.bar {
+    padding: 0 16px 8px 0;
+}
+
+.bar::before{
+    position: absolute;
+    content: "";
+    display: block;
+    width: 7px;
+    aspect-ratio: 1 / 1;
+    z-index: 4;
+    border-radius: 100px;
+    background-color: #fff;
+    bottom: 5px;
+    outline: 4px solid #2c5dab;
+    transition: .3s ease;
+}
+.bar::after {
+    position: relative;
+    content: "";
+    display: block;
+    height: 8px;
+    width: 100%;
+    z-index: 1;
+    border-radius: 100px;
+    background: var(--color-grey-15, #d9d9d9);
+    box-shadow: inset 0 4px 2px 0 rgba(0, 0, 0, .1);
+    top: 3px;
+}
+
+.bartext::after {
+    position: relative;
+    content: "";
+    display: block;
+    height: 8px;
+    width: 50%;
+    z-index: 2;
+    border-radius: 100px;
+    background-color: #2a5ea5;
+    transition: .3s ease-out;
+    top: 11px;
+}

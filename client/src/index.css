@@ -8,7 +8,42 @@
     @apply mx-auto;
     @apply m-0;
     @apply p-0;
+    @apply font-sans;
   }
+
+  @font-face {
+    font-family: 'PP Pangram Sans';
+    src: url('../public/fonts/PPPangramSans-Thin.otf');
+    font-weight: 100;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'PP Pangram Sans';
+    src: url('../public/fonts/PPPangramSans-Light.otf');
+    font-weight: 200;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'PP Pangram Sans';
+    src: url('../public/fonts/PPPangramSans-Medium.otf');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'PP Pangram Sans';
+    src: url('../public/fonts/PPPangramSans-Semibold.otf');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'PP Pangram Sans';
+    src: url('../public/fonts/PPPangramSans-Bold.otf');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+
+
 }
 
 body {
