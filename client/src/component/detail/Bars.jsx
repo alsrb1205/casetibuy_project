@@ -3,7 +3,7 @@ import '../../style/bar.css';
 
 export default function Bars() {
     return (
-        <div className='bars relative grid grid-cols-2 auto-rows-[fit-content(100%)]'>
+        <div className='bars relative grid grid-cols-2 auto-rows-[fit-content(100%)] mb-22 gap-16'>
             <div>
                 <div className='bartext'>
                     <span>보호 성능: 강력한</span>
@@ -16,7 +16,7 @@ export default function Bars() {
                 <div className='bartext'>
                     <span>무게: 가벼움</span>
                 </div>
-                <div className='bar'>
+                <div className='bar bar2'>
 
                 </div>
             </div>

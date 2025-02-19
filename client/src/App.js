@@ -3,6 +3,9 @@ import Layout from './pages/Layout.jsx';
 import './style/common.css'
 import './style/style.css'
 import DetailProduct from './pages/DetailProduct.jsx';
+import Swiper from 'swiper';
+import 'swiper/css';
+
 
 
 function App() {
