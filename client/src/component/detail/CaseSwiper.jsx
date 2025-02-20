@@ -1,7 +1,7 @@
 import React from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import '../../style/swiper.css'
+import '../../style/case-swiper.css'
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function CaseSwiper() {

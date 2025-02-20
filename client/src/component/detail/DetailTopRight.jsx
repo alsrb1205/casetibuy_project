@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import Bars from './Bars';
 import CaseSwiper from './CaseSwiper';
+import Color from './Color';
 // Import Swiper React components
 
 // Import Swiper styles
@@ -30,25 +31,23 @@ export default function DetailTopRight() {
                         <span className='text-[8px] pt-0'>12345678</span>
                     </div>
                 </div>
-                <div name="" id="" className='w-full border-1 h-48 border-black rounded-[16px] mb-16'>
-                    기종선택 컨테이너
+                <div name="" id="" className='w-full border-1 h-48 border-black rounded-[16px] mb-16 flex items-center'>
+                    <span>기종선택 컨테이너</span>
                 </div>
-                <div className='mb-16'>
+            <div className='mb-16'>
                     <Bars />
                     <CaseSwiper/>
                 </div>
-                <div className='color-container'>
-                    <div>
-                        <span>색상:블랙</span>
-                        <div>
-                            <ul className='flex'>
-                                <li>흰</li>
-                                <li>흰</li>
-                                <li>흰</li>
-                                <li>흰</li>
-                                <li>흰</li>
-                            </ul>
-                        </div>
+                <Color/>
+                <div className='flex justify-center bg-sky rounded-[16px] mb-6'>
+                    <div className='px-16 py-12'>
+                        <span className='text-blue2'>번들 구성: 스크린 프로텍터와 세트로 구매 시 할인 적용!</span>
+                    </div>
+                </div>
+                <div>
+                    <div className='flex justify-between items-center px-20 py-16 bg-blue2 rounded-[16px]'>
+                        <strong className='text-white text-20'>제품 비교</strong>
+                        <button className='text-white border-1 rounded-[40px] px-20 py-10'>비교하기</button>
                     </div>
                 </div>
             </div>

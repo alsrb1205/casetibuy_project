@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function DetailTopLeft() {
     return (
-        <div className="relative flex-1">
-            <div className="flex flex-col gap-4 border-2 border-black">
+        <div className="relative flex-1 border-1">
+            <div className="flex flex-col gap-16">
                 <div className="relative flex w-full">
                     <img
                         src="/images/1.webp"
@@ -15,7 +15,7 @@ export default function DetailTopLeft() {
                         <span>기기컬러</span>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-16">
                     <img
                         src="/images/2.webp"
                         alt=""
@@ -27,7 +27,7 @@ export default function DetailTopLeft() {
                         className="object-cover w-full h-auto"
                     />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-16">
                     <img
                         src="/images/4.jpg"
                         alt=""
@@ -39,7 +39,7 @@ export default function DetailTopLeft() {
                         className="object-cover w-full h-auto"
                     />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-16">
                     <img
                         src="/images/6.jpg"
                         alt=""

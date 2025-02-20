@@ -12,7 +12,7 @@
     border-radius: 100px;
     background-color: #fff;
     bottom: 5px;
-    outline: 4px solid #2c5dab;
+    outline: 4px solid var(--color-blue2);
     transition: .3s ease;
 }
 .bar::after {
@@ -35,7 +35,7 @@
     width: 50%;
     z-index: 2;
     border-radius: 100px;
-    background-color: #2a5ea5;
+    background-color: var(--color-blue2);
     transition: .3s ease-out;
     top: 11px;
 }
