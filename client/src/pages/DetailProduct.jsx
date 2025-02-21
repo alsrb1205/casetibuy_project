@@ -6,7 +6,7 @@ import ProductFeatures from '../component/detail/ProductFeature';
 export default function DetailProduct() {
   return (
     <div className='m-32'>
-      <div className="detailpage max-w-[1382px] mx-auto bg-detailbg">
+      <div className="detailpage max-w-[1382px] mx-auto bg-detailbg m-32">
         <div className="flex gap-32">
           {/* 왼쪽 콘텐츠 */}
           <DetailTopLeft/>

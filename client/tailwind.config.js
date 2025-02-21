@@ -13,8 +13,8 @@ module.exports = {
       relaxed: "1.2",
       loose: "1.2",
     }, extend: {
-      fontFamily : {
-        sans : ['PP Pangram Sans']
+      fontFamily: {
+        sans: ['PP Pangram Sans']
       },
       colors: {
         primary: '#dcdcdc',
@@ -22,6 +22,7 @@ module.exports = {
         white: '#ffffff',
         gray: '#f7f7f7',
         grayph: '#8c8c8c',
+        grayborder: '#f0f0f0',
         bg: '#f0ece1',
         detailbg: '#f6f6f6',
         name: '#333333',

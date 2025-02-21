@@ -4,12 +4,11 @@ import Header from '../component/Header.jsx';
 import Footer from '../component/Footer.jsx';
 
 export default function Layout() {
-
     return (
-        <div>
+        <div className='bg-gray'>
             <Header />
             <Outlet />
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 }
