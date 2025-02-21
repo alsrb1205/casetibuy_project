@@ -5,6 +5,7 @@ import './style/style.css'
 import DetailProduct from './pages/DetailProduct.jsx';
 import 'swiper/css';
 import Login from './pages/Login.jsx';
+import Home from './pages/Home.jsx';
 
 
 
@@ -13,8 +14,9 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route path='/' element={<Layout />}>
-                    <Route path='/detail' element={<DetailProduct />}/>
-                    <Route path='/login' element={<Login/>}></Route>
+                    <Route index element={<Home />}></Route>
+                    <Route path='/detail' element={<DetailProduct />} />
+                    <Route path='/login' element={<Login />}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>

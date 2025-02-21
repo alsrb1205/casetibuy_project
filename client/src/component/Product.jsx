@@ -1,17 +1,26 @@
 import React from "react";
 
-export default function Product({ product }) {
-  if (!product) return null; // 데이터 없을 때 렌더링 방지
-
+export default function Product({
+  title,
+  bgColor,
+  btnColor,
+  image,
+  className,
+}) {
   return (
-    <div className={`featured-collection ${product.bgColor}`}>
-      <img src={product.image} alt={product.title} className="product-image" />
-      <div className="product-item">
-        <span className="pid">{product.pid}</span>
-        <div className="product-info">
-          <p className="ptitle">{product.title}</p>
-          <button className="pbutton">{product.buttonText}</button>
-        </div>
+    <div
+      className={`p-4 rounded-lg shadow-lg ${bgColor} relative ${className}`}
+    >
+      <img
+        src={image}
+        alt={title}
+        className="object-cover w-full rounded-lg h-52"
+      />
+      <div className="p-4">
+        <h2 className="text-lg font-bold">{title}</h2>
+        <button className={`mt-2 px-4 py-2 text-white rounded-lg ${btnColor}`}>
+          구매하기
+        </button>
       </div>
     </div>
   );
