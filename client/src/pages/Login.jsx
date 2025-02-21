@@ -42,10 +42,10 @@ export default function Login() {
 
     return (
         <div className={containerStyle}>
-            <div className="absolute top-0 left-0 w-full h-full bg-black -z-20"></div>
+            <div className="absolute left-0 w-full h-full bg-black top-66 -z-20"></div>
             <video
                 ref={videoRef}
-                className={`absolute top-0 left-0 w-full h-full object-cover -z-10 transition-opacity duration-500 ${fade ? "opacity-0" : "opacity-100"}`}
+                className={`absolute top-66 left-0 w-full h-full object-cover -z-10 transition-opacity duration-500 ${fade ? "opacity-0" : "opacity-100"}`}
                 src={videos[currentVideoIndex]}
                 autoPlay
                 muted
