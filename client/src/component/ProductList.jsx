@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Product from "../components/Product.jsx";
 import axios from "axios";
+import Product from "./Product.jsx";
 
 export default function ProductList() {
   const [productList, setProductList] = useState([]);
@@ -16,20 +16,26 @@ export default function ProductList() {
   }, []);
 
   return (
-    <div className="content">
-      <h2 className="content-title">Featured Collection</h2>
-      <div className="products-container">
-        {productList.map((product) => (
-          <div
-            key={product.pid}
+    <>
+      <div className="grid grid-cols-1 gap-6 p-6 border-2 sm:grid-cols-2 lg:grid-cols-3">
+        {productList.map((product, index) => (
+          <Product
+            key={product.id}
+            {...product}
             className={
-              product.layout === "even" ? "products-even" : "products-odd"
+              index === 0
+                ? "sm:col-span-2 lg:col-span-2"
+                : index === 1
+                ? "sm:col-span-1 lg:col-span-1"
+                : index === 2
+                ? "sm:col-span-1 lg:col-span-1"
+                : index === 3
+                ? "sm:col-span-2 lg:col-span-2"
+                : ""
             }
-          >
-            <Product product={product} />
-          </div>
+          />
         ))}
       </div>
-    </div>
+    </>
   );
 }

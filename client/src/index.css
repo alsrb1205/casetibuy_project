@@ -59,3 +59,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* ========== Swiper PageNation 스타일 ========== */
+/* 기본 불릿 스타일 */
+/* w-[15px] h-[15px] */
+.custom-bullet {
+  @apply inline-block sm:w-[15px] sm:h-[15px] w-[6px] h-[6px] rounded-full transition-all duration-300 ease-in-out;
+  @layer bg-gray;
+}
+
+/* 활성화된 불릿 스타일 (길게) */
+/* w-[50px] h-[15px] */
+.swiper-pagination-bullet-active.custom-bullet {
+  @apply sm:w-[50px] sm:h-[15px] w-[24px] h-[6px] rounded-[10px] bg-orange transition-all duration-300 ease-in-out;
+}

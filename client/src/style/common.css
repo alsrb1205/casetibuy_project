@@ -57,47 +57,7 @@ p {
   }
 
 /**************************************************************************/
-.product_feature-container {
-  margin: auto;
-  width: 100%;
-  background-color: var(--color-gray);
-}
 
-.product_feature-container h2 {
-  font-weight: bold;
-  font-size: 50px;
-  margin: 0;
-  padding: 25px 0;
-  text-align: center;
-}
-
-.product_feature_list {
-  border: 1px solid red;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3개씩 한 줄 */
-  gap: 30px; /* 이미지 간격 조정 */
-  justify-items: center; /* 모든 아이템을 가운데 정렬 */
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
-.product_feature_list div {
-  text-align: center; /* 텍스트 중앙 정렬 */
-}
-
-.product_feature_list img {
-  width: 200px; /* 이미지 크기 줄이기 */
-  height: auto; /* 비율 유지 */
-  background-color: white;
-  border-radius: 25px; /* 모서리 둥글게 */
-  object-fit: contain; /* 이미지가 왜곡되지 않도록 */
-}
-
-.product_feature_list p {
-  font-size: 30px; /* 폰트 크기 키우기 */
-  margin-top: 10px; /* 이미지와 텍스트 간격 */
-}
 
 
 
