@@ -10,7 +10,7 @@ const containerStyle =
   "flex items-center justify-center w-full h-[calc(100vh-66px)] overflow-hidden relative";
 // 로그인 박스는 absolute로 위치 지정하고, left값은 Tailwind 반응형 클래스로 설정
 const boxStyle =
-  "absolute z-10 p-24 text-center text-black transition-all duration-300 bg-white rounded-lg shadow-2xl w-[500px] top-[100px]";
+  "absolute z-10 p-24 text-center text-black transition-all duration-300 bg-white rounded-lg shadow-2xl w-[500px] top-[100px] left-1/2 lg:left-[70%] transform -translate-x-1/2 ";
 // linkStyle은 그대로 사용
 const linkStyle =
   "text-blue-500 underline cursor-pointer hover:text-blue-700";
@@ -65,11 +65,7 @@ export default function Login() {
       <div className="fixed top-0 left-0 w-full h-full bg-black -z-20"></div>
       {/* 로그인 박스 */}
       <div
-        className={`
-          ${boxStyle} 
-          lg:left-[65%]   /* 큰 화면에서는 왼쪽에 치우치게 (60%) */
-          md:left-[50%] md:transform md:-translate-x-1/2   /* 중간 화면에서는 약간 중앙 쪽으로 (55%) */
-        `}
+        className={`${boxStyle}`}
       >
         <div className="w-full overflow-hidden h-[160px]">
           <img
