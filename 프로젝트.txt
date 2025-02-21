@@ -1,0 +1,21 @@
+1. react 프로젝트 생성 : client
+    npx create-react-app client
+    
+    cd client
+    npm i react-router-dom  #리액트 라우터 돔 패키지 설치
+    npm i axios             #axios 패키지 설치
+    npm i react-icons       #리액트 제공 아이콘 패키지 설치
+    npm i --save @fontawesome/react-fontawesome
+    npm i --save @fontawesome/fontawesome-svg-core
+    npm i --save @fontawesome/fontawesome/free-solid-svg-icons
+    npm i --save @fontawesome/fontawesome/free-brand-svg-icons
+    npm i swiper
+
+2. NodeJS 서버 생성 : server
+    shoppy > mkdir server
+
+    shoppy/server>npm init --yes            : 프로젝트 초기화 - Node 모듈 설치
+    shoppy/server>npm i express --save      : 익스프레스 서버 라이브러리 설치
+    shoppy/server>npm i mysql2              : mysql 연동 라이브러리 설치
+    shoppy/server>npm i cors                : 리액트 연동시 특정 도메인 허용 라이브러리 설치
+    shoppy/server>npm i nodemon --save-dev  // 권한 없다 나올시 npm i nodemon -g --save-dev
