@@ -15,7 +15,7 @@ export default function Footer() {
   const firstItems = footMenu.length > 0 ? footMenu[0].items : [];
 
   return (
-    <footer className="footer text-white">
+    <footer className="text-white footer">
       {/* footer-top */}
       <div className="footer-top">
         <div className="leading-[2] pl-[32px] pr-[32px] pt-[24px]">
