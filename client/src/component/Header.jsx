@@ -10,7 +10,7 @@ import {
 
 export default function Header() {
   return (
-    <div className="w-full bg-primary">
+    <div className="w-full bg-transparent">
       <div className="relative flex justify-between items-center h-[66px] px-8">
         <div className="flex gap-5">
           {/* 메뉴 */}

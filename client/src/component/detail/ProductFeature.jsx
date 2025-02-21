@@ -10,7 +10,7 @@ export default function ProductFeatures() {
                     <p>바운스 코너</p>
                 </div>
                 <div>
-                    <img className='w-[200px] h-auto bg-white rounded-[25px] object-contain' src="/images/Bounce_Case_Drop_Protection.png" />
+                    <img className='w-[200px] h-auto bg-white rounded-[25px] object-contain' src="/images/detail/feature/Bounce_Case_Drop_Protection.png" />
                     <p className='text-[30px] mt-[10px]'>
                         6.5m
                         <br />
