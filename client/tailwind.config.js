@@ -21,6 +21,7 @@ module.exports = {
         black: '#000000',
         white: '#ffffff',
         gray: '#f7f7f7',
+        grayph: '#8c8c8c',
         bg: '#f0ece1',
         detailbg: '#f6f6f6',
         name: '#333333',

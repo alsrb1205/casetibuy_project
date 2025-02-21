@@ -4,6 +4,7 @@ import './style/common.css'
 import './style/style.css'
 import DetailProduct from './pages/DetailProduct.jsx';
 import 'swiper/css';
+import Login from './pages/Login.jsx';
 
 
 
@@ -13,6 +14,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Layout />}>
                     <Route path='/detail' element={<DetailProduct />}/>
+                    <Route path='/login' element={<Login/>}></Route>
                 </Route>
             </Routes>
         </BrowserRouter>
