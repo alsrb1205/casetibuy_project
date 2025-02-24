@@ -12,8 +12,7 @@ const containerStyle =
 const boxStyle =
   "absolute -z-10 p-24 text-center text-black transition-all duration-300 bg-white rounded-lg shadow-2xl w-[500px] top-[100px] left-1/2 lg:left-[70%] transform -translate-x-1/2 ";
 // linkStyle은 그대로 사용
-const linkStyle =
-  "text-blue-500 underline cursor-pointer hover:text-blue-700";
+const linkStyle = "text-blue-500 underline cursor-pointer hover:text-blue-700";
 
 export default function Login() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -64,9 +63,7 @@ export default function Login() {
       {/* 검은 오버레이 */}
       <div className="fixed top-0 left-0 w-full h-full bg-black -z-20"></div>
       {/* 로그인 박스 */}
-      <div
-        className={`${boxStyle}`}
-      >
+      <div className={`${boxStyle}`}>
         <div className="w-full overflow-hidden h-[160px]">
           <img
             src="/images/login/skater_john.jpg"
@@ -80,7 +77,11 @@ export default function Login() {
         {!isSignUp ? (
           <div className="flex flex-col items-center">
             <input type="text" placeholder="아이디" className={inputStyle} />
-            <input type="password" placeholder="비밀번호" className={inputStyle} />
+            <input
+              type="password"
+              placeholder="비밀번호"
+              className={inputStyle}
+            />
             <button className={buttonStyle}>로그인</button>
           </div>
         ) : (

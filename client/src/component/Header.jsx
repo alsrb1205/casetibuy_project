@@ -16,11 +16,14 @@ export default function Header() {
         <div className="flex gap-20">
           {/* 메뉴 */}
           <button type="button">
-            <FontAwesomeIcon className="w-24 h-24" icon={faBars} />
+            <FontAwesomeIcon className="w-24 h-24 text-white" icon={faBars} />
           </button>
           {/* 검색 */}
           <button type="button">
-            <FontAwesomeIcon className="w-24 h-24" icon={faMagnifyingGlass} />
+            <FontAwesomeIcon
+              className="w-24 h-24 text-white"
+              icon={faMagnifyingGlass}
+            />
           </button>
         </div>
         {/* 로고 */}
@@ -31,17 +34,20 @@ export default function Header() {
           {/* 로그인 */}
           <button type="button">
             <Link to="/login">
-              <FontAwesomeIcon className="w-24 h-24" icon={faUser} />
+              <FontAwesomeIcon className="w-24 h-24 text-white" icon={faUser} />
             </Link>
           </button>
           {/* Language */}
           <button>
-            <FontAwesomeIcon className="w-24 h-24" icon={faGlobe} />
+            <FontAwesomeIcon className="w-24 h-24 text-white" icon={faGlobe} />
           </button>
           {/* 장바구니 */}
           <button type="button">
             <Link to="/cart">
-              <FontAwesomeIcon className="w-24 h-24" icon={faCartShopping} />
+              <FontAwesomeIcon
+                className="w-24 h-24 text-white"
+                icon={faCartShopping}
+              />
             </Link>
           </button>
         </div>
