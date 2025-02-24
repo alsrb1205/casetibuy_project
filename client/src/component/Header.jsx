@@ -6,39 +6,42 @@ import {
   faMagnifyingGlass,
   faUser,
   faCartShopping,
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header() {
   return (
-    <div className="w-full bg-transparent">
-      <div className="relative flex justify-between items-center h-[66px] px-8">
-        <div className="flex gap-5">
+    <div className="relative z-10 w-full bg-transparent">
+      <div className="relative flex items-center justify-between px-32 h-66">
+        <div className="flex gap-20">
           {/* 메뉴 */}
           <button type="button">
-            <FontAwesomeIcon icon={faBars} className="header-menu" />
+            <FontAwesomeIcon className="w-24 h-24" icon={faBars} />
           </button>
           {/* 검색 */}
           <button type="button">
-            <FontAwesomeIcon icon={faMagnifyingGlass} />
+            <FontAwesomeIcon className="w-24 h-24" icon={faMagnifyingGlass} />
           </button>
         </div>
-
         {/* 로고 */}
-        <Link to="/" className="w-[120px] h-[40px]">
+        <Link to="/" className="h-40 w-120">
           <img src="https://cdn.casetify.com/img/ui/casetify-logo.png" alt="" />
         </Link>
-
-        <div className="flex gap-5">
+        <div className="flex gap-20">
+          {/* 로그인 */}
           <button type="button">
-            {/* 로그인 */}
             <Link to="/login">
-              <FontAwesomeIcon icon={faUser} />
+              <FontAwesomeIcon className="w-24 h-24" icon={faUser} />
             </Link>
+          </button>
+          {/* Language */}
+          <button>
+            <FontAwesomeIcon className="w-24 h-24" icon={faGlobe} />
           </button>
           {/* 장바구니 */}
           <button type="button">
             <Link to="/cart">
-              <FontAwesomeIcon icon={faCartShopping} />
+              <FontAwesomeIcon className="w-24 h-24" icon={faCartShopping} />
             </Link>
           </button>
         </div>

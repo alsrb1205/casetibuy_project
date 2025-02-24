@@ -28,7 +28,29 @@ export default function Slide({ id }) {
         slidesPerView={3.2} // 보이는 슬라이드 수
         slidesPerGroup={1} // 한 번 클릭할 때 한 개씩 이동
         spaceBetween={30} // 슬라이드 간격
-        // 페이지네이션
+        // centeredSlides={true} // 슬라이드 center 정렬
+        // centeredSlidesBounds={true} // first, last 슬라이드 끝정렬
+        // breakpoints={{
+        //   // 반응형
+        //   320: {
+        //     slidesPerView: 1.2,
+        //     slidesPerGroup: 1,
+        //     spaceBetween: 15,
+        //     centeredSlides: true, // 슬라이드 center 정렬
+        //     centeredSlidesBounds: true, // first, last 슬라이드 끝정렬
+        //   },
+        //   768: {
+        //     slidesPerView: 3,
+        //     slidesPerGroup: 1,
+        //     spaceBetween: 20,
+        //   },
+        //   1024: {
+        //     slidesPerView: 3,
+        //     slidesPerGroup: 1,
+        //     spaceBetween: 30,
+        //   },
+        // }}
+        페이지네이션
         pagination={{
           el: `.custom-pagination-${id}`, // 커스텀 클래스 생성
           clickable: true,
@@ -50,6 +72,12 @@ export default function Slide({ id }) {
             <Product className="w-full h-auto" />
           </SwiperSlide>
         ))}
+
+        {/* { 만약 클래스 네임이 슬라이드가 아니면 ? (
+          틀대로 하고
+        ) : (
+          슬라이드면 슬라이드 이미지를 바꿀게요
+        )} */}
       </Swiper>
 
       {/* 페이지네이션 */}
