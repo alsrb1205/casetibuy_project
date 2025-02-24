@@ -1,15 +1,14 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Header from '../component/Header.jsx';
-import Footer from '../component/Footer.jsx';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Header from "../component/Header.jsx";
+import Footer from "../component/Footer.jsx";
 
 export default function Layout() {
-
-    return (
-        <div>
-            <Header />
-            <Outlet />
-            {/* <Footer /> */}
-        </div>
-    );
+  return (
+    <div className="bg-gray">
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
+  );
 }

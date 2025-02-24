@@ -10,7 +10,7 @@ const containerStyle =
   "flex items-center justify-center w-full h-[calc(100vh-66px)] overflow-hidden relative";
 // 로그인 박스는 absolute로 위치 지정하고, left값은 Tailwind 반응형 클래스로 설정
 const boxStyle =
-  "absolute z-10 p-24 text-center text-black transition-all duration-300 bg-white rounded-lg shadow-2xl w-[500px] top-[100px] left-1/2 lg:left-[70%] transform -translate-x-1/2 ";
+  "absolute -z-10 p-24 text-center text-black transition-all duration-300 bg-white rounded-lg shadow-2xl w-[500px] top-[100px] left-1/2 lg:left-[70%] transform -translate-x-1/2 ";
 // linkStyle은 그대로 사용
 const linkStyle =
   "text-blue-500 underline cursor-pointer hover:text-blue-700";
@@ -53,7 +53,7 @@ export default function Login() {
       {/* 백그라운드 영상 */}
       <video
         ref={videoRef}
-        className={`fixed top-0 left-0 w-full h-full object-cover duration-z-10 ${
+        className={`fixed top-0 left-0 w-full h-full object-cover duration-500 -z-10 ${
           fade ? "opacity-0" : "opacity-100"
         }`}
         src={videos[currentVideoIndex]}

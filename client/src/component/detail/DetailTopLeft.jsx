@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function DetailTopLeft() {
     return (
-        <div className="relative flex-1 border-1">
+        <div className="relative flex-1">
             <div className="flex flex-col gap-16">
                 <div className="relative flex w-full">
                     <img
