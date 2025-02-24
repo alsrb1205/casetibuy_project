@@ -11,7 +11,7 @@ import {
 
 export default function Header() {
   return (
-    <div className="relative z-10 w-full bg-transparent">
+    <div className="relative z-30 w-full bg-transparent">
       <div className="relative flex items-center justify-between px-32 h-66">
         <div className="flex gap-20">
           {/* 메뉴 */}
