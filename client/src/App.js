@@ -12,6 +12,7 @@ import { ProductProvider } from './context/ProductContext.js';
 
 function App() {
     return (
+
         <ProductProvider>
             <BrowserRouter>
                 <Routes>
@@ -22,8 +23,8 @@ function App() {
                     </Route>
                 </Routes>
             </BrowserRouter>
-        </ProductProvider>
-    );
+        </ProductProvider>    
+);
 }
 
 export default App;
