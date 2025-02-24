@@ -21,6 +21,7 @@ module.exports = {
       colors: {
         primary: "#dcdcdc",
         black: "#000000",
+        black2: "#191919",
         white: "#ffffff",
         gray: "#f7f7f7",
         grayph: "#8c8c8c",
@@ -33,6 +34,8 @@ module.exports = {
         blue: "#2c5dab",
         blue2: "#2a5ea5",
         sky: "#dfe7f2",
+        skyblue:"#83daef",
+        purple:"#c77ee1",
         orange: "#f15b41",
         yellow: "#f6e163",
       },
