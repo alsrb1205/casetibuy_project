@@ -8,7 +8,7 @@ export default function Layout() {
     <div className="bg-gray">
       <Header />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
