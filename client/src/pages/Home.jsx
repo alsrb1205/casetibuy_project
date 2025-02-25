@@ -1,40 +1,51 @@
 import React from "react";
-import ProductList from "../component/ProductList.jsx";
+import HomeProductList from "../component/home/HomeProductList.jsx";
 import Slide from "../component/Slide.jsx";
-import SlideVisual from "../component/SlideVisual.jsx";
 
 export default function Home() {
+  const images = [
+    "https://cdn-stamplib.casetify.com/cms/image/5b730b163767a29c90e65e519a6de9cd.jpg",
+    "https://cdn-stamplib.casetify.com/cms/image/5b730b163767a29c90e65e519a6de9cd.jpg",
+    "https://cdn-stamplib.casetify.com/cms/image/5b730b163767a29c90e65e519a6de9cd.jpg",
+    "https://cdn-stamplib.casetify.com/cms/image/5b730b163767a29c90e65e519a6de9cd.jpg",
+  ];
+
   return (
     <div className="bg-bg">
-      {/* slider */}
-      <SlideVisual />
-      <Slide className="visaul" />
+      {/* visual slider */}
+      {/* <SlideVisual /> */}
+      <Slide
+        id="visual"
+        className="visual"
+        images={images}
+        pagination={true}
+        navigation={false}
+      />
 
       {/* collaborator */}
+      <Slide
+        id="collaborator"
+        className="collaborator"
+        pagination={false}
+        navigation={true}
+      />
 
       {/* Featured Collection */}
       <div className="content product-container ">
         <h2 className="pb-16 font-bold text-36">Featured Collection</h2>
-        <ProductList />
+        <HomeProductList />
       </div>
 
       {/* 테크 액세서리 컬렉션 */}
       <div className="content product-container">
         <h2 className="pb-16 font-bold text-36">The Essentials</h2>
-        <Slide id="slide1" className="common" />
+        <Slide
+          id="common"
+          className="common"
+          pagination={true}
+          navigation={true}
+        />
       </div>
-      {/* <div className="content product-container">
-        <h2 className="text-[36px] font-bold py-8">The Essentials</h2>
-        <Slide id="slide2" />
-      </div>
-      <div className="content product-container">
-        <h2 className="text-[36px] font-bold py-8">The Essentials</h2>
-        <Slide id="slide3" />
-      </div>
-      <div className="content product-container">
-        <h2 className="text-[36px] font-bold py-8">The Essentials</h2>
-        <Slide id="slide4" />
-      </div> */}
     </div>
   );
 }

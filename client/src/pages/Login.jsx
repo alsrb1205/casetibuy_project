@@ -65,6 +65,7 @@ export default function Login() {
                   ref={usernameRef}
                   className="peer block w-full pt-30 pb-5 px-8 text-black placeholder-transparent bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
+
                 <label
                   htmlFor="username"
                   className="absolute left-10 top-1/2 transform -translate-y-1/2 text-gray-600 text-[16px] transition-all duration-200 peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-600 peer-focus:top-15 peer-focus:text-xs peer-focus:text-blue-500"
@@ -92,6 +93,7 @@ export default function Login() {
               </div>
               {/* 아이디 찾기, 비밀번호 찾기 위치 조정 */}
               <div className="flex justify-end gap-4 w-[320px] mb-8 mx-auto">
+
                 <span className="text-sm text-gray-600 underline cursor-pointer hover:text-gray-800 text-blue">
                   아이디 찾기
                 </span>
@@ -106,8 +108,7 @@ export default function Login() {
               >
                 로그인
               </button>
-            </div>
-          ) : (
+            </div>          ) : (
             <SignUp />
           )}
           <div className="flex items-center justify-center gap-4 mt-16 text-[16px]">

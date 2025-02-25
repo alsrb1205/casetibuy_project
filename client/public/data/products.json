@@ -1,0 +1,121 @@
+[
+    {
+      "id": 1,
+      "name": "케이스티파이 추천",
+      "image": "/images/recommended.jpg",
+      "title": "Pink Organza Ribbon",
+      "model": "iPhone 16 Pro Max",
+      "series": "바운스 케이스",
+      "price": 102000
+    },
+    {
+      "id": 2,
+      "name": "케이스티파이 추천",
+      "image": "/images/recommended.jpg",
+      "title": "Chrome Doodles",
+      "model": "iPhone 16 Pro Max",
+      "series": "Impact Ring Stand Cae MagSafe Compatible",
+      "price": 108000
+    },
+    {
+      "id": 3,
+      "name": "케이스티파이 추천",
+      "image": "/images/recommended.jpg",
+      "title": "Black Kingsnake",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 4,
+      "name": "케이스티파이 추천",
+      "image": "/images/recommended.jpg",
+      "title": "Black Organza Ribbon",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 5,
+      "name": "케이스티파이 추천",
+      "image": "/images/recommended.jpg",
+      "title": "Pearly Heart",
+      "model": "아이폰 15 Pro",
+      "series": "바운스 케이스",
+      "price": 102000
+    },
+    {
+      "id": 6,
+      "name": "케이스티파이 추천",
+      "image": "/images/recommended.jpg",
+      "title": "Denim",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 7,
+      "name": "케이스티파이 추천",
+      "image": "/images/recommended.jpg",
+      "title": "Cross Heritage",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 7,
+      "name": "신상품",
+      "image": "/images/recommended.jpg",
+      "title": "Cross Heritage",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 7,
+      "name": "신상품",
+      "image": "/images/recommended.jpg",
+      "title": "Cross Heritage",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 7,
+      "name": "신상품",
+      "image": "/images/recommended.jpg",
+      "title": "Cross Heritage",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 7,
+      "name": "신상품",
+      "image": "/images/recommended.jpg",
+      "title": "Cross Heritage",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 7,
+      "name": "인기",
+      "image": "/images/recommended.jpg",
+      "title": "Cross Heritage",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    },
+    {
+      "id": 7,
+      "name": "인기",
+      "image": "/images/recommended.jpg",
+      "title": "Cross Heritage",
+      "model": "iPhone 16 Pro Max",
+      "series": "맥세이프 임팩트",
+      "price": 89000
+    }
+    
+  ]
+  
