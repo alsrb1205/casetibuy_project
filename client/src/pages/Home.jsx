@@ -1,5 +1,5 @@
 import React from "react";
-import ProductList from "../component/ProductList.jsx";
+import HomeProductList from "../component/home/HomeProductList.jsx";
 import Slide from "../component/Slide.jsx";
 
 export default function Home() {
@@ -33,7 +33,7 @@ export default function Home() {
       {/* Featured Collection */}
       <div className="content product-container ">
         <h2 className="pb-16 font-bold text-36">Featured Collection</h2>
-        <ProductList />
+        <HomeProductList />
       </div>
 
       {/* 테크 액세서리 컬렉션 */}

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import axios from "axios";
-import Product from "./Product.jsx";
+import Product from "./home/HomeProduct.jsx";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

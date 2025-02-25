@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Product from "./Product.jsx";
+import HomeProduct from "./HomeProduct.jsx";
 
-export default function ProductList() {
+export default function HomeProductList() {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function ProductList() {
     <>
       <div className="grid grid-cols-1 gap-24 lg:grid-cols-3">
         {productList.map((product, index) => (
-          <Product
+          <HomeProduct
             key={product.id}
             {...product}
             className={
