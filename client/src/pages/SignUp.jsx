@@ -1,25 +1,30 @@
 export default function SignUp() {
     return (
-        <div className="flex flex-col items-center justify-center">
+        <form className="flex flex-col items-center justify-center">
             <div className="w-[450px]">
                 {/* 이름 입력 */}
                 <input
                     type="text"
                     placeholder="이름"
+                    spellCheck="false"
                     className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
                 />
 
                 {/* 아이디 입력 */}
                 <input
                     type="text"
-                    placeholder="아이디"
+                    placeholder="아이디 (최소 6자 최대 20자)"
+                    maxLength="20"
+                    spellCheck="false"
                     className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
                 />
 
                 {/* 비밀번호 입력 */}
                 <input
                     type="password"
-                    placeholder="비밀번호"
+                    placeholder="비밀번호 (최소 6자 최대 30자)"
+                    maxLength="30"
+                    spellCheck="false"
                     className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
                 />
 
@@ -27,6 +32,8 @@ export default function SignUp() {
                 <input
                     type="password"
                     placeholder="비밀번호 확인"
+                    maxLength="30"
+                    spellCheck="false"
                     className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
                 />
 
@@ -35,6 +42,7 @@ export default function SignUp() {
                     <input
                         type="email"
                         placeholder="이메일"
+                        spellCheck="false"
                         className="w-[180px] p-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     />
                     <span className="text-black text-[16px] mx-2">@</span>
@@ -49,9 +57,13 @@ export default function SignUp() {
                 {/* 전화번호 입력 */}
                 <input
                     type="tel"
-                    placeholder="전화번호 (010-1234-5678)"
-                    maxLength="13" // 하이픈 포함
-                    pattern="^010-\d{4}-\d{4}$" // 전화번호 형식 패턴 (010-XXXX-XXXX)
+                    placeholder="전화번호 (기호없이 숫자 11자리)"
+                    maxLength="11"
+                    spellCheck="false"
+                    pattern="^010\d{8}$"
+                    onInput={(e) => {
+                        e.target.value = e.target.value.replace(/\D/g, "").slice(0, 11);
+                    }}
                     className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
                 />
 
@@ -59,9 +71,13 @@ export default function SignUp() {
                 <div className="flex justify-between w-[320px] mx-auto mb-8">
                     <input
                         type="text"
-                        placeholder="YYYY"
+                        placeholder="생년 4자리"
                         maxLength="4"
-                        pattern="\d{4}" // 숫자 4자리만 입력 가능
+                        spellCheck="false"
+                        pattern="\d{4}"
+                        onInput={(e) => {
+                            e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4);
+                        }}
                         className="w-[100px] p-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-center"
                     />
                     <select className="w-[100px] p-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
@@ -95,6 +111,6 @@ export default function SignUp() {
                     </button>
                 </div>
             </div>
-        </div>
+        </form>
     );
 }
