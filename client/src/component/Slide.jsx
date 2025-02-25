@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../style/swiper.css";
 
+
 export default function Slide({
   id,
   pagination,
@@ -33,6 +34,7 @@ export default function Slide({
     <div className={`swiper-container-${id} border`}>
       <Swiper
         ref={swiperRef}
+
         slidesPerView={className === "visual" ? 1 : 3.2} // 보이는 슬라이드 수
         slidesPerGroup={1} // 한 번 클릭할 때 한 개씩 이동
         spaceBetween={className === "visual" ? 0 : 30} // 슬라이드 간격
@@ -50,6 +52,7 @@ export default function Slide({
                 },
               }
         }
+
         // 네비게이션 버튼
         navigation={
           className === "collaborator"
