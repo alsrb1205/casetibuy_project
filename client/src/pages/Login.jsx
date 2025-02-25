@@ -72,8 +72,6 @@ export default function Login() {
               placeholder="비밀번호"
               className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
             />
-            
-            
             <div className="flex items-center justify-between w-[320px] mb-8">
               {/* 아이디 저장 체크박스 */}
               <label className="flex items-center">
@@ -85,7 +83,6 @@ export default function Login() {
                 />
                 <span className="text-sm text-gray-600">아이디 저장</span>
               </label>
-
               {/* 아이디 찾기 & 비밀번호 찾기 */}
               <div className="flex justify-end gap-4">
                 <span className="text-sm text-gray-600 underline cursor-pointer hover:text-gray-800 text-blue">
@@ -97,11 +94,9 @@ export default function Login() {
                 </span>
               </div>
             </div>
-
             <button className="p-8 text-white transition-all duration-300 bg-[var(--color-blue)] rounded-md w-[320px] text-[20px] hover:bg-[var(--color-green)]">
               로그인
             </button>
-
           </div>
         ) : (
           <SignUp />
