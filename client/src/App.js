@@ -6,7 +6,7 @@ import DetailProduct from './pages/DetailProduct.jsx';
 import 'swiper/css';
 import Login from './pages/Login.jsx';
 import Home from './pages/Home.jsx';
-import { ProductProvider } from './context/ProductContext.js';
+import { DetailProvider } from './context/DetailContext.js';
 import IphoneType from './pages/product/IphoneType.jsx';
 import IphoneAll from './pages/product/IphoneAll.jsx';
 import AllProduct from './pages/product/AllProduct.jsx';
@@ -20,7 +20,7 @@ import ProductType from './component/product/ProductType.jsx';
 function App() {
     return (
 
-        <ProductProvider>
+        <DetailProvider>
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<Layout />}>
@@ -36,7 +36,7 @@ function App() {
                     </Route>
                 </Routes>
             </BrowserRouter>
-        </ProductProvider>
+        </DetailProvider>
     );
 }
 

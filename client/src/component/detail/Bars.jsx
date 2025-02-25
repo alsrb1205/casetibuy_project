@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../style/bar.css';
+import { DetailContext } from '../../context/DetailContext';
 
-export default function Bars({ gauge }) {
-  // 기본값은 보호, 무게 모두 50%로 설정
-  const protectiveGauge = gauge?.protective || '50%';
-  const weightGauge = gauge?.weight || '50%';
+export default function Bars() {
+  const { casesData, activeCase, hoveredGauge } = useContext(DetailContext);
+  const defaultGauge = { protective: '50%', weight: '50%' };
 
-  // 보호 성능에 따른 텍스트 매핑
+  // hoveredGauge가 우선, 없으면 activeCase에 해당하는 케이스 데이터를, 그마저 없으면 기본값
+  const displayGauge = hoveredGauge || (activeCase && casesData[activeCase]) || defaultGauge;
+  const { protective: protectiveGauge, weight: weightGauge } = displayGauge;
+
   const protectiveTextMapping = {
     '25%': '기본',
     '50%': '강력한',
@@ -14,7 +17,6 @@ export default function Bars({ gauge }) {
     '100%': '극강의'
   };
 
-  // 무게에 따른 텍스트 매핑
   const weightTextMapping = {
     '25%': '매우 가벼움',
     '50%': '가벼움',
@@ -22,7 +24,6 @@ export default function Bars({ gauge }) {
     '100%': '무거움'
   };
 
-  // 매핑된 텍스트 추출
   const protectiveText = protectiveTextMapping[protectiveGauge] || protectiveTextMapping['50%'];
   const weightText = weightTextMapping[weightGauge] || weightTextMapping['50%'];
 
