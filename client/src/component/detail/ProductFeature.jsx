@@ -11,7 +11,7 @@ export default function ProductFeatures() {
 
     return (
 
-        <section className='w-full p-32 pb-40 m-auto bg-gray'>
+        <section className='w-full p-32 pb-40 m-auto bg-grayborder'>
             <h2 className='font-bold text-[50px] m-0 py-[25px] text-center'>Product Features</h2>
             <div className='grid grid-cols-3 gap-y-40 gap-x-32 justify-center max-w-[1200px] mt-20 mb-0 mx-auto px-32'>
 
