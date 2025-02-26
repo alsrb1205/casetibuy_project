@@ -106,8 +106,7 @@ export default function Login() {
               >
                 로그인
               </button>
-            </div>
-          ) : (
+            </div>          ) : (
             <SignUp />
           )}
           <div className="flex items-center justify-center gap-4 mt-16 text-[16px]">
