@@ -83,9 +83,9 @@ export default function FilterSidebar({ onFilterApply }) {
             {/* 화면 필터 */}
                 <button 
                     onClick={() => setIsOpen(true)}
-                    className="flex items-center gap-2 p-2 rounded"
+                    className="flex align-center gap-2 p-5 w-full border-2 rounded-full"
                 >
-                    <span>필터</span>
+                    <span className="text-center">필터</span>
                 </button>
 
             {/* 화면 오버레이 수정 중 */} 
@@ -107,7 +107,6 @@ export default function FilterSidebar({ onFilterApply }) {
                                 bg-[#E8e8e8] shadow-lg z-[101] transform transition-transform 
                                 duration-300 rounded-r-[28px] overflow-y-auto
                         ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
-                        
                 >
 
             {/******** Header ********/}

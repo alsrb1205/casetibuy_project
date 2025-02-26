@@ -27,7 +27,7 @@ export default function Title() {
             <div className=''>
                 <div className=''>
                     <nav>
-                        <ul className='flex space-x-4 mx-7'>
+                        <ul className='flex space-x-4 mx-7 p-10 gap-15'>
 
                             <li>
                                 <Link to='/allproduct'>

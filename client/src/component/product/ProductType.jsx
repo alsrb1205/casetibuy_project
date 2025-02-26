@@ -58,16 +58,16 @@ export default function ProductType() {
             <div className=''>
 
                 {/* 고정 Header */}
-                <div className='fixed top-0 z-50 w-full p-4 bg-white bg-opacity-80 backdrop-blur-sm '>
+                <div className='top-0 z-50 w-full p-4 bg-white bg-opacity-80 backdrop-blur-sm '>
 
             {/* ======================================================== */}
 
                 {/* 화면 타이틀 */}
                     <div className='flex bg-[#fecad6] 
-                                    rounded-[16px] justify-between 
-                                    w-full md:min-h-[84px]
-                                    items-center p-[12px_16px]
-                                    mb-2 min-h-[66px]
+                                    rounded-16 justify-between 
+                                    w-full md:min-h-84
+                                    items-center p-12
+                                    mb-2 min-h-66
                                     h-full 
                                                     
                     '>
@@ -75,10 +75,10 @@ export default function ProductType() {
                         {/* 타이틀 */} 
                             <div className=''>
 
-                                <span className='text-[16px] font-extrabold 
-                                                 leading-[1.2] flex 
+                                <span className='text-16 font-extrabold 
+                                                 leading-1.2 flex 
                                                  items-center gap-2
-                                                 md:text-[32px]
+                                                 md:text-32
                                                 
                                 '>
                                     전 상품
@@ -89,23 +89,24 @@ export default function ProductType() {
 
                         {/* 버튼 */}
 
-                            <div className='flex gap-[10px]'>
+                            <div className='flex gap-20'>
 
                                 {/* 필터 버튼 */}
 
                                     <div className=''>
 
                                         <FilterSidebar />
+
                                     </div>
                                     
                                 {/* 이미지 버튼 */}  
                                     <div>
-                                        <div className='flex gap-[8px] p-[10px] border-2 border-solid border-[#000] rounded-[100px] items-center'>
+                                        <div className='flex gap-8 p-10 border-2 border-solid border-#000000 rounded-full'>
                                             {icons.map((icon) => (
                                                 <div
                                                     key={icon.type}
-                                                    className={`cursor-pointer p-2 rounded-[34px] ${
-                                                        selectedLayout === icon.type ? 'bg-[#000] text-[#fecad6]' : ''
+                                                    className={`cursor-pointer p-2 rounded-34 ${
+                                                                selectedLayout === icon.type ? 'bg-#000000 text-#fecad6' : ''
                                                     }`}
                                                     onClick={() => handleLayoutChange(icon.type)}
                                                 >
