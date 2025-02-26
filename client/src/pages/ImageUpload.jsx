@@ -12,7 +12,7 @@ export default function ImageUpload({ getFileName }) {
         formData.append('oldFile', oldFile)
         // 서버 전송
         axios
-            .post(`http://localhost:9000/uploads/multiple?maxFiles=${files.length}`, formData, {
+            .post(`http://localhost:9000/uploads/?maxFiles=${files.length}`, formData, {
                 headers: { "Content-Type": "multipart/form-data" }
             })
             .then(res => {
