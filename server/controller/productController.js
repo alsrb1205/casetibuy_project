@@ -8,6 +8,10 @@ export const registerProduct = async (req, res) => {
     res.json(result);
     res.end();
     
+
+
+
+    
 }
 
 /**
