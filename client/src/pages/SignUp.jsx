@@ -1,111 +1,220 @@
-export default function SignUp() {
+import React from "react";
+import { useSignUp } from "../hooks/useSignUp";
+
+export default function SignUp({ setIsSignUp }) {
+    const {
+        name,
+        setName,
+        username,
+        setUsername,
+        email,
+        setEmail,
+        phone,
+        setPhone,
+        birthday,
+        setBirthday,
+        password,
+        setPassword,
+        confirmPassword,
+        setConfirmPassword,
+        handleDuplicateCheck,
+        handleSignUp,
+        usernameRef,
+        passwordRef,
+        confirmPasswordRef,
+        birthdayRef,
+        nameRef  // 이름 입력 필드 ref 추가
+    } = useSignUp();
+
     return (
-        <form className="flex flex-col items-center justify-center">
-            <div className="w-[450px]">
-                {/* 이름 입력 */}
-                <input
-                    type="text"
-                    placeholder="이름"
-                    spellCheck="false"
-                    className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
-                />
-
-                {/* 아이디 입력 */}
-                <input
-                    type="text"
-                    placeholder="아이디 (최소 6자 최대 20자)"
-                    maxLength="20"
-                    spellCheck="false"
-                    className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
-                />
-
-                {/* 비밀번호 입력 */}
-                <input
-                    type="password"
-                    placeholder="비밀번호 (최소 6자 최대 30자)"
-                    maxLength="30"
-                    spellCheck="false"
-                    className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
-                />
-
-                {/* 비밀번호 확인 */}
-                <input
-                    type="password"
-                    placeholder="비밀번호 확인"
-                    maxLength="30"
-                    spellCheck="false"
-                    className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
-                />
-
-                {/* 이메일과 도메인 입력 */}
-                <div className="flex items-center mb-8 w-[320px] mx-auto">
-                    <input
-                        type="email"
-                        placeholder="이메일"
-                        spellCheck="false"
-                        className="w-[180px] p-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    />
-                    <span className="text-black text-[16px] mx-2">@</span>
-                    <select className="w-[140px] p-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="">---선택---</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="daum.net">daum.net</option>
-                    </select>
-                </div>
-
-                {/* 전화번호 입력 */}
-                <input
-                    type="tel"
-                    placeholder="전화번호 (기호없이 숫자 11자리)"
-                    maxLength="11"
-                    spellCheck="false"
-                    pattern="^010\d{8}$"
-                    onInput={(e) => {
-                        e.target.value = e.target.value.replace(/\D/g, "").slice(0, 11);
-                    }}
-                    className="block w-[320px] p-8 mb-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mx-auto"
-                />
-
-                {/* 생년월일 입력 */}
-                <div className="flex justify-between w-[320px] mx-auto mb-8">
+        <form noValidate>
+            <div className="flex flex-col items-center">
+                {/* 이름 입력 필드 */}
+                <div className="relative w-full mb-8">
                     <input
                         type="text"
-                        placeholder="생년 4자리"
-                        maxLength="4"
+                        id="name"
+                        placeholder=" "
+                        required
                         spellCheck="false"
-                        pattern="\d{4}"
-                        onInput={(e) => {
-                            e.target.value = e.target.value.replace(/\D/g, "").slice(0, 4);
-                        }}
-                        className="w-[100px] p-8 text-black placeholder-gray-600 bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-center"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        ref={nameRef}  // nameRef 추가
+                        className="peer block w-full pt-20 pb-5 px-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     />
-                    <select className="w-[100px] p-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="">월</option>
-                        {Array.from({ length: 12 }, (_, i) => (
-                            <option key={i + 1} value={i + 1}>{i + 1}월</option>
-                        ))}
-                    </select>
-
-                    <select className="w-[100px] p-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                        <option value="">일</option>
-                        {Array.from({ length: 31 }, (_, i) => (
-                            <option key={i + 1} value={i + 1}>{i + 1}일</option>
-                        ))}
-                    </select>
+                    <label
+                        htmlFor="name"
+                        className="absolute left-8 transition-all duration-200 text-gray-600
+                  peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+                  peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-xs peer-focus:text-blue-500
+                  peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-xs peer-valid:text-blue-500"
+                    >
+                        이름
+                    </label>
                 </div>
 
-                {/* 버튼 */}
-                <div className="flex justify-between w-[320px] mx-auto mt-8">
+                {/* 생일 입력 필드 */}
+                <div className="relative w-full mb-8">
+                    <input
+                        type="text"
+                        id="birthday"
+                        placeholder=" "
+                        required
+                        spellCheck="false"
+                        value={birthday}
+                        onChange={(e) => setBirthday(e.target.value)}
+                        ref={birthdayRef}
+                        className="peer block w-full pt-20 pb-5 px-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <label
+                        htmlFor="birthday"
+                        className="absolute left-8 transition-all duration-200 text-gray-600
+                        peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+                        peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-xs peer-focus:text-blue-500
+                        peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-xs peer-valid:text-blue-500"
+                    >
+                        생년월일 (기호 없이 숫자 8자리)
+                    </label>
+                </div>
+
+                {/* 아이디 입력 필드 */}
+                <div className="relative w-full mb-8">
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder=" "
+                        required
+                        spellCheck="false"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        ref={usernameRef}
+                        className="peer block w-full pt-20 pb-5 px-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <label
+                        htmlFor="username"
+                        className="absolute left-8 transition-all duration-200 text-gray-600
+                  peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+                  peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-xs peer-focus:text-blue-500
+                  peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-xs peer-valid:text-blue-500"
+                    >
+                        아이디 (6글자~20글자)
+                    </label>
                     <button
-                        type="submit"
-                        className="p-8 text-white transition-all duration-300 bg-[var(--color-blue)] rounded-md w-[155px] text-[20px] hover:bg-[var(--color-green)]"
+                        type="button"
+                        onClick={handleDuplicateCheck}
+                        className="absolute px-4 py-2 text-sm text-white transform -translate-y-1/2 bg-blue-500 rounded-md right-4 top-1/2"
+                    >
+                        중복 확인
+                    </button>
+                </div>
+
+                {/* 비밀번호 입력 필드 */}
+                <div className="relative w-full mb-8">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder=" "
+                        required
+                        spellCheck="false"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        ref={passwordRef}
+                        className="peer block w-full pt-20 pb-5 px-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <label
+                        htmlFor="password"
+                        className="absolute left-8 transition-all duration-200 text-gray-600
+                  peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+                  peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-xs peer-focus:text-blue-500
+                  peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-xs peer-valid:text-blue-500"
+                    >
+                        비밀번호 (6글자~30글자)
+                    </label>
+                </div>
+
+                {/* 비밀번호 확인 입력 필드 */}
+                <div className="relative w-full mb-8">
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder=" "
+                        required
+                        spellCheck="false"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        ref={confirmPasswordRef}
+                        className="peer block w-full pt-20 pb-5 px-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <label
+                        htmlFor="confirmPassword"
+                        className="absolute left-8 transition-all duration-200 text-gray-600
+                  peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+                  peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-xs peer-focus:text-blue-500
+                  peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-xs peer-valid:text-blue-500"
+                    >
+                        비밀번호 확인
+                    </label>
+                </div>
+
+                {/* 이메일 입력 필드 */}
+                <div className="relative w-full mb-8">
+                    <input
+                        type="text"
+                        id="email"
+                        placeholder=" "
+                        required
+                        spellCheck="false"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="peer block w-full pt-20 pb-5 px-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <label
+                        htmlFor="email"
+                        className="absolute left-8 transition-all duration-200 text-gray-600
+                  peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+                  peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-xs peer-focus:text-blue-500
+                  peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-xs peer-valid:text-blue-500"
+                    >
+                        이메일 (ex : hyunu@gmail.com)
+                    </label>
+                </div>
+
+                {/* 전화번호 입력 필드 */}
+                <div className="relative w-full mb-8">
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder=" "
+                        required
+                        spellCheck="false"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="peer block w-full pt-20 pb-5 px-8 text-black bg-white border border-gray-300 rounded-md text-[16px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+                    <label
+                        htmlFor="phone"
+                        className="absolute left-8 transition-all duration-200 text-gray-600
+                  peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base
+                  peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-xs peer-focus:text-blue-500
+                  peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-xs peer-valid:text-blue-500"
+                    >
+                        전화번호 (기호 없이 숫자 11자리)
+                    </label>
+                </div>
+
+                {/* 회원가입 버튼 */}
+                <div className="flex w-full gap-4 mb-8">
+                    <button
+                        type="button"
+                        onClick={handleSignUp}
+                        className="p-8 text-white transition-all duration-300 bg-[var(--color-blue)] rounded-md w-[50%] text-[20px] hover:bg-[var(--color-green)]"
                     >
                         회원가입
                     </button>
                     <button
-                        type="reset"
-                        className="p-8 text-white transition-all duration-300 bg-[var(--color-red)] rounded-md w-[155px] text-[20px] hover:bg-[var(--color-pink)]"
+                        type="button"
+                        onClick={() => setIsSignUp(false)}
+                        className="p-8 text-white transition-all duration-300 bg-[var(--color-red)] rounded-md w-[50%] text-[20px] hover:bg-[var(--color-pink)]"
                     >
                         가입취소
                     </button>
