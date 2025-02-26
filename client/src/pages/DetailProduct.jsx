@@ -2,6 +2,7 @@ import React from 'react';
 import DetailTopLeft from '../component/detail/DetailTopLeft';
 import DetailTopRight from '../component/detail/DetailTopRight';
 import ProductFeatures from '../component/detail/ProductFeature';
+import ProductInfo from '../component/detail/ProductInfo';
 
 export default function DetailProduct() {
   return (
@@ -15,6 +16,7 @@ export default function DetailProduct() {
         </div>
       </div>
       <ProductFeatures/>
+      <ProductInfo/>
     </div>
   );
 }
