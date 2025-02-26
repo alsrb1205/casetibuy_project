@@ -7,11 +7,6 @@ export const registerProduct = async (req, res) => {
     const result = await repository.registerProduct(req.body); // 레파지토리 함수
     res.json(result);
     res.end();
-    
-
-
-
-    
 }
 
 /**
