@@ -9,7 +9,7 @@ export default function HomeProduct({
 }) {
   return (
     <div
-      className={`rounded-20 overflow-hidden ${bgColor} relative ${className}`}
+      className={`border rounded-20 overflow-hidden ${bgColor} relative ${className}`}
     >
       <img src={image} alt={title} className="object-cover w-full" />
       <div className="p-16">
