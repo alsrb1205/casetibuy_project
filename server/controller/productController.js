@@ -4,11 +4,9 @@ import * as repository from '../repository/productRepository.js';
  *상품 등록
  */
 export const registerProduct = async (req, res) => {
-    // const result = await repository.registerProduct(req.body); // 레파지토리 함수
-    console.log(req.body);
-    
-    // res.json(result);
-    // res.end();
+    const result = await repository.registerProduct(req.body); // 레파지토리 함수
+    res.json(result);
+    res.end();
 }
 
 /**
