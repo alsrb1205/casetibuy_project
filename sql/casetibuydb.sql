@@ -26,6 +26,6 @@ CREATE TABLE casetibuy_member(
 );
 
 drop table casebuy_member;
-
+use casetibuy;
 select * from casetibuy_product;
 select * from casetibuy_member;

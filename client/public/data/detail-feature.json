@@ -6,45 +6,42 @@
         "weight": "75%",
         "feature": [
             {
-                "src": "/images/detail/bounce/feature/1.png",
+                "image": "/images/detail/bounce/feature/1.png",
                 "desc": "바운스 코너"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/bounce/feature/2.png",
+                "desc": "6.5m\n낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/3.png",
-                "desc": "6x MIL-STD-810G"
+                "image": "/images/detail/bounce/feature/3.png",
+                "desc": "6x\nMIL-STD-810G"
             },
             {
-                "src": "/images/detail/bounce/feature/4.png",
-                "desc": "카메라 컨트롤 버튼에 부드러운 액세스"
+                "image": "/images/detail/bounce/feature/4.png",
+                "desc": "카메라 컨트롤 버튼에\n부드러운 액세스"
             },
             {
-                "src": "/images/detail/bounce/feature/5.png",
-                "desc": "TesseLock™ 소재"
+                "image": "/images/detail/bounce/feature/5.png",
+                "desc": "TesseLock™\n소재"
             },
             {
-                "src": "/images/detail/bounce/feature/6.png",
-                "desc": "무선 충전 및 맥세이프 호환"
+                "image": "/images/detail/bounce/feature/6.png",
+                "desc": "무선 충전 및\n맥세이프 호환"
             }
         ],
         "info": [
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/info/1.png",
+                "title": "테스트",
+                "desc" : ""
+            },
+            {
+                "image": "/images/detail/bounce/info/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
-            },
-            {
-                "src": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
-            },
-            {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/info/3.png",
                 "desc": "6.5m 낙하 테스트 통과"
             }
         ]
@@ -56,45 +53,45 @@
         "weight": "75%",
         "feature": [
             {
-                "src": "/images/detail/ring/feature/1.png",
-                "desc": "스탠드가 내장된 빌트인 카메라 링"
+                "image": "/images/detail/ring/feature/1.png",
+                "desc": "스탠드가 내장된\n빌트인 카메라 링"
             },
             {
-                "src": "/images/detail/ring/feature/2.png",
-                "desc": "2m 낙하 테스트"
+                "image": "/images/detail/ring/feature/2.png",
+                "desc": "2m\n낙하 테스트"
             },
             {
-                "src": "/images/detail/ring/feature/3.png",
-                "desc": "3x MIL-STD-810G"
+                "image": "/images/detail/ring/feature/3.png",
+                "desc": "3x\nMIL-STD-810G"
             },
             {
-                "src": "/images/detail/ring/feature/4.png",
-                "desc": "자유로운 각도 조절 (0° - 150°)"
+                "image": "/images/detail/ring/feature/4.png",
+                "desc": "자유로운 각도 조절\n(0° - 150°)"
             },
             {
-                "src": "/images/detail/ring/feature/5.svg",
-                "desc": "카메라 컨트롤 버튼에 부드러운 액세스"
+                "image": "/images/detail/ring/feature/5.svg",
+                "desc": "카메라 컨트롤 버튼에\n부드러운 액세스"
             },
             {
-                "src": "/images/detail/ring/feature/6.png",
-                "desc": "무선 충전 및 맥세이프 호환"
+                "image": "/images/detail/ring/feature/6.png",
+                "desc": "무선 충전 및\n맥세이프 호환"
             }
         ],
         "info": [
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             }
         ]
@@ -106,45 +103,45 @@
         "weight": "50%",
         "feature": [
             {
-                "src": "/images/detail/impact/feature/1.png",
-                "desc": "EcoShock™ 충격 흡수 소재"
+                "image": "/images/detail/impact/feature/1.png",
+                "desc": "EcoShock™\n충격 흡수 소재"
             },
             {
-                "src": "/images/detail/impact/feature/2.png",
-                "desc": "2.5m 낙하 테스트 통과"
+                "image": "/images/detail/impact/feature/2.png",
+                "desc": "2.5m\n낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/impact/feature/3.png",
-                "desc": "4x MIL-STD-810G"
+                "image": "/images/detail/impact/feature/3.png",
+                "desc": "4x\nMIL-STD-810G"
             },
             {
-                "src": "/images/detail/impact/feature/4.png",
-                "desc": "손쉬운 스트랩 착용을 위한 전용 소켓"
+                "image": "/images/detail/impact/feature/4.png",
+                "desc": "손쉬운 스트랩 착용을\n위한 전용 소켓"
             },
             {
-                "src": "/images/detail/impact/feature/5.svg",
-                "desc": "카메라 컨트롤 버튼에 부드러운 액세스"
+                "image": "/images/detail/impact/feature/5.svg",
+                "desc": "카메라 컨트롤 버튼에\n부드러운 액세스"
             },
             {
-                "src": "/images/detail/impact/feature/mimpact6.png",
-                "desc": "무선 충전 및 맥세이프 호환"
+                "image": "/images/detail/impact/feature/mimpact6.png",
+                "desc": "무선 충전 및\n맥세이프 호환"
             }
         ],
         "info": [
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             }
         ]
@@ -156,45 +153,45 @@
         "weight": "50%",
         "feature": [
             {
-                "src": "/images/detail/mirror/feature/1.png",
-                "desc": "1.5m 낙하 테스트 통과"
+                "image": "/images/detail/mirror/feature/1.png",
+                "desc": "1.5m 낙하\n테스트 통과"
             },
             {
-                "src": "/images/detail/mirror/feature/2.png",
-                "desc": "1x MIL-STD-810G"
+                "image": "/images/detail/mirror/feature/2.png",
+                "desc": "1x\nMIL-STD-810G"
             },
             {
-                "src": "/images/detail/mirror/feature/3.png",
-                "desc": "손쉬운 스트랩 착용을 위한 전용 소켓"
+                "image": "/images/detail/mirror/feature/3.png",
+                "desc": "손쉬운 스트랩 착용을\n위한 전용 소켓"
             },
             {
-                "src": "/images/detail/mirror/feature/4.png",
-                "desc": "2가지 기능의 테크 액세서리"
+                "image": "/images/detail/mirror/feature/4.png",
+                "desc": "2가지 기능의\n테크 액세서리"
             },
             {
-                "src": "/images/detail/mirror/feature/5.svg",
-                "desc": "카메라 컨트롤 버튼에 부드러운 액세스"
+                "image": "/images/detail/mirror/feature/5.svg",
+                "desc": "카메라 컨트롤 버튼에\n부드러운 액세스"
             },
             {
-                "src": "/images/detail/mirror/feature/6.png",
-                "desc": "무선 충전 및 맥세이프 호환"
+                "image": "/images/detail/mirror/feature/6.png",
+                "desc": "무선 충전 및\n맥세이프 호환"
             }
         ],
         "info": [
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             }
         ]
@@ -206,45 +203,45 @@
         "weight": "50%",
         "feature": [
             {
-                "src": "/images/detail/impact/feature/1.png",
-                "desc": "EcoShock™ 충격 흡수 소재"
+                "image": "/images/detail/impact/feature/1.png",
+                "desc": "EcoShock™\n충격 흡수 소재"
             },
             {
-                "src": "/images/detail/impact/feature/2.png",
-                "desc": "2.5m 낙하 테스트 통과"
+                "image": "/images/detail/impact/feature/2.png",
+                "desc": "2.5m\n낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/impact/feature/3.png",
-                "desc": "4x MIL-STD-810G"
+                "image": "/images/detail/impact/feature/3.png",
+                "desc": "4x\nMIL-STD-810G"
             },
             {
-                "src": "/images/detail/impact/feature/4.png",
-                "desc": "손쉬운 스트랩 착용을 위한 전용 소켓"
+                "image": "/images/detail/impact/feature/4.png",
+                "desc": "손쉬운 스트랩\n착용을 위한 전용 소켓"
             },
             {
-                "src": "/images/detail/impact/feature/5.svg",
-                "desc": "카메라 컨트롤 버튼에 부드러운 액세스"
+                "image": "/images/detail/impact/feature/5.svg",
+                "desc": "카메라 컨트롤 버튼에\n부드러운 액세스"
             },
             {
-                "src": "/images/detail/impact/feature/6.png",
+                "image": "/images/detail/impact/feature/6.png",
                 "desc": "무선 충전 호환"
             }
         ],
         "info": [
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
+                "desc": "6.5m\n낙하 테스트 통과"
+            },
+            {
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             },
             {
-                "src": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
-            },
-            {
-                "src": "/images/detail/bounce/feature/2.png",
+                "image": "/images/detail/bounce/feature/2.png",
                 "desc": "6.5m 낙하 테스트 통과"
             }
         ]

@@ -15,6 +15,9 @@ import HomeList from './component/product/HomeList.jsx';
 import Title from './component/product/Title.jsx';
 import Model from './pages/product/Model.jsx';
 import ModelAll from './pages/product/ModelAll.jsx';
+import ProductType from './component/product/ProductType.jsx';
+import NewProduct from './pages/NewProduct.jsx';
+
 
 
 
@@ -27,6 +30,7 @@ function App() {
                     <Route path='/' element={<Layout />}>
                         <Route index element={<Home />}/>
                         <Route path='/detail' element={<DetailProduct />} />
+                        <Route path='/new' element={<NewProduct />} />
                         <Route path='/login' element={<Login />} />
                         <Route path="/allproduct" element={<AllProduct />} />
                         <Route path="/iphoneall" element={<IphoneAll />} />
