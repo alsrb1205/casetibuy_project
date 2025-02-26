@@ -1,4 +1,55 @@
 {
+  "visualSlideImage": [
+    {
+      "pid": "01",
+      "title": "Dex's CHOICE",
+      "description": "Magnify Your Galaxy.",
+      "src": "https://cdn-stamplib.casetify.com/cms/video/4a7a7c1cd669bf005e2cdc596b0345fa.mp4",
+      "textBgColor": "yellow",
+      "titleColor": "blue"
+    },
+    {
+      "pid": "02",
+      "title": "DISEL + CASTIBUY",
+      "description": "Keep your tech edgy, stylish + protected.",
+      "src": "https://cdn-stamplib.casetify.com/cms/video/8fe8b493e4cee12c8506d6d11f8481fc.mp4",
+      "textBgColor": "blue",
+      "titleColor": "yellow",
+      "textColor": "white"
+    },
+    {
+      "pid": "03",
+      "title": "Upgrade Your Samsung S25 with a Kick-Stand",
+      "description": "Unlock more protection and more productivity",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/5b730b163767a29c90e65e519a6de9cd.jpg",
+      "textBgColor": "green",
+      "titleColor": "yellow"
+    },
+    {
+      "pid": "04",
+      "title": "Your Phone, Your Style",
+      "description": "Customize your iPhone 16",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/c639899a9049ddefbaa2ffb8462b09f5.jpg",
+      "textBgColor": "pink",
+      "titleColor": "blue"
+    },
+    {
+      "pid": "05",
+      "title": "Butterbear | CASTIBUY",
+      "description": "Step into a paradise of spring desserts!",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/6f22430fa455e2df961f6d38a83c87d7.jpg",
+      "textBgColor": "orange",
+      "titleColor": "yellow"
+    },
+    {
+      "pid": "06",
+      "title": "Magsafe Accessories",
+      "description": "Elevate Your Samsung S25 with Snappy Products",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/0738017a78a70038e2b7dfb5deba231c.jpg",
+      "textBgColor": "yellow",
+      "titleColor": "blue"
+    }
+  ],
   "featuredCollection": [
     {
       "pid": "01",
@@ -6,7 +57,7 @@
       "image": "https://cdn-stamplib.casetify.com/cms/image/ad63df5cadcd88e2bc964d07dbf94060.jpg.webp",
       "buttonText": "구매하기",
       "layout": "even",
-      "bgColor": "yello"
+      "bgColor": "yellow"
     },
     {
       "pid": "02",
@@ -30,6 +81,92 @@
       "image": "https://cdn-stamplib.casetify.com/cms/image/f5a43413db50ef3ca10b73c841e73ac8.png.webp",
       "buttonText": "구매하기",
       "layout": "odd",
+      "bgColor": "green"
+    }
+  ],
+  "collaborator": [
+    {
+      "pid": "01",
+      "title": "Diesel",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/47d76cd3743063321a4341816c26ef01.png.webp"
+    },
+    {
+      "pid": "02",
+      "title": "Cinderella",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/b390251c3d3d307e54e458bf22cb40d2.png.webp"
+    },
+    {
+      "pid": "03",
+      "title": "Tom and Jerry",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/d5df6fa8674c8f2369b02e3d4ac0dd75.png.webp"
+    },
+    {
+      "pid": "04",
+      "title": "Maison Kitsuné",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/4c2b7b430f06df259a30671774b7df57.png.webp"
+    },
+    {
+      "pid": "05",
+      "title": "Chill Guy",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/5bb5e72d797d604a9a017b56dc99f2d8.png.webp"
+    },
+    {
+      "pid": "06",
+      "title": "Chiikawa",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/7cc45cd006a560191ba3770dea2c6e4c.png.webp"
+    },
+    {
+      "pid": "07",
+      "title": "Hello Kitty",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/8ded8f26d9234c934d3c828c655fcf73.png.webp"
+    },
+    {
+      "pid": "08",
+      "title": "Kuromi",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/798123f8fc50e5ccd5d1a886b3bc8a40.png.webp"
+    }
+  ],
+  "essentials": [
+    {
+      "pid": "01",
+      "title": "Rope Cross-body Strap - Black (Double End)",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/27c4526973c3c27b6759bba3489ba54a.png.webp",
+      "bgColor": "green"
+    },
+    {
+      "pid": "02",
+      "title": "Impact Anti-Blue Light Screen Protector",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/138d3c1505bc6508c8a182e508ae0a1a.png.webp",
+      "bgColor": "pink"
+    },
+    {
+      "pid": "03",
+      "title": "The Bounce Odyssey Band™",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/7197f6deb7b9c33b993a6280a7054923.png.webp",
+      "bgColor": "gray"
+    },
+    {
+      "pid": "04",
+      "title": "Camera Lens Protector",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/2529754d0752a65694bb263b5d490877.png.webp",
+      "bgColor": "blue"
+    },
+    {
+      "pid": "05",
+      "title": "Camera Lens Gem",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/4aa1903971c47f4edce13a1fc2c6cffe.jpg.webp",
+      "bgColor": "orange"
+    },
+    {
+      "pid": "06",
+      "title": "Snappy™ Cardholder Stand",
+      "image": "https://cdn-image02.casetify.com/usr/4787/34787/~v419/30136034_snappy-cardholder-stand__color_black_16005956__render40.png.560x560-w.webp",
+      "bgColor": "yellow"
+    },
+    {
+      "pid": "07",
+      "title": "Snappy™ Mirror Grip Stand",
+      "image": "https://cdn-image02.casetify.com/usr/4787/34787/~v21/30133549_snappy-grip-stand__color_black_16006464__render40.png.560x560-w.webp",
       "bgColor": "green"
     }
   ]

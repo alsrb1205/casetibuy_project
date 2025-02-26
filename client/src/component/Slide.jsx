@@ -3,44 +3,46 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import axios from "axios";
-import Product from "./home/HomeProduct.jsx";
+import HomeProduct from "./home/HomeProduct.jsx";
+import SlideVisual from "./SlideVisual.jsx";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../style/swiper.css";
 
-
-export default function Slide({
-  id,
-  pagination,
-  navigation,
-  className,
-  images = [],
-}) {
+export default function Slide({ id, pagination, navigation, className }) {
   const swiperRef = useRef(null);
-  const [productList, setProductList] = useState([]);
+  const [slideList, setSlideList] = useState([]);
 
   useEffect(() => {
     axios
       .get("/data/product.json")
       .then((res) => {
-        console.log("res.data-->", res.data.featuredCollection);
-        setProductList(res.data.featuredCollection);
+        console.log("res.data-->", res.data);
+        const { visualSlideImage, featuredCollection, collaborator } = res.data;
+        setSlideList(
+          className === "visual"
+            ? visualSlideImage
+            : className === "collaborator"
+            ? collaborator
+            : featuredCollection
+        );
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [className]);
 
   return (
-    <div className={`swiper-container-${id} border`}>
+    <div className={`swiper-container-${id}`}>
       <Swiper
         ref={swiperRef}
-
-        slidesPerView={className === "visual" ? 1 : 3.2} // 보이는 슬라이드 수
+        slidesPerView={
+          className === "visual" ? 1 : className === "collaborator" ? 4.9 : 3.2
+        } // 보이는 슬라이드 수
         slidesPerGroup={1} // 한 번 클릭할 때 한 개씩 이동
         spaceBetween={className === "visual" ? 0 : 30} // 슬라이드 간격
         loop={className === "visual" ? true : false}
         autoplay={className === "visual" ? { delay: 5000 } : false}
-        // 페이지네이션
+        // 페이지네이션 설정
         pagination={
           className === "visual"
             ? true
@@ -52,8 +54,7 @@ export default function Slide({
                 },
               }
         }
-
-        // 네비게이션 버튼
+        // 네비게이션 설정
         navigation={
           className === "collaborator"
             ? true
@@ -66,17 +67,23 @@ export default function Slide({
         className={`custom-swiper ${className}`}
       >
         {/* 슬라이드 내용 */}
-        {productList &&
-          productList.map((product, index) => (
-            <SwiperSlide key={index}>
-              <Product image={product.image} />
+        {slideList.map((slide, index) =>
+          className === "visual" ? (
+            <SwiperSlide key={index} className="relative">
+              <SlideVisual key={index} slide={slide} />
             </SwiperSlide>
-          ))}
-        {/* {images.map((src, index) => (
-          <SwiperSlide key={index}>
-            <img src={src} alt={`slide-${index}`} className="slide-img" />
-          </SwiperSlide>
-        ))} */}
+          ) : className === "collaborator" ? (
+            <SwiperSlide key={index}>
+              <div className="px-20 py-10 overflow-hidden border border-grayhborder rounded-20">
+                <img src={slide.image} alt={index} className="w-full" />
+              </div>
+            </SwiperSlide>
+          ) : (
+            <SwiperSlide key={index}>
+              <HomeProduct image={slide.image} />
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
 
       {className !== "visual" && className !== "collaborator" && (
