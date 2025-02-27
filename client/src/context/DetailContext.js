@@ -14,6 +14,9 @@ export function DetailProvider({ children }) {
   const [hoveredGauge, setHoveredGauge] = useState(null);
   // 제품 feature 정보 (선택된 케이스의 feature)
   const [feature, setFeature] = useState([]);
+  const [productList,setProductList] = useState([]);
+  const currentCase = casesData[activeCase] || {}; // 선택된 케이스 데이터
+
 
   useEffect(() => {
     axios.get('/data/detail-feature.json')
@@ -32,7 +35,8 @@ export function DetailProvider({ children }) {
     feature,
     setFeature,
     gauge, 
-    setGauge
+    setGauge,
+    currentCase,productList,setProductList
   };
 
   return (
