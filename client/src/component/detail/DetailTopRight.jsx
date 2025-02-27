@@ -7,8 +7,7 @@ import '../../style/bar.css';
 import { DetailContext } from '../../context/DetailContext';
 
 export default function DetailTopRight() {
-  const { activeCase, casesData } = useContext(DetailContext);
-  const currentCase = casesData[activeCase] || {}; // 선택된 케이스 데이터
+  const { currentCase } = useContext(DetailContext);
 
   return (
     <div className="sticky top-12 self-start w-[533px]">
