@@ -3,10 +3,12 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Classify from './Classify.jsx';
 import ProductList from './ProductList.jsx';
+// import FilterSelected from './filter/FilterSelected.jsx';
 import FilterSidebar from './filter/FilterSidebar.jsx';
 
 export default function ProductType() {
 
+    const [isOpen, setIsOpen] = useState(false);
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [layoutType, setLayoutType] = useState(4);
@@ -52,32 +54,45 @@ export default function ProductType() {
         applyFilter(products, layoutType, category);
     };
 
+    // 스크롤 함수
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden"; 
+        } else {
+            document.body.style.overflow = "auto";   
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isOpen]);
+
 
     return (
         <>
             <div className=''>
 
-                {/* 고정 Header */}
-                <div className='top-0 z-50 w-full p-4 bg-white bg-opacity-80 backdrop-blur-sm '>
+
+            {/* 스크롤시 타이틀바 고정 css */}
+            <div className='top-0 w-full p-4 bg-white bg-opacity-80 backdrop-blur-sm '>
 
             {/* ======================================================== */}
 
-                {/* 화면 타이틀 */}
+                {/* 타이틀바 */}
                     <div className='flex bg-[#fecad6] 
                                     rounded-16 justify-between 
                                     w-full md:min-h-84
-                                    items-center p-12
+                                    items-center p-20
                                     mb-2 min-h-66
-                                    h-full 
+                                    h-full content-center
                                                     
                     '>
                         
-                        {/* 타이틀 */} 
+                        {/* 제목 */} 
                             <div className=''>
-
                                 <span className='text-16 font-extrabold 
                                                  leading-1.2 flex 
-                                                 items-center gap-2
+                                                 gap-2
                                                  md:text-32
                                                 
                                 '>
@@ -87,57 +102,60 @@ export default function ProductType() {
 
                     {/* ======================================================== */}
 
-                        {/* 버튼 */}
+                        {/* 타이틀바 버튼 */}
+                        <div className='flex gap-12 '>
 
-                            <div className='flex gap-20'>
+                            {/* 필터 버튼 */}
+                            <div className=''>
+                                <FilterSidebar />
+                            </div>
+                                
+                            {/* 이미지 버튼 */}  
+                            <div>
+                                <div className="flex gap-10 p-3 border-2 border-solid border-[#000000] rounded-full">
+                                    {icons.map((icon) => (
+                                        <div
+                                            key={icon.type}
+                                            className={`cursor-pointer p-6 rounded-[34px] ${
+                                                selectedLayout === icon.type ? 'bg-[#000000] text-[#fecad6]' : ''
+                                            }`}
+                                            onClick={() => handleLayoutChange(icon.type)}
+                                        >
+                                            <div dangerouslySetInnerHTML={{ __html: icon.svg.replace(/className=/g, "class=") }} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
 
-                                {/* 필터 버튼 */}
-
-                                    <div className=''>
-
-                                        <FilterSidebar />
-
-                                    </div>
-                                    
-                                {/* 이미지 버튼 */}  
-                                    <div>
-                                        <div className='flex gap-8 p-10 border-2 border-solid border-#000000 rounded-full'>
-                                            {icons.map((icon) => (
-                                                <div
-                                                    key={icon.type}
-                                                    className={`cursor-pointer p-2 rounded-34 ${
-                                                                selectedLayout === icon.type ? 'bg-#000000 text-#fecad6' : ''
-                                                    }`}
-                                                    onClick={() => handleLayoutChange(icon.type)}
-                                                >
-                                                    <div dangerouslySetInnerHTML={{ __html: icon.svg }} />
-                                                </div>
-                                            ))}
-                                        </div>   
-                                    </div>
-
-                            </div>  
+                        </div>  
 
                 {/* ======================================================== */}
 
-                    </div> {/* 화면 타이틀 */}
+                    </div> {/* 타이틀바 */}
                     
                 {/* ======================================================== */}
 
-                    {/* 분류 버튼 */}
 
-                  <div className="">
+
+                {/* 분류 버튼 */}
+                <div className="">
                     <Classify onCategoryChange={handleCategoryChange} />
-                  </div>
+                </div>
 
-                {/* ======================================================== */}
+                
             </div> {/* 고정 Header */}
 
 
-                    {/* 필터링된 상품 이미지 배열 리스트 */}
-                    <div className=''>
-                        <ProductList products={filteredProducts} layoutType={layoutType} />
-                    </div>
+                {/* ======================================================== */}
+                {/* ======================================================== */}
+                {/* ======================================================== */}
+                {/* ======================================================== */}
+
+
+                {/* 필터링된 상품 이미지 배열 리스트 */}
+                <div className=''>
+                    <ProductList products={filteredProducts} layoutType={layoutType} />
+                </div>
 
 
             </div>
