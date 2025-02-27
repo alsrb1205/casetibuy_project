@@ -6,17 +6,30 @@ export default function HomeProduct({
   btnColor,
   image,
   className,
+  pid,
+  no,
+  description,
+  labelStyle,
+  btnText,
+  btnStyle,
 }) {
   return (
     <div
-      className={`border rounded-20 overflow-hidden ${bgColor} relative ${className}`}
+      className={`border rounded-20 overflow-hidden ${bgColor} ${className}`}
     >
       <img src={image} alt={title} className="object-cover w-full" />
-      <div className="p-16">
-        <h2 className="text-lg font-bold">{title}</h2>
-        <button className={`mt-8 px-16 py-8 rounded-lg ${btnColor}`}>
-          구매하기
-        </button>
+      <div className="px-32 py-16">
+        <span className={`${labelStyle}`}>
+          {pid}
+          {no}
+        </span>
+        <div className="flex-col justify-between inline py-32 md:flex-row md:flex">
+          <div>
+            <h2 className="pt-10 font-bold text-26">{title}</h2>
+            <p>{description}</p>
+          </div>
+          <button className={`${btnStyle} ${btnColor}`}>{btnText}</button>
+        </div>
       </div>
     </div>
   );

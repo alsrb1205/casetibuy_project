@@ -7,7 +7,7 @@ export default function HomeProductList() {
 
   useEffect(() => {
     axios
-      .get("/data/product.json")
+      .get("/data/slides.json")
       .then((res) => {
         console.log("데이터 로드 성공:", res.data.featuredCollection);
         setProductList(res.data.featuredCollection);
