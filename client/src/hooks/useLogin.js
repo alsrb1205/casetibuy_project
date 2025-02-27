@@ -1,44 +1,46 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 
-export const useLogin = () => {
+export function useLogin() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [rememberMe, setRememberMe] = useState(false);
+    const [usernameError, setUsernameError] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+    const [usernameFocused, setUsernameFocused] = useState(false);
+    const [passwordFocused, setPasswordFocused] = useState(false);
+    const [usernameShake, setUsernameShake] = useState(false);
+    const [passwordShake, setPasswordShake] = useState(false);
+
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
 
     const handleLogin = (e) => {
-        e.preventDefault(); // 기본 폼 제출 동작 방지
-        
-        // 아이디와 비밀번호가 비어있는지 확인
-        if (!username.trim()) {
-            // alert("아이디를 입력하세요.");
-            usernameRef.current.focus();
-            return;
-        }
+        e.preventDefault();
+        alert("임시 로그인 성공");
+        console.log("로그인 처리");
+    };
 
-        if (!password.trim()) {
-            // alert("비밀번호를 입력하세요.");
-            passwordRef.current.focus();
-            return;
+    const validateUsername = () => {
+        const trimmed = username.trim();
+        if (trimmed.length < 6 || trimmed.length > 20) {
+            setUsernameError("아이디를 입력해주세요.(6~20자)");
+            setUsernameShake(true);
+            setTimeout(() => setUsernameShake(false), 500);
+            return false;
         }
+        setUsernameError("");
+        return true;
+    };
 
-        // 아이디와 비밀번호가 6글자 이상인지 확인
-        if (username.length < 6) {
-            // alert("아이디는 6글자 이상이어야 합니다.");
-            usernameRef.current.focus();
-            return;
+    const validatePassword = () => {
+        const trimmed = password.trim();
+        if (trimmed.length < 6 || trimmed.length > 20) {
+            setPasswordError("비밀번호를 입력해주세요.(6~20자)");
+            setPasswordShake(true);
+            setTimeout(() => setPasswordShake(false), 500);
+            return false;
         }
-
-        if (password.length < 6) {
-            // alert("비밀번호는 6글자 이상이어야 합니다.");
-            passwordRef.current.focus();
-            return;
-        }
-
-        // 로그인 성공
-        alert("로그인 성공!");
-        console.log(`아이디: ${username}, 비밀번호: ${password}`);
+        setPasswordError("");
+        return true;
     };
 
     return {
@@ -46,10 +48,18 @@ export const useLogin = () => {
         setUsername,
         password,
         setPassword,
-        rememberMe,
-        setRememberMe,
+        usernameError,
+        passwordError,
+        usernameFocused,
+        setUsernameFocused,
+        passwordFocused,
+        setPasswordFocused,
         usernameRef,
         passwordRef,
         handleLogin,
+        validateUsername,
+        validatePassword,
+        usernameShake,
+        passwordShake
     };
-};
+}
