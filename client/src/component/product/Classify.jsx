@@ -3,6 +3,7 @@ import axios from "axios";
 // import ProductList from "./ProductList.jsx"
 
 export default function Classify() {
+
   const [category, setCategory] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [ setProducts] = useState([]);
@@ -33,6 +34,8 @@ export default function Classify() {
     }
   };
 
+
+  
   return (
 
 
@@ -40,7 +43,11 @@ export default function Classify() {
 
 
       {/* 분류 버튼 */}
-        <div className="flex relative md:text-[16px] justify-between items-center p-12">
+        <div className="flex relative md:text-[16px] 
+                        justify-between items-center p-12
+                        
+                        ">
+
           <div className="ml-auto">
             <div className="relative cursor-pointer p-[4px]" onClick={() => setCategory(!category)}>
               <div className="flex items-center justify-center">
@@ -64,35 +71,38 @@ export default function Classify() {
 
       {/* 카테고리 리스트 */}
         {category && (
-          <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg 
-                          border border-gray-200 rounded-20 z-50">
+          <div className="absolute right-0 w-350 bg-white shadow-lg 
+                          border-gray-500 rounded-20 ">
             
-            <ul className="p-2 cursor-pointer">
+            <ul className="p-15 cursor-pointer">
 
               {["케이스티파이 추천", "신상품", "인기"].map((item) => (
 
                 <li
                   key={item}
-                  className={`p-2 flex items-center gap-2 rounded-full transition-colors ${
+                  className={`p-3 flex items-center gap-2 rounded-full transition-colors ${
                     selectedItem === item ? "bg-#F6E163" : "bg-white"
                   }`}
                   onClick={() => handleItemClick(item)}
                 >
 
-                  <div className="flex items-center justify-center w-5 h-5">
-                    {selectedItem === item && (
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="black" className="w-5 h-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
-                    )}
-                  </div>
+                  {/* 체크 아이콘 */}
+                    <div className="flex items-center justify-center w-5 h-5">
+                      {selectedItem === item && (
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="black" className="w-5 h-5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      )}
+                    </div>
 
                   <span>{item}</span>
                   
                 </li>
+                
               ))}
 
             </ul>
+
           </div>
         )}
 

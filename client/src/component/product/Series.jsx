@@ -150,7 +150,7 @@ export default function series() {
             {/* ********************************************************* */}
             {/* All title */}
 
-                <Title />
+            <Title />
 
         </>
     );
