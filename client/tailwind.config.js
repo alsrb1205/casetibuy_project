@@ -2,15 +2,15 @@
 const px0_10 = { ...Array.from(Array(11)).map((_, i) => `${i}px`) };
 const px0_100 = { ...Array.from(Array(101)).map((_, i) => `${i}px`) };
 const px0_200 = { ...Array.from(Array(201)).map((_, i) => `${i}px`) };
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     lineHeight: {
-      // 기본 줄 간격을 120%로 설정
       none: "1",
       tight: "1.2",
       snug: "1.2",
-      normal: "1.2", // 기본값을 120%로 변경
+      normal: "1.2",
       relaxed: "1.2",
       loose: "1.2",
     },
@@ -49,6 +49,17 @@ module.exports = {
       minHeight: px0_200,
       spacing: px0_200,
       borderRadius: px0_100,
+      animation: {
+        shake: 'shake 0.15s',
+      },
+      keyframes: {
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '25%': { transform: 'translateX(-5px)' },
+          '50%': { transform: 'translateX(5px)' },
+          '75%': { transform: 'translateX(-5px)' },
+        },
+      },
     },
   },
   plugins: [],
