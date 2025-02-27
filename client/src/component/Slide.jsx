@@ -16,17 +16,27 @@ export default function Slide({ id, pagination, navigation, className }) {
 
   useEffect(() => {
     axios
-      .get("/data/product.json")
+      .get("/data/slides.json")
       .then((res) => {
         console.log("res.data-->", res.data);
-        const { visualSlideImage, featuredCollection, collaborator } = res.data;
-        setSlideList(
-          className === "visual"
-            ? visualSlideImage
-            : className === "collaborator"
-            ? collaborator
-            : featuredCollection
-        );
+        const {
+          visualSlideImage,
+          featuredCollection,
+          collaborator,
+          commonSlides,
+        } = res.data;
+
+        if (className === "visual") {
+          setSlideList(visualSlideImage);
+        } else if (className === "collaborator") {
+          setSlideList(collaborator);
+        } else if (className === "common") {
+          const combinedSlides = commonSlides.map((category) => category.data);
+          setSlideList(combinedSlides);
+          console.log("combinedSlides-->", combinedSlides);
+        } else {
+          setSlideList(featuredCollection);
+        }
       })
       .catch((error) => console.log(error));
   }, [className]);
@@ -79,8 +89,18 @@ export default function Slide({ id, pagination, navigation, className }) {
               </div>
             </SwiperSlide>
           ) : (
-            <SwiperSlide key={index}>
-              <HomeProduct image={slide.image} />
+            <SwiperSlide key={index} className="border">
+              <HomeProduct
+                pid={slide.pid}
+                no={slide.no}
+                image={slide.image}
+                title={slide.title}
+                description={slide.description}
+                bgColor={slide.bgColor}
+                labelStyle={slide.labelStyle}
+                btnText={slide.btnText}
+                btnStyle={slide.btnStyle}
+              />
             </SwiperSlide>
           )
         )}

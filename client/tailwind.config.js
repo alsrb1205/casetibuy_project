@@ -33,6 +33,7 @@ module.exports = {
         name: "#333333",
         pink: "#fecad6",
         green: "#21a664",
+        lightgreen: "baef80",
         blue: "#2c5dab",
         blue2: "#2a5ea5",
         sky: "#dfe7f2",
