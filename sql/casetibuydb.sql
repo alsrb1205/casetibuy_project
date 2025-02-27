@@ -7,7 +7,6 @@ show tables;
 create table casetibuy_product(
 	pid		int				primary key		auto_increment,
     pname	varchar(50)			not null,
-    price	int,
     upload_file		json,
     source_file		json,
     pdate			datetime

@@ -33,7 +33,7 @@ console.log(activeCase.value);
           // 1) 필터링: bounce 케이스만
           files = files.filter(f => {
             const { caseType } = parseCaseAndColor(f);
-            return caseType === activeCase.value;
+            return caseType === "impact";
           });
   
   
