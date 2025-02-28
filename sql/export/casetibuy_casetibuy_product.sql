@@ -25,7 +25,7 @@ use casetibuy;
 DROP TABLE IF EXISTS `casetibuy_product`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `casetibuy_product2` (
+CREATE TABLE `casetibuy_product` (
   `pid` int NOT NULL AUTO_INCREMENT,
   `pname` varchar(50) NOT NULL,
   `isnew` tinyint(1) NOT NULL DEFAULT '0',
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-28 15:00:55
+-- Dump completed on 2025-02-28 15:41:10
