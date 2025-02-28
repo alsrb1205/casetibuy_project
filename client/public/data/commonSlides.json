@@ -3,46 +3,47 @@
     "category": "The Essentials",
     "data": [
       {
-        "pid": "01",
+        "pid": "1",
         "title": "Rope Cross-body Strap - Black (Double End)",
         "image": "https://cdn-stamplib.casetify.com/cms/image/27c4526973c3c27b6759bba3489ba54a.png.webp",
         "bgColor": "green"
       },
       {
-        "pid": "02",
+        "pid": "2",
         "title": "Impact Anti-Blue Light Screen Protector",
         "image": "https://cdn-stamplib.casetify.com/cms/image/138d3c1505bc6508c8a182e508ae0a1a.png.webp",
         "bgColor": "pink"
       },
       {
-        "pid": "03",
+        "pid": "3",
         "title": "The Bounce Odyssey Band™",
         "image": "https://cdn-stamplib.casetify.com/cms/image/7197f6deb7b9c33b993a6280a7054923.png.webp",
         "bgColor": "gray"
       },
       {
-        "pid": "04",
+        "pid": "4",
         "title": "Camera Lens Protector",
         "image": "https://cdn-stamplib.casetify.com/cms/image/2529754d0752a65694bb263b5d490877.png.webp",
         "bgColor": "blue"
       },
       {
-        "pid": "05",
+        "pid": "5",
         "title": "Camera Lens Gem",
         "image": "https://cdn-stamplib.casetify.com/cms/image/4aa1903971c47f4edce13a1fc2c6cffe.jpg.webp",
         "bgColor": "orange"
       },
       {
-        "pid": "06",
+        "pid": "6",
         "title": "Snappy™ Cardholder Stand",
         "image": "https://cdn-image02.casetify.com/usr/4787/34787/~v419/30136034_snappy-cardholder-stand__color_black_16005956__render40.png.560x560-w.webp",
         "bgColor": "yellow"
       },
       {
-        "pid": "07",
+        "pid": "7",
         "title": "Snappy™ Mirror Grip Stand",
         "image": "https://cdn-image02.casetify.com/usr/4787/34787/~v21/30133549_snappy-grip-stand__color_black_16006464__render40.png.560x560-w.webp",
-        "bgColor": "green"
+        "bgColor": "green",
+        "flexCol": "flex-col"
       }
     ]
   },
@@ -50,52 +51,52 @@
     "category": "Trending Designs!",
     "data": [
       {
-        "pid": "01",
+        "pid": "1",
         "title": "Kitten Ribbon",
         "image": "https://cdn-image02.casetify.com/usr/21890/26571890/~v114/32570971_iphone-16-pro-max__color_natural-titanium_16007168.png.560x560-w.webp",
         "bgColor": "yellow",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "pid": "02",
+        "pid": "2",
         "title": "Cross Heritage",
         "image": "https://cdn-image02.casetify.com/usr/4787/34787/~v111/32851163_samsung-galaxy-s25-ultra__color_natural-titanium_16008477.png.560x560-w.webp",
         "bgColor": "pink",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "pid": "03",
+        "pid": "3",
         "title": "Brace For Impact",
         "image": "https://cdn-image02.casetify.com/usr/27391/11607391/~v7711/11526672_samsung-galaxy-s25-ultra__color_silver_16008466.png.560x560-w.webp",
         "bgColor": "blue",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "pid": "04",
+        "pid": "4",
         "title": "Denim",
         "image": "https://cdn-image02.casetify.com/usr/4787/34787/~v111/32719682_samsung-galaxy-s25-ultra__color_natural-titanium_16008458.png.560x560-w.webp",
         "bgColor": "green",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "pid": "05",
+        "pid": "5",
         "title": "404 NOT FOUND",
         "image": "https://cdn-image02.casetify.com/usr/16571/16546571/~v1/33933541_keychain-tag_16008557.png.560x560-w.webp",
         "bgColor": "orange",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "pid": "06",
+        "pid": "6",
         "title": "Cross heritage",
         "image": "https://cdn-image02.casetify.com/usr/4787/34787/~v111/32910493_snappy-cardholder-stand__color_black_16006465__render40.png.560x560-w.webp",
         "bgColor": "gray",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       }
     ]
   },
@@ -103,31 +104,34 @@
     "category": "CASETiBUY Artist",
     "data": [
       {
-        "no": "01",
-        "labelStyle": "pt-6 px-20 pb-4 text-white",
+        "no": "1",
+        "label": "01",
+        "labelStyle": "pt-6 px-20 pb-4 text-12 text-white bg-black rounded-20",
         "title": "PETTYDUST",
         "image": "https://cdn-stamplib.casetify.com/cms/image/aef1e391974e98eb2385e527537d63e6.jpg.webp",
         "bgColor": "blue",
-        "btnText": "지금 구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20 text-white"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border text-white"
       },
       {
-        "no": "02",
-        "labelStyle": "pt-6 px-20 pb-4 text-white",
+        "no": "2",
+        "label": "02",
+        "labelStyle": "pt-6 px-20 pb-4 text-12 text-white bg-black rounded-20",
         "title": "Matsui",
         "image": "https://cdn-stamplib.casetify.com/cms/image/5c7a594e098945ef4eba12168a169031.png.webp",
         "bgColor": "green",
-        "btnText": "지금 구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "no": "03",
-        "labelStyle": "pt-6 px-20 pb-4 text-white",
+        "no": "3",
+        "label": "03",
+        "labelStyle": "pt-6 px-20 pb-4 text-12 text-white bg-black rounded-20",
         "title": "Skater JOHN",
         "image": "https://cdn-stamplib.casetify.com/cms/image/10cdcf83013db7ed4d00f415ef90511d.png.webp",
         "bgColor": "orange",
-        "btnText": "지금 구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       }
     ]
   },
@@ -140,8 +144,8 @@
         "image": "https://cdn-stamplib.casetify.com/cms/image/43ef6f3e58588c393e0a900dcf9577bc.png.webp",
         "src": "https://cdn-stamplib.casetify.com/cms/image/489e4dfd03592490676e727c133d2a30.gif",
         "bgColor": "lightgreen",
-        "btnText": "더 알아보기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Learn More",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       }
     ]
   },
@@ -150,30 +154,30 @@
     "data": [
       {
         "label": "인플루언서",
-        "labelStyle": "pt-6 px-20 pb-4 text-white",
+        "labelStyle": "pt-6 px-20 pb-4 text-12 text-white bg-black rounded-20",
         "title": "@suj_q X Black Organza Ribbon",
         "image": "https://cdn-stamplib.casetify.com/cms/image/1d7016de80d4837b84b3a896355c457b.jpg.webp",
         "bgColor": "yellow",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
         "label": "모델",
-        "labelStyle": "pt-6 px-20 pb-4 text-white",
+        "labelStyle": "pt-6 px-20 pb-4 text-12 text-white bg-black rounded-20",
         "title": "@chae_byungeun X Label Sticker Design 2",
         "image": "https://cdn-stamplib.casetify.com/cms/image/5244f84a309901a10d52dbae3016f8c5.jpg.webp",
         "bgColor": "pink",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
         "label": "컨텐츠 크리에이터",
-        "labelStyle": "pt-6 px-20 pb-4 text-white",
+        "labelStyle": "pt-6 px-20 pb-4 text-12 text-white bg-black rounded-20",
         "title": "@yourbeloved_ria X transparent flowers",
         "image": "https://cdn-stamplib.casetify.com/cms/image/765961fe27ec45ed75a887212690696f.jpg.webp",
         "bgColor": "blue",
-        "btnText": "구매하기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20 text-white"
+        "btnText": "Shop Now",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       }
     ]
   },
@@ -181,40 +185,36 @@
     "category": "CASETiBUYNews",
     "data": [
       {
-        "no": "1",
         "title": "Protective Phone Case for iPhone 16",
         "description": "Keep your iPhone 16 protected with the Ultra Bounce Case. Find out more tips on how to...",
         "image": "https://cdn-stamplib.casetify.com/cms/image/3dfd5b5a3af445a52f5feee5e7eaa4ec.jpg.webp",
         "bgColor": "green",
-        "btnText": "더 알아보기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Learn More",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "no": "2",
         "title": "Minimalist iPhone Case Is Your New...",
         "description": "Discover why our silicone phone case from Essentials by CASETiFY™ isn’t just a phone cover...",
         "image": "https://cdn-stamplib.casetify.com/cms/image/667a1c3854a74908151c2d3e8341787e.jpg.webp",
         "bgColor": "yellow",
-        "btnText": "더 알아보기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Learn More",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "no": "3",
         "title": "CASETiBUY’s PowerThru by CASETiBUY™...",
         "description": "CASETiBUY expands its product portfolio to include a wider range of powerful and convenient...",
         "image": "https://cdn-stamplib.casetify.com/cms/image/97d16ec561baee701d9cb0ec036a5d2e.jpg.webp",
         "bgColor": "pink",
-        "btnText": "더 알아보기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20"
+        "btnText": "Learn More",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border"
       },
       {
-        "no": "4",
         "title": "What Is a Military-Grade Phone...",
         "description": "Learn about the rigorous MIL-STD testing and what the “military-grade phone cases” are....",
         "image": "https://cdn-stamplib.casetify.com/cms/image/88da9bd9188ff0fa48b9bb2ebcf78704.jpg.webp",
         "bgColor": "blue",
-        "btnText": "더 알아보기",
-        "btnStyle": "py-12 px-20 text-20 rounded-20 text-white"
+        "btnText": "Learn More",
+        "btnStyle": "py-12 px-20 text-20 rounded-full border text-white"
       }
     ]
   },
@@ -222,9 +222,8 @@
     "category": "CASETiBUY Club",
     "data": [
       {
-        "title": "CASETiBUY Club",
         "description": "케이스티버이 클럽 회원 전용 혜택 받아보기",
-        "src": "https://cdn-stamplib.casetify.com/cms/image/82530d836f5bd685f4169e4c9b6d1b2b.jpg.webp",
+        "image": "https://cdn-stamplib.casetify.com/cms/image/82530d836f5bd685f4169e4c9b6d1b2b.jpg.webp",
         "textBgColor": "yellow",
         "titleColor": "blue"
       }

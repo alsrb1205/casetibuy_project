@@ -34,7 +34,7 @@ module.exports = {
         name: "#333333",
         pink: "#fecad6",
         green: "#21a664",
-        lightgreen: "baef80",
+        lightgreen: "#baef80",
         blue: "#2c5dab",
         blue2: "#2a5ea5",
         babyblue: "#83daef",
@@ -52,14 +52,14 @@ module.exports = {
       spacing: px0_200,
       borderRadius: px0_100,
       animation: {
-        shake: 'shake 0.15s',
+        shake: "shake 0.15s",
       },
       keyframes: {
         shake: {
-          '0%, 100%': { transform: 'translateX(0)' },
-          '25%': { transform: 'translateX(-5px)' },
-          '50%': { transform: 'translateX(5px)' },
-          '75%': { transform: 'translateX(-5px)' },
+          "0%, 100%": { transform: "translateX(0)" },
+          "25%": { transform: "translateX(-5px)" },
+          "50%": { transform: "translateX(5px)" },
+          "75%": { transform: "translateX(-5px)" },
         },
       },
     },

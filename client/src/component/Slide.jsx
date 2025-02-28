@@ -89,10 +89,9 @@ export default function Slide({ id, pagination, navigation, className }) {
               </div>
             </SwiperSlide>
           ) : (
-            <SwiperSlide key={index} className="border">
+            <SwiperSlide key={index}>
               <HomeProduct
-                pid={slide.pid}
-                no={slide.no}
+                label={slide.label}
                 image={slide.image}
                 title={slide.title}
                 description={slide.description}
