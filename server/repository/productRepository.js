@@ -6,14 +6,16 @@ import { db } from "./db.js";
 
 export const registerProduct = async (formData) => {
     const sql = `
-        insert into casetibuy_product(pname, isnew, ishot, isrec, upload_file, source_file, pdate)
-            values(?,?,?,?,?,?,now())
+        insert into casetibuy_product(pname,kinds, isnew, ishot, isrec, repImage, upload_file, source_file, pdate)
+            values(?,?,?,?,?,?,?,?,now())
     `;
     const values = [
         formData.productname,
+        formData.kinds,
         formData.isNew || false,
         formData.isHot || false,
-        formData.isRec || false,        
+        formData.isRec || false,      
+        formData.repImage || null,  
         formData.uploadFile || null,
         formData.sourceFile || null
     ];
@@ -28,7 +30,11 @@ export const getList = async () => {
     const sql = `
         select pid,
                pname as name,
-               concat('http://localhost:9000/',upload_file->>'$[0]') as image,
+               kinds,
+               isNew,
+               isHot,
+               isRec,
+               repImage,
                upload_file,
                source_file,
                pdate
