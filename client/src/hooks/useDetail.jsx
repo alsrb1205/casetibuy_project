@@ -3,13 +3,14 @@ import axios from 'axios';
 import { DetailContext } from '../context/DetailContext';
 
 export function useDetail() {
-  const { setActiveCase, setGauge, setFeature, setHoveredGauge, casesData, currentCase, setProductList,productList } = useContext(DetailContext);
+  const { setActiveCase,setActiveColor, setGauge, setFeature, setHoveredGauge, casesData, currentCase, setProductList,productList } = useContext(DetailContext);
 
 
   const handleCaseClick = (caseId) => {
     if (casesData[caseId]) {
       const caseData = casesData[caseId];
       setActiveCase(caseId);
+      setActiveColor("black");
       setGauge({ protective: caseData.protective, weight: caseData.weight });
       setFeature(caseData.feature);
     }
