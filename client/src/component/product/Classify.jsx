@@ -43,9 +43,9 @@ export default function Classify() {
 
 
       {/* 분류 버튼 */}
-        <div className="flex relative md:text-[16px] 
+        <div className="
+                        flex relative md:text-[16px] 
                         justify-between items-center p-12
-                        
                         ">
 
           <div className="ml-auto">
