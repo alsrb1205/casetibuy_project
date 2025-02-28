@@ -24,9 +24,7 @@ CREATE TABLE casetibuy_member(
         MDATE			DATETIME
 );
 
-drop table casetibuy_product;
 use casetibuy;
-truncate table casetibuy_product;
 select * from casetibuy_product;
 select * from casetibuy_member;
 
