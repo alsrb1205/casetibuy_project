@@ -5,16 +5,13 @@
   @apply bottom-0;
 }
 
+.swiper-slide {
+  @apply h-auto;
+}
+
 /**
  * PageNation
 */
-.swiper-container {
-  @apply relative w-full h-auto;
-}
-.slide-img {
-  @apply w-full;
-}
-
 /* common */
 /* 기본 불릿 스타일 */
 .swiper-pagination-bullet.custom-bullet {
@@ -27,9 +24,6 @@
 }
 
 /* visual */
-.swiper-container-visual {
-  @apply -mt-66;
-}
 .visual .swiper-pagination {
   @apply bottom-0 flex justify-end gap-10 pb-40 pr-24 pt-30;
 }

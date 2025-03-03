@@ -143,7 +143,7 @@ export default function SlideCommon({ className, pagination, navigation }) {
                       btnText={slide.btnText}
                       btnStyle={slide.btnStyle}
                       flexCol={slide.flexCol}
-                      mt-12mb-60={slide.mt12mb60}
+                      className=""
                     />
                   </SwiperSlide>
                 ))}

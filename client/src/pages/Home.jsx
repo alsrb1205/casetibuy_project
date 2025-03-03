@@ -5,7 +5,7 @@ import SlideCommon from "../component/SlideCommon.jsx";
 
 export default function Home() {
   return (
-    <div>
+    <div className="-mt-66">
       {/* visual slider */}
       <Slide className="visual" pagination={true} navigation={false} />
 

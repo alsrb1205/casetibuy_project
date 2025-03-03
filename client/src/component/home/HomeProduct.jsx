@@ -11,18 +11,19 @@ export default function HomeProduct({
   labelStyle,
   btnText,
   btnStyle,
-  mt12mb60,
 }) {
   return (
     <div
       className={`w-full h-full border rounded-20 overflow-hidden ${bgColor} ${className}`}
     >
-      <img src={image} alt={title} className="object-cover w-full h-auto" />
+      <div className="w-full overflow-hidden">
+        <img src={image} alt={title} className="object-cover w-full h-full" />
+      </div>
       <div className="flex flex-col items-start p-32">
         <span className={`${labelStyle}`}>{label}</span>
         <div className={`flex justify-between flex-col items-start`}>
           <div>
-            <h2 className={`pt-10 font-bold text-26 mt-12 mb-60 ${mt12mb60}`}>
+            <h2 className={`pt-10 items-start font-bold text-26 mt-12`}>
               {title}
             </h2>
             <p>{description}</p>
