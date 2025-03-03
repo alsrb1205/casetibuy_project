@@ -133,18 +133,7 @@ export default function SlideCommon({ className, pagination, navigation }) {
                 {/* 슬라이드 내용 */}
                 {slide.data.map((slide, index) => (
                   <SwiperSlide key={index} className="border">
-                    <HomeProduct
-                      label={slide.label}
-                      image={slide.image}
-                      title={slide.title}
-                      description={slide.description}
-                      bgColor={slide.bgColor}
-                      labelStyle={slide.labelStyle}
-                      btnText={slide.btnText}
-                      btnStyle={slide.btnStyle}
-                      flexCol={slide.flexCol}
-                      className=""
-                    />
+                    <HomeProduct {...slide} />
                   </SwiperSlide>
                 ))}
               </Swiper>
