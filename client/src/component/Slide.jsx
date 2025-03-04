@@ -90,7 +90,7 @@ export default function Slide({ id, pagination, navigation, className }) {
             </SwiperSlide>
           ) : (
             <SwiperSlide key={index}>
-              <HomeProduct slide={slide} />
+              <HomeProduct {...slide} />
             </SwiperSlide>
           )
         )}

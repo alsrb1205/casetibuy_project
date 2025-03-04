@@ -27,6 +27,7 @@ module.exports = {
         gray: "#f7f7f7",
         gray2: "#e8e8e8",
         grayph: "#8c8c8c",
+        graynav: "#eeeeee",
         grayborder: "#f0f0f0",
         grayhborder: "#e8e8e8",
         bg: "#f0ece1",
