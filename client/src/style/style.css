@@ -7,130 +7,135 @@
 ******************************************* */
 
 .header-outer {
-    /* border: 1px solid blue; */
-    width: 100%;
-    background-color: var(--color-primary);
-    border: 1px solid red;
-  }
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 66px;
-    padding: 0 32px;
-    border: 1px solid blue;
-  }
-  
-  .header-left,
-  .header-right {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .header-logo {
-    width: 120px;
-    height: 40px;
-  }
-  
-  .header_img {
-    margin-top: -66px;
-  }
-  
-  /* ****************************************
+  /* border: 1px solid blue; */
+  width: 100%;
+  background-color: var(--color-primary);
+  border: 1px solid red;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 66px;
+  padding: 0 32px;
+  border: 1px solid blue;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  gap: 20px;
+}
+
+.header-logo {
+  width: 120px;
+  height: 40px;
+}
+
+.header_img {
+  margin-top: -66px;
+}
+
+/* ****************************************
   
   *   title : footer
   *   author : 윤지혜
   *   final date : 2025/02/07
   
   ******************************************* */
-  
-  .footer {
-    width: 100%;
-    background-color: #333;
-  }
-  .sns {
-    width: 30px;
-    height: 30px;
-    background-color: var(--color-white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .sns img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  /* ****************************************
+
+.footer {
+  width: 100%;
+  background-color: #333;
+}
+.sns {
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sns img {
+  width: 20px;
+  height: 20px;
+}
+
+/* ****************************************
   
   *   title : Home
   *   author : 윤지혜
   *   final date : 2025/02/09
   
   ******************************************* */
-  
-  .featured-collection {
-    border: 1px solid red;
-    background-color: #f6e163;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-  .featured-collection img {
-    width: 100%;
-  }
-  .pid {
-    background-color: var(--color-black);
-    color: var(--color-white);
-    border-radius: 20px;
-    padding: 6px 20px;
-    height: 100%;
-  }
-  .ptitle {
-    font-size: 36px;
-    font-weight: bold;
-    padding: 32px 0;
-  }
-  .pbutton {
-    border: 1px solid #000;
-    border-radius: 40px;
-    padding: 12px 20px;
-    height: 100%;
-  }
-  .product-item {
-    padding: 16px 32px;
-  }
-  .product-item > div {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-  }
-  .products-even {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 15px;
-  }
-  .products-odd {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto auto;
-    gap: 15px;
-  }
-  
-  /* 배경 색상 */
-  .yellow {
-    background: #ffd700;
-  }
-  .blue {
-    background: #1e50a2;
-    color: white;
-  }
-  .pink {
-    background: #ffb6c1;
-  }
-  .green {
-    background: #008000;
-    color: white;
-  }
 
+.featured-collection {
+  border: 1px solid red;
+  background-color: #f6e163;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.featured-collection img {
+  width: 100%;
+}
+.pid {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: 20px;
+  padding: 6px 20px;
+  height: 100%;
+}
+.ptitle {
+  font-size: 36px;
+  font-weight: bold;
+  padding: 32px 0;
+}
+.pbutton {
+  border: 1px solid #000;
+  border-radius: 40px;
+  padding: 12px 20px;
+  height: 100%;
+}
+.product-item {
+  padding: 16px 32px;
+}
+.product-item > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.products-even {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 15px;
+}
+.products-odd {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto;
+  gap: 15px;
+}
+
+/* Home 배경 색상 */
+.yellow {
+  background: #ffd700;
+}
+.blue {
+  background: #1e50a2;
+  color: white;
+}
+.pink {
+  background: #ffb6c1;
+}
+.green {
+  background: #008000;
+  color: white;
+}
+.gray {
+  background: lightgray;
+}
+.orange {
+  background: orange;
+}
