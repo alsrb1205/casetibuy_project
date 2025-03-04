@@ -21,30 +21,30 @@ import TestList from "./component/TestList.jsx";
 import Mypage from "./pages/Mypage.jsx";
 
 function App() {
-  return (
-    <DetailProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/detail" element={<DetailProduct />} />
-            <Route path="/new" element={<NewProduct />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/test" element={<TestList />} />
-            <Route path="/allproduct" element={<AllProduct />} />
-            <Route path="/iphoneall" element={<IphoneAll />} />
-            <Route path="/iphonetype" element={<IphoneType />} />
-            <Route path="/modelall" element={<Model />} />
-            <Route path="/modelall" element={<ModelAll />} />
-            <Route path="/productlist" element={<ProductList />} />
-            <Route path="/homelist" element={<HomeList />} />
-            <Route path="/title" element={<Title />} />
-            <Route path="/mypage" element={<Mypage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </DetailProvider>
-  );
+
+    return (
+        <DetailProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path='/' element={<Layout />}>
+                        <Route index element={<Home />}/>
+                        <Route path='/detail/:pid' element={<DetailProduct />} />
+                        <Route path='/new' element={<NewProduct />} />
+                        <Route path='/login' element={<Login />} />
+                        {/* <Route path='/test' element={<TestList />} /> */}
+                        <Route path="/allproduct" element={<AllProduct />} />
+                        <Route path="/iphoneall" element={<IphoneAll />} />
+                        <Route path="/iphonetype" element={<IphoneType />} />
+                        <Route path="/model" element={<Model />} />
+                        <Route path="/modelall" element={<ModelAll />} />
+                        <Route path="/productlist" element={<ProductList />} />
+                        <Route path="/homelist" element={<HomeList />} />
+                        <Route path="/title" element={<Title />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+        </DetailProvider>
+    );
 }
 
 export default App;

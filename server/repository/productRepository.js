@@ -55,25 +55,11 @@ export const getProduct = async (pid) => {
                     pname as name,
                     upload_file as image,                                   
                     source_file as sourceFile,
-                    pdate,
-                    concat('http://localhost:9000/',upload_file->>'$[0]') as firstImage,
-                    -- json_array() 사용해서 imgList 배열만듬
-                    json_array(
-						concat('http://localhost:9000/',upload_file->>'$[0]'),
-						concat('http://localhost:9000/',upload_file->>'$[1]'),
-						concat('http://localhost:9000/',upload_file->>'$[2]')
-                    ) as imgList,
-                    json_arrayagg(
-						concat('http://localhost:9000/',jt.filename)
-                    ) as detailImgList
+                    pdate
                 FROM
-                    shoppy_product, 
-                    -- json_table(테이블.컬럼명,매핑데이터 columns(컬럼 생성 후 리턴)) as jt 
-                    json_table(shoppy_product.upload_file,'$[*]'
-							   columns(filename varchar(100) path '$')) as jt
+                    casetibuy_product
                 WHERE
                     pid = ?
-                    group by pid;    
     `;
 
     const [result] = await db.execute(sql, [pid]); // result = [[{pid:4,~~}],[컬럼명 fields]]

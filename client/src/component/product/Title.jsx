@@ -10,7 +10,7 @@ export default function Title() {
     const [selected, setSelected] = useState("all");
 
     useEffect(() => {
-        axios.get("/categories.json") 
+        axios.get("/data/categories.json") 
           .then(res => setProductTitle(res.data))
           .catch(error => console.error("Error fetching categories:", error));
       }, []);
@@ -27,7 +27,7 @@ export default function Title() {
             <div className=''>
                 <div className=''>
                     <nav>
-                        <ul className='flex space-x-4 mx-7 p-10 gap-15'>
+                        <ul className='flex p-10 space-x-4 mx-7 gap-15'>
 
                             <li>
                                 <Link to='/allproduct'>
@@ -48,7 +48,7 @@ export default function Title() {
 
                             <li>
                                 <div className="flex gap-2 mb-4">
-                                    {productTitle.map((category) => (
+                                    {/* {productTitle.map((category) => (
                                         <button
                                             key={category.id}
                                             onClick={() => handleCategoryClick(category.id)}
@@ -56,7 +56,7 @@ export default function Title() {
                                             >
                                             {category.name}
                                         </button>
-                                    ))}
+                                    ))} */}
                                 </div>
 
                             </li>                       

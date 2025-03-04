@@ -7,16 +7,16 @@
         "colorImg": [
             {
                 "black": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_bounce_color_black.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_bounce_color_black.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_bounce_color_black.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_bounce_color_black.jpg"
                 ],
                 "pink": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_bounce_color_pink.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_bounce_color_pink.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_bounce_color_pink.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_bounce_color_pink.jpg"
                 ],
                 "babyblue": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_bounce_color_babyblue.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_bounce_color_babyblue.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_bounce_color_babyblue.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_bounce_color_babyblue.jpg"
                 ]
             }
         ],
@@ -70,16 +70,16 @@
         "colorImg": [
             {
                 "black": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_ring_color_black.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_ring_color_black.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_ring_color_black.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_ring_color_black.jpg"
                 ],
                 "skyblue": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_ring_color_skyblue.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_ring_color_skyblue.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_ring_color_skyblue.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_ring_color_skyblue.jpg"
                 ],
                 "purple": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_ring_color_purple.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_ring_color_purple.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_ring_color_purple.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_ring_color_purple.jpg"
                 ]
             }
         ],
@@ -137,16 +137,16 @@
         "colorImg": [
             {
                 "black": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_mimpact_color_black.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_mimpact_color_black.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_mimpact_color_black.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_mimpact_color_black.jpg"
                 ],
                 "skyblue": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_mimpact_color_skyblue.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_mimpact_color_skyblue.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_mimpact_color_skyblue.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_mimpact_color_skyblue.jpg"
                 ],
                 "purple": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_mimpact_color_purple.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_mimpact_color_purple.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_mimpact_color_purple.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_mimpact_color_purple.jpg"
                 ]
             }
         ],
@@ -204,12 +204,12 @@
         "colorImg": [
             {
                 "black": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_mirror_color_black.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_mirror_color_black.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_mirror_color_black.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_mirror_color_black.jpg"
                 ],
                 "silver": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_mirror_color_silver.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_mirror_color_silver.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_mirror_color_silver.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_mirror_color_silver.jpg"
                 ]
             }
         ],
@@ -266,16 +266,16 @@
         "colorImg": [
             {
                 "black": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_impact_color_black.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_impact_color_black.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_impact_color_black.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_impact_color_black.jpg"
                 ],
                 "skyblue": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_impact_color_skyblue.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_impact_color_skyblue.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_impact_color_skyblue.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_impact_color_skyblue.jpg"
                 ],
                 "purple": [
-                    "images/iphone16pro/common/iphone16p_common_side_case_impact_color_purple.png",
-                    "images/iphone16pro/common/iphone16p_common_back_case_impact_color_purple.jpg"
+                    "/images/iphone16pro/common/iphone16p_common_side_case_impact_color_purple.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_impact_color_purple.jpg"
                 ]
             }
         ],
