@@ -51,7 +51,7 @@ export default function Color() {
                                         `}
                                     >
                                         {/* 원형 내부 장식 */}
-                                        <span className='block absolute aspect-square w-26 left-[50%] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_50%_50%,_hsla(0,0%,100%,0.45),_transparent)]'></span>
+                                        <span className='block absolute aspect-square w-26 top-0 rounded-full bg-[radial-gradient(circle_at_50%_50%,_hsla(0,0%,100%,0.45),_transparent)]'></span>
 
                                     </div>
 
