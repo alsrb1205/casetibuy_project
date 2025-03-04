@@ -18,7 +18,6 @@ export default function Slide({ id, pagination, navigation, className }) {
     axios
       .get("/data/slides.json")
       .then((res) => {
-        console.log("res.data-->", res.data);
         const {
           visualSlideImage,
           featuredCollection,
@@ -33,7 +32,6 @@ export default function Slide({ id, pagination, navigation, className }) {
         } else if (className === "common") {
           const combinedSlides = commonSlides.map((category) => category.data);
           setSlideList(combinedSlides);
-          console.log("combinedSlides-->", combinedSlides);
         } else {
           setSlideList(featuredCollection);
         }

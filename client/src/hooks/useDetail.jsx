@@ -5,6 +5,23 @@ import { DetailContext } from '../context/DetailContext';
 export function useDetail() {
   const { setActiveCase,setActiveColor, setGauge, setFeature, setHoveredGauge, casesData, currentCase, setProductList,productList } = useContext(DetailContext);
 
+<<<<<<< Updated upstream
+=======
+export function useDetail(pid) {
+  const {
+    setActiveCase,
+    setActiveColor,
+    setGauge,
+    setFeature,
+    setHoveredGauge,
+    casesData,
+    currentCase,
+    setProductList,
+    productList,
+    setDetail,
+    detail,
+  } = useContext(DetailContext);
+>>>>>>> Stashed changes
 
   const handleCaseClick = (caseId) => {
     if (casesData[caseId]) {
@@ -30,7 +47,19 @@ export function useDetail() {
   const getProductList = async() => {
     const res = await axios.get('http://localhost:9000/product/all')
     setProductList(res.data);
+<<<<<<< Updated upstream
   }
+=======
+    return res.data;
+  };
+
+  const getDetail = async () => {
+    const res = await axios.post("http://localhost:9000/product/detail", {
+      pid: pid,
+    });
+    setDetail(res.data);
+  };
+>>>>>>> Stashed changes
 
     
   const parseCaseAndColor = (fileName) => {
@@ -40,6 +69,17 @@ export function useDetail() {
     return { caseType: match[1], color: match[2] };
   };
 
+<<<<<<< Updated upstream
 
   return { casesData, handleCaseClick, handleHover, handleLeave, getProductList,parseCaseAndColor};
+=======
+  return {
+    casesData,
+    handleCaseClick,
+    handleHover,
+    handleLeave,
+    getProductList,
+    parseCaseAndColor,
+  };
+>>>>>>> Stashed changes
 }
