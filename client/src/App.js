@@ -31,7 +31,7 @@ function App() {
                         <Route path='/detail/:pid' element={<DetailProduct />} />
                         <Route path='/new' element={<NewProduct />} />
                         <Route path='/login' element={<Login />} />
-                        {/* <Route path='/test' element={<TestList />} /> */}
+                        <Route path='/mypage' element={<Mypage/>} />
                         <Route path="/allproduct" element={<AllProduct />} />
                         <Route path="/iphoneall" element={<IphoneAll />} />
                         <Route path="/iphonetype" element={<IphoneType />} />
