@@ -57,18 +57,15 @@ SELECT
                     ;
                     
                     
-                    
-                    CREATE TABLE `casetibuy_product3` (
-  `pid` int NOT NULL AUTO_INCREMENT,
-  `pname` varchar(50) NOT NULL,
-  `isnew` tinyint(1) NOT NULL DEFAULT '0',
-  `ishot` tinyint(1) NOT NULL DEFAULT '0',
-  `isrec` tinyint(1) NOT NULL DEFAULT '0',
-  `upload_file` json DEFAULT NULL,
-  `source_file` json DEFAULT NULL,
-  `pdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `kinds` varchar(20) NOT NULL,
-  `repImage` varchar(300) DEFAULT NULL,
-  PRIMARY KEY (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+                SELECT 
+                    pid,
+                    pname as name,
+                    upload_file as image,                                   
+                    source_file as sourceFile,
+                    pdate
+                FROM
+                    casetibuy_product
+                WHERE
+                    pid = 1;
+
                     
