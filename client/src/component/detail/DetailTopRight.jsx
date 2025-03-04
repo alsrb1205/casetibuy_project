@@ -6,7 +6,7 @@ import '../../style/case-swiper.css';
 import '../../style/bar.css';
 import { DetailContext } from '../../context/DetailContext';
 
-export default function DetailTopRight() {
+export default function DetailTopRight({detail}) {
   const { currentCase } = useContext(DetailContext);
 
   return (
@@ -14,7 +14,7 @@ export default function DetailTopRight() {
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-5">
           <h2 className="text-[36px] font-extrabold">
-            Chrome(제품명)
+            {detail.name}
           </h2>
           <span className="text-[16px] font-medium">
             {currentCase.cname}
@@ -30,7 +30,7 @@ export default function DetailTopRight() {
             </span>
           </div>
           <div className="flex flex-col gap-[4px] absolute right-0 bottom-4">
-            <img src="images/qr.png" alt="" />
+            <img src="/images/qr.png" alt="" />
             <span className="text-[8px] pt-0">12345678</span>
           </div>
         </div>

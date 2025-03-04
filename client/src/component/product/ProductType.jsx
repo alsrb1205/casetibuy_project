@@ -9,32 +9,29 @@ import FilterSidebar from './filter/FilterSidebar.jsx';
 export default function ProductType() {
 
     const [isOpen, setIsOpen] = useState(false);
-    const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [layoutType, setLayoutType] = useState(4);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [icons, setIcons] = useState([]);
     const [selectedLayout, setSelectedLayout] = useState(4); 
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        axios.get('http://localhost:9000/product/all')
+        .then(res => {
+            setProducts(res.data);
+        })
+        .catch(err => console.error(err));
+    }, []);
 
 
     // json 
     useEffect(() => {
-        axios.get('/data/products.json')
-            .then(res => {
-                setProducts(res.data);
-                applyFilter(res.data, 4, null);
-            })
-            .catch(error => console.error('상품 데이터를 불러오는 중 오류 발생:', error));
-
-        
         axios.get('/data/icons.json')
             .then(res => setIcons(res.data.layoutIcons))
             .catch(error => console.error('아이콘 데이터를 불러오는 중 오류 발생:', error));
     }, []);
 
-
     // 함수
-
     const applyFilter = (data, type, category) => {
         let filtered = data;
         if (category) {
@@ -61,23 +58,17 @@ export default function ProductType() {
         } else {
             document.body.style.overflow = "auto";   
         }
-
         return () => {
             document.body.style.overflow = "auto";
         };
     }, [isOpen]);
 
-
     return (
         <>
             <div className=''>
-
-
             {/* 스크롤시 타이틀바 고정 css */}
             <div className='top-0 w-full p-4 bg-white bg-opacity-80 backdrop-blur-sm '>
-
             {/* ======================================================== */}
-
                 {/* 타이틀바 */}
                     <div className='flex bg-[#fecad6] 
                                     rounded-16 justify-between 
@@ -87,21 +78,17 @@ export default function ProductType() {
                                     h-full content-center
                                                     
                     '>
-                        
                         {/* 제목 */} 
                             <div className=''>
                                 <span className='text-16 font-extrabold 
                                                  leading-1.2 flex 
                                                  gap-2
                                                  md:text-32
-                                                
                                 '>
                                     전 상품
                                 </span>
                             </div>
-
                     {/* ======================================================== */}
-
                         {/* 타이틀바 버튼 */}
                         <div className='flex gap-12 '>
 
@@ -126,17 +113,10 @@ export default function ProductType() {
                                     ))}
                                 </div>
                             </div>
-
                         </div>  
-
                 {/* ======================================================== */}
-
                     </div> {/* 타이틀바 */}
-                    
                 {/* ======================================================== */}
-
-
-
                 {/* 분류 버튼 */}
                 <div className="">
                     <Classify onCategoryChange={handleCategoryChange} />
@@ -144,17 +124,13 @@ export default function ProductType() {
 
                 
             </div> {/* 고정 Header */}
-
-
                 {/* ======================================================== */}
                 {/* ======================================================== */}
                 {/* ======================================================== */}
                 {/* ======================================================== */}
-
-
                 {/* 필터링된 상품 이미지 배열 리스트 */}
                 <div className=''>
-                    <ProductList products={filteredProducts} layoutType={layoutType} />
+                    <ProductList products={products} layoutType={layoutType} />
                 </div>
 
 

@@ -30,10 +30,10 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Layout />}>
                         <Route index element={<Home />}/>
-                        <Route path='/detail' element={<DetailProduct />} />
+                        <Route path='/detail/:pid' element={<DetailProduct />} />
                         <Route path='/new' element={<NewProduct />} />
                         <Route path='/login' element={<Login />} />
-                        <Route path='/test' element={<TestList />} />
+                        {/* <Route path='/test' element={<TestList />} /> */}
                         <Route path="/allproduct" element={<AllProduct />} />
                         <Route path="/iphoneall" element={<IphoneAll />} />
                         <Route path="/iphonetype" element={<IphoneType />} />
