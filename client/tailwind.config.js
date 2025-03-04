@@ -27,6 +27,7 @@ module.exports = {
         gray: "#f7f7f7",
         gray2: "#e8e8e8",
         grayph: "#8c8c8c",
+        graynav: "#eeeeee",
         grayborder: "#f0f0f0",
         grayhborder: "#e8e8e8",
         bg: "#f0ece1",
@@ -52,16 +53,19 @@ module.exports = {
       spacing: px0_200,
       borderRadius: px0_100,
       animation: {
-        shake: "shake 0.15s",
+        shake: "shake 0.15s linear",
       },
       keyframes: {
         shake: {
           "0%, 100%": { transform: "translateX(0)" },
-          "25%": { transform: "translateX(-5px)" },
-          "50%": { transform: "translateX(5px)" },
-          "75%": { transform: "translateX(-5px)" },
+          "25%": { transform: "translateX(-10px)" },
+          "50%": { transform: "translateX(10px)" },
+          "75%": { transform: "translateX(-10px)" },
         },
       },
+      transitionProperty: {
+        'height': 'height',
+      }
     },
   },
   plugins: [],

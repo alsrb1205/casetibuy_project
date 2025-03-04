@@ -15,7 +15,7 @@ export const registerProduct = async (req, res) => {
  * 전체 상품 리스트 조회
  */
 export const getList=async(req,res)=>{
-    const result = await repository.getList();
+    const result = await repository.getList(req);
     res.json(result);
     res.end();
 }

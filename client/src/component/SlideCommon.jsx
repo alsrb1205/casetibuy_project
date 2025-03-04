@@ -38,6 +38,7 @@ export default function SlideCommon({ className, pagination, navigation }) {
 
   return (
     <>
+      {}
       {slideList.map((slide, i) => {
         if (slide.category === "Our Mission") {
           // Our Mission, Club은 Swiper 제외

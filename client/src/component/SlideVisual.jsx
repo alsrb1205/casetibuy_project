@@ -8,6 +8,7 @@ export default function SlideVisual({ slide }) {
     green: "bg-green",
     pink: "bg-pink",
     orange: "bg-orange",
+    gray: "bg-gray",
   };
 
   const textColor = {
