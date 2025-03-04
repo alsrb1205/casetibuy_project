@@ -41,12 +41,12 @@ export default function SlideCommon({ className, pagination, navigation }) {
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="object-cover w-full h-full"
+                        className="object-cover w-[30%]"
                       />
                       <img
                         src={item.src}
                         alt={item.title}
-                        className="object-cover w-full h-full"
+                        className="object-cover w-[70%]"
                       />
                     </div>
                     <div className="flex justify-between p-32">
@@ -100,7 +100,7 @@ export default function SlideCommon({ className, pagination, navigation }) {
           <div key={i} className="content product-container bg-bg">
             <h2 className="pb-16 font-bold text-36">{slide.category}</h2>
 
-            <div className={`swiper-container-${className}-${i} border`}>
+            <div className={`swiper-container-${className}-${i}`}>
               <Swiper
                 ref={swiperRef}
                 slidesPerView={
@@ -132,19 +132,8 @@ export default function SlideCommon({ className, pagination, navigation }) {
               >
                 {/* 슬라이드 내용 */}
                 {slide.data.map((slide, index) => (
-                  <SwiperSlide key={index} className="border">
-                    <HomeProduct
-                      label={slide.label}
-                      image={slide.image}
-                      title={slide.title}
-                      description={slide.description}
-                      bgColor={slide.bgColor}
-                      labelStyle={slide.labelStyle}
-                      btnText={slide.btnText}
-                      btnStyle={slide.btnStyle}
-                      flexCol={slide.flexCol}
-                      mt-12mb-60={slide.mt12mb60}
-                    />
+                  <SwiperSlide key={index}>
+                    <HomeProduct {...slide} />
                   </SwiperSlide>
                 ))}
               </Swiper>

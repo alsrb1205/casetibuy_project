@@ -1,34 +1,22 @@
 import React from "react";
 
-export default function HomeProduct({
-  title,
-  bgColor,
-  btnColor,
-  image,
-  className,
-  label,
-  description,
-  labelStyle,
-  btnText,
-  btnStyle,
-  mt12mb60,
-}) {
+export default function HomeProduct(slide) {
   return (
     <div
-      className={`w-full h-full border rounded-20 overflow-hidden ${bgColor} ${className}`}
+      className={`w-full h-full rounded-20 overflow-hidden ${slide.bgColor} ${slide.className}`}
     >
-      <img src={image} alt={title} className="object-cover w-full h-auto" />
-      <div className="flex flex-col items-start p-32">
-        <span className={`${labelStyle}`}>{label}</span>
-        <div className={`flex justify-between flex-col items-start`}>
-          <div>
-            <h2 className={`pt-10 font-bold text-26 mt-12 mb-60 ${mt12mb60}`}>
-              {title}
-            </h2>
-            <p>{description}</p>
-          </div>
-          <button className={`${btnStyle} ${btnColor}`}>{btnText}</button>
+      <div className="w-full overflow-hidden">
+        <img src={slide.image} alt={slide.title} className="w-full" />
+      </div>
+      <div className="flex flex-col items-start justify-between p-32">
+        <span className={`${slide.labelStyle}`}>{slide.label}</span>
+        <div>
+          <h2 className={`mt-10 font-bold text-26`}>{slide.title}</h2>
+          <p>{slide.description}</p>
         </div>
+        <button className={`mt-30 ${slide.btnStyle} ${slide.btnColor}`}>
+          {slide.btnText}
+        </button>
       </div>
     </div>
   );

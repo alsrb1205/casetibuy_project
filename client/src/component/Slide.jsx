@@ -90,16 +90,7 @@ export default function Slide({ id, pagination, navigation, className }) {
             </SwiperSlide>
           ) : (
             <SwiperSlide key={index}>
-              <HomeProduct
-                label={slide.label}
-                image={slide.image}
-                title={slide.title}
-                description={slide.description}
-                bgColor={slide.bgColor}
-                labelStyle={slide.labelStyle}
-                btnText={slide.btnText}
-                btnStyle={slide.btnStyle}
-              />
+              <HomeProduct slide={slide} />
             </SwiperSlide>
           )
         )}
