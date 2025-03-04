@@ -66,11 +66,11 @@ export default function Login() {
       <div className="fixed top-0 left-0 z-0 w-full h-full bg-black"></div>
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <div className="absolute text-center text-black transition-all duration-300 bg-white rounded-xl shadow-2xl w-[400px] top-[20px] left-1/2 lg:left-[70%] transform -translate-x-1/2 z-20 ">
-          {isSignUp ? "" :<div className="w-full overflow-hidden h-[180px]">
+          {isSignUp ? "" : <div className="w-full overflow-hidden h-[180px]">
             <img src="/images/login/skater_john.jpg" alt="Skater" className="object-cover w-full h-full rounded-t-md" />
           </div>}
-          <div className="pt-0 p-50">
-            <p className={`my-16 font-bold text-24 ${isSignUp ? 'mt-40 mb-20' : ''}`}>
+          <div className="pt-0 pb-20 px-50">
+            <p className={`mt-20 mb-16 font-bold text-24 ${isSignUp ? 'mt-30 mb-20' : ''}`}>
               {isSignUp ? "회원가입" : "로그인"}
             </p>
             {!isSignUp ? (
@@ -109,7 +109,7 @@ export default function Login() {
             ) : (
               <SignUp setIsSignUp={setIsSignUp} />
             )}
-            <div className="flex items-center justify-center gap-5 mt-12 text-[14px]">
+            <div className="flex items-center justify-center gap-5 mt-20 text-[14px]">
               <span className="text-black">{isSignUp ? "이미 계정이 있습니까?" : "CASETiBUY 계정이 없습니까?"}</span>
               <a href="#" onClick={() => setIsSignUp(!isSignUp)} className="underline cursor-pointer text-blue">
                 {isSignUp ? "로그인" : "지금 만드세요."}

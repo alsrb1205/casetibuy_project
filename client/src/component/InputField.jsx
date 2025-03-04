@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function InputField({
     id,
     type = "text",
@@ -10,12 +12,22 @@ export default function InputField({
     setFocused,
     validate,
     shake,
+    maxLength,
+    inputType, 
 }) {
+    const handleChange = (e) => {
+        let newValue = e.target.value;
+        if (inputType === "number-only") {
+            newValue = newValue.replace(/[^0-9]/g, '');
+        }
+        setValue(newValue);
+    };
+
     return (
         <div className="relative w-full mb-20">
             <p
                 className={`absolute top-50 left-4 text-xs text-red-500 transition-opacity duration-300
-        ${error ? "opacity-100" : "opacity-0"}`}
+                ${error ? "opacity-100" : "opacity-0"}`}
             >
                 {error}
             </p>
@@ -27,7 +39,7 @@ export default function InputField({
                 required
                 spellCheck="false"
                 value={value}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={handleChange}
                 ref={refElement}
                 onFocus={() => setFocused(true)}
                 onBlur={() => {
@@ -35,9 +47,10 @@ export default function InputField({
                     validate();
                 }}
                 className={`peer block w-full pt-20 pb-5 px-8 text-black border rounded-12 text-[16px] focus:outline-none
-            focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-            ${error && !focused ? "border-red-500" : "bg-white border-gray-300"}
-            ${shake ? "animate-shake" : ""}`}
+                focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                ${error && !focused ? "border-red-500" : "bg-white border-gray-300"}
+                ${shake ? "animate-shake" : ""}`}
+                maxLength={maxLength}
             />
 
             <label
