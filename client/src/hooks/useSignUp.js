@@ -98,14 +98,21 @@ export function useSignUp() {
     };
 
     const validatePasswordConfirm = () => {
-        if (password !== passwordConfirm) {
+        if (!passwordConfirm) {
+            setPasswordConfirmError("비밀번호를 먼저 입력해주세요.");
+            setPasswordConfirmShake(true);
+            setTimeout(() => setPasswordConfirmShake(false), 500);
+            passwordRef.current.focus();
+            return false;
+        } else if (password !== passwordConfirm) {
             setPasswordConfirmError("비밀번호가 일치하지 않습니다.");
             setPasswordConfirmShake(true);
             setTimeout(() => setPasswordConfirmShake(false), 500);
             return false;
+        } else {
+            setPasswordConfirmError("");
+            return true;
         }
-        setPasswordConfirmError("");
-        return true;
     };
 
     const validateEmail = () => {
