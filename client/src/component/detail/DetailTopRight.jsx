@@ -6,8 +6,9 @@ import '../../style/case-swiper.css';
 import '../../style/bar.css';
 import { DetailContext } from '../../context/DetailContext';
 
-export default function DetailTopRight({detail, addCartItem}) {
+export default function DetailTopRight({detail, addCartItem, filteredImages, detailImage}) {
   const { currentCase } = useContext(DetailContext);
+;
 
   return (
     <div className="sticky top-12 self-start w-[533px]">
@@ -39,7 +40,7 @@ export default function DetailTopRight({detail, addCartItem}) {
         </div>
         <div className="mb-16">
           <Bars />
-          <CaseSwiper />
+          <CaseSwiper filteredImages={filteredImages} detailImage={detailImage}/>
         </div>
         <Color />
         <div className="flex justify-center bg-sky rounded-[16px] mb-6">

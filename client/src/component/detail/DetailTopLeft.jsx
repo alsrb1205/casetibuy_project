@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 import { DetailContext } from '../../context/DetailContext';
 import { useDetail } from '../../hooks/useDetail';
 
-export default function DetailTopLeft({ detail }) {
+export default function DetailTopLeft({ detail,filteredImages }) {
   const { activeCase, activeColor, casesData } = useContext(DetailContext);
-  const { parseCaseAndColor } = useDetail();
   const handleImage = () => {
     if (activeCase === "bounce") {
       return '/images/detail/bounce/bouncedefault.jpg'
@@ -34,11 +33,8 @@ export default function DetailTopLeft({ detail }) {
   // JSON 이미지 배열 (예: ["images/iphone16pro=common/iphone16p_common_side_case_bounce_color_babyblue.png", ...])
   const jsonImages = getJsonImages(activeCase, activeColor);
 
-  const detailImage = detail.image || [];
-  const filteredImages = detailImage.filter(imgPath => {
-    const { caseType, color } = parseCaseAndColor(imgPath);
-    return caseType === activeCase && color === activeColor;
-  });
+
+  
 
   return (
     <div className="relative flex-1">

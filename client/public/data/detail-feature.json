@@ -49,16 +49,21 @@
         "info": [
             {
                 "image": "/images/detail/bounce/info/1.png",
-                "title": "테스트",
-                "desc": ""
+                "desc1": "바운스 케이스",
+                "desc2": "2023년 뉴욕 제품 디자인\n어워드에서 금상을 수상한\n케이스를 소개합니다!",
+                "desc3": "현수교에서 영감받은 바운스 코너 디자인.\nTesseLock™이 탑재되어, 6.5m 낙하\n테스트를 통과해, 미 군사 등급 6배에\n달하는 보호력을 제공합니다."
             },
             {
                 "image": "/images/detail/bounce/info/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "desc1": "강력한 보호력",
+                "desc2": "더 얇게, 더 가볍게, 여전히 강력하게",
+                "desc3": "5% 더 얇아진 디자인, 11% 더 가벼워진 무게, 그러나 여전히 튼튼한 설계.\n견고한 보호 기능은 물론, 슬림하고 스타일리시한 디자인을 완성합니다."
             },
             {
                 "image": "/images/detail/bounce/info/3.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "desc1": "완벽한 맞춤 디자인",
+                "desc2": "나만을 위한\n하나뿐인 케이스",
+                "desc3": "바운스 케이스로 표현하는\n나만의 색깔.\n물론, 일상 속 모험에서도\n언제나 안전하게 함께하세요."
             }
         ]
     },
@@ -112,20 +117,28 @@
         ],
         "info": [
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/ring/info/1.mp4",
+                "desc1": "임팩트 링 스탠드",
+                "desc2": "보호력,\n혁신을 만나 새 창을 열다.",
+                "desc3": "1,300 백만개 이상 판매된 베스트셀러 임팩트 케이스에 혁신적인 스탠드 기능이 더해졌습니다.\n영상을 시청할 때 자유로운 양손을 즐겨보세요."
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/ring/info/2.mp4",
+                "desc1": "혁신적인 디자인",
+                "desc2": "군더더기 없는\n아름다운 기능적 디테일",
+                "desc3": "힌지 디자인은 나사 없이 카메라 링에\n빌트인되어, 150°까지 자유로운 각도\n조절과, 최대의 내구성과 강도,\n견고함을 자랑합니다."
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/ring/info/3.png",
+                "desc1": "보호력",
+                "desc2": "증명된 보호력",
+                "desc3": "EcoShock™ 충격 흡수 소재가 적용되어,\n미 군사 규격 3배에 달하는 내구성과\n2m 낙하 보호력 제공"
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/ring/info/4.png",
+                "desc1": "액세서리",
+                "desc2": "스트랩 완벽 호환!",
+                "desc3": "스트랩 전용 소켓이 더해져 한 단계 더 업그레이드된 케이스"
             }
         ]
     },
@@ -179,20 +192,22 @@
         ],
         "info": [
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/impact/info/1.mp4",
+                "desc1": "임팩트 케이스",
+                "desc2": "일상의 보호를 위한 가장\n완벽한 선택지",
+                "desc3": "1300만 개 이상 판매 기록을 달성한\n케이스티파이의 베스트셀러!"
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/impact/info/2.png",
+                "desc1": "강력한 보호력",
+                "desc2": "언제든지 안심할 수 있도록",
+                "desc3": "EcoShock™ 충격 흡수 소재가 적용되어,\n미 군사 규격 4배에 달하는 내구성과 2.5m 낙하 보호력 제공"
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
-            },
-            {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/impact/info/3.png",
+                "desc1": "액세서리 매치",
+                "desc2": "스트랩 완벽 호환!",
+                "desc3": "스트랩 전용 소켓이 더해진 케이스로\n다양한 스트랩을 즐겨보세요."
             }
         ]
     },
@@ -241,20 +256,28 @@
         ],
         "info": [
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/mirror/info/1.png",
+                "desc1": "미러 케이스",
+                "desc2": "진정한 나를 비추는 케이스",
+                "desc3": "거울로 사용할 수 있는 폰케이스.\n밖에서도 여러분의 모습이 완벽할 수 있도록\n항상 확인해 보세요."
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/mirror/info/2.png",
+                "desc1": "강력한 보호력",
+                "desc2": "보호력을 위한 디자인",
+                "desc3": "스크린과 카메라 렌즈 보호를 위해\n높아진 베젤 디자인으로 미군사 규격\n보호력을 탑재했음은 물론, 1.5m 높이\n낙하 테스트까지 끄떡없죠."
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/mirror/info/3.png",
+                "desc1": "완벽한 맞춤 디자인",
+                "desc2": "거울 속의 진정한 나",
+                "desc3": "미러 케이스로 비추는 나만의 색깔. 여러분의 라이프 스타일에 맞게 완성된 디자인은 물론\n언제나 강력한 보호력과 함께 할 수 있도록 제작되었습니다."
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/mirror/info/4.png",
+                "desc1": "액세서리 매치",
+                "desc2": "스트랩 완벽 호환!",
+                "desc3": "스트랩 전용 소켓이 더해진 케이스로\n다양한 스트랩을 즐겨보세요."
             }
         ]
     },
@@ -308,20 +331,22 @@
         ],
         "info": [
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m\n낙하 테스트 통과"
+                "image": "/images/detail/impact/info/1.mp4",
+                "desc1": "임팩트 케이스",
+                "desc2": "일상의 보호를 위한 가장\n완벽한 선택지",
+                "desc3": "1300만 개 이상 판매 기록을 달성한\n케이스티파이의 베스트셀러!"
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/impact/info/2.png",
+                "desc1": "강력한 보호력",
+                "desc2": "언제든지 안심할 수 있도록",
+                "desc3": "EcoShock™ 충격 흡수 소재가 적용되어,\n미 군사 규격 4배에 달하는 내구성과 2.5m 낙하 보호력 제공"
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
-            },
-            {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m 낙하 테스트 통과"
+                "image": "/images/detail/impact/info/3.png",
+                "desc1": "액세서리 매치",
+                "desc2": "스트랩 완벽 호환!",
+                "desc3": "스트랩 전용 소켓이 더해진 케이스로\n다양한 스트랩을 즐겨보세요."
             }
         ]
     }

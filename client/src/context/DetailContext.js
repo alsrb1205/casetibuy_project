@@ -6,10 +6,10 @@ export const DetailContext = createContext();
 export function DetailProvider({ children }) {
 
   // 기본 선택: 임팩트 케이스, 기본 색상, 기본 게이지 값
+  const [casesData, setCasesData] = useState({});
   const [activeCase, setActiveCase] = useState('impact');
   const [activeColor, setActiveColor] = useState('black');
   // JSON 전체 데이터를 저장 (케이스별 protective, weight, feature, cname, price 등)
-  const [casesData, setCasesData] = useState({});
 
   const [gauge, setGauge] = useState({ protective: '50%', weight: '50%' });
   // hover 시 임시로 보여줄 게이지 값
@@ -26,6 +26,7 @@ export function DetailProvider({ children }) {
   }, []);
   
   const [detail, setDetail]= useState({});
+
 
 
 

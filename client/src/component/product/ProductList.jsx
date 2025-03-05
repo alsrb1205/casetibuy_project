@@ -7,6 +7,8 @@ import { useDetail } from '../../hooks/useDetail';
 export default function ProductList({ productList, layoutType }) {
     const { casesData } = useContext(DetailContext);
     const { parseCaseAndColor } = useDetail();
+    
+    
 
     return (
         <div className={`grid gap-4 ${layoutType === 2 ? 'grid-cols-2' :
@@ -14,10 +16,14 @@ export default function ProductList({ productList, layoutType }) {
         >
 
             {productList.map(product => {
-                const { caseType } = parseCaseAndColor(product.repImage);
-                const caseData = casesData[caseType] || {};
+                const { caseType,color } = parseCaseAndColor(product.repImage);
+                const caseData = { ...(casesData[caseType] || {}), color };                
 
-                return <Link to={`/detail/${product.pid}`}>
+                return <Link 
+                to={`/detail/${product.pid}`}
+                state={{ activeCase: caseType, activeColor: color }}
+                onClick={() => window.scrollTo(0, 0)}
+                >
                     {/* product list */}
                     <div className='relative w-full p-30'>
                         {/* Gradient Background */}
@@ -39,6 +45,7 @@ export default function ProductList({ productList, layoutType }) {
                                     {product.name}</p>
                                 <p>{product.kinds}</p>
                                 <p>{caseData.cname}</p>
+                                <p>{caseData.color}a</p>
                             </div>
                             {/* 상품 가격 */}
                             <div className='py-10 bg-black rounded-full px-15 w-100 '>
