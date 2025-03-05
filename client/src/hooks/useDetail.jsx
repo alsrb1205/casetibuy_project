@@ -44,6 +44,7 @@ export function useDetail(pid) {
   const getProductList = async () => {
     const res = await axios.get("http://localhost:9000/product/all");
     setProductList(res.data);
+    return res.data;
   };
 
   const getDetail = async () => {

@@ -17,16 +17,31 @@ export default function SlideCommon({ className, pagination, navigation }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const data = await getProductList(); // 🔥 데이터 가져오기
-        console.log("불러온 제품 목록:", data);
-      } catch (error) {
-        console.error("제품 데이터 로딩 실패:", error);
+      const data = await getProductList();
+      console.log("불러온 제품 목록:", data);
+
+      if (!data || data.length === 0) {
+        console.warn("불러온 제품 데이터가 비어 있음!");
+        return;
       }
+
+      setSlideList([
+        {
+          category: "Product List",
+          data: data.map((item) => ({
+            image: `http://localhost:9000/${item.repImage}`,
+            title: item.name,
+            description: item.kinds,
+            btnText: "Buy Now",
+            btnStyle: "py-12 px-20 text-20 rounded-full border",
+          })),
+        },
+      ]);
     };
 
-    fetchData(); // 함수 실행
-  }, []);
+    fetchData();
+  }, [getProductList]);
+
   // useEffect(() => {
   //   axios
   //     .get("/data/commonSlides.json")
@@ -38,7 +53,7 @@ export default function SlideCommon({ className, pagination, navigation }) {
 
   return (
     <>
-      {}
+      <img src={`http://localhost:9000/${getProductList.repImage}`} alt="" />
       {slideList.map((slide, i) => {
         if (slide.category === "Our Mission") {
           // Our Mission, Club은 Swiper 제외
