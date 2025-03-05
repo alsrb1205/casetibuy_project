@@ -11,15 +11,20 @@ export default function HomeProduct({
   bgColor,
   btnColor,
   btnText,
+  cpadding,
+  cround,
+  contentPadding,
 }) {
   return (
     <div
-      className={`w-full h-full rounded-20 overflow-hidden ${bgColor} ${className}`}
+      className={`w-full h-full rounded-20 overflow-hidden ${bgColor} ${className} ${cpadding}`}
     >
       <div className="w-full overflow-hidden">
-        <img src={image} alt={title} className="w-full" />
+        <img src={image} alt={title} className={`w-full ${cround}`} />
       </div>
-      <div className="flex flex-col items-start justify-between p-32">
+      <div
+        className={`flex flex-col items-start justify-between ${contentPadding}`}
+      >
         <span className={`${labelStyle}`}>{label}</span>
         <div>
           <h2 className={`mt-10 font-bold text-26`}>{title}</h2>

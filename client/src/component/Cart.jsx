@@ -1,5 +1,7 @@
 import { useCart } from "../context/CartContext";
-import { IoIosArrowBack } from "react-icons/io";
+import { CiCircleChevLeft } from "react-icons/ci";
+import { GoPlus } from "react-icons/go";
+import { HiOutlineMinus } from "react-icons/hi";
 
 const Cart = () => {
   const { cartItems, isCartOpen, toggleCart, removeFromCart } = useCart();
@@ -12,7 +14,7 @@ const Cart = () => {
     >
       <div className="flex items-center p-10 mt-10 rounded-15 bg-gray2">
         <button onClick={toggleCart}>
-          <IoIosArrowBack size={32} className="p-5 border rounded-full" />
+          <CiCircleChevLeft size={42} />
         </button>
         <h2 className="absolute flex items-center gap-5 text-lg font-bold -translate-x-1/2 left-1/2">
           카트
@@ -21,7 +23,7 @@ const Cart = () => {
           </div>
         </h2>
       </div>
-      <div className="flex gap-10 p-16 mt-24 bg-gray2">
+      <div className="flex gap-10 p-16 mt-24 bg-gradient-to-b from-[hsla(0,0%,93%,0)] to-[#eee]">
         <div>
           <img
             src="https://cdn-stamplib.casetify.com/cms/image/028b77299cd8ef52e1fc1f8df9c7e937.jpg"
@@ -34,9 +36,21 @@ const Cart = () => {
             Chiikawa Special Set - Grip Stand & Snappy Wallet & AirPods Pro &
             Watch Band 38mm/40mm/41mm/42mm(Series 10) & iPhone 16 Pro Max
           </h3>
-          <p>Special Set</p>
-          <p>색상: Multi</p>
-          <button className="px-40 py-10 border rounded-full">- 1 +</button>
+          <p className="text-grayph">Special Set</p>
+          <p className="text-grayph">색상: Multi</p>
+          <div className="flex items-center gap-8 p-10 border rounded-full">
+            <button type="button">
+              <HiOutlineMinus size={20} />
+            </button>
+            <input
+              type="text"
+              value="1"
+              className="pt-4 text-center bg-transparent px-11 w-44 h-18"
+            />
+            <button type="button">
+              <GoPlus size={20} />
+            </button>
+          </div>
         </div>
       </div>
 
