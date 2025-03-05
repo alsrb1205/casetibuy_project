@@ -4,6 +4,7 @@ import axios from 'axios';
 export const DetailContext = createContext();
 
 export function DetailProvider({ children }) {
+
   // 기본 선택: 임팩트 케이스, 기본 색상, 기본 게이지 값
   const [activeCase, setActiveCase] = useState('impact');
   const [activeColor, setActiveColor] = useState('black');
@@ -17,15 +18,15 @@ export function DetailProvider({ children }) {
 
   const [feature, setFeature] = useState([]);
   const [productList,setProductList] = useState([]);
-  const [detail, setDetail]= useState({});
   const currentCase = casesData[activeCase] || {}; // 선택된 케이스 데이터
-
-
   useEffect(() => {
     axios.get('/data/detail-feature.json')
-      .then(res => setCasesData(res.data))
-      .catch(error => console.error("Error fetching detail data", error));
+    .then(res => setCasesData(res.data))
+    .catch(error => console.error("Error fetching detail data", error));
   }, []);
+  
+  const [detail, setDetail]= useState({});
+
 
 
   const value = {

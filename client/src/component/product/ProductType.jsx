@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Classify from './Classify.jsx';
 import ProductList from './ProductList.jsx';
 // import FilterSelected from './filter/FilterSelected.jsx';
 import FilterSidebar from './filter/FilterSidebar.jsx';
+import { PListContext } from '../../context/PListContext.js';
 
 export default function ProductType() {
 
@@ -14,14 +15,7 @@ export default function ProductType() {
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [icons, setIcons] = useState([]);
     const [selectedLayout, setSelectedLayout] = useState(4); 
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        axios.get('http://localhost:9000/product/all')
-        .then(res => {
-            setProducts(res.data);
-        })
-        .catch(err => console.error(err));
-    }, []);
+    const {productList} = useContext(PListContext);
 
 
     // json 
@@ -43,12 +37,12 @@ export default function ProductType() {
     const handleLayoutChange = (type) => {
         setLayoutType(type);
         setSelectedLayout(type); 
-        applyFilter(products, type, selectedCategory);
+        applyFilter(productList, type, selectedCategory);
     };
 
     const handleCategoryChange = (category) => {
         setSelectedCategory(category);
-        applyFilter(products, layoutType, category);
+        applyFilter(productList, layoutType, category);
     };
 
     // 스크롤 함수
@@ -130,7 +124,7 @@ export default function ProductType() {
                 {/* ======================================================== */}
                 {/* 필터링된 상품 이미지 배열 리스트 */}
                 <div className=''>
-                    <ProductList products={products} layoutType={layoutType} />
+                    <ProductList productList={productList} layoutType={layoutType} />
                 </div>
 
 

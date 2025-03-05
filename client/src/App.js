@@ -21,9 +21,11 @@ import ProductType from "./component/product/ProductType.jsx";
 import NewProduct from "./pages/NewProduct.jsx";
 import TestList from "./component/TestList.jsx";
 import Mypage from "./pages/Mypage.jsx";
+import { PListProvider } from "./context/PListContext.js";
 
 function App() {
   return (
+    <PListProvider>
     <CartProvider>
       <DetailProvider>
         <BrowserRouter>
@@ -48,6 +50,7 @@ function App() {
         <Cart />
       </DetailProvider>
     </CartProvider>
+    </PListProvider>
   );
 }
 
