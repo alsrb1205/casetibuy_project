@@ -1,7 +1,7 @@
 import React from "react";
 import HomeProductList from "../component/home/HomeProductList.jsx";
-import Slide from "../component/Slide.jsx";
-import SlideCommon from "../component/SlideCommon.jsx";
+import Slide from "../component/slide/Slide.jsx";
+import SlideDataFetcher from "../component/slide/SlideDataFetcher.jsx";
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export default function Home() {
         <HomeProductList />
       </div>
 
-      {/* common */}
-      <SlideCommon className="common" pagination={true} navigation={true} />
+      {/* Common Slides */}
+      <SlideDataFetcher />
     </div>
   );
 }

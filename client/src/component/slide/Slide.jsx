@@ -3,12 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import axios from "axios";
-import HomeProduct from "./home/HomeProduct.jsx";
+import HomeProduct from "../home/HomeProduct.jsx";
 import SlideVisual from "./SlideVisual.jsx";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../style/swiper.css";
+import "../../style/swiper.css";
 
 export default function Slide({ id, pagination, navigation, className }) {
   const swiperRef = useRef(null);
