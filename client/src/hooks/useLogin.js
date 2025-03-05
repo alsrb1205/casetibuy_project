@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import axios from 'axios'; // axios 임포트
+import axios from 'axios';
 
 export function useLogin() {
     const [username, setUsername] = useState("");
@@ -37,7 +37,7 @@ export function useLogin() {
                     alert("로그인 성공!");
                     window.location.href = "/";
                 } else {
-                    setLoginError("로그인에 실패했습니다. 토큰을 받지 못했습니다.");
+                    setLoginError("존재하지 않는 아이디입니다.");
                 }
             } else {
                 // axios는 HTTP 에러 상태 코드 (4xx, 5xx)를 throw error로 처리하지 않습니다.
