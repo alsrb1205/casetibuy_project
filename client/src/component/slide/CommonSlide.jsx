@@ -2,22 +2,25 @@ import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
-import HomeProduct from "./home/HomeProduct.jsx";
+import HomeProduct from "../home/HomeProduct.jsx";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../style/swiper.css";
-export default function SlideTest({
+import "../../style/swiper.css";
+
+export default function CommonSlide({
   className,
   pagination,
   navigation,
   slidesData,
+  title,
 }) {
   const swiperRef = useRef(null);
 
   return (
     <div className="content product-container bg-bg">
-      <h2 className="pb-16 font-bold text-36">{className.toUpperCase()}</h2>
+      <h2 className="pb-16 font-bold text-36">{title}</h2>
 
       <div className={`swiper-container-${className}`}>
         <Swiper
@@ -41,7 +44,9 @@ export default function SlideTest({
         >
           {slidesData.map((slide, index) => (
             <SwiperSlide key={index}>
-              <HomeProduct {...slide} />
+              <Link key={slide.pid} to={`/detail/${slide.pid}`}>
+                <HomeProduct {...slide} />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

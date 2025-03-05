@@ -3,57 +3,27 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import axios from "axios";
-import HomeProduct from "./home/HomeProduct.jsx";
+import HomeProduct from "../home/HomeProduct.jsx";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../style/swiper.css";
-import { useDetail } from "../hooks/useDetail";
 
 export default function SlideCommon({ className, pagination, navigation }) {
   const swiperRef = useRef(null);
   const [slideList, setSlideList] = useState([]);
-  const { getProductList } = useDetail();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getProductList();
-      console.log("불러온 제품 목록:", data);
-
-      if (!data || data.length === 0) {
-        console.warn("불러온 제품 데이터가 없음");
-        return;
-      }
-
-      setSlideList([
-        {
-          category: "Product List",
-          data: data.map((item) => ({
-            image: `http://localhost:9000/${item.repImage}`,
-            title: item.name,
-            description: item.kinds,
-            btnText: "Buy Now",
-            btnStyle: "py-12 px-20 text-20 rounded-full border",
-          })),
-        },
-      ]);
-    };
-
-    fetchData();
-  }, [getProductList]);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("/data/commonSlides.json")
-  //     .then((res) => {
-  //       setSlideList(res.data); // 카테고리별로 데이터를 저장
-  //     })
-  //     .catch((error) => console.log("API 요청 실패:", error));
-  // }, []);
+    axios
+      .get("/data/commonSlides.json")
+      .then((res) => {
+        setSlideList(res.data); // 카테고리별로 데이터를 저장
+      })
+      .catch((error) => console.log("API 요청 실패:", error));
+  }, []);
 
   return (
     <>
-      <img src={`http://localhost:9000/${getProductList.repImage}`} alt="" />
       {slideList.map((slide, i) => {
         if (slide.category === "Our Mission") {
           // Our Mission, Club은 Swiper 제외
