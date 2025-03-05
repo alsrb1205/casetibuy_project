@@ -12,16 +12,14 @@ create table casetibuy_product(
     pdate			datetime
 );
 
-CREATE TABLE casetibuy_member(
-		ID				VARCHAR(30)		PRIMARY KEY,
-		PWD				VARCHAR(50)		NOT NULL,
-        NAME			VARCHAR(10)		NOT NULL,
-        PHONE			CHAR(13)		NOT NULL,
-        EMAILNAME		VARCHAR(20)		NOT NULL,
-        EMAILDOMAIN		VARCHAR(20)		NOT NULL,
-        ZIPCODE			CHAR(5),
-        ADDRESS			VARCHAR(80),
-        MDATE			DATETIME
+create table casetibuy_member(
+		name			varchar(10)		not null,
+        birthdate		char(8)			not null,
+		id				varchar(20)		primary key,
+		pwd				varchar(20)		not null,
+        email			varchar(30)		not null,
+        phone			char(11)		not null,
+        mdate			datetime
 );
 
 use casetibuy;

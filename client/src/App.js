@@ -23,8 +23,11 @@ import TestList from "./component/TestList.jsx";
 import Mypage from "./pages/Mypage.jsx";
 import { PListProvider } from "./context/PListContext.js";
 
+import { AuthProvider } from "./auth/AuthContext.js";
+
 function App() {
   return (
+    <AuthProvider>
     <PListProvider>
     <CartProvider>
       <DetailProvider>
@@ -51,6 +54,7 @@ function App() {
       </DetailProvider>
     </CartProvider>
     </PListProvider>
+</AuthProvider>
   );
 }
 

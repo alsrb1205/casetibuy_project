@@ -14,7 +14,8 @@ export default function Login() {
     handleLogin,
     validateUsername,
     validatePassword,
-    usernameShake, passwordShake
+    usernameShake, passwordShake,
+    loginError, setLoginError
   } = useLogin();
 
   const [isSignUp, setIsSignUp] = useState(false);

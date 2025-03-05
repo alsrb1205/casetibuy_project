@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import axios from 'axios'; // axios 임포트
 
 export function useLogin() {
     const [username, setUsername] = useState("");
@@ -9,14 +10,49 @@ export function useLogin() {
     const [passwordFocused, setPasswordFocused] = useState(false);
     const [usernameShake, setUsernameShake] = useState(false);
     const [passwordShake, setPasswordShake] = useState(false);
+    const [loginError, setLoginError] = useState("");
 
     const usernameRef = useRef(null);
     const passwordRef = useRef(null);
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        alert("임시 로그인 성공");
-        console.log("로그인 처리");
+        setLoginError("");
+
+        if (!validateUsername() || !validatePassword()) {
+            return;
+        }
+
+        try {
+            const response = await axios.post('http://localhost:9000/member/login', { // axios.post 사용
+                id: username,
+                pwd: password
+            });
+
+            if (response.status === 200) { // axios는 성공 시 status가 200번대, response.data로 데이터 접근
+                const data = response.data;
+                console.log("로그인 성공:", data);
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                    alert("로그인 성공!");
+                    window.location.href = "/";
+                } else {
+                    setLoginError("로그인에 실패했습니다. 토큰을 받지 못했습니다.");
+                }
+            } else {
+                // axios는 HTTP 에러 상태 코드 (4xx, 5xx)를 throw error로 처리하지 않습니다.
+                // response.status로 상태 코드를 직접 확인해야 합니다. (하지만 이 코드에서는 try-catch로 에러를 잡아낼 것이므로 else 블록은 사실상 불필요)
+            }
+        } catch (error) {
+            console.error("로그인 실패:", error);
+            if (error.response) { // 서버에서 응답이 왔지만 에러 상태 코드인 경우 (4xx, 5xx)
+                setLoginError(error.response.data.message || "아이디 또는 비밀번호를 확인해주세요."); // 서버 에러 메시지 사용
+            } else if (error.request) { // 요청은 보냈으나 응답을 받지 못한 경우 (네트워크 에러 등)
+                setLoginError("서버와 연결할 수 없습니다.");
+            } else { // 요청을 만드는 중에 에러가 발생한 경우
+                setLoginError("로그인 처리 중 오류가 발생했습니다.");
+            }
+        }
     };
 
     const validateUsername = () => {
@@ -60,6 +96,8 @@ export function useLogin() {
         validateUsername,
         validatePassword,
         usernameShake,
-        passwordShake
+        passwordShake,
+        loginError,
+        setLoginError,
     };
 }

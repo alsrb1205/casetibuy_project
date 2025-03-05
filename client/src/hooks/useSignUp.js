@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import axios from 'axios'; // axios 임포트
 
 export function useSignUp() {
     const [name, setName] = useState("");
@@ -16,6 +17,9 @@ export function useSignUp() {
     const [passwordConfirmError, setPasswordConfirmError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [phoneNumberError, setPhoneNumberError] = useState("");
+    const [signupError, setSignupError] = useState("");
+    const [idCheckMessage, setIdCheckMessage] = useState("");
+    const [isIdAvailable, setIsIdAvailable] = useState(false);
 
     const [nameFocused, setNameFocused] = useState(false);
     const [birthdateFocused, setBirthdateFocused] = useState(false);
@@ -42,11 +46,91 @@ export function useSignUp() {
     const emailRef = useRef(null);
     const phoneNumberRef = useRef(null);
 
-    const handleSignUp = (e) => {
+    const handleSignUp = async (e) => {
         e.preventDefault();
-        alert("임시 회원가입 성공");
-        console.log("회원가입 처리");
+        setSignupError("");
+
+        if (!validateName() || !validateBirthdate() || !validateUsername() || !validatePassword() || !validatePasswordConfirm() || !validateEmail() || !validatePhoneNumber() || !isIdAvailable) {
+            if (!isIdAvailable) {
+                setUsernameError("아이디 중복확인을 해주세요.");
+                setUsernameShake(true);
+                setTimeout(() => setUsernameShake(false), 500);
+            }
+            return;
+        }
+
+        try {
+            const response = await axios.post('http://localhost:9000/member/signup', { 
+                name: name,
+                birthdate: birthdate,
+                id: username,
+                pwd: password,
+                email: email,
+                phone: phoneNumber,
+            });
+
+            if (response.status === 200) { 
+                const data = response.data;
+                console.log("회원가입 성공:", data);
+                alert("회원가입 성공!");
+                window.location.href = "/login";
+            } else {
+                
+            }
+        } catch (error) {
+            console.error("회원가입 실패:", error);
+            if (error.response) { 
+                setSignupError(error.response.data.message || "회원가입에 실패했습니다. 다시 시도해주세요.");
+            } else if (error.request) { 
+                setSignupError("서버와 연결할 수 없습니다.");
+            } else { 
+                setSignupError("회원가입 처리 중 오류가 발생했습니다.");
+            }
+        }
     };
+
+    const checkIdAvailability = async () => {
+        if (!validateUsername()) {
+            return;
+        }
+        setIdCheckMessage("아이디 중복 확인 중...");
+        setIsIdAvailable(false);
+
+        try {
+            const response = await axios.post('http://localhost:9000/member/idcheck', {
+                id: username
+            });
+
+            if (response.status === 200) {
+                const data = response.data;
+                if (data.result === 0) {
+                    setIdCheckMessage("사용 가능한 아이디입니다.");
+                    setIsIdAvailable(true);
+                    setUsernameError("");
+                } else {
+                    setIdCheckMessage("이미 사용중인 아이디입니다.");
+                    setIsIdAvailable(false);
+                    setUsernameError("이미 사용중인 아이디입니다.");
+                    setUsernameShake(true);
+                    setTimeout(() => setUsernameShake(false), 500);
+                }
+            } else {
+
+            }
+        } catch (error) {
+            console.error("아이디 중복 확인 실패:", error);
+            setIdCheckMessage("아이디 중복 확인에 실패했습니다.");
+            setIsIdAvailable(false);
+            if (error.response) { 
+
+            } else if (error.request) { 
+                setSignupError("서버와 연결할 수 없습니다."); 
+            } else { 
+                setSignupError("아이디 중복 확인 중 오류가 발생했습니다."); 
+            }
+        }
+    };
+
 
     const validateName = () => {
         const trimmed = name.trim();
@@ -76,9 +160,10 @@ export function useSignUp() {
     const validateUsername = () => {
         const trimmed = username.trim();
         if (trimmed.length < 6 || trimmed.length > 20) {
-            setUsernameError("아이디를 입력해주세요.(6~20자)");
+            setUsernameError("아이디를 6~20자로 입력해주세요.");
             setUsernameShake(true);
             setTimeout(() => setUsernameShake(false), 500);
+            setIsIdAvailable(false);
             return false;
         }
         setUsernameError("");
@@ -88,7 +173,7 @@ export function useSignUp() {
     const validatePassword = () => {
         const trimmed = password.trim();
         if (trimmed.length < 6 || trimmed.length > 20) {
-            setPasswordError("비밀번호를 입력해주세요.(6~20자)");
+            setPasswordError("비밀번호를 6~20자로 입력해주세요.");
             setPasswordShake(true);
             setTimeout(() => setPasswordShake(false), 500);
             return false;
@@ -156,6 +241,9 @@ export function useSignUp() {
         passwordConfirmError, setPasswordConfirmError,
         emailError, setEmailError,
         phoneNumberError, setPhoneNumberError,
+        signupError, setSignupError,
+        idCheckMessage, setIdCheckMessage,
+        isIdAvailable, setIsIdAvailable,
 
         nameFocused, setNameFocused,
         birthdateFocused, setBirthdateFocused,
@@ -178,5 +266,6 @@ export function useSignUp() {
 
         handleSignUp,
         validateName, validateBirthdate, validateUsername, validatePassword, validatePasswordConfirm, validateEmail, validatePhoneNumber,
+        checkIdAvailability,
     };
 }
