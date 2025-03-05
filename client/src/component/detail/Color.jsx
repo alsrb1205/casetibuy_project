@@ -27,6 +27,7 @@ export default function Color() {
     const availableColorKeys =
                 activeCase && caseColors[activeCase] ? caseColors[activeCase] : Object.keys(colors);
 
+    
     return (
         <div className='mb-12 color-container'>
             <div>
@@ -43,7 +44,6 @@ export default function Color() {
                         >
                             {availableColorKeys.map((colorKey) => (
                                 <SwiperSlide key={colorKey} className='overflow-visible'>
-
                                     <div
                                         onClick={() => setActiveColor(colorKey)}
                                         className={` bg-${colorKey} m-5 overflow-visible flex justify-center items-center relative cursor-pointer rounded-full w-44 h-44 shadow-[inset_0_1.5px_1.5px_rgba(0,0,0,0.3)]
@@ -52,28 +52,9 @@ export default function Color() {
                                     >
                                         {/* 원형 내부 장식 */}
                                         <span className='block absolute aspect-square w-26 top-0 rounded-full bg-[radial-gradient(circle_at_50%_50%,_hsla(0,0%,100%,0.45),_transparent)]'></span>
-
                                     </div>
-
                                 </SwiperSlide>
                             ))}
-
-
-                            {/* <SwiperSlide>
-                                <div className='rounded-[100%] w-44 h-44 bg-black shadow-[inset_0_1.5px_1.5px_rgba(0,0,0,0.3)]'>
-                                    <span className='block absolute aspect-square w-26 left-[50%] -translate-x-1/2 rounded-[50rem] bg-[radial-gradient(circle_at_50%_50%,_hsla(0,0%,100%,0.45),_transparent)] border-0'></span>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className='rounded-[100%] w-44 h-44 bg-skyblue shadow-[inset_0_1.5px_1.5px_rgba(0,0,0,0.3)]'>
-                                    <span className='block absolute aspect-square w-26 left-[50%] -translate-x-1/2 rounded-[50rem] bg-[radial-gradient(circle_at_50%_50%,_hsla(0,0%,100%,0.45),_transparent)] border-0'></span>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className='rounded-[100%] w-44 h-44 bg-purple shadow-[inset_0_1.5px_1.5px_rgba(0,0,0,0.3)]'>
-                                    <span className='block absolute aspect-square w-26 left-[50%] -translate-x-1/2 rounded-[50rem] bg-[radial-gradient(circle_at_50%_50%,_hsla(0,0%,100%,0.45),_transparent)] border-0'></span>
-                                </div>
-                            </SwiperSlide> */}
                         </Swiper>
                     </div>
                 </div>

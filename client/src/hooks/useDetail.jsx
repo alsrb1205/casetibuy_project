@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DetailContext } from "../context/DetailContext";
 
-export function useDetail(pid) {
+export function useDetail() {
   const {
     setActiveCase,
     setActiveColor,
@@ -46,12 +46,12 @@ export function useDetail(pid) {
     setProductList(res.data);
   };
 
-  const getDetail = async () => {
-    const res = await axios.post("http://localhost:9000/product/detail", {
-      pid: pid,
-    });
-    setDetail(res.data);
-  };
+  // const getDetail = async () => {
+  //   const res = await axios.post("http://localhost:9000/product/detail", {
+  //     pid: pid,
+  //   });
+  //   setDetail(res.data);
+  // };
 
   const parseCaseAndColor = (fileName) => {
     // 예시 정규식 등으로 caseType, color 추출
