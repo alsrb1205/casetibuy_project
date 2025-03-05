@@ -39,6 +39,11 @@ export default function SignUp() {
 
         nameRef, birthdateRef, usernameRef, passwordRef, passwordConfirmRef, emailRef, phoneNumberRef,
 
+        signupError, setSignupError,
+        idCheckMessage,
+        checkIdAvailability,
+        isIdAvailable,
+
         handleSignUp,
         validateName, validateBirthdate, validateUsername, validatePassword, validatePasswordConfirm, validateEmail, validatePhoneNumber,
     } = useSignUp();
@@ -46,6 +51,7 @@ export default function SignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSignupError("")
         if (!validateName()) {
             nameRef.current.focus();
             return;
@@ -107,7 +113,7 @@ export default function SignUp() {
                 inputType="number-only"
             />
             <InputField
-                id="username"
+                id="id"
                 label="아이디 (6~20글자)"
                 value={username}
                 setValue={setUsername}
@@ -118,9 +124,11 @@ export default function SignUp() {
                 validate={validateUsername}
                 shake={usernameShake}
                 maxLength={20}
+                onBlur={checkIdAvailability}
             />
+            {idCheckMessage && <p className="mt-2 text-xs text-green-500">{idCheckMessage}</p>}
             <InputField
-                id="password"
+                id="pwd"
                 type="password"
                 label="비밀번호 (6~20글자)"
                 value={password}
@@ -134,7 +142,7 @@ export default function SignUp() {
                 maxLength={20}
             />
             <InputField
-                id="passwordConfirm"
+                id="cpwd"
                 type="password"
                 label="비밀번호 확인"
                 value={passwordConfirm}
@@ -161,7 +169,7 @@ export default function SignUp() {
                 shake={emailShake}
             />
             <InputField
-                id="phoneNumber"
+                id="phone"
                 label="전화번호 (기호없이 11자리 숫자)"
                 value={phoneNumber}
                 setValue={setPhoneNumber}

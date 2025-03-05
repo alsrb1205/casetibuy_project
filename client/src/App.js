@@ -20,29 +20,33 @@ import NewProduct from "./pages/NewProduct.jsx";
 import TestList from "./component/TestList.jsx";
 import Mypage from "./pages/Mypage.jsx";
 
+import { AuthProvider } from "./auth/AuthContext.js";
+
 function App() {
 
     return (
         <DetailProvider>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Layout />}>
-                        <Route index element={<Home />}/>
-                        <Route path='/detail/:pid' element={<DetailProduct />} />
-                        <Route path='/new' element={<NewProduct />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/mypage' element={<Mypage/>} />
-                        <Route path="/allproduct" element={<AllProduct />} />
-                        <Route path="/iphoneall" element={<IphoneAll />} />
-                        <Route path="/iphonetype" element={<IphoneType />} />
-                        <Route path="/model" element={<Model />} />
-                        <Route path="/modelall" element={<ModelAll />} />
-                        <Route path="/productlist" element={<ProductList />} />
-                        <Route path="/homelist" element={<HomeList />} />
-                        <Route path="/title" element={<Title />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+            <AuthProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<Layout />}>
+                            <Route index element={<Home />}/>
+                            <Route path='/detail/:pid' element={<DetailProduct />} />
+                            <Route path='/new' element={<NewProduct />} />
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/mypage' element={<Mypage/>} />
+                            <Route path="/allproduct" element={<AllProduct />} />
+                            <Route path="/iphoneall" element={<IphoneAll />} />
+                            <Route path="/iphonetype" element={<IphoneType />} />
+                            <Route path="/model" element={<Model />} />
+                            <Route path="/modelall" element={<ModelAll />} />
+                            <Route path="/productlist" element={<ProductList />} />
+                            <Route path="/homelist" element={<HomeList />} />
+                            <Route path="/title" element={<Title />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </AuthProvider>
         </DetailProvider>
     );
 }

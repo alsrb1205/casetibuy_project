@@ -9,6 +9,7 @@ const pool = mysql.createPool({
     user: 'root',
     password: 'mysql1234',
     database: 'casetibuy',
+    charset: 'utf8mb4'
 });
 
 export const db = pool.promise();

@@ -14,6 +14,7 @@ export default function InputField({
     shake,
     maxLength,
     inputType, 
+    onBlur,
 }) {
     const handleChange = (e) => {
         let newValue = e.target.value;
@@ -45,6 +46,9 @@ export default function InputField({
                 onBlur={() => {
                     setFocused(false);
                     validate();
+                    if (onBlur) {
+                        onBlur();
+                    }
                 }}
                 className={`peer block w-full pt-20 pb-5 px-8 text-black border rounded-12 text-[16px] focus:outline-none
                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500
