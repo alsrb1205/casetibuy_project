@@ -24,7 +24,20 @@ const Cart = () => {
           </div>
         </h2>
       </div>
-      <div className="flex gap-10 p-16 mt-24 bg-gray2">
+
+      <p className="mt-8 text-center text-12">
+        모든 주문 <span className="text-red-600">일반 배송 무료!</span>
+      </p>
+
+      {/* 장바구니 삭제 */}
+      <div className="flex items-center justify-end">
+        <button className="p-8 rounded-full bg-graynav text-12">
+          제거하기
+        </button>
+      </div>
+
+      {/* 담은 상품 정보 */}
+      <div className="flex gap-10 p-16 mt-8 bg-gradient-to-b from-[hsla(0,0%,93%,0)] to-[#eee]">
         <div>
           <img
             src="https://cdn-stamplib.casetify.com/cms/image/028b77299cd8ef52e1fc1f8df9c7e937.jpg"
@@ -36,10 +49,44 @@ const Cart = () => {
           <p className="font-light text-14">
             Chiikawa Special Set - Grip Stand & Snappy Wallet & AirPods Pro &
             Watch Band 38mm/40mm/41mm/42mm(Series 10) & iPhone 16 Pro Max
-          </h3>
-          <p>Special Set</p>
-          <p>색상: Multi</p>
-          <button className="px-40 py-10 border rounded-full">- 1 +</button>
+          </p>
+          <p className="font-light text-grayph text-12">Special Set</p>
+          <p className="font-light text-grayph text-12">색상: Multi</p>
+          <div className="flex items-center gap-8 p-10 border rounded-full">
+            <button type="button">
+              <HiOutlineMinus size={20} />
+            </button>
+            <input
+              type="text"
+              value="1"
+              className="pt-4 text-center bg-transparent px-11 w-44 h-18"
+            />
+            <button type="button">
+              <GoPlus size={20} />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* summary */}
+      <div className="flex flex-col gap-10 my-16 text-14">
+        <div className="flex justify-between">
+          <p>소계</p>
+          <p>￦307,000</p>
+        </div>
+        <div className="flex justify-between">
+          <p>배송비</p>
+          <div className="flex items-center justify-center gap-10">
+            <span className="px-12 py-4 border rounded-full text-12 text-orange border-orange">
+              무료 배송
+            </span>
+            <p>￦0</p>
+          </div>
+        </div>
+        <div className="my-16 border border-graynav"></div>
+        <div className="flex justify-between font-bold text-20">
+          <p>총</p>
+          <p>￦307,000</p>
         </div>
       </div>
 
