@@ -21,7 +21,7 @@ export default function SlideCommon({ className, pagination, navigation }) {
       console.log("불러온 제품 목록:", data);
 
       if (!data || data.length === 0) {
-        console.warn("불러온 제품 데이터가 비어 있음!");
+        console.warn("불러온 제품 데이터가 없음");
         return;
       }
 
