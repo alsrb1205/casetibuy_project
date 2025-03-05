@@ -9,7 +9,6 @@ export default function HomeProductList() {
     axios
       .get("/data/slides.json")
       .then((res) => {
-        console.log("데이터 로드 성공:", res.data.featuredCollection);
         setProductList(res.data.featuredCollection);
       })
       .catch((error) => console.error("데이터 불러오기 실패:", error));
