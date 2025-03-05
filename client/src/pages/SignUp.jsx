@@ -2,7 +2,7 @@ import React from "react";
 import { useSignUp } from "../hooks/useSignUp.js";
 import InputField from "../component/InputField.jsx";
 
-export default function SignUp() { 
+export default function SignUp() {
     const {
         name, setName,
         birthdate, setBirthdate,
@@ -30,7 +30,7 @@ export default function SignUp() {
 
         nameShake,
         birthdateShake,
-        usernameShake,
+        usernameShake, setUsernameShake,
         passwordShake,
         passwordConfirmShake,
         emailShake,
@@ -40,9 +40,9 @@ export default function SignUp() {
         nameRef, birthdateRef, usernameRef, passwordRef, passwordConfirmRef, emailRef, phoneNumberRef,
 
         signupError, setSignupError,
-        idCheckMessage,
         checkIdAvailability,
         isIdAvailable,
+        setIsIdAvailable,
 
         handleSignUp,
         validateName, validateBirthdate, validateUsername, validatePassword, validatePasswordConfirm, validateEmail, validatePhoneNumber,
@@ -51,7 +51,7 @@ export default function SignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setSignupError("")
+        setSignupError("");
         if (!validateName()) {
             nameRef.current.focus();
             return;
@@ -61,6 +61,13 @@ export default function SignUp() {
             return;
         }
         if (!validateUsername()) {
+            usernameRef.current.focus();
+            return;
+        }
+        if (!isIdAvailable) {
+            setUsernameError("아이디 중복확인을 해주세요.");
+            setUsernameShake(true);
+            setTimeout(() => setUsernameShake(false), 500);
             usernameRef.current.focus();
             return;
         }
@@ -84,6 +91,16 @@ export default function SignUp() {
     };
 
 
+    const handleUsernameBlur = () => {
+        validateUsername();
+        checkIdAvailability();
+    };
+
+    const handlePasswordConfirmBlur = () => {
+        validatePasswordConfirm();
+    };
+
+
     return (
         <div className="flex flex-col items-center">
             <InputField
@@ -100,7 +117,7 @@ export default function SignUp() {
             />
             <InputField
                 id="birthdate"
-                label="생년월일 (기호 없이 8자리 숫자)"
+                label="생년월일 ( - 없이 8자리 숫자)"
                 value={birthdate}
                 setValue={setBirthdate}
                 error={birthdateError}
@@ -114,7 +131,7 @@ export default function SignUp() {
             />
             <InputField
                 id="id"
-                label="아이디 (6~20글자)"
+                label="아이디 (6~20자)"
                 value={username}
                 setValue={setUsername}
                 error={usernameError}
@@ -124,13 +141,13 @@ export default function SignUp() {
                 validate={validateUsername}
                 shake={usernameShake}
                 maxLength={20}
-                onBlur={checkIdAvailability}
+                onBlur={handleUsernameBlur}
+                containerClassName="w-full mb-4"
             />
-            {idCheckMessage && <p className="mt-2 text-xs text-green-500">{idCheckMessage}</p>}
             <InputField
                 id="pwd"
                 type="password"
-                label="비밀번호 (6~20글자)"
+                label="비밀번호 (6~20자)"
                 value={password}
                 setValue={setPassword}
                 error={passwordError}
@@ -154,6 +171,7 @@ export default function SignUp() {
                 validate={validatePasswordConfirm}
                 shake={passwordConfirmShake}
                 maxLength={20}
+                onBlur={handlePasswordConfirmBlur}
             />
             <InputField
                 id="email"
@@ -170,7 +188,7 @@ export default function SignUp() {
             />
             <InputField
                 id="phone"
-                label="전화번호 (기호없이 11자리 숫자)"
+                label="전화번호 ( - 없이 11자리 숫자)"
                 value={phoneNumber}
                 setValue={setPhoneNumber}
                 error={phoneNumberError}
@@ -192,6 +210,7 @@ export default function SignUp() {
                     회원가입
                 </button>
             </div>
+            {signupError && <p className="mt-4 text-red-500">{signupError}</p>}
         </div>
     );
 }

@@ -57,6 +57,13 @@ export default function Login() {
     handleLogin(e);
   };
 
+  // 아이디 또는 비밀번호 input 필드에 focus 되면 loginError 를 초기화하는 useEffect
+  useEffect(() => {
+    if (usernameFocused || passwordFocused) {
+      setLoginError(""); // loginError 초기화
+    }
+  }, [usernameFocused, passwordFocused, setLoginError]); // usernameFocused, passwordFocused, setLoginError 에 의존
+
   return (
     <div className="flex items-center justify-center w-full h-[calc(100vh-66px)] overflow-hidden relative">
       <video
@@ -102,6 +109,7 @@ export default function Login() {
                   shake={passwordShake}
                 />
                 <button type="submit" className="w-full p-12 text-white transition-all duration-300 bg-blue rounded-12 text-16">로그인</button>
+                {loginError && <p className="mt-10 text-sm text-red-500">{loginError}</p>}
                 <div className="flex justify-start w-full gap-10 mt-12">
                   <span className="text-sm text-gray-600 underline cursor-pointer text-blue">아이디 찾기</span>
                   <span className="text-sm text-gray-600 underline cursor-pointer text-blue">비밀번호 찾기</span>

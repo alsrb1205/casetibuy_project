@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import axios from 'axios'; // axios 임포트
+import axios from 'axios';
 
 export function useSignUp() {
     const [name, setName] = useState("");
@@ -18,7 +18,6 @@ export function useSignUp() {
     const [emailError, setEmailError] = useState("");
     const [phoneNumberError, setPhoneNumberError] = useState("");
     const [signupError, setSignupError] = useState("");
-    const [idCheckMessage, setIdCheckMessage] = useState("");
     const [isIdAvailable, setIsIdAvailable] = useState(false);
 
     const [nameFocused, setNameFocused] = useState(false);
@@ -60,30 +59,30 @@ export function useSignUp() {
         }
 
         try {
-            const response = await axios.post('http://localhost:9000/member/signup', { 
+            const response = await axios.post('http://localhost:9000/member/signup', {
                 name: name,
                 birthdate: birthdate,
+                email: email,
                 id: username,
                 pwd: password,
-                email: email,
                 phone: phoneNumber,
             });
 
-            if (response.status === 200) { 
+            if (response.status === 200) {
                 const data = response.data;
                 console.log("회원가입 성공:", data);
                 alert("회원가입 성공!");
                 window.location.href = "/login";
             } else {
-                
+
             }
         } catch (error) {
             console.error("회원가입 실패:", error);
-            if (error.response) { 
+            if (error.response) {
                 setSignupError(error.response.data.message || "회원가입에 실패했습니다. 다시 시도해주세요.");
-            } else if (error.request) { 
+            } else if (error.request) {
                 setSignupError("서버와 연결할 수 없습니다.");
-            } else { 
+            } else {
                 setSignupError("회원가입 처리 중 오류가 발생했습니다.");
             }
         }
@@ -93,7 +92,7 @@ export function useSignUp() {
         if (!validateUsername()) {
             return;
         }
-        setIdCheckMessage("아이디 중복 확인 중...");
+        setUsernameError("");
         setIsIdAvailable(false);
 
         try {
@@ -104,29 +103,29 @@ export function useSignUp() {
             if (response.status === 200) {
                 const data = response.data;
                 if (data.result === 0) {
-                    setIdCheckMessage("사용 가능한 아이디입니다.");
+                    setUsernameError("사용 가능한 아이디입니다.");
                     setIsIdAvailable(true);
-                    setUsernameError("");
                 } else {
-                    setIdCheckMessage("이미 사용중인 아이디입니다.");
+                    setUsernameError("이미 사용중인 아이디입니다. 다시 입력해주세요.");
                     setIsIdAvailable(false);
-                    setUsernameError("이미 사용중인 아이디입니다.");
                     setUsernameShake(true);
                     setTimeout(() => setUsernameShake(false), 500);
+                    usernameRef.current.focus();
                 }
             } else {
-
+                // ... (오류 처리)
             }
         } catch (error) {
             console.error("아이디 중복 확인 실패:", error);
-            setIdCheckMessage("아이디 중복 확인에 실패했습니다.");
+            setUsernameError("아이디 중복 확인에 실패했습니다.");
             setIsIdAvailable(false);
-            if (error.response) { 
-
-            } else if (error.request) { 
-                setSignupError("서버와 연결할 수 없습니다."); 
-            } else { 
-                setSignupError("아이디 중복 확인 중 오류가 발생했습니다."); 
+            usernameRef.current.focus();
+            if (error.response) {
+                // ... (오류 처리)
+            } else if (error.request) {
+                setSignupError("서버와 연결할 수 없습니다.");
+            } else {
+                setSignupError("아이디 중복 확인 중 오류가 발생했습니다.");
             }
         }
     };
@@ -195,7 +194,7 @@ export function useSignUp() {
             setTimeout(() => setPasswordConfirmShake(false), 500);
             return false;
         } else {
-            setPasswordConfirmError("");
+            setPasswordConfirmError("비밀번호가 일치합니다.");
             return true;
         }
     };
@@ -242,7 +241,6 @@ export function useSignUp() {
         emailError, setEmailError,
         phoneNumberError, setPhoneNumberError,
         signupError, setSignupError,
-        idCheckMessage, setIdCheckMessage,
         isIdAvailable, setIsIdAvailable,
 
         nameFocused, setNameFocused,
