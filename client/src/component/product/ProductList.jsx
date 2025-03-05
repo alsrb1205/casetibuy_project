@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { DetailContext } from '../../context/DetailContext';
 import { useDetail } from '../../hooks/useDetail';
 
-export default function ProductList({ products, layoutType }) {
+export default function ProductList({ productList, layoutType }) {
     const { casesData } = useContext(DetailContext);
     const { parseCaseAndColor } = useDetail();
 
@@ -13,7 +13,7 @@ export default function ProductList({ products, layoutType }) {
             layoutType === 4 ? 'grid-cols-4' : 'grid-cols-6'}`}
         >
 
-            {products.map(product => {
+            {productList.map(product => {
                 const { caseType } = parseCaseAndColor(product.repImage);
                 const caseData = casesData[caseType] || {};
 

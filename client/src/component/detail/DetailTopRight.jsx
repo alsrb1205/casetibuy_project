@@ -6,7 +6,7 @@ import '../../style/case-swiper.css';
 import '../../style/bar.css';
 import { DetailContext } from '../../context/DetailContext';
 
-export default function DetailTopRight({detail}) {
+export default function DetailTopRight({detail, addCartItem}) {
   const { currentCase } = useContext(DetailContext);
 
   return (
@@ -56,7 +56,9 @@ export default function DetailTopRight({detail}) {
               비교하기
             </button>
           </div>
-          <button className="w-full text-20 text-white bg-black rounded-[16px] py-19 mb-24">
+          <button 
+            onClick={()=>addCartItem()}
+          className="w-full text-20 text-white bg-black rounded-[16px] py-19 mb-24">
             카트에 담기
           </button>
           <div className="mb-24 text-center">전 세계 무료 배송</div>
