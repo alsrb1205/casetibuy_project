@@ -3,19 +3,33 @@ import DetailTopLeft from '../component/detail/DetailTopLeft';
 import DetailTopRight from '../component/detail/DetailTopRight';
 import ProductFeatures from '../component/detail/ProductFeature';
 import ProductInfo from '../component/detail/ProductInfo';
-import axios from 'axios';
 import { DetailContext } from '../context/DetailContext';
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 export default function DetailProduct() {
   const { pid } = useParams();
-  const { detail, setDetail } = useContext(DetailContext);
-
+  const { detail,setDetail,activeColor,activeCase } = useContext(DetailContext);
   useEffect(() => {
     axios.post('http://localhost:9000/product/detail', { "pid": pid })
       .then(res => setDetail(res.data))
       .catch(err => console.log(err));
-  }, [])
+  }, [pid])
+
+  const addCartItem = () => {
+    // if (isLoggedIn) {
+      //장바구니 추가 항목 : { pid, size, qty }
+      const cartItem = { pid: detail.pid, color:activeColor,case:activeCase, qty: 1 };
+      // cartItem에 있는 pid, size를 cartList(로그인 성공시 준비)의 item과 비교해서 있으면 qty+1 없으면 새로 추가
+      // some --> boolean, find --> item요소
+       const formData = { "cartList": [cartItem] }
+       console.log(formData);
+       
+        return formData;
+    // } else {
+    //   window.confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?") && navigate('/login');
+    // }
+  };
 
 
 
@@ -26,7 +40,7 @@ export default function DetailProduct() {
           {/* 왼쪽 콘텐츠 */}
           <DetailTopLeft detail={detail}/>
           {/* 오른쪽 콘텐츠 (sticky) */}
-          <DetailTopRight detail={detail}/>
+          <DetailTopRight detail={detail} addCartItem={addCartItem}/>
         </div>
       </div>
       <ProductFeatures/>

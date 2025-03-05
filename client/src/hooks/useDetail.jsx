@@ -2,10 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DetailContext } from "../context/DetailContext";
 
-
 export function useDetail(pid) {
-  const { setActiveCase,setActiveColor, setGauge, setFeature, setHoveredGauge, casesData, currentCase, setProductList,productList, setDetail, detail } = useContext(DetailContext);
-  
+  const {
+    setActiveCase,
+    setActiveColor,
+    setGauge,
+    setFeature,
+    setHoveredGauge,
+    casesData,
+    currentCase,
+    setProductList,
+    productList,
+    setDetail,
+    detail,
+  } = useContext(DetailContext);
+
   const handleCaseClick = (caseId) => {
     if (casesData[caseId]) {
       const caseData = casesData[caseId];
@@ -35,10 +46,12 @@ export function useDetail(pid) {
     setProductList(res.data);
   };
 
-  const getDetail = async() => {
-    const res = await axios.post('http://localhost:9000/product/detail', { "pid": pid })
-    setDetail(res.data)
-  }
+  const getDetail = async () => {
+    const res = await axios.post("http://localhost:9000/product/detail", {
+      pid: pid,
+    });
+    setDetail(res.data);
+  };
 
   const parseCaseAndColor = (fileName) => {
     // 예시 정규식 등으로 caseType, color 추출
@@ -47,5 +60,12 @@ export function useDetail(pid) {
     return { caseType: match[1], color: match[2] };
   };
 
-  return { casesData, handleCaseClick, handleHover, handleLeave, getProductList, parseCaseAndColor};
+  return {
+    casesData,
+    handleCaseClick,
+    handleHover,
+    handleLeave,
+    getProductList,
+    parseCaseAndColor,
+  };
 }

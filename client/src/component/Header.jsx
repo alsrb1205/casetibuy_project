@@ -8,8 +8,12 @@ import {
   faCartShopping,
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
+import { useCart } from "../context/CartContext";
 
 export default function Header() {
+  // 장바구니 열기
+  const { toggleCart } = useCart();
+
   return (
     <div className="relative z-30 w-full bg-transparent mt-35">
       <div className="relative flex items-center justify-between px-32 h-66">
@@ -42,13 +46,11 @@ export default function Header() {
             <FontAwesomeIcon className="w-24 h-24 text-white" icon={faGlobe} />
           </button>
           {/* 장바구니 */}
-          <button type="button">
-            <Link to="/cart">
-              <FontAwesomeIcon
-                className="w-24 h-24 text-white"
-                icon={faCartShopping}
-              />
-            </Link>
+          <button type="button" onClick={toggleCart} className="relative">
+            <FontAwesomeIcon
+              className="w-24 h-24 text-white"
+              icon={faCartShopping}
+            />
           </button>
         </div>
       </div>

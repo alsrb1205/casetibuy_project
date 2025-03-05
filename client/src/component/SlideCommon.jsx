@@ -8,20 +8,33 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../style/swiper.css";
+import { useDetail } from "../hooks/useDetail";
 
 export default function SlideCommon({ className, pagination, navigation }) {
   const swiperRef = useRef(null);
   const [slideList, setSlideList] = useState([]);
+  const { getProductList } = useDetail();
 
   useEffect(() => {
-    axios
-      .get("/data/commonSlides.json")
-      .then((res) => {
-        console.log("API 응답:", res.data);
-        setSlideList(res.data); // 카테고리별로 데이터를 저장
-      })
-      .catch((error) => console.log("API 요청 실패:", error));
+    const fetchData = async () => {
+      try {
+        const data = await getProductList(); // 🔥 데이터 가져오기
+        console.log("불러온 제품 목록:", data);
+      } catch (error) {
+        console.error("제품 데이터 로딩 실패:", error);
+      }
+    };
+
+    fetchData(); // 함수 실행
   }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("/data/commonSlides.json")
+  //     .then((res) => {
+  //       setSlideList(res.data); // 카테고리별로 데이터를 저장
+  //     })
+  //     .catch((error) => console.log("API 요청 실패:", error));
+  // }, []);
 
   return (
     <>
