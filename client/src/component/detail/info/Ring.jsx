@@ -13,7 +13,7 @@ export default function Ring({ infoList }) {
             loop
             muted
             className="w-full h-full rounded-r-[1.1vw] object-cover"
-            src={infoList[1].image}
+            src={infoList[0].image}
           />
         <InfoBlock
           desc1={infoList[0].desc1}
