@@ -25,12 +25,15 @@ import Mypage from "./pages/Mypage.jsx";
 import Settings from "./pages/Settings.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import { PListProvider } from "./context/PListContext.js";
-
 import { AuthProvider } from "./context/AuthContext.js";
-import { AuthContext } from "./context/AuthContext.js";
 
+import { useEffect } from "react";
 
 function App() {
+  // useEffect(() => {
+  //   localStorage.setItem("cartItems", JSON.stringify(cartList));
+  // }, [cartList]);
+
   return (
     <AuthProvider>
       <PListProvider>
@@ -70,8 +73,8 @@ function App() {
                   <Route path="/title" element={<Title />} />
                 </Route>
               </Routes>
-              <Cart />
             </BrowserRouter>
+            <Cart />
           </DetailProvider>
         </CartProvider>
       </PListProvider>
