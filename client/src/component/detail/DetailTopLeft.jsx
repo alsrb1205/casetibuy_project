@@ -2,15 +2,18 @@ import React, { useContext } from 'react';
 import { DetailContext } from '../../context/DetailContext';
 import { useDetail } from '../../hooks/useDetail';
 
-export default function DetailTopLeft({ detail,filteredImages }) {
+export default function DetailTopLeft({ detail, filteredImages }) {
   const { activeCase, activeColor, casesData } = useContext(DetailContext);
   const handleImage = () => {
-    if (activeCase === "bounce") {
-      return '/images/detail/bounce/bouncedefault.jpg'
-    } else if (activeCase === "ring") {
-      return '/images/detail/ring/ringdefault.jpg'
-    } else if (activeCase === "mirror") {
-      return '/images/detail/mirror/mirrordefault.jpg'
+    if (detail.kinds === "iphone") {
+      if (activeCase === "bounce") {
+        return '/images/detail/bounce/bouncedefault.jpg'
+      } else if (activeCase === "ring") {
+        return '/images/detail/ring/ringdefault.jpg'
+      } else if (activeCase === "mirror") {
+        return '/images/detail/mirror/mirrordefault.jpg'
+      }
+
     }
   }
 
@@ -34,7 +37,7 @@ export default function DetailTopLeft({ detail,filteredImages }) {
   const jsonImages = getJsonImages(activeCase, activeColor);
 
 
-  
+
 
   return (
     <div className="relative flex-1">
@@ -47,11 +50,15 @@ export default function DetailTopLeft({ detail,filteredImages }) {
           />
         </div>
         <div className="grid grid-cols-2 gap-17">
-          <img
-            src={`http://localhost:9000/${filteredImages[1]}`}
-            alt=""
-            className="object-cover w-[98%] h-auto"
-          />
+          {
+            filteredImages[1] ? (
+              <img
+                src={`http://localhost:9000/${filteredImages[1]}`}
+                alt=""
+                className="object-cover w-[98%] h-auto"
+              />
+            ) : ("")
+          }
           <img
             src={jsonImages[0]}
             alt=""

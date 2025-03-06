@@ -349,5 +349,132 @@
                 "desc3": "스트랩 전용 소켓이 더해진 케이스로\n다양한 스트랩을 즐겨보세요."
             }
         ]
+    },
+    "podbounce": {
+        "cname": "바운스 케이스",
+        "price": 58000,
+        "protective": "50%",
+        "weight": "50%",
+        "colorImg": [
+            {
+                "charcoal": [
+                    "/images/airpod4/airpod4_common_charcoal.png"
+                ],
+                "pink": [
+                    "/images/airpod4/airpod4_common_pink.png"
+                ],
+                "skyblue": [
+                    "/images/airpod4/airpod4_common_skyblue.png"
+                ]
+            }
+        ],
+        "feature": [
+            {
+                "image": "/images/detail/podbounce/feature/1.png",
+                "desc": "2M 낙하 테스트 통과"
+            },
+            {
+                "image": "/images/detail/podbounce/feature/2.png",
+                "desc": "1 x MIL-STD-810G"
+            },
+            {
+                "image": "/images/detail/podbounce/feature/3.png",
+                "desc": "스크래치 방지 매트 피니시"
+            },
+            {
+                "image": "/images/detail/podbounce/feature/4.png",
+                "desc": "항균 소재 코팅"
+            },
+            {
+                "image": "/images/detail/podbounce/feature/5.png",
+                "desc": "CASETIFY 로고 카라비너"
+            },
+            {
+                "image": "/images/detail/podbounce/feature/6.png",
+                "desc": "Re/CASETiFY 프로그램을 통한 친환경적인 제조 방법"
+            }
+        ],
+        "info": [
+            {
+                "image": "/images/detail/podbounce/info/1.jpg",
+                "desc1": "바운스 케이스",
+                "desc2": "낙하 테스트를 통과한\n강력한 보호력의\n에어팟 케이스",
+                "desc3": "바운스 에어팟 케이스는 스크래치\n방지를 위한 매트 피니시로\n에어팟을 안전하게 보호합니다.\n군사 테스트를 거쳐 MIL-STD-810G\n기준을 달성하고, 최대 2m\n낙하에서도 안전합니다."
+            },
+            {
+                "image": "/images/detail/podbounce/info/2.jpg",
+                "desc1": "완벽한 맞춤 디자인",
+                "desc2": "여러분만의 바이브를\n표현해 보세요!",
+                "desc3": "다양한 디자인과 여러 커스텀 옵션을\n통하여 나만의 케이스를 만들 수도 있죠.\n케이스티파이 범퍼 링 그리고\n카라비너와 함께 모든 충격과\n위험으로부터 여러분의 에어팟을\n안전하게 보호하세요!"
+            }
+        ]
+    },
+    "airpodmax": {
+        "cname": "바운스 케이스",
+        "price": 115000,
+        "protective": "100%",
+        "weight": "75%",
+        "colorImg": [
+            {
+                "black": [
+                    "/images/iphone16pro/common/iphone16p_common_side_case_bounce_color_black.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_bounce_color_black.jpg"
+                ],
+                "pink": [
+                    "/images/iphone16pro/common/iphone16p_common_side_case_bounce_color_pink.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_bounce_color_pink.jpg"
+                ],
+                "babyblue": [
+                    "/images/iphone16pro/common/iphone16p_common_side_case_bounce_color_babyblue.png",
+                    "/images/iphone16pro/common/iphone16p_common_back_case_bounce_color_babyblue.jpg"
+                ]
+            }
+        ],
+        "feature": [
+            {
+                "image": "/images/detail/bounce/feature/1.png",
+                "desc": "바운스 코너"
+            },
+            {
+                "image": "/images/detail/bounce/feature/2.png",
+                "desc": "6.5m\n낙하 테스트 통과"
+            },
+            {
+                "image": "/images/detail/bounce/feature/3.png",
+                "desc": "6x\nMIL-STD-810G"
+            },
+            {
+                "image": "/images/detail/bounce/feature/4.png",
+                "desc": "카메라 컨트롤 버튼에\n부드러운 액세스"
+            },
+            {
+                "image": "/images/detail/bounce/feature/5.png",
+                "desc": "TesseLock™\n소재"
+            },
+            {
+                "image": "/images/detail/bounce/feature/6.png",
+                "desc": "무선 충전 및\n맥세이프 호환"
+            }
+        ],
+        "info": [
+            {
+                "image": "/images/detail/bounce/info/1.png",
+                "desc1": "바운스 케이스",
+                "desc2": "2023년 뉴욕 제품 디자인\n어워드에서 금상을 수상한\n케이스를 소개합니다!",
+                "desc3": "현수교에서 영감받은 바운스 코너 디자인.\nTesseLock™이 탑재되어, 6.5m 낙하\n테스트를 통과해, 미 군사 등급 6배에\n달하는 보호력을 제공합니다."
+            },
+            {
+                "image": "/images/detail/bounce/info/2.png",
+                "desc1": "강력한 보호력",
+                "desc2": "더 얇게, 더 가볍게, 여전히 강력하게",
+                "desc3": "5% 더 얇아진 디자인, 11% 더 가벼워진 무게, 그러나 여전히 튼튼한 설계.\n견고한 보호 기능은 물론, 슬림하고 스타일리시한 디자인을 완성합니다."
+            },
+            {
+                "image": "/images/detail/bounce/info/3.png",
+                "desc1": "완벽한 맞춤 디자인",
+                "desc2": "나만을 위한\n하나뿐인 케이스",
+                "desc3": "바운스 케이스로 표현하는\n나만의 색깔.\n물론, 일상 속 모험에서도\n언제나 안전하게 함께하세요."
+            }
+        ]
     }
 }

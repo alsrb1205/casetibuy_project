@@ -53,6 +53,8 @@ export const getProduct = async (pid) => {
                 SELECT 
                     pid,
                     pname as name,
+                    kinds,
+                    repImage,
                     upload_file as image,                                   
                     source_file as sourceFile,
                     pdate
