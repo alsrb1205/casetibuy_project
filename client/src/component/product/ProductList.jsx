@@ -8,8 +8,6 @@ export default function ProductList({ productList, layoutType }) {
     const { casesData } = useContext(DetailContext);
     const { parseCaseAndColor } = useDetail();
     
-    console.log(casesData);
-    
 
     return (
         <div className={`grid gap-4 ${layoutType === 2 ? 'grid-cols-2' :
@@ -30,15 +28,15 @@ export default function ProductList({ productList, layoutType }) {
                     <div className='relative w-full p-30'>
                         {/* Gradient Background */}
                         <div className='absolute top-0 left-0 w-full h-full 
-                                        bg-gradient-to-tl from-[#EEE] via-transparent to-[rgba(238,238,238,0)] z-0'></div>
+                                        bg-gradient-to-tl from-[#EEE] via-transparent to-[rgba(238,238,238,0)]'></div>
                         {/* 상품 이미지 */}
-                        <div className='z-10 w-full max-w-sm mx-auto absoulte'>
+                        <div className='w-full max-w-sm mx-auto absoulte'>
                             <img src={`http://localhost:9000/${product.repImage}`}
                                 alt={product.name}
                                 className='object-cover w-full h-auto align-middle' />
                         </div>
                         {/* 상품 내용 */}
-                        <div className='relative z-10 flex flex-col mt-6 '>
+                        <div className='relative flex flex-col mt-6 '>
                             {/* 상품 정보 */}
                             <div className='mt-12 gap-10 flex flex-col text-#8c8c8c 
                                             p-5 

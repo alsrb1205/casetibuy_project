@@ -21,7 +21,6 @@ export default function FilterSidebar({ onFilterApply }) {
             .catch(error => console.error(error));
     }, []);
 
-
     /* 필터 함수 */
 
     // 필터 선택 
@@ -30,8 +29,6 @@ export default function FilterSidebar({ onFilterApply }) {
           setIsOpen(false); // 사이드바 닫기
           onFilterApply(filter); // 상품 리스트 필터링 함수 실행
     };
-
-
 
     /* 필터 카테고리 함수 */
 
@@ -42,15 +39,12 @@ export default function FilterSidebar({ onFilterApply }) {
             // setSelectedCategory({ subcategories: sidebar.brand }); // 브랜드 리스트 출력
             setSelectedCategoryName("모든 기종");
 
-
         } else {
             setIsAllModelsSelected(false);
             setSelectedCategory(category);
             setSelectedCategoryName(category.category);
         }
     };
-
-
     /* 필터 하단 버튼 함수 */
 
     // 모두 지우기 버튼 함수
@@ -61,13 +55,7 @@ export default function FilterSidebar({ onFilterApply }) {
           setSelectedCategoryName("필터");
           setIsAllModelsSelected(false);
     };
-
-
-
-
-
     /* return문 */
-
     return (
 
         <div className="">
@@ -75,14 +63,12 @@ export default function FilterSidebar({ onFilterApply }) {
             {/* 필터 버튼 */}
             <button 
                 onClick={() => setIsOpen(true)}
-                className="flex gap-8 p-8 justify-center
-                            border-2 rounded-full w-85
-                          ">
+                className="flex justify-center gap-8 p-8 border-2 rounded-full w-85 ">
                     <div className="">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 18 14"
-                            className="w-20 h-23 fill-current"
+                            className="w-20 fill-current h-23"
                             >
                             <path
                                 fillRule="evenodd"
@@ -106,12 +92,8 @@ export default function FilterSidebar({ onFilterApply }) {
                             />
                         </svg>
                     </div>
-
-
                     <span className="text-center">필터</span>
-
             </button>
-
 
             {/* 화면 오버레이 수정 중 */} 
             {/* {isOpen && (
@@ -121,7 +103,6 @@ export default function FilterSidebar({ onFilterApply }) {
                 />
             )} */}
 
-
             {/* 필터 사이드바창 */}
             <div 
                 className={`fixed top-0 left-0 w-380 min-h-screen
@@ -130,7 +111,6 @@ export default function FilterSidebar({ onFilterApply }) {
                             
                     ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
-
             {/******** Header ********/}
 
                 {/* 필터 화면 */}

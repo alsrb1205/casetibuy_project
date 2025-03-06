@@ -1,22 +1,19 @@
-import React, { useContext } from 'react';
-import {useState, useEffect} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import Classify from './Classify.jsx';
 import ProductList from './ProductList.jsx';
+import Series from './Series.jsx';
 // import FilterSelected from './filter/FilterSelected.jsx';
 import FilterSidebar from './filter/FilterSidebar.jsx';
 import { PListContext } from '../../context/PListContext.js';
 
 export default function ProductType() {
-
     const [isOpen, setIsOpen] = useState(false);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [layoutType, setLayoutType] = useState(4);
-    const [selectedCategory, setSelectedCategory] = useState(null);
     const [icons, setIcons] = useState([]);
-    const [selectedLayout, setSelectedLayout] = useState(4); 
-    const {productList} = useContext(PListContext);
-
+    const [selectedLayout, setSelectedLayout] = useState(4);
+    const { productList, selectList } = useContext(PListContext);
 
     // json 
     useEffect(() => {
@@ -26,80 +23,74 @@ export default function ProductType() {
     }, []);
 
     // 함수
-    const applyFilter = (data, type, category) => {
-        let filtered = data;
-        if (category) {
-            filtered = filtered.filter(product => product.category === category);
+    const applyFilter = () => {
+        let filtered = productList;
+        if (selectList && selectList !== 'all') {
+          filtered = filtered.filter(product => product.kinds === selectList);
         }
         setFilteredProducts(filtered);
-    };
+      };
 
-    const handleLayoutChange = (type) => {
+      const handleLayoutChange = (type) => {
         setLayoutType(type);
-        setSelectedLayout(type); 
-        applyFilter(productList, type, selectedCategory);
-    };
-
-    const handleCategoryChange = (category) => {
-        setSelectedCategory(category);
-        applyFilter(productList, layoutType, category);
-    };
-
+        setSelectedLayout(type);
+        applyFilter();
+      };
+    
+      const handleCategoryChange = (category) => {
+        applyFilter();
+      };
     // 스크롤 함수
     useEffect(() => {
         if (isOpen) {
-            document.body.style.overflow = "hidden"; 
+            document.body.style.overflow = "hidden";
         } else {
-            document.body.style.overflow = "auto";   
+            document.body.style.overflow = "auto";
         }
         return () => {
             document.body.style.overflow = "auto";
         };
     }, [isOpen]);
 
+    // 시리즈 변경 시 필터링 적용
+    useEffect(() => {
+        applyFilter();
+      }, [productList, selectList, layoutType]);
+      
+
     return (
         <>
             <div className=''>
-            {/* 스크롤시 타이틀바 고정 css */}
-            <div className='top-0 w-full p-4 bg-white bg-opacity-80 backdrop-blur-sm '>
-            {/* ======================================================== */}
-                {/* 타이틀바 */}
-                    <div className='flex bg-[#fecad6] 
-                                    rounded-16 justify-between 
-                                    w-full md:min-h-84
-                                    items-center p-20
-                                    mb-2 min-h-66
-                                    h-full content-center
+                {/* 스크롤시 타이틀바 고정 css */}
+                <div className='sticky top-0 z-20 w-full px-32 pt-16 pb-8 bg-white bg-opacity-90 backdrop-blur-[10px] '>
+                    {/* ======================================================== */}
+                    {/* 타이틀바 */}
+                    <div className='flex bg-[#fecad6] rounded-16 justify-between w-full md:min-h-84 items-center p-16 mb-8 min-h-66 h-full content-center
                                                     
                     '>
-                        {/* 제목 */} 
-                            <div className=''>
-                                <span className='text-16 font-extrabold 
-                                                 leading-1.2 flex 
-                                                 gap-2
-                                                 md:text-32
+                        {/* 제목 */}
+                        <div className=''>
+                            <span className='text-16 font-extrabold leading-1.2 md:text-32
                                 '>
-                                    전 상품
-                                </span>
-                            </div>
-                    {/* ======================================================== */}
+                                전 상품
+                            </span>
+                        </div>
+                        {/* ======================================================== */}
                         {/* 타이틀바 버튼 */}
                         <div className='flex gap-12 '>
-
                             {/* 필터 버튼 */}
                             <div className=''>
-                                <FilterSidebar />
+                                {/* <FilterSidebar /> */}
                             </div>
-                                
-                            {/* 이미지 버튼 */}  
+
+                            {/* 이미지 버튼 */}
                             <div>
-                                <div className="flex gap-10 p-3 border-2 border-solid border-[#000000] rounded-full">
+                                <div className="flex gap-8 p-2 px-4 border-2 border-solid border-[#000000] rounded-100">
                                     {icons.map((icon) => (
                                         <div
                                             key={icon.type}
-                                            className={`cursor-pointer p-6 rounded-[34px] ${
-                                                selectedLayout === icon.type ? 'bg-[#000000] text-[#fecad6]' : ''
-                                            }`}
+                                            className={`cursor-pointer flex justify-center items-center w-34 h-34 p-6 rounded-[34px] ${selectedLayout === icon.type ? 'bg-[#000000] text-[#fecad6]' : ''
+                                                }`}
                                             onClick={() => handleLayoutChange(icon.type)}
                                         >
                                             <div dangerouslySetInnerHTML={{ __html: icon.svg.replace(/className=/g, "class=") }} />
@@ -107,27 +98,18 @@ export default function ProductType() {
                                     ))}
                                 </div>
                             </div>
-                        </div>  
-                {/* ======================================================== */}
+                        </div>
+                        {/* ======================================================== */}
                     </div> {/* 타이틀바 */}
-                {/* ======================================================== */}
-                {/* 분류 버튼 */}
-                <div className="">
-                    <Classify onCategoryChange={handleCategoryChange} />
-                </div>
-
-                
-            </div> {/* 고정 Header */}
-                {/* ======================================================== */}
-                {/* ======================================================== */}
-                {/* ======================================================== */}
-                {/* ======================================================== */}
-                {/* 필터링된 상품 이미지 배열 리스트 */}
+                    {/* ======================================================== */}
+                    {/* 분류 버튼 */}
+                    <div className="">
+                        <Classify onCategoryChange={handleCategoryChange} />
+                    </div>
+                </div> {/* 고정 Header */}
                 <div className=''>
-                    <ProductList productList={productList} layoutType={layoutType} />
+                    <ProductList productList={filteredProducts} layoutType={layoutType} />
                 </div>
-
-
             </div>
         </>
     );
