@@ -25,7 +25,7 @@ import Mypage from "./pages/Mypage.jsx";
 import Settings from "./pages/Settings.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import { PListProvider } from "./context/PListContext.js";
-import { AuthProvider } from "./context/AuthContext.js";
+import { AuthContext, AuthProvider } from "./context/AuthContext.js";
 
 import { useEffect } from "react";
 
