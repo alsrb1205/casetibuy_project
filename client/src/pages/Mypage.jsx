@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -7,8 +7,21 @@ import {
   faAngleRight,
 } from "@fortawesome/free-solid-svg-icons";
 import HomeProduct from "../component/home/HomeProduct";
+import { Link, useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../context/AuthContext.js";
 
 export default function Mypage() {
+  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    navigate("/");
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+    alert("로그아웃 되었습니다.");
+  };
+
   return (
     <div className="w-[1200px] m-auto border flex gap-10 bg-white">
       {/* 네비게이션 */}
@@ -22,15 +35,22 @@ export default function Mypage() {
             주문
           </li>
           <li className="flex gap-5 px-20 py-10">
-            <FontAwesomeIcon className="w-20 h-20" icon={faGear} />
-            설정
+            <Link
+              to="/setting"
+              className="block px-4 text-center py-14 hover:text-grayph text-14"
+            >
+              <FontAwesomeIcon className="w-20 h-20" icon={faGear} />
+              설정
+            </Link>
           </li>
           <li className="flex gap-5 px-20 py-10">
-            <FontAwesomeIcon
-              className="w-20 h-20"
-              icon={faArrowRightFromBracket}
-            />
-            로그아웃
+            <button onClick={handleLogout}>
+                <FontAwesomeIcon
+                  className="w-20 h-20"
+                  icon={faArrowRightFromBracket}
+                />
+              로그아웃
+            </button>
           </li>
         </ul>
       </nav>
