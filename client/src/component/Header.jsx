@@ -54,7 +54,7 @@ export default function Header() {
     }, [dropdownRef]);
 
     return (
-        <div className="relative z-30 w-full bg-transparent mt-35">
+        <div className="relative z-30 w-full bg-transparent mt-49">
             <div className="relative flex items-center justify-between px-32 h-66">
                 <div className="flex gap-20">
                     {/* 메뉴 */}
