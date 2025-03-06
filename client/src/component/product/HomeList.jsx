@@ -6,7 +6,7 @@ import Series from './Series.jsx';
 export default function HomeList() {
 
     return (
-        <div>
+        <div className=''>
             <Series/>
             <ProductType />
         </div>

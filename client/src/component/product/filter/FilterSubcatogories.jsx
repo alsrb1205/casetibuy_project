@@ -26,7 +26,6 @@ export default function FilterSubcategories({ subcategories = [], onBack }) {
             {/* ======================================================== */}
 
 
-
             {/* 서브 카테고리 */}
 
             <ul className="space-y-2">
@@ -67,36 +66,13 @@ export default function FilterSubcategories({ subcategories = [], onBack }) {
                                     ))}
                                 </ul>
                             )}
-
-
-
-
-
-
                         </div>
-
-
                         {/* ======================================================== */}
-
-
-
-
-
-
                     </li>
-
                 ))}
-
-
-
-
-
             </ul> {/* 기종 카테고리 마지막 */}
 
             {/* ======================================================== */}
-
-
-
 
         </div>
     );
