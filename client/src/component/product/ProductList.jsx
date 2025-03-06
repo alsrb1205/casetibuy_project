@@ -8,6 +8,7 @@ export default function ProductList({ productList, layoutType }) {
     const { casesData } = useContext(DetailContext);
     const { parseCaseAndColor } = useDetail();
     
+    console.log(casesData);
     
 
     return (
@@ -17,7 +18,8 @@ export default function ProductList({ productList, layoutType }) {
 
             {productList.map(product => {
                 const { caseType,color } = parseCaseAndColor(product.repImage);
-                const caseData = { ...(casesData[caseType] || {}), color };                
+                const caseData = { ...(casesData[caseType] || {}), color };    
+
 
                 return <Link 
                 to={`/detail/${product.pid}`}

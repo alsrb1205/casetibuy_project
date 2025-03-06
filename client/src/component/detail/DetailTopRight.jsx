@@ -35,9 +35,9 @@ export default function DetailTopRight({detail, addCartItem, filteredImages, det
             <span className="text-[8px] pt-0">12345678</span>
           </div>
         </div>
-        <div className="w-full border-1 h-48 border-black rounded-[16px] mb-15 flex items-center">
+        {/* <div className="w-full border-1 h-48 border-black rounded-[16px] mb-15 flex items-center">
           <span>기종선택 컨테이너</span>
-        </div>
+        </div> */}
         <div className="mb-16">
           <Bars />
           <CaseSwiper filteredImages={filteredImages} detailImage={detailImage}/>
@@ -51,12 +51,12 @@ export default function DetailTopRight({detail, addCartItem, filteredImages, det
           </div>
         </div>
         <div>
-          <div className="flex justify-between items-center px-20 py-16 bg-blue2 rounded-[16px] mb-24">
+          {/* <div className="flex justify-between items-center px-20 py-16 bg-blue2 rounded-[16px] mb-24">
             <strong className="text-white text-20">제품 비교</strong>
             <button className="text-white border-1 rounded-[40px] px-20 py-10">
               비교하기
             </button>
-          </div>
+          </div> */}
           <button 
             onClick={()=>addCartItem()}
           className="w-full text-20 text-white bg-black rounded-[16px] py-19 mb-24">
@@ -73,12 +73,12 @@ export default function DetailTopRight({detail, addCartItem, filteredImages, det
             </div>
             <div className="text-12">사용 가능한 결제 방법</div>
           </div>
-          <div className="flex justify-between items-center px-20 py-16 bg-white rounded-[16px]">
+          {/* <div className="flex justify-between items-center px-20 py-16 bg-white rounded-[16px]">
             <strong className="text-black text-20">아티스트 소개</strong>
             <button className="text-black border-1 rounded-[40px] px-20 py-10">
               아티스트 갤러리 둘러보기
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

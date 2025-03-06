@@ -8,9 +8,8 @@ import { DetailContext } from '../../context/DetailContext';
 import { useDetail } from '../../hooks/useDetail';
 
 export default function CaseSwiper({filteredImages, detailImage}) {
-  const { activeCase } = useContext(DetailContext);
+  const { activeCase,detail } = useContext(DetailContext);
   const { casesData, handleCaseClick, handleHover, handleLeave, parseCaseAndColor } = useDetail();
-
 
   return (
     <div>

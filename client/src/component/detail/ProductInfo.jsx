@@ -7,6 +7,7 @@ import MImpact from './info/MImpact';
 import Impact from './info/Impact';
 import Mirror from './info/Mirror';
 import InfoBlock from './info/InfoBlock';
+import PodBounce from './info/PodBounce';
 
 export default function ProductInfo() {
     const { activeCase, casesData } = useContext(DetailContext);
@@ -21,6 +22,7 @@ export default function ProductInfo() {
             {activeCase === 'mimpact' && <MImpact infoList={infoList} />}
             {activeCase === 'mirror' && <Mirror infoList={infoList} />}
             {activeCase === 'impact' && <Impact infoList={infoList} />}
+            {activeCase === 'podbounce' && <PodBounce infoList={infoList} />}
             <div className="flex p-32 bg-gray2">
                 <InfoBlock
                     desc1="지속 가능성과 여전히 함께"

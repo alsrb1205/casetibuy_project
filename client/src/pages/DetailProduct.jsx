@@ -18,6 +18,7 @@ export default function DetailProduct() {
     if (state?.activeColor) setActiveColor(state.activeColor);
   }, [state, setActiveCase, setActiveColor]);
 
+console.log(activeCase);
 
   useEffect(() => {
     axios.post('http://localhost:9000/product/detail', { "pid": pid })
@@ -34,7 +35,7 @@ export default function DetailProduct() {
   const addCartItem = () => {
     // if (isLoggedIn) {
     //장바구니 추가 항목 : { pid, size, qty }
-    const cartItem = { pid: detail.pid, color: activeColor, case: activeCase, qty: 1 };
+    const cartItem = { pid: detail.pid, kinds: detail.kinds, color: activeColor, case: activeCase, qty: 1 };
     // cartItem에 있는 pid, size를 cartList(로그인 성공시 준비)의 item과 비교해서 있으면 qty+1 없으면 새로 추가
     // some --> boolean, find --> item요소
     const formData = { "cartList": [cartItem] }
