@@ -9,45 +9,58 @@ export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false); // 사이드바 상태
   const [cartCount, setCartCount] = useState(0); // 장바구니 개수
 
-  // cartItems가 변경될 때마다 cartCount 업데이트
+  //  장바구니 개수 업데이트
   useEffect(() => {
-    setCartCount(cartItems.reduce((total, item) => total + (item.qty || 1), 0));
+    setCartCount(cartItems.reduce((total, item) => total + item.qty, 0));
   }, [cartItems]);
 
-  // 장바구니에 상품 추가하는 함수
+  // 장바구니 상태 확인
   const addToCart = (newItem) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.pid === newItem.pid);
+      const existingItem = prevItems.find(
+        (item) =>
+          item.pid === newItem.pid &&
+          item.color === newItem.color &&
+          item.case === newItem.case
+      );
+
       if (existingItem) {
         return prevItems.map((item) =>
-          item.pid === newItem.pid ? { ...item, qty: item.qty + 1 } : item
+          item.pid === newItem.pid &&
+          item.color === newItem.color &&
+          item.case === newItem.case
+            ? { ...item, qty: item.qty + 1 }
+            : item
         );
       } else {
         return [...prevItems, { ...newItem, qty: 1 }];
       }
     });
+
+    console.log("🛒 장바구니 상품 목록:", cartItems);
   };
 
   // 수량 증가 함수
-  const increaseQty = (pid) => {
+  const increaseQty = (pid, color, caseType) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
-        item.pid === pid ? { ...item, qty: item.qty + 1 } : item
+        item.pid === pid && item.color === color && item.case === caseType
+          ? { ...item, qty: item.qty + 1 }
+          : item
       )
     );
   };
 
-  // 수량 감소 함수
-  const decreaseQty = (pid) => {
-    setCartItems(
-      (prevItems) =>
-        prevItems
-          .map((item) =>
-            item.pid === pid
-              ? { ...item, qty: Math.max(item.qty - 1, 1) }
-              : item
-          )
-          .filter((item) => item.qty > 0) // 수량이 0이면 장바구니에서 제거
+  // 수량 감소 함수 (특정 상품만 감소)
+  const decreaseQty = (pid, color, caseType) => {
+    setCartItems((prevItems) =>
+      prevItems
+        .map((item) =>
+          item.pid === pid && item.color === color && item.case === caseType
+            ? { ...item, qty: Math.max(item.qty - 1, 1) }
+            : item
+        )
+        .filter((item) => item.qty > 0)
     );
   };
 

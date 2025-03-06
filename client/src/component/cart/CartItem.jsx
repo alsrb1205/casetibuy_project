@@ -18,12 +18,13 @@ export default function CartItem({
         <>
           {cartItems.map((item) => (
             <div
+              key={`${item.pid}-${item.color}-${item.case}`}
               className={`flex gap-10 -mx-16 p-16 mt-8 bg-gradient-to-b from-[hsla(0,0%,93%,0)] to-[#eee] bg-yellow`}
             >
               <div>
                 <img
-                  src={`https://cdn-stamplib.casetify.com/cms/image/028b77299cd8ef52e1fc1f8df9c7e937.jpg`}
-                  alt={`치이카와패키지`}
+                  src={item.image[0]}
+                  alt={item.kinds}
                   className={`w-full rounded-10`}
                 />
               </div>
@@ -36,7 +37,9 @@ export default function CartItem({
                 <div
                   className={`flex items-center gap-8 p-10 border rounded-full`}
                 >
-                  <button onClick={() => decreaseQty(item.pid)}>
+                  <button
+                    onClick={() => decreaseQty(item.pid, item.color, item.case)}
+                  >
                     <HiOutlineMinus size={20} />
                   </button>
                   <input
@@ -44,7 +47,9 @@ export default function CartItem({
                     value={cartCount}
                     className={`pt-4 text-center bg-transparent px-11 w-44 h-18`}
                   />
-                  <button onClick={() => increaseQty(item.pid)}>
+                  <button
+                    onClick={() => increaseQty(item.pid, item.color, item.case)}
+                  >
                     <GoPlus size={20} />
                   </button>
                 </div>
