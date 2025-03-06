@@ -1,66 +1,82 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Title from "./Title.jsx";
+import { PListContext } from "../../context/PListContext.js";
 
-export default function series() {
+export default function Series() {
+  const { productList, setProductList,selectList, setSelectList} = useContext(PListContext);
+
+   const handleList = (kinds) => {
+    setSelectList(kinds);
+  };
+
   return (
-    <>
+    <div className="px-32 mt-32">
       {/* series title */}
-      <div className="m-5 p-15">
-        <h1 className="font-bold text-25">시리즈</h1>
+      <div className="mb-8">
+        <p className="font-bold text-26">시리즈</p>
       </div>
 
       {/* media series content */}
 
       <div className="">
-        {/* series */}
-        {/* 시리즈 수정 중 */}
-        <div className="flex p-10 m-10 gap-25">
-          {/* 임팩트 시리즈 */}
-          <NavLink
-            to="/homelist"
-            className={({ isActive }) =>
-              `w-180 h-full min-h-100 rounded-16 cursor-pointer p-8 
-                            bg-[#234a89] ${
-                              isActive
-                                ? "border-solid border-black border-[3px]"
-                                : ""
-                            }`
-            }
+        <div className="flex gap-16 p-2">
+          <div
+           onClick={()=>handleList('all')}
+            className='w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green'
           >
             <img
               src="/images/series/series2.png"
               alt="img-err"
-              className="w-full rounded-13"
+              className="w-full rounded-16"
             />
-            <p className="text-[#e8e6e3] font-extrabold text-13">
-              임팩트 시리즈
+            <p className="text-[#e8e6e3] font-extrabold text-12 mt-8">
+              전 상품
             </p>
-          </NavLink>
-        </div>{" "}
-        {/* series */}
-        {/* ********************************************************* */}
-        {/* media button series item */}
-        <div className="flex justify-center">
-          <div className="flex p-2 rounded sm:block lg:hidden">
-            <button
-              type="button"
-              className="bg-[#21a664] rounded-full h-6 w-25"
-            />
-
-            <button type="button" className="bg-[black] rounded-full" />
           </div>
-
-          <div className="hidden p-2 ml-2 rounded md:block lg:hidden">
-            <p className=""></p>
+          <div
+            className='w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green'
+            onClick={() => handleList('iphone')}
+          >
+            <img
+              src="/images/series/iphone.png"
+              alt="img-err"
+              className="w-full rounded-16"
+            />
+            <p className="text-[#e8e6e3] font-extrabold text-12 mt-8">
+              iPhone
+            </p>
+          </div>
+          <div
+            className='w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green'
+            onClick={() => handleList('airpod4')}
+          >
+            <img
+              src="/images/series/airpod4.png"
+              alt="img-err"
+              className="w-full rounded-16"
+            />
+            <p className="text-[#e8e6e3] font-extrabold text-12 mt-8">
+              AirPod 4
+            </p>
+          </div>
+          <div
+            className='w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green'
+            onClick={() => handleList('airpodmax')}
+          >
+            <img
+              src="/images/series/airpodmax.png"
+              alt="img-err"
+              className="w-full rounded-16"
+            />
+            <p className="text-[#e8e6e3] font-extrabold text-12 mt-8">
+              AirPod Max
+            </p>
           </div>
         </div>
+        {/* series */}
       </div>
-
-      {/* ********************************************************* */}
-      {/* All title */}
-
-      <Title />
-    </>
+      {/* <Title /> */}
+    </div>
   );
 }

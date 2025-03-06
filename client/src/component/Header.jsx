@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,6 +13,7 @@ import { useCart } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext.js";
 
 export default function Header() {
+  
   // 장바구니 열기, 장바구니 개수 가져오기
   const { toggleCart, cartCount } = useCart();
 

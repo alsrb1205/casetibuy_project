@@ -8,19 +8,6 @@ export default function Classify() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [ setProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
-
-  
-  useEffect(() => {
-    axios
-      .get("/data/products.json") 
-      .then((res) => {
-        setAllProducts(res.data);
-      })
-      .catch((error) => {
-        console.error("데이터 로드 실패:", error);
-      });
-  }, []);
-
  
   const handleItemClick = (item) => {
     
@@ -33,23 +20,15 @@ export default function Classify() {
       setProducts(filteredProducts);
     }
   };
-
-
-  
   return (
-
-
     <div>
-
-
       {/* 분류 버튼 */}
         <div className="
                         flex relative md:text-[16px] 
-                        justify-between items-center p-12
+                        justify-between items-center align-middle
                         ">
-
           <div className="ml-auto">
-            <div className="relative cursor-pointer p-[4px]" onClick={() => setCategory(!category)}>
+            <div className="relative cursor-pointer" onClick={() => setCategory(!category)}>
               <div className="flex items-center justify-center">
                 <div>
                   <span className="text-[16px] leading-[20px]">분류</span>
@@ -65,19 +44,13 @@ export default function Classify() {
             </div>
           </div>
         </div>
-
       {/* ======================================================== */}
-
 
       {/* 카테고리 리스트 */}
         {category && (
-          <div className="absolute right-0 w-350 bg-white shadow-lg 
-                          border-gray-500 rounded-20 ">
-            
-            <ul className="p-15 cursor-pointer">
-
+          <div className="absolute right-0 bg-white border-gray-500 shadow-lg w-350 rounded-20 ">
+            <ul className="cursor-pointer p-15">
               {["케이스티파이 추천", "신상품", "인기"].map((item) => (
-
                 <li
                   key={item}
                   className={`p-3 flex items-center gap-2 rounded-full transition-colors ${
@@ -85,7 +58,6 @@ export default function Classify() {
                   }`}
                   onClick={() => handleItemClick(item)}
                 >
-
                   {/* 체크 아이콘 */}
                     <div className="flex items-center justify-center w-5 h-5">
                       {selectedItem === item && (
@@ -94,22 +66,12 @@ export default function Classify() {
                         </svg>
                       )}
                     </div>
-
                   <span>{item}</span>
-                  
                 </li>
-                
               ))}
-
             </ul>
-
           </div>
         )}
-
-
-
-
-
     </div>
   );
 }

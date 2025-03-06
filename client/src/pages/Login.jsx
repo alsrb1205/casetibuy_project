@@ -120,7 +120,7 @@ export default function Login() {
             )}
             <div className="flex items-center justify-center gap-5 mt-20 text-[14px]">
               <span className="text-black">{isSignUp ? "이미 계정이 있습니까?" : "CASETiBUY 계정이 없습니까?"}</span>
-              <a href="#" onClick={() => setIsSignUp(!isSignUp)} className="underline cursor-pointer text-blue">
+              <a onClick={() => setIsSignUp(!isSignUp)} className="underline cursor-pointer text-blue">
                 {isSignUp ? "로그인" : "지금 만드세요."}
               </a>
             </div>
