@@ -28,7 +28,7 @@ export default function Header() {
         setIsLoggedIn(false);
         alert("로그아웃 되었습니다.");
         navigate("/");
-    };
+    }; 
 
     // 드롭다운 메뉴 토글 (로그인 상태에 따라 동작 변경)
     const toggleDropdown = () => {
