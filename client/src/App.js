@@ -22,39 +22,43 @@ import NewProduct from "./pages/NewProduct.jsx";
 import TestList from "./component/TestList.jsx";
 import Mypage from "./pages/Mypage.jsx";
 import { PListProvider } from "./context/PListContext.js";
-
 import { AuthProvider } from "./context/AuthContext.js";
+import { useEffect } from "react";
 
 function App() {
+  // useEffect(() => {
+  //   localStorage.setItem("cartItems", JSON.stringify(cartList));
+  // }, [cartList]);
+
   return (
     <AuthProvider>
-    <PListProvider>
-    <CartProvider>
-      <DetailProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="/detail/:pid" element={<DetailProduct />} />
-              <Route path="/new" element={<NewProduct />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/mypage" element={<Mypage />} />
-              <Route path="/allproduct" element={<AllProduct />} />
-              <Route path="/iphoneall" element={<IphoneAll />} />
-              <Route path="/iphonetype" element={<IphoneType />} />
-              <Route path="/model" element={<Model />} />
-              <Route path="/modelall" element={<ModelAll />} />
-              <Route path="/productlist" element={<ProductList />} />
-              <Route path="/homelist" element={<HomeList />} />
-              <Route path="/title" element={<Title />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-        <Cart />
-      </DetailProvider>
-    </CartProvider>
-    </PListProvider>
-</AuthProvider>
+      <PListProvider>
+        <CartProvider>
+          <DetailProvider>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route path="/detail/:pid" element={<DetailProduct />} />
+                  <Route path="/new" element={<NewProduct />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/mypage" element={<Mypage />} />
+                  <Route path="/allproduct" element={<AllProduct />} />
+                  <Route path="/iphoneall" element={<IphoneAll />} />
+                  <Route path="/iphonetype" element={<IphoneType />} />
+                  <Route path="/model" element={<Model />} />
+                  <Route path="/modelall" element={<ModelAll />} />
+                  <Route path="/productlist" element={<ProductList />} />
+                  <Route path="/homelist" element={<HomeList />} />
+                  <Route path="/title" element={<Title />} />
+                </Route>
+              </Routes>
+            </BrowserRouter>
+            <Cart />
+          </DetailProvider>
+        </CartProvider>
+      </PListProvider>
+    </AuthProvider>
   );
 }
 
