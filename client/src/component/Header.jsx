@@ -2,11 +2,11 @@ import React, { useState, useRef, useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBars,
-  faMagnifyingGlass,
-  faUser,
-  faCartShopping,
-  faGlobe,
+    faBars,
+    faMagnifyingGlass,
+    faUser,
+    faCartShopping,
+    faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext.js";
@@ -21,7 +21,6 @@ export default function Header() {
   const location = useLocation(); // 현재 경로 확보
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   
-
   const handleLogout = () => {
     navigate("/");
     localStorage.removeItem("token");
@@ -37,9 +36,7 @@ export default function Header() {
   };
 
   const closeDropdown = () => {
-    setIsDropdownOpen(false);
-  };
-
+      setIsDropdownOpen(false);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -51,7 +48,6 @@ export default function Header() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownRef]);
 
   useEffect(() => {
     setShowSeries(false); // Series 토글 상태 초기화
@@ -149,7 +145,6 @@ export default function Header() {
     <Series />
   </div>
 )}
-
 </>
   );
 }
