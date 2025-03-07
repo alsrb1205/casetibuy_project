@@ -19,6 +19,7 @@ export default function DetailProduct() {
     activeCase,
     setActiveCase,
     setActiveColor,
+    currentCase,
   } = useContext(DetailContext);
   const { parseCaseAndColor } = useDetail();
   const { state } = useLocation();
@@ -26,8 +27,6 @@ export default function DetailProduct() {
     if (state?.activeCase) setActiveCase(state.activeCase);
     if (state?.activeColor) setActiveColor(state.activeColor);
   }, [state, setActiveCase, setActiveColor]);
-
-  console.log(activeCase);
 
   useEffect(() => {
     axios
@@ -42,40 +41,30 @@ export default function DetailProduct() {
     return caseType === activeCase && color === activeColor;
   });
 
+  const filteredImagesFirst = filteredImages[0];
   const addCartItem = () => {
+    // if (isLoggedIn) {
+    //장바구니 추가 항목 : { pid, size, qty }
     const cartItem = {
+      name: detail.name,
       pid: detail.pid,
       kinds: detail.kinds,
       color: activeColor,
-      case: activeCase,
-      image: detail.image[0],
+      image: filteredImagesFirst,
+      price: currentCase.price,
+      cname: currentCase.cname,
       qty: 1,
     };
+    // cartItem에 있는 pid, size를 cartList(로그인 성공시 준비)의 item과 비교해서 있으면 qty+1 없으면 새로 추가
+    // some --> boolean, find --> item요소
+    // const formData = { cartList: [cartItem] };
 
-    console.log("장바구니에 추가된 상품:", cartItem); // 확인용
-    addToCart(cartItem); // ✅ 장바구니에 추가
+    addToCart(cartItem);
+    // return formData;
+    // } else {
+    //   window.confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?") && navigate('/login');
+    // }
   };
-
-  // const addCartItem = () => {
-  //   // if (isLoggedIn) {
-  //   //장바구니 추가 항목 : { pid, size, qty }
-  //   const cartItem = {
-  //     pid: detail.pid,
-  //     kinds: detail.kinds,
-  //     color: activeColor,
-  //     case: activeCase,
-  //     qty: 1,
-  //   };
-  //   // cartItem에 있는 pid, size를 cartList(로그인 성공시 준비)의 item과 비교해서 있으면 qty+1 없으면 새로 추가
-  //   // some --> boolean, find --> item요소
-  //   const formData = { cartList: [cartItem] };
-  //   console.log(formData);
-
-  //   return formData;
-  //   // } else {
-  //   //   window.confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?") && navigate('/login');
-  //   // }
-  // };
 
   return (
     <div className="flex flex-col items-center">

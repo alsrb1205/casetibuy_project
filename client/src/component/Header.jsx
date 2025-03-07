@@ -56,19 +56,16 @@ export default function Header() {
   }, [dropdownRef]);
 
   return (
-    <div className="relative z-30 w-full bg-transparent mt-35">
+    <div className="relative z-30 w-full text-white bg-transparent mt-35">
       <div className="relative flex items-center justify-between px-32 h-66">
         <div className="flex gap-20">
           {/* 메뉴 */}
           <button type="button">
-            <FontAwesomeIcon className="w-24 h-24 text-white" icon={faBars} />
+            <FontAwesomeIcon className="w-24 h-24" icon={faBars} />
           </button>
           {/* 검색 */}
           <button type="button">
-            <FontAwesomeIcon
-              className="w-24 h-24 text-white"
-              icon={faMagnifyingGlass}
-            />
+            <FontAwesomeIcon className="w-24 h-24" icon={faMagnifyingGlass} />
           </button>
         </div>
         {/* 로고 */}
@@ -88,10 +85,10 @@ export default function Header() {
                 ? { onMouseOver: toggleDropdown }
                 : { onClick: toggleDropdown })}
             >
-              <FontAwesomeIcon className="w-24 h-24 text-white" icon={faUser} />
+              <FontAwesomeIcon className="w-24 h-24" icon={faUser} />
             </button>
             {isDropdownOpen && (
-              <ul className="absolute top-[100%] right-0 bg-white border-none rounded-15 mt-2 w-120 text-black shadow-2xl">
+              <ul className="absolute top-[100%] right-0 border-none rounded-15 mt-2 w-120 text-black shadow-2xl">
                 {isLoggedIn ? (
                   <>
                     <li>
@@ -134,12 +131,17 @@ export default function Header() {
             <FontAwesomeIcon className="w-24 h-24 text-white" icon={faGlobe} />
           </button>
           {/* 장바구니 */}
-          <button type="button" onClick={toggleCart} className="relative">
-            <FontAwesomeIcon
-              className="w-24 h-24 text-white"
-              icon={faCartShopping}
-            />
-          </button>
+          <div className="flex gap-5">
+            <button type="button" onClick={toggleCart} className="relative">
+              <FontAwesomeIcon
+                className="w-24 h-24 text-white"
+                icon={faCartShopping}
+              />
+            </button>
+            <div className="w-20 h-20 pt-2 text-center text-white bg-black rounded-full">
+              {cartCount}
+            </div>
+          </div>
         </div>
       </div>
     </div>

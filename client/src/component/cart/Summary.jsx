@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function Summary() {
+export default function Summary({ totalPrice }) {
   return (
-    <div className={`flex flex-col gap-10 my-16 text-14 bg-yellow`}>
+    <div className={`flex flex-col gap-10 my-16 text-14`}>
       <div className={`flex justify-between`}>
         <p>소계</p>
-        <p>{`￦307,000`}</p>
+        <p>￦{totalPrice.toLocaleString()}</p>
       </div>
       <div className={`flex justify-between`}>
         <p>배송비</p>
@@ -21,7 +21,7 @@ export default function Summary() {
       <div className={`my-16 border border-graynav`}></div>
       <div className={`flex justify-between font-bold text-20`}>
         <p>총</p>
-        <p>{`￦307,000`}</p>
+        <p>￦{totalPrice.toLocaleString()}</p>
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
-import { useCart } from "../context/CartContext.js";
+import React, { useEffect, useContext } from "react";
 import CartItem from "./cart/CartItem.jsx";
 import CartFooter from "./cart/CartFooter.jsx";
 import Summary from "./cart/Summary.jsx";
 import CartHeader from "./cart/CartHeader.jsx";
+import { useCart } from "../context/CartContext.js";
+import { DetailContext } from "../context/DetailContext.js";
 
 export default function Cart() {
+  const { currentCase } = useContext(DetailContext);
   const {
     cartItems,
     isCartOpen,
@@ -13,11 +15,9 @@ export default function Cart() {
     cartCount,
     increaseQty,
     decreaseQty,
+    removeFromCart,
+    totalPrice,
   } = useCart();
-
-  useEffect(() => {
-    console.log("📦 현재 장바구니 상품:", cartItems);
-  }, [cartItems]); // cartItems 변경될 때마다 로그 확인
 
   const paymentMethods = [
     {
@@ -106,23 +106,18 @@ export default function Cart() {
                 모든 주문 <span className="text-red-600">일반 배송 무료!</span>
               </p>
 
-              {/* 장바구니 삭제 */}
-              <div className="flex items-center justify-end">
-                <button className="p-8 rounded-full bg-graynav text-12 bg-yellow">
-                  제거하기
-                </button>
-              </div>
-
               {/* 담은 상품 정보 */}
               <CartItem
                 cartCount={cartCount}
                 cartItems={cartItems}
                 increaseQty={increaseQty}
                 decreaseQty={decreaseQty}
+                currentCase={currentCase}
+                removeFromCart={removeFromCart}
               />
 
               {/* summary */}
-              <Summary />
+              <Summary totalPrice={totalPrice} />
             </>
           )}
         </div>
@@ -160,7 +155,7 @@ export default function Cart() {
         </div>
 
         {/* 장바구니 footer */}
-        <CartFooter />
+        <CartFooter totalPrice={totalPrice} cartCount={cartCount} />
       </div>
     </>
   );

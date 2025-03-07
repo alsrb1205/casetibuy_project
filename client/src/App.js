@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"; 
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./pages/Layout.jsx";
 import "./style/common.css";
 import "./style/style.css";
@@ -8,8 +8,6 @@ import DetailProduct from "./pages/DetailProduct.jsx";
 import Login from "./pages/Login.jsx";
 import Cart from "./component/Cart.jsx";
 import Home from "./pages/Home.jsx";
-import { DetailProvider } from "./context/DetailContext.js";
-import { CartProvider } from "./context/CartContext";
 import IphoneType from "./pages/product/IphoneType.jsx";
 import IphoneAll from "./pages/product/IphoneAll.jsx";
 import AllProduct from "./pages/product/AllProduct.jsx";
@@ -24,16 +22,12 @@ import TestList from "./component/TestList.jsx";
 import Mypage from "./pages/Mypage.jsx";
 import Settings from "./pages/Settings.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
+import { DetailProvider } from "./context/DetailContext.js";
+import { CartProvider } from "./context/CartContext";
 import { PListProvider } from "./context/PListContext.js";
 import { AuthContext, AuthProvider } from "./context/AuthContext.js";
 
-import { useEffect } from "react";
-
 function App() {
-  // useEffect(() => {
-  //   localStorage.setItem("cartItems", JSON.stringify(cartList));
-  // }, [cartList]);
-
   return (
     <AuthProvider>
       <PListProvider>
@@ -48,7 +42,7 @@ function App() {
                   <Route
                     path="/login"
                     element={
-                      <PublicRoute> 
+                      <PublicRoute>
                         <Login />
                       </PublicRoute>
                     }
@@ -93,6 +87,5 @@ function PublicRoute({ children }) {
   const { isLoggedIn } = React.useContext(AuthContext);
   return !isLoggedIn ? children : <Navigate to="/" />; // 로그인 상태면 메인 페이지로
 }
-
 
 export default App;
