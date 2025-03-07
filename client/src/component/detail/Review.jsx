@@ -1,11 +1,8 @@
 import React from 'react';
-import Bars from './Bars';
 import ReviewBars from './ReviewBars';
 import ReviewForm from './ReviewForm';
-import { useToggle } from '../../hooks/useToggle';
 
 export default function Review() {
-    const {toggleDropdown,closeDropdown} = useToggle();
     return (
         <div className='mt-90 max-w-[1140px] text-center'>
             <div className=''>

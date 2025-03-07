@@ -31,13 +31,13 @@ export default function Header() {
     if (!isLoggedIn) {
       navigate("/login");
     } else {
-      setIsDropdownOpen(true);
+      closeDropdown();
     }
   };
-
   const closeDropdown = () => {
       setIsDropdownOpen(false);
   }
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -82,8 +82,8 @@ export default function Header() {
               <button
                 type="button"
                 {...(isLoggedIn
-                  ? { onMouseOver: toggleDropdown() }
-                  : { onClick: ()=>toggleDropdown() })}
+                  ? { onMouseOver: toggleDropdown }
+                  : { onClick: toggleDropdown })}
               >
                 <FontAwesomeIcon className="w-24 h-24 text-white" icon={faUser} />
               </button>
