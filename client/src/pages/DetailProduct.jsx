@@ -8,6 +8,7 @@ import axios from "axios";
 import { useLocation, useParams } from "react-router-dom";
 import { useDetail } from "../hooks/useDetail";
 import { useCart } from "../context/CartContext";
+import Review from "../component/detail/Review";
 
 export default function DetailProduct() {
   const { addToCart } = useCart();
@@ -78,8 +79,8 @@ export default function DetailProduct() {
   // };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="detailpage max-w-[1382px] m-32 bg-detailbg">
+    <div className="flex flex-col items-center bg-detailbg">
+      <div className="detailpage max-w-[1382px] m-32 pt-66">
         <div className="flex gap-32">
           {/* 왼쪽 콘텐츠 */}
           <DetailTopLeft detail={detail} filteredImages={filteredImages} />
@@ -94,6 +95,7 @@ export default function DetailProduct() {
       </div>
       <ProductFeatures />
       <ProductInfo />
+      <Review/>
     </div>
   );
 }

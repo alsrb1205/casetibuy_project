@@ -8,7 +8,7 @@ export default function Layout() {
   const isLoginPage = location.pathname === "/login";
 
   return (
-    <div className="bg-gray">
+    <div className="relative">
       <Header />
       <Outlet />
       {!isLoginPage && <Footer />}
