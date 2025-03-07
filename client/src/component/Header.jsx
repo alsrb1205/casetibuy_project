@@ -133,6 +133,9 @@ export default function Header() {
             <button type="button" onClick={toggleCart} className="relative">
               <FontAwesomeIcon className="w-24 h-24 text-white" icon={faCartShopping} />
             </button>
+            <div className="w-20 h-20 pt-2 text-center text-white bg-black rounded-full">
+              {cartCount}
+            </div>
           </div>
         </div>
       </div>
