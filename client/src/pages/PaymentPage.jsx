@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import InputField from '../component/InputField.jsx';
 import usePayment from '../hooks/usePayment.js';
+import AddressModal from '../component/AddressModal.jsx';
 
 export default function PaymentPage() {
     const [paymentMethod, setPaymentMethod] = useState('creditCard');
+    const [shippingAddress, setShippingAddress] = useState(null);
+    const [address, setAddress] = useState('');
+    const [zipcode, setZipcode] = useState('');
+    const [detailAddress, setDetailAddress] = useState('');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [addressFieldsFocused, setAddressFieldsFocused] = useState(false);
+    const zipcodeRef = useRef(null);
+    const addressRef = useRef(null);
+
     const {
         cardNumber,
         setCardNumber,
@@ -27,6 +38,42 @@ export default function PaymentPage() {
         setPaymentMethod(method);
     };
 
+    const handleAddressSelect = (addressData) => {
+        setShippingAddress(addressData);
+        console.log("선택한 배송지 정보:", addressData);
+    };
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+        setAddressFieldsFocused(true);
+    };
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setAddressFieldsFocused(false);
+    };
+
+    const onAddressSelected = (addressData) => {
+        setAddress(addressData.address);
+        setZipcode(addressData.zipcode);
+        handleAddressSelect(addressData);
+        handleCloseModal();
+        setAddressFieldsFocused(true);
+    };
+
+    const handleDetailAddressChange = (e) => {
+        setDetailAddress(e.target.value);
+    };
+
+    useEffect(() => {
+        if (addressFieldsFocused) {
+            if (zipcodeRef.current) {
+                zipcodeRef.current.focus();
+            }
+            if (addressRef.current) {
+                addressRef.current.focus();
+            }
+        }
+    }, [addressFieldsFocused]);
 
     return (
         <div className="flex justify-center w-full min-h-screen">
@@ -39,22 +86,60 @@ export default function PaymentPage() {
 
                     <div className="mb-8">
                         <h2 className="mb-4 text-xl font-bold">배송지 정보</h2>
-                        <p className="text-gray-500">배송 받으실 주소를 선택해주세요.</p>
+                        <div className="flex items-center justify-between mb-2">
+                            <p className="text-gray-500">배송 받으실 주소를 선택해주세요.</p>
+                            <button
+                                onClick={handleOpenModal}
+                                className="px-4 py-2 ml-2 text-white rounded-md bg-blue focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+                                주소 검색
+                            </button>
+                        </div>
+
+                        <div>
+                            <InputField
+                                id="zipcode"
+                                type="text"
+                                label="우편번호"
+                                value={zipcode}
+                                className="w-full mb-2"
+                                readOnly
+                            />
+                            <InputField
+                                id="address"
+                                type="text"
+                                label="주소"
+                                value={address}
+                                className="w-full mb-2"
+                                readOnly
+                            />
+                            <InputField
+                                id="detailAddress"
+                                type="text"
+                                label="상세주소 (동/호수, 층수)"
+                                value={detailAddress}
+                                setValue={setDetailAddress}
+                                className="w-full mb-2"
+                            />
+
+                            <AddressModal
+                                isOpen={isModalOpen}
+                                onClose={handleCloseModal}
+                                onAddressSelected={onAddressSelected}
+                            />
+                        </div>
                     </div>
 
                     <div>
                         <h2 className="mb-6 text-xl font-bold">결제 정보</h2>
 
                         <div className="mb-8">
-                            <div className={`mb-4 p-4 border ${paymentMethod === 'creditCard' ? 'border-blue-500' : 'border-gray-300'}`}>
-                                <label className="flex items-center gap-2">
-                                    <input
-                                        type="radio"
-                                        value="creditCard"
-                                        checked={paymentMethod === 'creditCard'}
-                                        onChange={() => handlePaymentMethodChange('creditCard')}
-                                        className="w-6 h-6 text-gray-500 border-gray-400 form-radio focus:ring-gray-500"
-                                    />
+                            <div
+                                className={`mb-4 p-4 border rounded-lg cursor-pointer ${paymentMethod === 'creditCard' ? 'border-blue-500 bg-blue-100' : 'border-gray-300'}`}
+                                onClick={() => handlePaymentMethodChange('creditCard')}
+                            >
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <span className={`w-8 h-8 rounded-full border ${paymentMethod === 'creditCard' ? 'bg-black' : 'bg-white'}`}></span>
                                     <span className="text-base font-medium text-gray-700">Credit Card</span>
                                 </label>
 
@@ -103,15 +188,12 @@ export default function PaymentPage() {
                                 )}
                             </div>
 
-                            <div className={`mb-4 p-4 border ${paymentMethod === 'kakaoPay' ? 'border-blue-500' : 'border-gray-300'}`}>
-                                <label className="flex items-center gap-2">
-                                    <input
-                                        type="radio"
-                                        value="kakaoPay"
-                                        checked={paymentMethod === 'kakaoPay'}
-                                        onChange={() => handlePaymentMethodChange('kakaoPay')}
-                                        className="w-6 h-6 text-gray-500 border-gray-400 form-radio focus:ring-gray-500"
-                                    />
+                            <div
+                                className={`mb-4 p-4 border rounded-lg cursor-pointer ${paymentMethod === 'kakaoPay' ? 'border-blue-500 bg-blue-100' : 'border-gray-300'}`}
+                                onClick={() => handlePaymentMethodChange('kakaoPay')}
+                            >
+                                <label className="flex items-center gap-2 cursor-pointer">
+                                    <span className={`w-8 h-8 rounded-full border ${paymentMethod === 'kakaoPay' ? 'bg-black' : 'bg-white'}`}></span>
                                     <span className="text-base font-medium text-gray-700">카카오페이</span>
                                 </label>
                             </div>

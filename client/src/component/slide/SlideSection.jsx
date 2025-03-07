@@ -18,8 +18,11 @@ export default function SlideSection({ slides }) {
           title={title[key] || key}
           pagination
           navigation
-          slidesData={value}
-        />
+          slidesData={value.map(item => ({
+            ...item,
+            link: `/detail/${item.pid}`,
+            state: { activeCase: item.activeCase, activeColor: item.activeColor },
+          }))}        />
       ))}
     </div>
   );
