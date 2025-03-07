@@ -65,7 +65,7 @@ export default function Login() {
   }, [usernameFocused, passwordFocused, setLoginError]); // usernameFocused, passwordFocused, setLoginError 에 의존
 
   return (
-    <div className="flex items-center justify-center w-full h-[calc(100vh-66px)] overflow-hidden relative">
+    <div className="flex items-center justify-center w-full h-[calc(100vh-66px)] overflow-hidden relative mt-66">
       <video
         className={`fixed top-0 left-0 w-full h-full object-cover duration-500 z-10 ${fade ? "opacity-0" : "opacity-100"}`}
         src={videos[currentVideoIndex]}
