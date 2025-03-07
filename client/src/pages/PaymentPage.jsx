@@ -76,7 +76,7 @@ export default function PaymentPage() {
     }, [addressFieldsFocused]);
 
     return (
-        <div className="flex justify-center w-full min-h-screen">
+        <div className="flex justify-center w-full min-h-screen mt-66">
             <div className="flex min-h-screen font-sans w-1000">
                 <div className="w-[60%] p-8 border-r overflow-y-auto">
                     <div className="mb-8">
