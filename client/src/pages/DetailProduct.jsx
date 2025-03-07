@@ -48,11 +48,12 @@ export default function DetailProduct() {
       kinds: detail.kinds,
       color: activeColor,
       case: activeCase,
+      image: detail.image[0],
       qty: 1,
     };
 
-    console.log("추가된 장바구니 아이템:", cartItem);
-    addToCart(cartItem);
+    console.log("장바구니에 추가된 상품:", cartItem); // 확인용
+    addToCart(cartItem); // ✅ 장바구니에 추가
   };
 
   // const addCartItem = () => {

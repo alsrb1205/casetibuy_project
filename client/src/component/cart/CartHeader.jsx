@@ -2,8 +2,8 @@ import React from "react";
 import { CiCircleChevLeft } from "react-icons/ci";
 import { useCart } from "../../context/CartContext.js";
 
-export default function CartHeader({ cartCount }) {
-  const { toggleCart } = useCart();
+export default function CartHeader() {
+  const { toggleCart, cartCount } = useCart();
 
   return (
     <div className="flex items-center p-10 mt-10 rounded-15 bg-gray2 bg-yellow">

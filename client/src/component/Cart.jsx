@@ -15,6 +15,10 @@ export default function Cart() {
     decreaseQty,
   } = useCart();
 
+  useEffect(() => {
+    console.log("📦 현재 장바구니 상품:", cartItems);
+  }, [cartItems]); // cartItems 변경될 때마다 로그 확인
+
   const paymentMethods = [
     {
       src: "https://cdn-stamplib.casetify.com/cms/image/1f5b660ecb6d0e53919809f6df67c8e8.svg",
@@ -69,28 +73,59 @@ export default function Cart() {
         {/* 장바구니 헤더 */}
         <CartHeader cartCount={cartCount} />
 
-        <p className="mt-8 text-center text-12">
-          모든 주문 <span className="text-red-600">일반 배송 무료!</span>
-        </p>
+        <div className="mt-8">
+          {cartItems.length === 0 ? (
+            <div className="mt-8">
+              <p className="text-center text-gray-500 text-12">
+                <span className="text-red-600">₩50,000</span> 더 구매하고 무료로
+                배송 받으세요!
+              </p>
+              <div className="flex flex-col items-center justify-center py-16 my-12">
+                <p className="mb-12 text-center text-gray-500">
+                  장바구니가 비었습니다!
+                </p>
+                <div className="flex flex-col gap-12">
+                  <div className="px-20 py-10 text-center rounded-full bg-gray">
+                    폰케이스 구매하기
+                  </div>
+                  <div className="px-20 py-10 text-center rounded-full bg-gray">
+                    이어버드 케이스 구매하기
+                  </div>
+                  <div className="px-20 py-10 text-center rounded-full bg-gray">
+                    워치 밴드 구매하기
+                  </div>
+                  <div className="px-20 py-10 text-center rounded-full bg-gray">
+                    기타 악세서리 구매하기
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <>
+              <p className="mt-8 text-center text-12">
+                모든 주문 <span className="text-red-600">일반 배송 무료!</span>
+              </p>
 
-        {/* 장바구니 삭제 */}
-        <div className="flex items-center justify-end">
-          <button className="p-8 rounded-full bg-graynav text-12 bg-yellow">
-            제거하기
-          </button>
+              {/* 장바구니 삭제 */}
+              <div className="flex items-center justify-end">
+                <button className="p-8 rounded-full bg-graynav text-12 bg-yellow">
+                  제거하기
+                </button>
+              </div>
+
+              {/* 담은 상품 정보 */}
+              <CartItem
+                cartCount={cartCount}
+                cartItems={cartItems}
+                increaseQty={increaseQty}
+                decreaseQty={decreaseQty}
+              />
+
+              {/* summary */}
+              <Summary />
+            </>
+          )}
         </div>
-
-        {/* 담은 상품 정보 */}
-        <CartItem
-          cartCount={cartCount}
-          cartItems={cartItems}
-          increaseQty={increaseQty}
-          decreaseQty={decreaseQty}
-        />
-
-        {/* summary */}
-        <Summary />
-
         {/* payment */}
         <div className="flex flex-col items-center gap-16 py-16 text-12">
           <p>Free Shipping Worldwide</p>
@@ -126,24 +161,6 @@ export default function Cart() {
 
         {/* 장바구니 footer */}
         <CartFooter />
-
-        {/* <div className="p-4">
-        {cartItems.length === 0 ? (
-          <p className="text-center text-gray-500">장바구니가 비어있습니다.</p>
-        ) : (
-          <ul>
-            {cartItems.map((item) => (
-              <li
-                key={item.id}
-                className="flex items-center justify-between p-2 border-b"
-              >
-                <span>{item.name}</span>
-                <button onClick={() => removeFromCart(item.id)}>❌</button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div> */}
       </div>
     </>
   );
