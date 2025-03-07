@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDetail } from "../../hooks/useDetail.jsx";
+import { useDetail } from "../../hooks/useDetail.js";
 import SlideSection from "./SlideSection.jsx";
 
 export default function SlideDataFetcher() {
-  const { getProductList } = useDetail();
+  const { getProductList, parseCaseAndColor } = useDetail();
   const [slides, setSlides] = useState({
     recommended: [],
     hot: [],
@@ -26,6 +26,9 @@ export default function SlideDataFetcher() {
 
       // 각 상품의 출력할 데이터, 스타일 정리
       data.forEach((item) => {
+        // parseCaseAndColor 호출하여 케이스와 색상 정보 추출
+        const { caseType, color } = parseCaseAndColor(item.repImage);
+
         const productData = {
           image: `http://localhost:9000/${item.repImage}`,
           pid: item.pid,
@@ -35,6 +38,8 @@ export default function SlideDataFetcher() {
           bgColor: bgColors[item.pid % bgColors.length],
           cpadding: "p-24",
           cround: "rounded-20",
+          activeCase: caseType,
+          activeColor: color,
         };
 
         if (item.isRec === 1) categorizedData.recommended.push(productData);
@@ -46,7 +51,7 @@ export default function SlideDataFetcher() {
     };
 
     fetchData();
-  }, []);
+  }, [getProductList, parseCaseAndColor]);
 
   return <SlideSection slides={slides} />;
 }

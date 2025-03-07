@@ -5,7 +5,7 @@ import SlideDataFetcher from "../component/slide/SlideDataFetcher.jsx";
 
 export default function Home() {
   return (
-    <div className="-mt-66">
+    <div className="">
       {/* visual slider */}
       <Slide className="visual" pagination={true} navigation={false} />
 

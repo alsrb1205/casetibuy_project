@@ -5,7 +5,7 @@ import Footer from "../component/Footer.jsx";
 
 export default function Layout() {
   return (
-    <div className="bg-gray">
+    <div className="relative">
       <Header />
       <Outlet />
       <Footer />

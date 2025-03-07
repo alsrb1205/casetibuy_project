@@ -1,17 +1,17 @@
 import React, { useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Title from "./Title.jsx";
 import { PListContext } from "../../context/PListContext.js";
 
 export default function Series() {
   const { productList, setProductList,selectList, setSelectList} = useContext(PListContext);
-
+  const navigate = useNavigate();
    const handleList = (kinds) => {
     setSelectList(kinds);
   };
 
   return (
-    <div className="px-32 mt-32">
+    <div className="px-32 pt-98">
       {/* series title */}
       <div className="mb-8">
         <p className="font-bold text-26">시리즈</p>
@@ -22,7 +22,11 @@ export default function Series() {
       <div className="">
         <div className="flex gap-16 p-2">
           <div
-           onClick={()=>handleList('all')}
+           onClick={()=>{
+            handleList('all')
+            navigate('/homelist')
+          
+          }}
             className='w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green'
           >
             <img
@@ -36,7 +40,10 @@ export default function Series() {
           </div>
           <div
             className='w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green'
-            onClick={() => handleList('iphone')}
+            onClick={() => {handleList('iphone')
+            navigate('/homelist')
+
+            }}
           >
             <img
               src="/images/series/iphone.png"
@@ -49,7 +56,10 @@ export default function Series() {
           </div>
           <div
             className='w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green'
-            onClick={() => handleList('airpod4')}
+            onClick={() => {handleList('airpod4')
+            navigate('/homelist')
+
+            }}
           >
             <img
               src="/images/series/airpod4.png"
@@ -62,7 +72,10 @@ export default function Series() {
           </div>
           <div
             className='w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green'
-            onClick={() => handleList('airpodmax')}
+            onClick={() => {handleList('airpodmax')
+            navigate('/homelist')
+
+            }}
           >
             <img
               src="/images/series/airpodmax.png"
