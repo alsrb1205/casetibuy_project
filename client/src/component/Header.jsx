@@ -37,7 +37,7 @@ export default function Header() {
 
   const closeDropdown = () => {
       setIsDropdownOpen(false);
-
+  }
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -48,6 +48,7 @@ export default function Header() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
+  })
 
   useEffect(() => {
     setShowSeries(false); // Series 토글 상태 초기화
