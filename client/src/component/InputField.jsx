@@ -13,8 +13,10 @@ export default function InputField({
     maxLength,
     inputType,
     onBlur,
+    readOnly,
+    visualFocus,
 }) {
-    const [isFocused, setIsFocused] = useState(false); 
+    const [isFocused, setIsFocused] = useState(false);
     const handleChange = (e) => {
         let newValue = e.target.value;
         if (inputType === "number-only") {
@@ -46,8 +48,8 @@ export default function InputField({
         <div className="relative w-full mb-25">
             <p
                 className={`absolute top-50 left-4 text-11 transition-opacity duration-300
-                    ${isSuccessMessage ? 'text-green' : 'text-red-500'}
-                    ${error ? "opacity-100" : "opacity-0"}`}
+                            ${isSuccessMessage ? 'text-green' : 'text-red-500'}
+                            ${error ? "opacity-100" : "opacity-0"}`}
             >
                 {error}
             </p>
@@ -58,36 +60,46 @@ export default function InputField({
                 placeholder=" "
                 required
                 spellCheck="false"
+                autoComplete="off"
                 value={value}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
                 ref={refElement}
-                onFocus={() => setIsFocused(true)} 
+                onFocus={() => !readOnly && setIsFocused(true)}
                 onBlur={() => {
-                    setIsFocused(false); 
-                    validate();
+                    if (!readOnly) setIsFocused(false);
+                    if (typeof validate === 'function') { // ✅ validate prop 이 함수인지 확인하는 조건 추가
+                        validate(); // ✅ validate prop 이 함수인 경우에만 호출
+                    }
                     if (onBlur) {
                         onBlur();
                     }
                 }}
                 className={`peer block w-full pt-20 pb-5 px-8 text-black rounded-12 text-[16px] focus:outline-none
-                    bg-white border-1
-                    focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                    ${error && !isFocused ? (isSuccessMessage ? "border-green" : "border-red-500") : "border-[#86868b]"}
-                    ${isFocused && error ? "border-blue-500" : ""} /* ✨ 로컬 isFocused 사용 ✨ */
-                    ${shake ? "animate-shake" : ""}`}
+                            bg-white border-1
+                            focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+                            ${error && !isFocused ? (isSuccessMessage ? "border-green" : "border-red-500") : "border-[#86868b]"}
+                            ${(isFocused || visualFocus) && error ? "border-blue-500" : ""}
+                            ${shake ? "animate-shake" : ""}`}
                 maxLength={maxLength}
+                readOnly={readOnly}
+                style={validate && !error && value ? { borderColor: '#059669',  borderWidth: '1px' } : {}}
             />
 
-            <label
+<label
                 htmlFor={id}
-                className="text-[#8c8c8c] absolute left-8 transition-all duration-200
-                    peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-14
-                    peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-11 peer-focus:text-blue-500
-                    peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-11 peer-valid:text-blue-500"
-            >
-                {label}
-            </label>
-        </div>
+                className={`text-[#8c8c8c] absolute left-8 transition-all duration-200
+                            peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-14
+                            peer-focus:top-5 peer-focus:!translate-y-0 peer-focus:text-11 peer-focus:text-blue-500
+                            peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-11 peer-valid:text-blue-500
+                            ${visualFocus ? 'top-5 !translate-y-0 text-11 text-blue-500' : ''}
+                            ${validate && !error && value ? 'text-green-500' : ''}
+                            ${value ? '!top-5 !translate-y-0 text-11' : ''} /* ✅ value prop 기반 조건 사용 (수정) */
+                        `}
+                >
+                    {label}
+                </label>                
+                
+                </div>
     );
 }
