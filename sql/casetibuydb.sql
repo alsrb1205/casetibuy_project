@@ -70,16 +70,35 @@ SELECT
 -- 컬럼리스트 : cid(pk), id(casetibuy_member: fk(참조키)), pid(casetibuy_product:fk(참조키)), size, qty, cdate(장바구니 등록날짜)
 
 create table casetibuy_cart(
-	cid		int				primary key		auto_increment,
-    qty 	int				not null,
-    cdate	datetime,
-    id		varchar(30)		not null,
-    pid		int 			not null,
+	cid			 int				primary key		auto_increment, 
+    cname		 varchar(30)		not null, 
+    qty 		 int				not null,
+    color		 varchar(30)		not null,
+    case_type    varchar(30)		not null,
+    price 		 int				not null,
+    id			 varchar(30)		not null,
+    pid			 int 				not null,
+    cdate		 datetime,
     constraint fk_id_casetibuy_member_id foreign key(id)
 					references casetibuy_member(id),
 	constraint fk_pid_casetibuy_product_pid foreign key(pid)
-					references casetibuy_product(pid)
+					references casetibuy_product(pid)               
 );
+
+-- casetibuy_cart, casetibuy_member. casetibuy_product 조인
+select cc.cid,
+       cc.qty,
+       cc.color,
+       cc.case_type as caseType,
+       cc.price,
+       cm.id,
+       cp.pid,
+       cp.pname,
+       concat('http://localhost:9000/', cp.upload_file->>'$[0]') as image
+		 from casetibuy_cart cc,
+			  casetibuy_member cm,
+              casetibuy_product cp
+		 where cc.id = cm.id and cc.pid = cp.pid;
 
 select * from casetibuy_product;
 select * from casetibuy_member;
