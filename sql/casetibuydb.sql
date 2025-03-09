@@ -98,7 +98,7 @@ select cc.cid,
 		 from casetibuy_cart cc,
 			  casetibuy_member cm,
               casetibuy_product cp
-		 where sc.id = sm.id and sc.pid = sp.pid;
+		 where cc.id = cm.id and cc.pid = cp.pid;
 
 select * from casetibuy_product;
 select * from casetibuy_member;
