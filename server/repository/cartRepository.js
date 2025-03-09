@@ -1,64 +1,6 @@
 import { db } from "./db.js";
 
 /**
- * 장바구니 아이템 삭제
- */
-export const deleteItem = async ({ cid }) => {
-  const sql = `
-        delete from shoppy_cart where cid = ?
-    `;
-  const [result] = await db.execute(sql, [cid]);
-  return { result_rows: result.affectedRows };
-};
-
-/**
- * 장바구니 상품 수량 업데이트
- */
-export const updateQty = async ({ cid, type }) => {
-  const str = type === "increase" ? "qty=qty+1" : "qty=qty-1";
-  const sql = `
-        update shoppy_cart 
-            set ${str}
-            where cid = ?
-    `;
-
-  const [result] = await db.execute(sql, [cid]);
-  return { result_rows: result.affectedRows };
-};
-
-/**
- * 장바구니 전체 카운트 조회
- */
-// view 만들어서 줄임 (오라클은 뷰를 생성하기 위해 권한을 생성해야 한다)
-export const getCount = async ({ id }) => {
-  const sql = `
-        select count(*) as count from shoppy_cart
-            where id= ?
-    `;
-  // const sql = `
-  //           select  sc.cid,
-  //                   sc.size,
-  //                   sc.qty,
-  //                   sm.id,
-  //                   sm.zipcode,
-  //                   sm.address,
-  //                   sp.pid,
-  //                   sp.pname,
-  //                   sp.price,
-  //                   sp.description as info,
-  //                   concat('http://localhost:9000/', sp.upload_file->>'$[0]') as image
-  //               from shoppy_cart sc,
-  //                   shoppy_member sm,
-  //                   shoppy_product sp
-  //               where sc.id = sm.id
-  //                       and sc.pid = sp.pid
-  //                       and sm.id = ?
-  //   `;
-  const [result] = await db.execute(sql, [id]); // [[{count: 2}] [count필드정보]]
-  return result[0];
-};
-
-/**
  * 장바구니 전체 조회
  */
 export const getItems = async ({ id }) => {
@@ -76,19 +18,33 @@ export const getItems = async ({ id }) => {
  */
 export const addCart = async ({ id, cartList }) => {
   let result_rows = 0;
+  const userId = id || "test_user"; // 로그인 없이 기본 ID 설정
 
   const result = await Promise.all(
     cartList.map(async (item) => {
-      const values = [item.size, item.qty, id, item.pid];
+      const values = [
+        item.qty ?? 1,
+        id,
+        item.pid ?? null,
+        item.cname ?? "이름 없음",
+        item.color ?? "색상 없음",
+        item.caseType ?? "기본 케이스",
+        item.price ?? 0,
+      ];
+
+      console.log("[addCart] DB 저장 값:", values);
+
       const sql = `
-                    insert into shoppy_cart(size, qty, id, pid, cdate)
-                        values(?, ?, ?, ?, now())
+insert into casetibuy_cart(qty, id, pid, cname, color, case_type, price, cdate)
+                        values(?, ?, ?, ?, ?, ?, ?, now());
                 `;
       const [result] = await db.execute(sql, values); //Promise형태로 실행
       return result.affectedRows;
     })
   );
   result_rows = result.reduce((acc, cur) => acc + cur, 0);
+
+  console.log(result_rows);
 
   return { result_rows: result_rows };
 };

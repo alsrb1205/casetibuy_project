@@ -1,23 +1,20 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import CartItem from "./cart/CartItem.jsx";
 import CartFooter from "./cart/CartFooter.jsx";
 import Summary from "./cart/Summary.jsx";
 import CartHeader from "./cart/CartHeader.jsx";
-import { useCart } from "../context/CartContext.js";
+import { CartContext } from "../context/CartContext.js";
+import { useCart } from "../hooks/useCart.js";
 import { DetailContext } from "../context/DetailContext.js";
+import { AuthContext } from "../context/AuthContext.js";
 
 export default function Cart() {
   const { currentCase } = useContext(DetailContext);
-  const {
-    cartItems,
-    isCartOpen,
-    toggleCart,
-    cartCount,
-    increaseQty,
-    decreaseQty,
-    removeFromCart,
-    totalPrice,
-  } = useCart();
+  const hasCheckedLogin = useRef(false);
+  const { isLoggedIn } = useContext(AuthContext);
+  const { cartList, setCartList } = useContext(CartContext);
+  const { isCartOpen, toggleCart, cartCount, totalPrice, getCartList } =
+    useCart();
 
   const paymentMethods = [
     {
@@ -55,6 +52,21 @@ export default function Cart() {
     };
   }, [isCartOpen]);
 
+  // useEffect(() => {
+  //   if (hasCheckedLogin.current) return; // true:로그인 상태 -->  블록 return
+  //   hasCheckedLogin.current = true;
+
+  //   if (isLoggedIn) {
+  //     getCartList();
+  //   } else {
+  //     const select = window.confirm(
+  //       "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
+  //     );
+  //     select ? (window.location.href = "/login") : (window.location.href = "/");
+  //     setCartList([]);
+  //   }
+  // }, []);
+
   return (
     <>
       {/* 반투명 검은 배경 */}
@@ -74,7 +86,7 @@ export default function Cart() {
         <CartHeader cartCount={cartCount} />
 
         <div className="mt-8">
-          {cartItems.length === 0 ? (
+          {/* {cartItems.length === 0 ? (
             <div className="mt-8">
               <p className="text-center text-gray-500 text-12">
                 <span className="text-red-600">₩50,000</span> 더 구매하고 무료로
@@ -100,26 +112,27 @@ export default function Cart() {
                 </div>
               </div>
             </div>
-          ) : (
-            <>
-              <p className="mt-8 text-center text-12">
-                모든 주문 <span className="text-red-600">일반 배송 무료!</span>
-              </p>
+          ) : ( */}
+          <>
+            <p className="mt-8 text-center text-12">
+              모든 주문 <span className="text-red-600">일반 배송 무료!</span>
+            </p>
 
-              {/* 담은 상품 정보 */}
-              <CartItem
-                cartCount={cartCount}
-                cartItems={cartItems}
-                increaseQty={increaseQty}
-                decreaseQty={decreaseQty}
-                currentCase={currentCase}
-                removeFromCart={removeFromCart}
-              />
+            {/* 담은 상품 정보 */}
+            <CartItem
+              cartList={cartList}
+              cartCount={cartCount}
+              // cartItems={cartItems}
+              // increaseQty={increaseQty}
+              // decreaseQty={decreaseQty}
+              currentCase={currentCase}
+              // removeFromCart={removeFromCart}
+            />
 
-              {/* summary */}
-              <Summary totalPrice={totalPrice} />
-            </>
-          )}
+            {/* summary */}
+            <Summary totalPrice={totalPrice} />
+          </>
+          {/* )} */}
         </div>
         {/* payment */}
         <div className="flex flex-col items-center gap-16 py-16 text-12">

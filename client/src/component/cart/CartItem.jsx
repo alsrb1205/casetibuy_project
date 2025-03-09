@@ -2,19 +2,15 @@ import React from "react";
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi";
 
-export default function CartItem({
-  cartItems,
-  increaseQty,
-  decreaseQty,
-  removeFromCart,
-}) {
+export default function CartItem({ removeFromCart, cartList }) {
   return (
     <div className="mt-8">
-      {cartItems.length === 0 ? (
+      {/* {cartItems.length === 0 ? (
         <p className="text-center text-gray-500">장바구니가 비어있습니다.</p>
-      ) : (
-        <>
-          {cartItems.map((item) => (
+      ) : ( */}
+      <>
+        {cartList &&
+          cartList.map((item) => (
             <div
               key={`${item.pid}-${item.color}-${item.case}`}
               className={`flex gap-10 -mx-16 p-16 mt-8 bg-gradient-to-b from-[hsla(0,0%,93%,0)] to-[#eee] bg-yellow`}
@@ -50,9 +46,7 @@ export default function CartItem({
                     className={`flex items-center gap-8 p-10 border rounded-full`}
                   >
                     <button
-                      onClick={() =>
-                        decreaseQty(item.pid, item.color, item.case)
-                      }
+                    // onClick={() => decreaseQty(item.pid, item.color, item.case)}
                     >
                       <HiOutlineMinus size={20} />
                     </button>
@@ -62,20 +56,18 @@ export default function CartItem({
                       className={`pt-4 text-center bg-transparent px-11 w-44 h-18`}
                     />
                     <button
-                      onClick={() =>
-                        increaseQty(item.pid, item.color, item.case)
-                      }
+                    // onClick={() => increaseQty(item.pid, item.color, item.case)}
                     >
                       <GoPlus size={20} />
                     </button>
                   </div>
-                  <div className="text-12">￦{item.price.toLocaleString()}</div>
+                  <div className="text-12">￦{item.price}</div>
                 </div>
               </div>
             </div>
           ))}
-        </>
-      )}
+      </>
+      {/* )} */}
     </div>
   );
 }

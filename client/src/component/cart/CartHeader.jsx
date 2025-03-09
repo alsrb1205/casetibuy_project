@@ -1,6 +1,6 @@
 import React from "react";
 import { CiCircleChevLeft } from "react-icons/ci";
-import { useCart } from "../../context/CartContext.js";
+import { useCart } from "../../hooks/useCart.js";
 
 export default function CartHeader() {
   const { toggleCart, cartCount } = useCart();

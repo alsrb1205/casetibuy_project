@@ -71,7 +71,7 @@ SELECT
 
 create table casetibuy_cart(
 	cid			 int				primary key		auto_increment, 
-    cname		 varchar(30)		not null, 
+    cname 		 varchar(30)		not null,
     qty 		 int				not null,
     color		 varchar(30)		not null,
     case_type    varchar(30)		not null,
@@ -82,11 +82,12 @@ create table casetibuy_cart(
     constraint fk_id_casetibuy_member_id foreign key(id)
 					references casetibuy_member(id),
 	constraint fk_pid_casetibuy_product_pid foreign key(pid)
-					references casetibuy_product(pid)               
+					references casetibuy_product(pid)
 );
 
 -- casetibuy_cart, casetibuy_member. casetibuy_product 조인
 select cc.cid,
+	   cc.cname,
        cc.qty,
        cc.color,
        cc.case_type as caseType,
