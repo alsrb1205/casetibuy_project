@@ -44,6 +44,7 @@ module.exports = {
         grayph: "#8c8c8c",
         graynav: "#eeeeee",
         grayborder: "#f0f0f0",
+        grayborder2: "#f2f2f2",
         grayhborder: "#e8e8e8",
         bg: "#f0ece1",
         detailbg: "#f6f6f6",
