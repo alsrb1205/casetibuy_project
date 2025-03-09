@@ -65,5 +65,27 @@ SELECT
                     casetibuy_product
                 WHERE
                     pid = 1;
-
                     
+-- casetibuy_cart
+-- 컬럼리스트 : cid(pk), id(casetibuy_member: fk(참조키)), pid(casetibuy_product:fk(참조키)), size, qty, cdate(장바구니 등록날짜)
+
+create table casetibuy_cart(
+	cid		int				primary key		auto_increment,
+    qty 	int				not null,
+    cdate	datetime,
+    id		varchar(30)		not null,
+    pid		int 			not null,
+    constraint fk_id_casetibuy_member_id foreign key(id)
+					references casetibuy_member(id),
+	constraint fk_pid_casetibuy_product_pid foreign key(pid)
+					references casetibuy_product(pid)
+);
+
+select * from casetibuy_product;
+select * from casetibuy_member;
+select * from casetibuy_cart;
+
+drop table casetibuy_product;
+drop table casetibuy_member;
+drop table casetibuy_cart;
+                   
