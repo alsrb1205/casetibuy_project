@@ -68,6 +68,7 @@ export default function DetailProduct() {
   };
 
   return (
+    <>
     <div className="flex flex-col items-center bg-detailbg">
       <div className="detailpage max-w-[1382px] m-32 pt-66">
         <div className="flex gap-32">
@@ -84,7 +85,8 @@ export default function DetailProduct() {
       </div>
       <ProductFeatures />
       <ProductInfo />
-      <Review/>
     </div>
+      <Review/>
+      </>
   );
 }

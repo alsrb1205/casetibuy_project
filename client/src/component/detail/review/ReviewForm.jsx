@@ -1,9 +1,10 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 // 별점 컴포넌트
 const StarRating = ({ rating, setRating }) => {
   return (
-      <div className="flex">
+      <div className="flex justify-center">
           {Array.from({ length: 5 }, (_, index) => {
               const currentRating = index + 1;
               return (
@@ -23,18 +24,37 @@ const StarRating = ({ rating, setRating }) => {
   );
 };
 
+
+
 // 리뷰 작성 폼 컴포넌트
 const ReviewForm = () => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // 여기서 rating과 comment를 백엔드에 전송하거나 로직을 처리한다.
-    console.log("리뷰 제출:", { rating, comment });
+    const sendData = {rating, comment};
+
+    axios
+    .post('http://localhost:9000/review/new', sendData)
+    .then(res => {
+      if (res.data.result_rows === 1) {
+        alert("리뷰가 등록되었습니다.");
+        // navigate('/all')
+      } else {
+        alert("리뷰 등록 실패");
+      }}).catch(err => {
+        alert("리뷰 등록 실패");
+        console.log(err)
+      });
+  
+    console.log("리뷰 제출:", sendData);
   };
 
   return (
+  <>
     <form onSubmit={handleSubmit} className="max-w-md p-4 mx-auto">
       <div className="mb-4">
         <h3 className="mb-2 text-lg font-semibold">별점을 선택하세요</h3>
@@ -51,11 +71,13 @@ const ReviewForm = () => {
       </div>
       <button
         type="submit"
-        className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+        className="px-4 py-2 rounded bg-blue hover:bg-blue-600"
       >
         리뷰 제출
       </button>
     </form>
+      <hr className="text-grayborder2 my-18"/>
+  </>
   );
 };
 

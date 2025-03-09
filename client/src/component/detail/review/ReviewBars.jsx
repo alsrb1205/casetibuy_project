@@ -1,18 +1,10 @@
 import React from 'react';
-import '../../style/bar.css';
 
 export default function ReviewBars({ distribution }) {
   // distribution 예시: { '5': '40%', '4': '30%', '3': '20%', '2': '5%', '1': '5%' }
   const defaultDistribution = { '5': '0%', '4': '0%', '3': '0%', '2': '0%', '1': '0%' };
   const reviewDistribution = distribution || defaultDistribution;
 
-  const textMapping = {
-    '5': '최고',
-    '4': '좋음',
-    '3': '보통',
-    '2': '별로',
-    '1': '최악'
-  };
 
 // distribution is now assumed to be an object with review counts per rating
 // e.g. { '5': 40, '4': 30, '3': 20, '2': 5, '1': 5 }
