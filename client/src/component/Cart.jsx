@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom"; // useNavigate 임포트
 import CartItem from "./cart/CartItem.jsx";
 import CartFooter from "./cart/CartFooter.jsx";
 import Summary from "./cart/Summary.jsx";
@@ -7,6 +8,7 @@ import { useCart } from "../context/CartContext.js";
 import { DetailContext } from "../context/DetailContext.js";
 
 export default function Cart() {
+  const navigate = useNavigate(); // useNavigate 사용
   const { currentCase } = useContext(DetailContext);
   const {
     cartItems,
@@ -54,6 +56,11 @@ export default function Cart() {
       document.body.style.overflow = "auto";
     };
   }, [isCartOpen]);
+
+  const handlePaymentClick = () => {
+    toggleCart(); // 장바구니 닫기
+    navigate("/payment"); // 결제 페이지로 이동
+  };
 
   return (
     <>
@@ -150,12 +157,22 @@ export default function Cart() {
             케이스티파이는 "10일 이내 무조건 교환 및 반품" 정책과 "6개월 제품
             보증" 정책을 제공합니다.
             <span className="text-black underline">문의하기</span>
-            또는 <span className="text-black underline">더 알아보기</span>.
+            또는 <span className="text-black underline">더 알아보기</span> .
           </p>
         </div>
 
         {/* 장바구니 footer */}
         <CartFooter totalPrice={totalPrice} cartCount={cartCount} />
+
+        {/* 결제하기 버튼 */}
+        <div className="flex justify-center py-4 mt-8">
+          <button
+            onClick={handlePaymentClick} // 결제하기 클릭 시 장바구니 닫고 /payment 페이지로 이동
+            className="w-full px-4 py-2 text-white bg-blue-600 rounded-md text-14"
+          >
+            결제하기
+          </button>
+        </div>
       </div>
     </>
   );

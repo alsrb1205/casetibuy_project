@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import { CartContext } from "./CartContext";
+import { CartContext } from "../context/CartContext.js";
 import axios from "axios";
 
 export const useCart = () => {
@@ -7,7 +7,7 @@ export const useCart = () => {
     cartItems,
     setCartItems,
     isCartOpen,
-    setIsCartOpen,
+    toggleCart, // toggleCart 추가
     setCartList,
     setCartCount,
   } = useContext(CartContext);
@@ -50,6 +50,7 @@ export const useCart = () => {
   return {
     cartItems,
     isCartOpen,
+    toggleCart, // toggleCart 추가
     setCartList,
     setCartCount,
   };

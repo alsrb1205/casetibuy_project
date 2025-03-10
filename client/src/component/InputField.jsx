@@ -15,30 +15,39 @@ export default function InputField({
     onBlur,
     readOnly,
     visualFocus,
+    onChange,
 }) {
     const [isFocused, setIsFocused] = useState(false);
+
     const handleChange = (e) => {
         let newValue = e.target.value;
-        if (inputType === "number-only") {
-            newValue = newValue.replace(/[^0-9]/g, '');
-        }
-        if (id === "expiryDate") {
-            newValue = newValue.replace(/[^0-9/]/g, '');
-            if (newValue.length === 2 && !newValue.includes('/')) {
-                newValue = newValue + '/';
-            } else if (newValue.length === 3 && newValue.includes('/')) {
-                newValue = newValue.slice(0, 2);
-            }
-        }
-        setValue(newValue);
-    };
 
-    const handleKeyDown = (e) => {
-        if (id === "expiryDate" && e.key === "Backspace") {
-            if (value.length === 3 && value.includes('/')) {
-                setValue(value.slice(0, 2));
-                e.preventDefault();
+        // 숫자 전용이면 숫자만 허용
+        if (inputType === "number-only") {
+            newValue = newValue.replace(/\D/g, '');
+        }
+
+        if (id === "cardNumber") {
+            const cleaned = newValue.replace(/\D/g, '').slice(0, 16);
+            const formatted = cleaned.match(/.{1,4}/g)?.join('-') || '';
+            setValue(formatted);
+            return;
+        }
+
+        if (id === "expiryDate") {
+            const cleaned = newValue.replace(/\D/g, '').slice(0, 4);
+            let formatted = cleaned;
+            if (cleaned.length > 2) {
+                formatted = cleaned.slice(0, 2) + '/' + cleaned.slice(2);
             }
+            setValue(formatted);
+            return;
+        }
+
+        if (onChange) {
+            onChange(e);
+        } else {
+            setValue(newValue);
         }
     };
 
@@ -47,9 +56,8 @@ export default function InputField({
     return (
         <div className="relative w-full mb-25">
             <p
-                className={`absolute top-50 left-4 text-11 transition-opacity duration-300
-                            ${isSuccessMessage ? 'text-green' : 'text-red-500'}
-                            ${error ? "opacity-100" : "opacity-0"}`}
+                className={`absolute top-50 left-4 text-11 transition-opacity duration-300 ${isSuccessMessage ? 'text-green' : 'text-red-500'
+                    } ${error ? "opacity-100" : "opacity-0"}`}
             >
                 {error}
             </p>
@@ -63,30 +71,33 @@ export default function InputField({
                 autoComplete="off"
                 value={value}
                 onChange={handleChange}
-                onKeyDown={handleKeyDown}
                 ref={refElement}
                 onFocus={() => !readOnly && setIsFocused(true)}
                 onBlur={() => {
                     if (!readOnly) setIsFocused(false);
-                    if (typeof validate === 'function') { // ✅ validate prop 이 함수인지 확인하는 조건 추가
-                        validate(); // ✅ validate prop 이 함수인 경우에만 호출
+                    if (typeof validate === 'function') {
+                        validate();
                     }
                     if (onBlur) {
                         onBlur();
                     }
                 }}
-                className={`peer block w-full pt-20 pb-5 px-8 text-black rounded-12 text-[16px] focus:outline-none
-                            bg-white border-1
+                className={`peer block w-full pt-20 pb-5 px-8 text-black rounded-12 text-[16px] focus:outline-none bg-white border-1
                             focus:ring-2 focus:ring-blue-500 focus:border-blue-500
-                            ${error && !isFocused ? (isSuccessMessage ? "border-green" : "border-red-500") : "border-[#86868b]"}
-                            ${(isFocused || visualFocus) && error ? "border-blue-500" : ""}
+                            ${error && !isFocused
+                        ? isSuccessMessage
+                            ? "border-green"
+                            : "border-red-500"
+                        : "border-black"
+                    }
+                            ${isFocused ? "focus:border-blue-500" : ""}
                             ${shake ? "animate-shake" : ""}`}
                 maxLength={maxLength}
                 readOnly={readOnly}
-                style={validate && !error && value ? { borderColor: '#059669',  borderWidth: '1px' } : {}}
+                style={validate && !error && value ? { borderColor: '#059669', borderWidth: '1px' } : {}}
             />
 
-<label
+            <label
                 htmlFor={id}
                 className={`text-[#8c8c8c] absolute left-8 transition-all duration-200
                             peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-14
@@ -94,12 +105,10 @@ export default function InputField({
                             peer-valid:top-5 peer-valid:!translate-y-0 peer-valid:text-11 peer-valid:text-blue-500
                             ${visualFocus ? 'top-5 !translate-y-0 text-11 text-blue-500' : ''}
                             ${validate && !error && value ? 'text-green-500' : ''}
-                            ${value ? '!top-5 !translate-y-0 text-11' : ''} /* ✅ value prop 기반 조건 사용 (수정) */
-                        `}
-                >
-                    {label}
-                </label>                
-                
-                </div>
+                            ${value ? '!top-5 !translate-y-0 text-11' : ''}`}
+            >
+                {label}
+            </label>
+        </div>
     );
 }

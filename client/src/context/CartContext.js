@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
 // Context 생성
-const CartContext = createContext();
+export const CartContext = createContext();
 
 // Context Provider 컴포넌트
 export const CartProvider = ({ children }) => {
