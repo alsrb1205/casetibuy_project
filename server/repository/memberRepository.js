@@ -53,8 +53,23 @@ export const checkLogin = async ({ id, pwd }) => {
   const sql = `
         select count(*) as result_rows from casetibuy_member where id = ? and pwd = ?
     `;
-  const values = [id, pwd];
-  const [result] = await db.execute(sql, values);
+    const values=[id,pwd];
+    const [result] = await db.execute(sql, values);
+    
+    return result[0];
+}
 
-  return result[0];
-};
+/**
+ * 회원 정보 조회
+ * @param {string} userId - JWT 토큰에서 추출한 사용자 아이디
+ * @returns {Promise<Object>} 회원 정보 객체
+ */
+export const getUserInfo = async (userId) => {
+    const sql = `
+        SELECT name, birthdate, id, pwd, email, phone, mdate
+        FROM casetibuy_member
+        WHERE id = ?
+    `;
+    const [result] = await db.execute(sql, [userId]);
+    return result[0];
+}

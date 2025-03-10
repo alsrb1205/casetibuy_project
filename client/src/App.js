@@ -67,8 +67,8 @@ function App() {
                   <Route path="/title" element={<Title />} />
                 </Route>
               </Routes>
+              <Cart />
             </BrowserRouter>
-            <Cart />
           </DetailProvider>
         </CartProvider>
       </PListProvider>

@@ -16,10 +16,13 @@ export default function Mypage() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate("/");
     localStorage.removeItem("token");
     setIsLoggedIn(false);
     alert("로그아웃 되었습니다.");
+
+    setTimeout(() => {
+      navigate("/");
+    }, 0);
   };
 
   return (

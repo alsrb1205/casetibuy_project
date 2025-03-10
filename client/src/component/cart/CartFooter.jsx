@@ -1,13 +1,27 @@
+// CartFooter 컴포넌트 수정
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../hooks/useCart.js";
 
-export default function CartFooter({}) {
+export default function CartFooter({ totalPrice, cartCount }) {
+  const navigate = useNavigate();
+  const { toggleCart } = useCart();
+
+  const handlePayment = () => {
+    toggleCart(); // 장바구니 닫기
+    navigate("/payment"); // 결제 페이지로 이동
+  };
+
   return (
     <div className="sticky bottom-0 left-0 w-full px-16 pt-4 bg-white pb-18">
       <div className="flex justify-between text-14">
-        <span>{} Items</span>
-        <span>총 ￦{}</span>
+        <span>{cartCount} Items</span>
+        <span>총 ￦{totalPrice.toLocaleString()}</span>
       </div>
-      <button className="w-full px-20 mt-4 text-white bg-black rounded-full py-15">
+      <button
+        onClick={handlePayment}
+        className="w-full px-20 mt-4 text-white bg-black rounded-full py-15"
+      >
         결제하기
       </button>
     </div>

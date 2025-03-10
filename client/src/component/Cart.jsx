@@ -72,6 +72,11 @@ export default function Cart() {
       setCartList([]);
     }
   }, []);
+  
+    const handlePaymentClick = () => {
+    toggleCart(); // 장바구니 닫기
+    navigate("/payment"); // 결제 페이지로 이동
+  };
 
   return (
     <>
@@ -172,6 +177,17 @@ export default function Cart() {
 
         {/* 장바구니 footer */}
         <CartFooter />
+        
+                {/* 결제하기 버튼 */}
+        <div className="flex justify-center py-4 mt-8">
+          <button
+            onClick={handlePaymentClick} // 결제하기 클릭 시 장바구니 닫고 /payment 페이지로 이동
+            className="w-full px-4 py-2 text-white bg-blue-600 rounded-md text-14"
+          >
+            결제하기
+          </button>
+        
+        
       </div>
     </>
   );
