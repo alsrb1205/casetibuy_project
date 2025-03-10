@@ -14,7 +14,8 @@ import { AuthContext } from "../context/AuthContext.js";
 
 export default function DetailProduct() {
   const navigate = useNavigate();
-  const { saveToCartList, updateCartList, getCartList } = useCart();
+  const { saveToCartList, updateCartList, getCartList, fetchUserInfo, userId } =
+    useCart();
 
   const { isLoggedIn } = useContext(AuthContext);
   const { cartList } = useContext(CartContext);
@@ -54,7 +55,8 @@ export default function DetailProduct() {
   });
 
   const filteredImagesFirst = filteredImages[0];
-  // const addCartItem = () => {
+
+  // const addCartItem = async () => {
   //   if (isLoggedIn) {
   //     //장바구니 추가 항목 : { pid, size, qty }
   //     const cartItem = {
@@ -65,13 +67,14 @@ export default function DetailProduct() {
   //       price: currentCase.price,
   //       cname: currentCase.cname,
   //       qty: 1,
+  //       caseType: activeCase ?? "기본 케이스",
   //     };
   //     const findItem =
   //       cartList &&
   //       cartList.find(
   //         (item) =>
   //           item.pid === detail.pid &&
-  //           // item.case === detail.case &&
+  //           item.caseType === activeCase &&
   //           item.color === activeColor
   //       );
 
@@ -81,12 +84,11 @@ export default function DetailProduct() {
   //       result && alert("장바구니에 추가되었습니다.");
   //     } else {
   //       //새로 추가
-  //       const id = localStorage.getItem("user_id");
+  //       const id = "test_user";
   //       const formData = { id: id, cartList: [cartItem] };
-  //       const result = saveToCartList(formData);
+  //       const result = await saveToCartList(formData);
   //       result && alert("장바구니에 추가되었습니다.");
   //     }
-  //     // addToCart(cartItem);
   //   } else {
   //     const select = window.confirm(
   //       "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
@@ -98,22 +100,32 @@ export default function DetailProduct() {
   // };
 
   const addCartItem = async () => {
-    const cartItem = {
-      name: detail.name,
-      pid: detail.pid,
-      color: activeColor,
-      image: filteredImagesFirst,
-      price: currentCase.price,
-      cname: currentCase.cname,
-      qty: 1,
-      caseType: currentCase.caseType ?? "기본 케이스",
-    };
+    if (isLoggedIn) {
+      const cartItem = {
+        name: detail.name,
+        pid: detail.pid,
+        color: activeColor,
+        image: filteredImagesFirst,
+        price: currentCase.price,
+        cname: currentCase.cname,
+        qty: 1,
+        caseType: activeCase ?? "기본 케이스",
+      };
 
-    const formData = { id: testUserId, cartList: [cartItem] };
-    console.log("[addCartItem] 서버로 보낼 데이터:", formData);
+      const id = userId; // member에서 받아온 id
+      const formData = { id: id, cartList: [cartItem] };
+      console.log("[addCartItem] 서버로 보낼 데이터:", formData);
 
-    const result = await saveToCartList([cartItem]); // 로그인 없이 고정 ID 사용
-    if (result) alert("장바구니에 추가되었습니다.");
+      const result = await saveToCartList([cartItem]); // 로그인 없이 고정 ID 사용
+      if (result) alert("장바구니에 추가되었습니다.");
+    } else {
+      const select = window.confirm(
+        "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
+      );
+      if (select) {
+        navigate("/login");
+      }
+    }
   };
 
   return (

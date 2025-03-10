@@ -41,3 +41,12 @@ export const addCart = async (req, res) => {
   res.json(result);
   res.end();
 };
+
+/**
+ * 유저 아이디 조회
+ */
+export const getId = async (req, res) => {
+  console.log("유저 아이디:", req.body);
+  const result = await repository.getId(req.body);
+  res.json(result);
+};

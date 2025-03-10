@@ -2,7 +2,7 @@ import React from "react";
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi";
 
-export default function CartItem({ removeFromCart, cartList }) {
+export default function CartItem({ cartList, updateCartList, deleteCartItem }) {
   return (
     <div className="mt-8">
       {/* {cartItems.length === 0 ? (
@@ -10,28 +10,28 @@ export default function CartItem({ removeFromCart, cartList }) {
       ) : ( */}
       <>
         {cartList &&
-          cartList.map((item) => (
+          cartList.map((item, i) => (
             <div
-              key={`${item.pid}-${item.color}-${item.case}`}
+              key={`${item.pid}-${item.color}-${i}`}
               className={`flex gap-10 -mx-16 p-16 mt-8 bg-gradient-to-b from-[hsla(0,0%,93%,0)] to-[#eee] bg-yellow`}
             >
               <div className="w-[140px]">
                 <img
-                  src={`http://localhost:9000/${item.image}`}
+                  src={item.image}
                   alt={item.kinds}
                   className={`w-full rounded-10`}
                 />
               </div>
               <div className={`flex flex-col items-start gap-12 w-full`}>
                 <div className="flex items-center justify-between w-full">
-                  <p className={`font-light text-14`}>{item.name}</p>
+                  <p className={`font-light text-14`}>{item.pname}</p>
                   {/* 장바구니 삭제 */}
                   <div className="flex items-center justify-end">
                     <button
-                      onClick={() =>
-                        removeFromCart(item.pid, item.color, item.case)
-                      }
-                      className="p-8 rounded-full bg-graynav text-12 bg-yellow"
+                      onClick={() => {
+                        deleteCartItem(item.cid);
+                      }}
+                      className="p-8 rounded-full cart-remove bg-graynav text-12"
                     >
                       제거하기
                     </button>
@@ -46,7 +46,9 @@ export default function CartItem({ removeFromCart, cartList }) {
                     className={`flex items-center gap-8 p-10 border rounded-full`}
                   >
                     <button
-                    // onClick={() => decreaseQty(item.pid, item.color, item.case)}
+                      onClick={() => {
+                        item.qty > 1 && updateCartList(item.cid, "decrease");
+                      }}
                     >
                       <HiOutlineMinus size={20} />
                     </button>
@@ -56,12 +58,14 @@ export default function CartItem({ removeFromCart, cartList }) {
                       className={`pt-4 text-center bg-transparent px-11 w-44 h-18`}
                     />
                     <button
-                    // onClick={() => increaseQty(item.pid, item.color, item.case)}
+                      onClick={() => {
+                        updateCartList(item.cid, "increase");
+                      }}
                     >
                       <GoPlus size={20} />
                     </button>
                   </div>
-                  <div className="text-12">￦{item.price}</div>
+                  <div className="text-12">￦{item.price.toLocaleString()}</div>
                 </div>
               </div>
             </div>

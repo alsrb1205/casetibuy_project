@@ -9,11 +9,13 @@ import {
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../hooks/useCart.js";
+import { CartContext } from "../context/CartContext.js";
 import { AuthContext } from "../context/AuthContext.js";
 import Series from "./product/Series"; // 추가: Series 컴포넌트 import
 
 export default function Header() {
-  const { toggleCart, cartCount } = useCart();
+  const { cartCount } = useContext(CartContext);
+  const { toggleCart, getCount, setCount } = useCart();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showSeries, setShowSeries] = useState(false); // Series 토글 상태 추가
   const dropdownRef = useRef(null);

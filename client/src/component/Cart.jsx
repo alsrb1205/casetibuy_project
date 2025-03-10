@@ -10,11 +10,17 @@ import { AuthContext } from "../context/AuthContext.js";
 
 export default function Cart() {
   const { currentCase } = useContext(DetailContext);
-  const hasCheckedLogin = useRef(false);
+  const { cartList } = useContext(CartContext);
   const { isLoggedIn } = useContext(AuthContext);
-  const { cartList, setCartList } = useContext(CartContext);
-  const { isCartOpen, toggleCart, cartCount, totalPrice, getCartList } =
-    useCart();
+  const {
+    isCartOpen,
+    toggleCart,
+    getCartList,
+    updateCartList,
+    deleteCartItem,
+  } = useCart();
+  const { setCartList, cartCount, totalPrice } = useContext(CartContext);
+  const hasCheckedLogin = useRef(false);
 
   const paymentMethods = [
     {
@@ -52,20 +58,20 @@ export default function Cart() {
     };
   }, [isCartOpen]);
 
-  // useEffect(() => {
-  //   if (hasCheckedLogin.current) return; // true:로그인 상태 -->  블록 return
-  //   hasCheckedLogin.current = true;
+  useEffect(() => {
+    if (hasCheckedLogin.current) return; // true:로그인 상태 -->  블록 return
+    hasCheckedLogin.current = true;
 
-  //   if (isLoggedIn) {
-  //     getCartList();
-  //   } else {
-  //     const select = window.confirm(
-  //       "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
-  //     );
-  //     select ? (window.location.href = "/login") : (window.location.href = "/");
-  //     setCartList([]);
-  //   }
-  // }, []);
+    if (isLoggedIn) {
+      getCartList();
+    } else {
+      const select = window.confirm(
+        "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
+      );
+      select ? (window.location.href = "/login") : (window.location.href = "/");
+      setCartList([]);
+    }
+  }, []);
 
   return (
     <>
@@ -121,16 +127,13 @@ export default function Cart() {
             {/* 담은 상품 정보 */}
             <CartItem
               cartList={cartList}
-              cartCount={cartCount}
-              // cartItems={cartItems}
-              // increaseQty={increaseQty}
-              // decreaseQty={decreaseQty}
               currentCase={currentCase}
-              // removeFromCart={removeFromCart}
+              updateCartList={updateCartList}
+              deleteCartItem={deleteCartItem}
             />
 
             {/* summary */}
-            <Summary totalPrice={totalPrice} />
+            <Summary />
           </>
           {/* )} */}
         </div>
@@ -168,7 +171,7 @@ export default function Cart() {
         </div>
 
         {/* 장바구니 footer */}
-        <CartFooter totalPrice={totalPrice} cartCount={cartCount} />
+        <CartFooter />
       </div>
     </>
   );
