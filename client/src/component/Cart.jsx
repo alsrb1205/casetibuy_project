@@ -1,25 +1,26 @@
-import React, { useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate 임포트
+import React, { useEffect, useContext, useRef } from "react";
 import CartItem from "./cart/CartItem.jsx";
 import CartFooter from "./cart/CartFooter.jsx";
 import Summary from "./cart/Summary.jsx";
 import CartHeader from "./cart/CartHeader.jsx";
-import { useCart } from "../context/CartContext.js";
+import { CartContext } from "../context/CartContext.js";
+import { useCart } from "../hooks/useCart.js";
 import { DetailContext } from "../context/DetailContext.js";
+import { AuthContext } from "../context/AuthContext.js";
 
 export default function Cart() {
-  const navigate = useNavigate(); // useNavigate 사용
   const { currentCase } = useContext(DetailContext);
+  const { cartList } = useContext(CartContext);
+  const { isLoggedIn } = useContext(AuthContext);
   const {
-    cartItems,
     isCartOpen,
     toggleCart,
-    cartCount,
-    increaseQty,
-    decreaseQty,
-    removeFromCart,
-    totalPrice,
+    getCartList,
+    updateCartList,
+    deleteCartItem,
   } = useCart();
+  const { setCartList, cartCount, totalPrice } = useContext(CartContext);
+  const hasCheckedLogin = useRef(false);
 
   const paymentMethods = [
     {
@@ -57,7 +58,22 @@ export default function Cart() {
     };
   }, [isCartOpen]);
 
-  const handlePaymentClick = () => {
+  useEffect(() => {
+    if (hasCheckedLogin.current) return; // true:로그인 상태 -->  블록 return
+    hasCheckedLogin.current = true;
+
+    if (isLoggedIn) {
+      getCartList();
+    } else {
+      const select = window.confirm(
+        "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
+      );
+      select ? (window.location.href = "/login") : (window.location.href = "/");
+      setCartList([]);
+    }
+  }, []);
+  
+    const handlePaymentClick = () => {
     toggleCart(); // 장바구니 닫기
     navigate("/payment"); // 결제 페이지로 이동
   };
@@ -81,7 +97,7 @@ export default function Cart() {
         <CartHeader cartCount={cartCount} />
 
         <div className="mt-8">
-          {cartItems.length === 0 ? (
+          {/* {cartItems.length === 0 ? (
             <div className="mt-8">
               <p className="text-center text-gray-500 text-12">
                 <span className="text-red-600">₩50,000</span> 더 구매하고 무료로
@@ -107,26 +123,24 @@ export default function Cart() {
                 </div>
               </div>
             </div>
-          ) : (
-            <>
-              <p className="mt-8 text-center text-12">
-                모든 주문 <span className="text-red-600">일반 배송 무료!</span>
-              </p>
+          ) : ( */}
+          <>
+            <p className="mt-8 text-center text-12">
+              모든 주문 <span className="text-red-600">일반 배송 무료!</span>
+            </p>
 
-              {/* 담은 상품 정보 */}
-              <CartItem
-                cartCount={cartCount}
-                cartItems={cartItems}
-                increaseQty={increaseQty}
-                decreaseQty={decreaseQty}
-                currentCase={currentCase}
-                removeFromCart={removeFromCart}
-              />
+            {/* 담은 상품 정보 */}
+            <CartItem
+              cartList={cartList}
+              currentCase={currentCase}
+              updateCartList={updateCartList}
+              deleteCartItem={deleteCartItem}
+            />
 
-              {/* summary */}
-              <Summary totalPrice={totalPrice} />
-            </>
-          )}
+            {/* summary */}
+            <Summary />
+          </>
+          {/* )} */}
         </div>
         {/* payment */}
         <div className="flex flex-col items-center gap-16 py-16 text-12">
@@ -157,14 +171,14 @@ export default function Cart() {
             케이스티파이는 "10일 이내 무조건 교환 및 반품" 정책과 "6개월 제품
             보증" 정책을 제공합니다.
             <span className="text-black underline">문의하기</span>
-            또는 <span className="text-black underline">더 알아보기</span> .
+            또는 <span className="text-black underline">더 알아보기</span>.
           </p>
         </div>
 
         {/* 장바구니 footer */}
-        <CartFooter totalPrice={totalPrice} cartCount={cartCount} />
-
-        {/* 결제하기 버튼 */}
+        <CartFooter />
+        
+                {/* 결제하기 버튼 */}
         <div className="flex justify-center py-4 mt-8">
           <button
             onClick={handlePaymentClick} // 결제하기 클릭 시 장바구니 닫고 /payment 페이지로 이동
@@ -172,7 +186,8 @@ export default function Cart() {
           >
             결제하기
           </button>
-        </div>
+        
+        
       </div>
     </>
   );

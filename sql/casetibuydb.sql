@@ -71,10 +71,10 @@ SELECT
 
 create table casetibuy_cart(
 	cid			 int				primary key		auto_increment, 
-    cname		 varchar(30)		not null, 
+    cname 		 varchar(30)		not null,
     qty 		 int				not null,
     color		 varchar(30)		not null,
-    case_type    varchar(30)		not null,
+    caseType     varchar(30)		not null,
     price 		 int				not null,
     id			 varchar(30)		not null,
     pid			 int 				not null,
@@ -82,14 +82,15 @@ create table casetibuy_cart(
     constraint fk_id_casetibuy_member_id foreign key(id)
 					references casetibuy_member(id),
 	constraint fk_pid_casetibuy_product_pid foreign key(pid)
-					references casetibuy_product(pid)               
+					references casetibuy_product(pid)
 );
 
 -- casetibuy_cart, casetibuy_member. casetibuy_product 조인
 select cc.cid,
+	   cc.cname,
        cc.qty,
        cc.color,
-       cc.case_type as caseType,
+       cc.caseType,
        cc.price,
        cm.id,
        cp.pid,
@@ -99,12 +100,34 @@ select cc.cid,
 			  casetibuy_member cm,
               casetibuy_product cp
 		 where cc.id = cm.id and cc.pid = cp.pid;
+         
+-- 장바구니 전체 조회 뷰 생성
+create view view_cart_list
+as
+select cc.cid,
+	   cc.cname,
+       cc.qty,
+       cc.color,
+       cc.caseType,
+       cc.price,
+       cm.id,
+       cp.pid,
+       cp.pname,
+       concat('http://localhost:9000/', cp.upload_file->>'$[0]') as image
+		 from casetibuy_cart cc,
+			  casetibuy_member cm,
+              casetibuy_product cp
+		 where cc.id = cm.id and cc.pid = cp.pid;
+         
+         
+
 
 select * from casetibuy_product;
 select * from casetibuy_member;
 select * from casetibuy_cart;
+select * from view_cart_list;
 
 drop table casetibuy_product;
 drop table casetibuy_member;
 drop table casetibuy_cart;
-                   
+DROP VIEW IF EXISTS view_cart_list;                   
