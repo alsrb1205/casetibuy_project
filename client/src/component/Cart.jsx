@@ -7,11 +7,13 @@ import { CartContext } from "../context/CartContext.js";
 import { useCart } from "../hooks/useCart.js";
 import { DetailContext } from "../context/DetailContext.js";
 import { AuthContext } from "../context/AuthContext.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   const { currentCase } = useContext(DetailContext);
   const { cartList } = useContext(CartContext);
   const { isLoggedIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   const {
     isCartOpen,
     toggleCart,
@@ -62,15 +64,15 @@ export default function Cart() {
     if (hasCheckedLogin.current) return; // true:로그인 상태 -->  블록 return
     hasCheckedLogin.current = true;
 
-    if (isLoggedIn) {
-      getCartList();
-    } else {
-      const select = window.confirm(
-        "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
-      );
-      select ? (window.location.href = "/login") : (window.location.href = "/");
-      setCartList([]);
-    }
+    // if (isLoggedIn) {
+    //   getCartList();
+    // } else {
+    //   const select = window.confirm(
+    //     "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
+    //   );
+    //   select ? (window.location.href = "/login") : (window.location.href = "/");
+    //   setCartList([]);
+    // }
   }, []);
   
     const handlePaymentClick = () => {
@@ -187,7 +189,7 @@ export default function Cart() {
             결제하기
           </button>
         
-        
+        </div>
       </div>
     </>
   );

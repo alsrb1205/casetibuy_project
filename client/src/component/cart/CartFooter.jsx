@@ -16,7 +16,7 @@ export default function CartFooter({ totalPrice, cartCount }) {
     <div className="sticky bottom-0 left-0 w-full px-16 pt-4 bg-white pb-18">
       <div className="flex justify-between text-14">
         <span>{cartCount} Items</span>
-        <span>총 ￦{totalPrice.toLocaleString()}</span>
+        <span>총 ￦{totalPrice}</span>
       </div>
       <button
         onClick={handlePayment}
