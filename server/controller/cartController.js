@@ -6,7 +6,6 @@ import * as repository from "../repository/cartRepository.js";
 export const deleteItem = async (req, res) => {
   const result = await repository.deleteItem(req.body);
   res.json(result);
-  res.end();
 };
 
 /**
@@ -15,7 +14,6 @@ export const deleteItem = async (req, res) => {
 export const updateQty = async (req, res) => {
   const result = await repository.updateQty(req.body);
   res.json(result);
-  res.end();
 };
 
 /**
@@ -24,7 +22,6 @@ export const updateQty = async (req, res) => {
 export const getCount = async (req, res) => {
   const result = await repository.getCount(req.body);
   res.json(result);
-  res.end();
 };
 
 /**
@@ -33,15 +30,23 @@ export const getCount = async (req, res) => {
 export const getItems = async (req, res) => {
   const result = await repository.getItems(req.body);
   res.json(result);
-  res.end();
 };
 
 /**
  * 장바구니 추가
  */
 export const addCart = async (req, res) => {
-  // console.log('req.body-->', req.body);
+  console.log("장바구니 추가 요청:", req.body);
   const result = await repository.addCart(req.body);
   res.json(result);
   res.end();
+};
+
+/**
+ * 유저 아이디 조회
+ */
+export const getId = async (req, res) => {
+  console.log("유저 아이디:", req.body);
+  const result = await repository.getId(req.body);
+  res.json(result);
 };

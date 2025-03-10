@@ -1,4 +1,4 @@
-import { db } from './db.js'
+import { db } from "./db.js";
 
 /**
  * 회원가입
@@ -16,45 +16,45 @@ import { db } from './db.js'
  * 회원가입
  */
 export const registerMember = async (formData) => {
-    const sql = `
+  const sql = `
         insert into casetibuy_member(name, birthdate, id, pwd, email, phone, mdate)
                                                         values(?,?,?,?,?,?, now())
     `;
-    const values = [
-        formData.name,      // name 컬럼    
-        formData.birthdate, // birthdate 컬럼
-        formData.id,        // id 컬럼   
-        formData.pwd,       // pwd 컬럼
-        formData.email,     // email 컬럼
-        formData.phone,     // phone 컬럼 
-    ];
-    const [result, fields] = await db.execute(sql, values);
+  const values = [
+    formData.name, // name 컬럼
+    formData.birthdate, // birthdate 컬럼
+    formData.id, // id 컬럼
+    formData.pwd, // pwd 컬럼
+    formData.email, // email 컬럼
+    formData.phone, // phone 컬럼
+  ];
+  const [result, fields] = await db.execute(sql, values);
 
-    return { "result_rows": result.affectedRows };
-}
+  return { result_rows: result.affectedRows };
+};
 
 /**
  * 아이디 중복체크
  */
 
 export const getIdCheck = async ({ id }) => {
-    const sql = `
+  const sql = `
         select count(id) as result from casetibuy_member where id = ?
     `;
-    const [result, fields] = await db.execute(sql, [id]);
+  const [result, fields] = await db.execute(sql, [id]);
 
-    return result[0];
-}
+  return result[0];
+};
 
 /**
  * 로그인
  */
 export const checkLogin = async ({ id, pwd }) => {
-    const sql = `
+  const sql = `
         select count(*) as result_rows from casetibuy_member where id = ? and pwd = ?
     `;
-    const values=[id,pwd];
-    const [result] = await db.execute(sql, values);
-    
-    return result[0];
-}
+  const values = [id, pwd];
+  const [result] = await db.execute(sql, values);
+
+  return result[0];
+};
