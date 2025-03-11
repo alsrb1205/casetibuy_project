@@ -1,4 +1,3 @@
-
 import { createContext, useState } from "react";
 
 // Context 생성
@@ -10,7 +9,7 @@ export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [userId, setUserId] = useState(null);
+  // <<< 지혜 / 삭제 :  userId, setUserId >>>
 
   return (
     <CartContext.Provider
@@ -25,8 +24,6 @@ export const CartProvider = ({ children }) => {
         setTotalPrice,
         cartList,
         setCartList,
-        userId,
-        setUserId,
       }}
     >
       {children}

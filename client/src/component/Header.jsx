@@ -14,7 +14,7 @@ import { AuthContext } from "../context/AuthContext.js";
 import Series from "./product/Series"; // 추가: Series 컴포넌트 import
 
 export default function Header() {
-  const { cartCount } = useContext(CartContext);
+  const { cartCount, setCartList } = useContext(CartContext);
   const { toggleCart, getCount, setCount } = useCart();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showSeries, setShowSeries] = useState(false); // Series 토글 상태 추가
@@ -23,10 +23,18 @@ export default function Header() {
   const location = useLocation(); // 현재 경로 확보
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
 
+  // <<< 지혜 / 추가 >>>
+  //로그인 상태에 따라 cartCount 값 변경
+  useEffect(() => {
+    isLoggedIn ? getCount() : setCount(0);
+  }, [isLoggedIn]);
+
   const handleLogout = () => {
     navigate("/");
     localStorage.removeItem("token");
+    localStorage.removeItem("user_id"); // <<< 지혜 / 추가 >>>
     setIsLoggedIn(false);
+    setCartList([]); // <<< 지혜 / 추가 >>>
     alert("로그아웃 되었습니다.");
   };
   const toggleDropdown = () => {

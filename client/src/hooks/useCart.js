@@ -12,35 +12,16 @@ export const useCart = () => {
     setCartCount,
     totalPrice,
     setTotalPrice,
-    userId,
-    setUserId,
   } = useContext(CartContext);
+  // <<< 지혜 / 삭제 :  userId, setUserId >>>
 
-  const id = "test_user"; // 로그인 없이 테스트용 사용자 ID
-  // const id = userId;
-
-  /**
-   * member에서 회원 아이디 가져오기
-   */
-  const fetchUserInfo = async () => {
-    try {
-      const response = await axios.post("http://localhost:9000/cart/info", {
-        withCredentials: true,
-      });
-      console.log("response.data.id", response.data.id);
-
-      setUserId(response.data.id); // 서버에서 `{ id: "user123" }` 이런 형태로 응답된다고 가정
-      return response.data.id;
-    } catch (error) {
-      console.error("유저 정보 불러오기 실패", error);
-      return "test_user"; // 실패하면 테스트 ID 사용
-    }
-  };
+  // <<< 지혜 / 삭제 :  fetchUserInfo() >>>
 
   /**
    * 장바구니 전체 리스트 조회
    */
   const getCartList = async () => {
+    const id = localStorage.getItem("user_id"); // <<< 지혜 / 추가 >>>
     const result = await axios.post("http://localhost:9000/cart/items", {
       id: id,
     });
@@ -52,37 +33,16 @@ export const useCart = () => {
   /**
    * 장바구니 새로운 아이템 저장
    */
-  const saveToCartList = async (cartItems) => {
-    try {
-      const formData = { id: id, cartList: cartItems }; // 로그인 없이 고정 ID 사용
-      console.log("[saveToCartList] 서버로 보낼 데이터:", formData);
-
-      const result = await axios.post(
-        "http://localhost:9000/cart/add",
-        formData
-      );
-      console.log("[saveToCartList] 서버 응답:", result.data);
-
-      if (result.data.result_rows) {
-        getCartList(); // 장바구니 갱신
-        return result.data.result_rows;
-      }
-    } catch (error) {
-      console.error(
-        "[saveToCartList] Axios 요청 실패:",
-        error.response ? error.response.data : error
-      );
+  // <<< 지혜 / 변경 : 기존 로직에서 변경했음 >>>
+  const saveToCartList = async (formData) => {
+    const result = await axios.post("http://localhost:9000/cart/add", formData);
+    if (result.data.result_rows) {
+      setCartCount(cartCount + 1);
+      console.log("서버로 보낼 데이터:", formData);
+      getCartList();
     }
+    return result.data.result_rows;
   };
-  // const saveToCartList = async (formData) => {
-  //   const result = await axios.post("http://localhost:9000/cart/add", formData);
-  //   if (result.data.result_rows) {
-  //     // setCartCount(cartCount + 1);
-  //     console.log("서버로 보낼 데이터:", formData);
-  //     getCartList();
-  //   }
-  //   return result.data.result_rows;
-  // };
 
   /**
    * 장바구니 아이템 수량 업데이트
@@ -100,6 +60,7 @@ export const useCart = () => {
    * 장바구니 전체 카운트 조회
    */
   const getCount = async () => {
+    const id = localStorage.getItem("user_id"); // <<< 지혜 / 추가 >>>
     const result = await axios.post("http://localhost:9000/cart/count", {
       id: id,
     });
@@ -145,7 +106,6 @@ export const useCart = () => {
     updateCartList,
     deleteCartItem,
     calculateTotalPrice,
-    fetchUserInfo,
-    userId,
+    // <<< 지혜 / 삭제 :  userId, fetchUserInfo >>>
   };
 };

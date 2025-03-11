@@ -36,6 +36,7 @@ export function useLogin() {
         console.log("로그인 성공:", data);
         if (data.token) {
           localStorage.setItem("token", data.token);
+          localStorage.setItem("user_id", data.id); /// <<< 지혜 / 추가 : 로컬스토리지 아이디 저장>>>
 
           alert("로그인 성공!");
           window.location.href = "/";

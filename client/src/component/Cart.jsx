@@ -10,20 +10,6 @@ import { AuthContext } from "../context/AuthContext.js";
 import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-  const { currentCase } = useContext(DetailContext);
-  const { cartList } = useContext(CartContext);
-  const { isLoggedIn } = useContext(AuthContext);
-  const navigate = useNavigate();
-  const {
-    isCartOpen,
-    toggleCart,
-    getCartList,
-    updateCartList,
-    deleteCartItem,
-  } = useCart();
-  const { setCartList, cartCount, totalPrice } = useContext(CartContext);
-  const hasCheckedLogin = useRef(false);
-
   const paymentMethods = [
     {
       src: "https://cdn-stamplib.casetify.com/cms/image/1f5b660ecb6d0e53919809f6df67c8e8.svg",
@@ -47,6 +33,21 @@ export default function Cart() {
     },
   ];
 
+  const { currentCase } = useContext(DetailContext);
+  // const { cartList } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { isLoggedIn } = useContext(AuthContext);
+  const { cartList, setCartList, cartCount, totalPrice } =
+    useContext(CartContext); //<< 지혜 / 추가 >>
+  const {
+    isCartOpen,
+    toggleCart,
+    getCartList,
+    updateCartList,
+    deleteCartItem,
+  } = useCart();
+  const hasCheckedLogin = useRef(false);
+
   // 장바구니 열릴 때 body 스크롤 막기
   useEffect(() => {
     if (isCartOpen) {
@@ -64,18 +65,17 @@ export default function Cart() {
     if (hasCheckedLogin.current) return; // true:로그인 상태 -->  블록 return
     hasCheckedLogin.current = true;
 
-    // if (isLoggedIn) {
-    //   getCartList();
-    // } else {
-    //   const select = window.confirm(
-    //     "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
-    //   );
-    //   select ? (window.location.href = "/login") : (window.location.href = "/");
-    //   setCartList([]);
-    // }
-  }, []);
-  
-    const handlePaymentClick = () => {
+    if (isLoggedIn) {
+      getCartList();
+    } else {
+      const select = window.confirm(
+        "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
+      );
+      select ? navigate("/login") : navigate("/");
+    }
+  }, [isLoggedIn]); //<< 지혜 / 추가 >>
+
+  const handlePaymentClick = () => {
     toggleCart(); // 장바구니 닫기
     navigate("/payment"); // 결제 페이지로 이동
   };
@@ -92,14 +92,14 @@ export default function Cart() {
       <div
         className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-lg transform ${
           isCartOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50 px-16 
+        } transition-transform duration-300 ease-in-out z-50 
           max-h-screen overflow-y-auto`}
       >
         {/* 장바구니 헤더 */}
         <CartHeader cartCount={cartCount} />
 
-        <div className="mt-8">
-          {/* {cartItems.length === 0 ? (
+        <div className="px-16 mt-8 ">
+          {cartList.length === 0 ? (
             <div className="mt-8">
               <p className="text-center text-gray-500 text-12">
                 <span className="text-red-600">₩50,000</span> 더 구매하고 무료로
@@ -125,27 +125,27 @@ export default function Cart() {
                 </div>
               </div>
             </div>
-          ) : ( */}
-          <>
-            <p className="mt-8 text-center text-12">
-              모든 주문 <span className="text-red-600">일반 배송 무료!</span>
-            </p>
+          ) : (
+            <>
+              <p className="mt-8 text-center text-12 ">
+                모든 주문 <span className="text-red-600">일반 배송 무료!</span>
+              </p>
 
-            {/* 담은 상품 정보 */}
-            <CartItem
-              cartList={cartList}
-              currentCase={currentCase}
-              updateCartList={updateCartList}
-              deleteCartItem={deleteCartItem}
-            />
+              {/* 담은 상품 정보 */}
+              <CartItem
+                cartList={cartList}
+                currentCase={currentCase}
+                updateCartList={updateCartList}
+                deleteCartItem={deleteCartItem}
+              />
 
-            {/* summary */}
-            <Summary />
-          </>
-          {/* )} */}
+              {/* summary */}
+              <Summary totalPrice={totalPrice} />
+            </>
+          )}
         </div>
         {/* payment */}
-        <div className="flex flex-col items-center gap-16 py-16 text-12">
+        <div className="flex flex-col items-center gap-16 px-16 py-16 text-12 ">
           <p>Free Shipping Worldwide</p>
           <ul className="flex gap-20">
             {paymentMethods.map((method, index) => (
@@ -161,7 +161,7 @@ export default function Cart() {
         </div>
 
         {/* guaranteed */}
-        <div className="flex flex-col items-center gap-20 px-32 py-32">
+        <div className="flex flex-col items-center gap-20 px-16 py-32 ">
           <div>
             <img
               src="https://cdn-stamplib.casetify.com/cms/image/9523e96c55b15e2e8ff379057cfe837e.png"
@@ -178,9 +178,9 @@ export default function Cart() {
         </div>
 
         {/* 장바구니 footer */}
-        <CartFooter />
-        
-                {/* 결제하기 버튼 */}
+        <CartFooter totalPrice={totalPrice} cartCount={cartCount} />
+
+        {/* 결제하기 버튼 */}
         <div className="flex justify-center py-4 mt-8">
           <button
             onClick={handlePaymentClick} // 결제하기 클릭 시 장바구니 닫고 /payment 페이지로 이동
@@ -188,7 +188,6 @@ export default function Cart() {
           >
             결제하기
           </button>
-        
         </div>
       </div>
     </>

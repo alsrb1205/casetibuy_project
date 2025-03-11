@@ -6,7 +6,7 @@ export default function CartHeader({ cartCount }) {
   const { toggleCart } = useCart();
 
   return (
-    <div className="flex items-center p-10 mt-10 rounded-25 bg-gray2">
+    <div className="flex items-center p-10 mx-16 mt-10 rounded-25 bg-gray2">
       <button onClick={toggleCart}>
         <CiCircleChevLeft size={42} />
       </button>
