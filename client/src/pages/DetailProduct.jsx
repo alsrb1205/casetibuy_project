@@ -15,7 +15,6 @@ import { AuthContext } from "../context/AuthContext.js";
 export default function DetailProduct() {
   const navigate = useNavigate();
   const { saveToCartList, updateCartList } = useCart();
-  // <<< 지혜 / 삭제 :  fetchUserInfo, userId >>>
   const { isLoggedIn } = useContext(AuthContext);
   const { cartList } = useContext(CartContext);
   const { pid } = useParams();
@@ -41,7 +40,6 @@ export default function DetailProduct() {
       .post("http://localhost:9000/product/detail", { pid: pid })
       .then((res) => {
         setDetail(res.data);
-        // setDetailImgList(res.data.detailImgList);
       })
       .catch((err) => console.log(err));
   }, [pid]);
@@ -54,7 +52,6 @@ export default function DetailProduct() {
 
   const filteredImagesFirst = filteredImages[0];
 
-  // <<< 지혜 / 교체 : 로직 변경 >>>
   const addCartItem = async () => {
     if (isLoggedIn) {
       //장바구니 추가 항목 : { pid, size, qty }
@@ -97,8 +94,6 @@ export default function DetailProduct() {
       }
     }
   };
-
-  // <<< 지혜 / 삭제 : 주석 >>>
 
   return (
     <div className="flex flex-col items-center bg-detailbg">

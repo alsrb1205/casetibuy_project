@@ -67,14 +67,13 @@ SELECT
                     pid = 1;
                     
 -- casetibuy_cart
--- 컬럼리스트 : cid(pk), id(casetibuy_member: fk(참조키)), pid(casetibuy_product:fk(참조키)), size, qty, cdate(장바구니 등록날짜)
-
 create table casetibuy_cart(
 	cid			 int				primary key		auto_increment, 
     cname 		 varchar(30)		not null,
     qty 		 int				not null,
     color		 varchar(30)		not null,
     caseType     varchar(30)		not null,
+	image 		 varchar(200)		not null,
     price 		 int				not null,
     id			 varchar(30)		not null,
     pid			 int 				not null,
@@ -95,7 +94,7 @@ select cc.cid,
        cm.id,
        cp.pid,
        cp.pname,
-       concat('http://localhost:9000/', cp.upload_file->>'$[0]') as image
+       concat('http://localhost:9000/', cc.image) as image		
 		 from casetibuy_cart cc,
 			  casetibuy_member cm,
               casetibuy_product cp
@@ -113,12 +112,11 @@ select cc.cid,
        cm.id,
        cp.pid,
        cp.pname,
-       concat('http://localhost:9000/', cp.upload_file->>'$[0]') as image
+       concat('http://localhost:9000/', cc.image) as image	
 		 from casetibuy_cart cc,
 			  casetibuy_member cm,
               casetibuy_product cp
 		 where cc.id = cm.id and cc.pid = cp.pid;
-         
          
 
 
@@ -127,7 +125,13 @@ select * from casetibuy_member;
 select * from casetibuy_cart;
 select * from view_cart_list;
 
+-- 테이블 삭제(카트랑 참조중 => 카트 먼저 삭제 후 멤버 삭제)
 drop table casetibuy_product;
 drop table casetibuy_member;
 drop table casetibuy_cart;
-DROP VIEW IF EXISTS view_cart_list;                   
+DROP VIEW IF EXISTS view_cart_list;                
+
+-- 테이블 내용 삭제(카트랑 참조중 => 카트 먼저 삭제 후 멤버 삭제)
+TRUNCATE TABLE casetibuy_member;
+TRUNCATE TABLE casetibuy_cart;
+   
