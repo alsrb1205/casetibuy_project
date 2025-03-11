@@ -29,21 +29,9 @@ export const getItems = async ({ id }) => {
  * 장바구니 추가
  */
 export const addCart = async ({ id, cartList }) => {
-  // ✅ cartList가 객체로 중첩되어 있을 경우, 내부 배열을 꺼내기
-  // if (!Array.isArray(cartList)) {
-  //   cartList = cartList.cartList ?? []; // 내부 cartList가 있다면 사용
-  // }
-
   let result_rows = 0;
-  // const userId = id || "test_user"; // 로그인 없이 기본 ID 설정
 
-  console.log("🛒 [addCart] 받은 데이터:", { id, cartList });
-
-  // ✅ cartList가 배열인지 확인
-  if (!Array.isArray(cartList)) {
-    console.error("❌ [addCart] cartList가 배열이 아닙니다:", cartList);
-    return { result_rows: 0, error: "cartList가 올바르지 않습니다." };
-  }
+  // << 지혜 / 삭제 : if (!Array.isArray(cartList)) {} >>
 
   const result = await Promise.all(
     cartList.map(async (item) => {
@@ -77,7 +65,6 @@ insert into casetibuy_cart(qty, id, pid, cname, color, caseType, price, cdate)
 /**
  * 장바구니 전체 카운트 조회
  */
-// view 만들어서 줄임 (오라클은 뷰를 생성하기 위해 권한을 생성해야 한다)
 export const getCount = async ({ id }) => {
   const sql = `
         select count(*) as count from casetibuy_cart

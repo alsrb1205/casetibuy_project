@@ -13,10 +13,10 @@ export default function CartFooter({ totalPrice, cartCount }) {
   };
 
   return (
-    <div className="sticky bottom-0 left-0 w-full px-16 pt-4 bg-white pb-18">
-      <div className="flex justify-between text-14">
+    <div className="sticky bottom-0 left-0 w-full px-16 pt-4 bg-white pb-18 ">
+      <div className="flex justify-between w-full text-14">
         <span>{cartCount} Items</span>
-        <span>총 ￦{totalPrice}</span>
+        <span>총 ￦{totalPrice.toLocaleString()}</span>
       </div>
       <button
         onClick={handlePayment}

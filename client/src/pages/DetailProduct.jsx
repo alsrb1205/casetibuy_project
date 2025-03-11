@@ -14,9 +14,8 @@ import { AuthContext } from "../context/AuthContext.js";
 
 export default function DetailProduct() {
   const navigate = useNavigate();
-  const { saveToCartList, updateCartList, getCartList, fetchUserInfo, userId } =
-    useCart();
-
+  const { saveToCartList, updateCartList } = useCart();
+  // <<< 지혜 / 삭제 :  fetchUserInfo, userId >>>
   const { isLoggedIn } = useContext(AuthContext);
   const { cartList } = useContext(CartContext);
   const { pid } = useParams();
@@ -31,7 +30,6 @@ export default function DetailProduct() {
   } = useContext(DetailContext);
   const { parseCaseAndColor } = useDetail();
   const { state } = useLocation();
-  const testUserId = "test_user"; //  로그인 없이 테스트용 사용자 ID
 
   useEffect(() => {
     if (state?.activeCase) setActiveCase(state.activeCase);
@@ -56,51 +54,10 @@ export default function DetailProduct() {
 
   const filteredImagesFirst = filteredImages[0];
 
-  // const addCartItem = async () => {
-  //   if (isLoggedIn) {
-  //     //장바구니 추가 항목 : { pid, size, qty }
-  //     const cartItem = {
-  //       name: detail.name,
-  //       pid: detail.pid,
-  //       color: activeColor,
-  //       image: filteredImagesFirst,
-  //       price: currentCase.price,
-  //       cname: currentCase.cname,
-  //       qty: 1,
-  //       caseType: activeCase ?? "기본 케이스",
-  //     };
-  //     const findItem =
-  //       cartList &&
-  //       cartList.find(
-  //         (item) =>
-  //           item.pid === detail.pid &&
-  //           item.caseType === activeCase &&
-  //           item.color === activeColor
-  //       );
-
-  //     if (findItem !== undefined) {
-  //       //qty+1 업데이트
-  //       const result = updateCartList(findItem.cid, "increase");
-  //       result && alert("장바구니에 추가되었습니다.");
-  //     } else {
-  //       //새로 추가
-  //       const id = "test_user";
-  //       const formData = { id: id, cartList: [cartItem] };
-  //       const result = await saveToCartList(formData);
-  //       result && alert("장바구니에 추가되었습니다.");
-  //     }
-  //   } else {
-  //     const select = window.confirm(
-  //       "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
-  //     );
-  //     if (select) {
-  //       navigate("/login");
-  //     }
-  //   }
-  // };
-
+  // <<< 지혜 / 교체 : 로직 변경 >>>
   const addCartItem = async () => {
     if (isLoggedIn) {
+      //장바구니 추가 항목 : { pid, size, qty }
       const cartItem = {
         name: detail.name,
         pid: detail.pid,
@@ -111,13 +68,26 @@ export default function DetailProduct() {
         qty: 1,
         caseType: activeCase ?? "기본 케이스",
       };
+      const findItem =
+        cartList &&
+        cartList.find(
+          (item) =>
+            item.pid === detail.pid &&
+            item.caseType === activeCase &&
+            item.color === activeColor
+        );
 
-      const id = userId; // member에서 받아온 id
-      const formData = { id: id, cartList: [cartItem] };
-      console.log("[addCartItem] 서버로 보낼 데이터:", formData);
-
-      const result = await saveToCartList([cartItem]); // 로그인 없이 고정 ID 사용
-      if (result) alert("장바구니에 추가되었습니다.");
+      if (findItem !== undefined) {
+        //qty+1 업데이트
+        const result = updateCartList(findItem.cid, "increase");
+        result && alert("장바구니에 추가되었습니다.");
+      } else {
+        //새로 추가
+        const id = localStorage.getItem("user_id"); // <<< 지혜 / 추가 >>>
+        const formData = { id: id, cartList: [cartItem] };
+        const result = await saveToCartList(formData);
+        result && alert("장바구니에 추가되었습니다.");
+      }
     } else {
       const select = window.confirm(
         "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
@@ -127,6 +97,8 @@ export default function DetailProduct() {
       }
     }
   };
+
+  // <<< 지혜 / 삭제 : 주석 >>>
 
   return (
     <div className="flex flex-col items-center bg-detailbg">

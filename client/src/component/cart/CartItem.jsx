@@ -5,15 +5,12 @@ import { HiOutlineMinus } from "react-icons/hi";
 export default function CartItem({ cartList, updateCartList, deleteCartItem }) {
   return (
     <div className="mt-8">
-      {/* {cartItems.length === 0 ? (
-        <p className="text-center text-gray-500">장바구니가 비어있습니다.</p>
-      ) : ( */}
       <>
         {cartList &&
           cartList.map((item, i) => (
             <div
               key={`${item.pid}-${item.color}-${i}`}
-              className={`flex gap-10 -mx-16 p-16 mt-8 bg-gradient-to-b from-[hsla(0,0%,93%,0)] to-[#eee] bg-yellow`}
+              className={`flex gap-10 -mx-16 p-16 mt-8 bg-gradient-to-b from-[hsla(0,0%,93%,0)] to-[#eee] `}
             >
               <div className="w-[140px]">
                 <img
@@ -71,7 +68,6 @@ export default function CartItem({ cartList, updateCartList, deleteCartItem }) {
             </div>
           ))}
       </>
-      {/* )} */}
     </div>
   );
 }
