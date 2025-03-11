@@ -6,6 +6,7 @@ import uploadRouter from "./router/uploadRouter.js";
 import memberRouter from "./router/memberRouter.js";
 import cartRouter from "./router/cartRouter.js";
 import reviewRouter from "./router/reviewRouter.js";
+import paymentRouter from "./router/paymentRouter.js";
 // 서버 생성 및 포트 지정
 
 const port = 9000;
@@ -23,6 +24,7 @@ server.use("/product", productRouter);
 server.use("/member", memberRouter);
 server.use("/cart", cartRouter);
 server.use("/review", reviewRouter);
+server.use("/payment", paymentRouter);
 
 server.listen(port, () => {
   console.log(`port ==> ${port}`);

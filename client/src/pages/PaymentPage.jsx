@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import InputField from "../component/InputField.jsx";
 import usePayment from "../hooks/usePayment.js";
 import AddressModal from "../component/AddressModal.jsx";
-import PaymentConfirmModal from "../component/PaymentConfirmModal.jsx";
-import Cart from "../component/Cart.jsx"; // Cart 컴포넌트 import
 import { AuthContext } from "../context/AuthContext.js";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import PaymentCartItems from "../component/PaymentCartItems.jsx";
 
 export default function PaymentPage() {
     const { isLoggedIn } = useContext(AuthContext);
@@ -43,7 +43,7 @@ export default function PaymentPage() {
     const [zipcode, setZipcode] = useState("");
     const [detailAddress, setDetailAddress] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
+
 
     // 에러 상태 (우편번호, 상세주소)
     const [zipcodeError, setZipcodeError] = useState(null);
@@ -76,7 +76,6 @@ export default function PaymentPage() {
 
     const handleAddressSelect = (addressData) => {
         setShippingAddress(addressData);
-        console.log("선택한 배송지 정보:", addressData);
     };
 
     const handleOpenModal = () => {
@@ -101,6 +100,28 @@ export default function PaymentPage() {
         }
     };
 
+    /** 결제 함수 - 카카오페이 QR 결제 연동 */
+    const handleKakaoPayPayment = async() => {
+        const id = localStorage.getItem('user_id');
+
+        try {
+            const res = await axios
+                                .post("http://localhost:9000/payment/qr", {
+                                    "id" : id,
+                                    "item_name" : "테스트 상품",
+                                    "total_amount" : 1000
+                                });
+            console.log(res.data);
+            if(res.data.next_redirect_pc_url) {
+                window.location.href = res.data.next_redirect_pc_url;
+                localStorage.setItem("tid", res.data.tid);
+            }
+            
+        } catch (error) {
+            console.log("카카오페이 QR 결제 에러 발생", error);
+        }
+    } // handlePayment
+
     // 결제하기 버튼 클릭 시 순차 검증: 첫 번째 누락된 필드에만 에러 메시지와 포커스 적용
     const handleSubmit = () => {
         if (!zipcode) {
@@ -121,24 +142,19 @@ export default function PaymentPage() {
             if (!expiryDate || expiryDate.length !== 5) return;
             validateCvcNumber();
             if (!cvcNumber || cvcNumber.length !== 3) return;
+        } else if (paymentMethod === "kakaoPay") {
+            handleKakaoPayPayment();
+            return;
         }
-        // 모든 검증 통과 시 결제 확인 모달 오픈
-        setIsConfirmModalOpen(true);
+        // alert("결제가 완료되었습니다.");
+        // navigate("/");
     };
-
-    const handleConfirmPayment = () => {
-        alert("결제가 완료되었습니다.");
-        navigate("/");
-    };
-
-    const handleCancelPayment = () => {
-        setIsConfirmModalOpen(false);
-    };
+    
 
     return (
         <div className="flex justify-center w-full min-h-screen mt-66">
-            <div className="flex w-full max-w-[600px] min-h-screen font-sans">
-                <div className="w-[60%] p-8 border-x-2 overflow-y-auto">
+            <div className="flex w-full max-w-[800px] min-h-screen font-sans">
+                <div className="w-[50%] p-8 border-x-2 overflow-y-auto">
                     <div className="mb-8">
                         <h2 className="mb-10 font-bold text-20">구매자 정보</h2>
                         <InputField id="buyerName" type="text" label="이름" value={userData.name} readOnly />
@@ -273,30 +289,12 @@ export default function PaymentPage() {
                     </div>
                 </div>
 
-                <div className="w-[40%] p-8 border-r-2 overflow-y-auto">
+                <div className="w-[50%] p-8 border-r-2 overflow-y-auto">
                     <h2 className="mb-4 font-bold text-20">주문 상품 정보</h2>
-                    <Cart />
+                    {/* 카트에 담긴 상품 출력 */}
+                    <PaymentCartItems />
                 </div>
             </div>
-
-            {isConfirmModalOpen && (
-                <PaymentConfirmModal
-                    buyerInfo={userData}
-                    shippingInfo={{
-                        zipcode,
-                        address,
-                        detailAddress,
-                    }}
-                    paymentMethod={paymentMethod}
-                    cardDetails={{
-                        cardNumber,
-                        expiryDate,
-                        cvcNumber,
-                    }}
-                    onConfirm={handleConfirmPayment}
-                    onCancel={handleCancelPayment}
-                />
-            )}
         </div>
     );
 }
