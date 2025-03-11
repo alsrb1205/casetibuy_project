@@ -5,16 +5,16 @@ const px0_200 = { ...Array.from(Array(201)).map((_, i) => `${i}px`) };
 
 module.exports = {
   purge: {
-    content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+    content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
     safelist: [
-      'bg-black',
-      'bg-skyblue',
-      'bg-purple',
-      'bg-babyblue',
-      'bg-pink',
-      'bg-silver',
-      'bg-charcoal',
-      'bg-rosepink',
+      "bg-black",
+      "bg-skyblue",
+      "bg-purple",
+      "bg-babyblue",
+      "bg-pink",
+      "bg-silver",
+      "bg-charcoal",
+      "bg-rosepink",
     ],
   },
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -59,9 +59,10 @@ module.exports = {
         skyblue: "#83daef",
         purple: "#c77ee1",
         orange: "#f15b41",
+        orangebanner: "#FB5B48",
         yellow: "#f6e163",
         charcoal: "#4b4846",
-        rosepink:"#d4abab"
+        rosepink: "#d4abab",
       },
       borderWidth: px0_10,
       fontSize: px0_100,
@@ -72,6 +73,9 @@ module.exports = {
       borderRadius: px0_100,
       animation: {
         shake: "shake 0.15s linear",
+        // <<< 지혜 / 추가 : 헤더 베너 >>>
+        "slide-left-fade": "slideLeftFade 12s ease-in-out infinite",
+        "slide-right-fade": "slideRightFade 12s ease-in-out infinite",
       },
       keyframes: {
         shake: {
@@ -80,10 +84,23 @@ module.exports = {
           "50%": { transform: "translateX(10px)" },
           "75%": { transform: "translateX(-10px)" },
         },
+        // <<< 지혜 / 추가 : 헤더 베너 >>>
+        slideLeftFade: {
+          "0%": { transform: "translateX(-1200%)" },
+          "20%": { transform: "translateX(0)" },
+          "80%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-1200%)" },
+        },
+        slideRightFade: {
+          "0%": { transform: "translateX(1200%)" },
+          "20%": { transform: "translateX(0)" },
+          "80%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(1200%)" },
+        },
       },
       transitionProperty: {
-        'height': 'height',
-      }
+        height: "height",
+      },
     },
   },
   plugins: [],

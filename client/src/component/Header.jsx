@@ -32,9 +32,9 @@ export default function Header() {
   const handleLogout = () => {
     navigate("/");
     localStorage.removeItem("token");
-    localStorage.removeItem("user_id"); // <<< 지혜 / 추가 >>>
+    localStorage.removeItem("user_id");
     setIsLoggedIn(false);
-    setCartList([]); // <<< 지혜 / 추가 >>>
+    setCartList([]);
     alert("로그아웃 되었습니다.");
   };
   const toggleDropdown = () => {
@@ -67,6 +67,22 @@ export default function Header() {
 
   return (
     <>
+      {/* 지혜 / 추가 : 임시 */}
+      {/* <div
+        className="relative flex items-center justify-center bg-[#FB5B48] p-20 
+                    text-xs font-medium leading-[1.2] basis-full flex-shrink-0 overflow-hidden"
+        style={{ fontFamily: 'var(--nav-font-family, "PP Pangram Sans")' }}
+      >
+        <p className="absolute animate-slide-left-fade">
+          첫 번째 이벤트 문구입니다.
+        </p>
+        <p
+          className="absolute animate-slide-right-fade"
+          style={{ animationDelay: "3s" }}
+        >
+          두 번째 이벤트 문구입니다.
+        </p>
+      </div> */}
       <div className="absolute z-30 w-full bg-transparent">
         <div className="relative flex items-center justify-between px-32 h-66">
           <div className="flex gap-20">

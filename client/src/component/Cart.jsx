@@ -8,37 +8,15 @@ import { useCart } from "../hooks/useCart.js";
 import { DetailContext } from "../context/DetailContext.js";
 import { AuthContext } from "../context/AuthContext.js";
 import { useNavigate } from "react-router-dom";
+import Payment from "./cart/Payment.jsx";
+import Guarantee from "./cart/Guarantee.jsx";
 
 export default function Cart() {
-  const paymentMethods = [
-    {
-      src: "https://cdn-stamplib.casetify.com/cms/image/1f5b660ecb6d0e53919809f6df67c8e8.svg",
-      alt: "visa",
-    },
-    {
-      src: "https://cdn-stamplib.casetify.com/cms/image/47e8945cc56c62551afc38388a3eb372.svg",
-      alt: "master",
-    },
-    {
-      src: "https://cdn-stamplib.casetify.com/cms/image/b51baf6cb955ed8cffdfb34fd2c37afe.svg",
-      alt: "amex",
-    },
-    {
-      src: "https://cdn-stamplib.casetify.com/cms/image/45e398af85526b72f8ab70e323706650.svg",
-      alt: "apple pay",
-    },
-    {
-      src: "https://cdn-stamplib.casetify.com/cms/image/784a444c11b36187118025083d1781fb.svg",
-      alt: "kakao pay",
-    },
-  ];
-
   const { currentCase } = useContext(DetailContext);
-  // const { cartList } = useContext(CartContext);
   const navigate = useNavigate();
   const { isLoggedIn } = useContext(AuthContext);
   const { cartList, setCartList, cartCount, totalPrice } =
-    useContext(CartContext); //<< 지혜 / 추가 >>
+    useContext(CartContext);
   const {
     isCartOpen,
     toggleCart,
@@ -46,7 +24,6 @@ export default function Cart() {
     updateCartList,
     deleteCartItem,
   } = useCart();
-  const hasCheckedLogin = useRef(false);
 
   // 장바구니 열릴 때 body 스크롤 막기
   useEffect(() => {
@@ -61,20 +38,27 @@ export default function Cart() {
     };
   }, [isCartOpen]);
 
+  // <<< 지혜 / 교체 : 로그인 인증 로직 수정 >>>
+  // 로그인 인증 체크
   useEffect(() => {
-    if (hasCheckedLogin.current) return; // true:로그인 상태 -->  블록 return
-    hasCheckedLogin.current = true;
+    if (!isCartOpen) return; // 장바구니가 열릴 때만 실행되도록
 
-    if (isLoggedIn) {
-      getCartList();
-    } else {
+    if (!isLoggedIn) {
       const select = window.confirm(
         "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
       );
-      select ? navigate("/login") : navigate("/");
-    }
-  }, [isLoggedIn]); //<< 지혜 / 추가 >>
+      toggleCart(); // 장바구니 닫기
 
+      if (select) {
+        navigate("/login");
+      }
+      return; // 로그인하지 않으면 함수 종료
+    }
+
+    getCartList();
+  }, [isCartOpen, isLoggedIn]);
+
+  // 장바구니 결제 버튼
   const handlePaymentClick = () => {
     toggleCart(); // 장바구니 닫기
     navigate("/payment"); // 결제 페이지로 이동
@@ -144,38 +128,19 @@ export default function Cart() {
             </>
           )}
         </div>
-        {/* payment */}
-        <div className="flex flex-col items-center gap-16 px-16 py-16 text-12 ">
-          <p>Free Shipping Worldwide</p>
-          <ul className="flex gap-20">
-            {paymentMethods.map((method, index) => (
-              <li
-                key={index}
-                className="px-3 py-2 border rounded-6 border-graynav"
-              >
-                <img src={method.src} alt={method.alt} />
-              </li>
-            ))}
-          </ul>
-          <p className="text-10">사용 가능한 결제 방법</p>
-        </div>
 
-        {/* guaranteed */}
-        <div className="flex flex-col items-center gap-20 px-16 py-32 ">
-          <div>
-            <img
-              src="https://cdn-stamplib.casetify.com/cms/image/9523e96c55b15e2e8ff379057cfe837e.png"
-              alt="mark"
-            />
-          </div>
-          <p className="font-bold">100% 만족 보장</p>
-          <p className="text-center text-10 text-grayph">
-            케이스티파이는 "10일 이내 무조건 교환 및 반품" 정책과 "6개월 제품
-            보증" 정책을 제공합니다.
-            <span className="text-black underline">문의하기</span>
-            또는 <span className="text-black underline">더 알아보기</span>.
-          </p>
-        </div>
+        {/* 기존에 있던 코드 컴포넌트화 */}
+        <Payment
+          conStyle="flex flex-col items-center gap-16 px-16 py-16 text-12"
+          text="Free Shipping Worldwide"
+        />
+        <Guarantee
+          conStyle="flex flex-col items-center gap-20 px-16 py-32"
+          flex="flex flex-col items-center gap-20 "
+          description='케이스티파이는 "10일 이내 무조건 교환 및 반품" 정책과 "6개월 제품 보증"
+        정책을 제공합니다.'
+          textStyle="text-center text-10"
+        />
 
         {/* 장바구니 footer */}
         <CartFooter totalPrice={totalPrice} cartCount={cartCount} />

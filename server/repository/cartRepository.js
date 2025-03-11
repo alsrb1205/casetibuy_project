@@ -31,8 +31,6 @@ export const getItems = async ({ id }) => {
 export const addCart = async ({ id, cartList }) => {
   let result_rows = 0;
 
-  // << 지혜 / 삭제 : if (!Array.isArray(cartList)) {} >>
-
   const result = await Promise.all(
     cartList.map(async (item) => {
       const values = [
@@ -42,15 +40,19 @@ export const addCart = async ({ id, cartList }) => {
         item.cname ?? "이름 없음",
         item.color ?? "색상 없음",
         item.caseType ?? "기본 케이스",
+        item.image ?? "이미지 없음",
         item.price ?? 0,
       ];
+      // <<< 지혜 / 추가 : item.image >>>
 
       console.log("[addCart] DB 저장 값:", values);
 
+      // <<< 지혜 / 추가 : image 컬럼 추가 >>>
       const sql = `
-insert into casetibuy_cart(qty, id, pid, cname, color, caseType, price, cdate)
-                        values(?, ?, ?, ?, ?, ?, ?, now());
+insert into casetibuy_cart(qty, id, pid, cname, color, caseType, image, price, cdate)
+                        values(?, ?, ?, ?, ?, ?, ?, ?, now());
                 `;
+
       const [result] = await db.execute(sql, values); //Promise형태로 실행
       return result.affectedRows;
     })
