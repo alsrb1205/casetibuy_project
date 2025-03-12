@@ -134,4 +134,57 @@ DROP VIEW IF EXISTS view_cart_list;
 -- 테이블 내용 삭제(카트랑 참조중 => 카트 먼저 삭제 후 멤버 삭제)
 TRUNCATE TABLE casetibuy_member;
 TRUNCATE TABLE casetibuy_cart;
-   
+
+
+-- 결제관련 오더 테이블
+CREATE TABLE casetibuy_order (
+    order_id         INT AUTO_INCREMENT PRIMARY KEY,
+    member_id        VARCHAR(20) NOT NULL, -- 기존 'id' 컬럼과 일치
+    total_price      INT NOT NULL,
+    payment_method   ENUM('creditCard', 'kakaoPay') NOT NULL,
+    order_status     ENUM('pending', 'completed', 'canceled') DEFAULT 'pending',
+    order_date       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    zipcode          VARCHAR(10) NOT NULL,
+    address          VARCHAR(255) NOT NULL,
+    detail_address   VARCHAR(255) NOT NULL,
+    CONSTRAINT fk_order_member FOREIGN KEY (member_id) REFERENCES casetibuy_member(id)
+);
+
+CREATE TABLE casetibuy_order_detail (
+    order_detail_id  INT AUTO_INCREMENT PRIMARY KEY,
+    order_id         INT NOT NULL,
+    product_id       INT NOT NULL, -- 기존 'pid' 컬럼과 일치
+    product_name     VARCHAR(50) NOT NULL, -- 기존 'pname' 컬럼과 일치
+    qty             INT NOT NULL,
+    unit_price      INT NOT NULL, -- 기존 'price' 컬럼과 일치
+    color           VARCHAR(30) NOT NULL,
+    case_type       VARCHAR(30) NOT NULL,
+    product_image   VARCHAR(200), -- 기존 'image' 컬럼과 일치
+    CONSTRAINT fk_order FOREIGN KEY (order_id) REFERENCES casetibuy_order(order_id),
+    CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES casetibuy_product(pid)
+);
+
+show tables;
+
+-- 유저가 구매한 상품 조회
+SELECT 
+    o.order_id,
+    o.member_id,
+    o.total_price,
+    o.payment_method,
+    o.order_status,
+    o.order_date,
+    o.address,
+    od.product_id,
+    od.product_name,
+    od.qty,
+    od.unit_price,
+    od.color,
+    od.case_type,
+    CONCAT('http://localhost:9000/', od.product_image) AS image
+FROM casetibuy_order o
+INNER JOIN casetibuy_order_detail od ON o.order_id = od.order_id
+WHERE o.member_id = 'rkdgusdn';
+
+select * from casetibuy_order;
+select * from casetibuy_order_detail;

@@ -3,18 +3,19 @@ import InputField from "../component/InputField.jsx";
 import usePayment from "../hooks/usePayment.js";
 import AddressModal from "../component/AddressModal.jsx";
 import { AuthContext } from "../context/AuthContext.js";
-import { useNavigate } from "react-router-dom";
+import { CartContext } from "../context/CartContext.js";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import PaymentCartItems from "../component/PaymentCartItems.jsx";
 
 export default function PaymentPage() {
     const { isLoggedIn } = useContext(AuthContext);
+    const { cartList, totalPrice, setCartList } = useContext(CartContext);
+    const location = useLocation();
     const navigate = useNavigate();
-    const [userData, setUserData] = useState({
-        name: "",
-        email: "",
-        phone: ""
-    });
+    const searchParams = new URLSearchParams(location.search);
+    const pgToken = searchParams.get("pg_token");
+    const [userData, setUserData] = useState({ name: "", email: "", phone: "" });
 
     // 로그인 상태이면 사용자 정보 API 호출
     useEffect(() => {
@@ -24,8 +25,8 @@ export default function PaymentPage() {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                }
+                    Authorization: `Bearer ${token}`,
+                },
             })
                 .then((res) => res.json())
                 .then((data) => setUserData(data))
@@ -43,7 +44,6 @@ export default function PaymentPage() {
     const [zipcode, setZipcode] = useState("");
     const [detailAddress, setDetailAddress] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
-
 
     // 에러 상태 (우편번호, 상세주소)
     const [zipcodeError, setZipcodeError] = useState(null);
@@ -100,30 +100,115 @@ export default function PaymentPage() {
         }
     };
 
-    /** 결제 함수 - 카카오페이 QR 결제 연동 */
-    const handleKakaoPayPayment = async() => {
-        const id = localStorage.getItem('user_id');
+    // 크레딧 카드 결제: 즉시 주문 생성 API 호출
+    const handleCreditCardPayment = async (orderData) => {
+        validateCardNumber();
+        const cleanedCard = cardNumber.replace(/-/g, "");
+        if (!cardNumber || cleanedCard.length < 16) return;
+        validateExpiryDate();
+        if (!expiryDate || expiryDate.length !== 5) return;
+        validateCvcNumber();
+        if (!cvcNumber || cvcNumber.length !== 3) return;
 
         try {
-            const res = await axios
-                                .post("http://localhost:9000/payment/qr", {
-                                    "id" : id,
-                                    "item_name" : "테스트 상품",
-                                    "total_amount" : 1000
-                                });
-            console.log(res.data);
-            if(res.data.next_redirect_pc_url) {
-                window.location.href = res.data.next_redirect_pc_url;
-                localStorage.setItem("tid", res.data.tid);
+            const response = await axios.post(
+                "http://localhost:9000/order/checkout",
+                orderData
+            );
+            console.log("✅ [DEBUG] 주문 응답:", response.data);
+            if (response.status === 201) {
+                setCartList([]); // 장바구니 비우기
+                localStorage.setItem("orderData", JSON.stringify(orderData));
+                navigate("/order-success");
             }
-            
         } catch (error) {
-            console.log("카카오페이 QR 결제 에러 발생", error);
+            console.error(
+                "❌ 주문 요청 중 오류 발생:",
+                error.response?.data || error.message
+            );
+            alert("주문 처리 중 오류가 발생했습니다.");
         }
-    } // handlePayment
+    };
 
-    // 결제하기 버튼 클릭 시 순차 검증: 첫 번째 누락된 필드에만 에러 메시지와 포커스 적용
-    const handleSubmit = () => {
+    // 카카오페이 결제: QR 결제 API 호출 후 리다이렉트 (주문 데이터는 localStorage에 저장)
+    const handleKakaoPayPayment = async (orderData) => {
+        const id = localStorage.getItem("user_id");
+        try {
+            const res = await axios.post("http://localhost:9000/payment/qr", {
+                id: id,
+                item_name: "테스트 상품",
+                total_amount: totalPrice,
+            });
+            console.log("✅ [DEBUG] 카카오페이 응답:", res.data);
+            if (res.data.next_redirect_pc_url) {
+                // 승인 URL로 리다이렉트하기 전에 필요한 값들을 localStorage에 저장합니다.
+                localStorage.setItem("orderData", JSON.stringify(orderData));
+                localStorage.setItem("tid", res.data.tid);
+                localStorage.setItem("total_price", totalPrice);
+                localStorage.setItem("partner_order_id", res.data.partner_order_id);
+                window.location.href = res.data.next_redirect_pc_url;
+            }
+        } catch (error) {
+            console.log("❌ 카카오페이 QR 결제 에러 발생", error);
+        }
+    };
+
+    // 결제 승인 후 DB에 주문 생성 (공통 함수)
+    const confirmPayment = async (orderData, tid) => {
+        try {
+            const finalOrderData = { ...orderData, tid };
+            const orderResponse = await axios.post(
+                "http://localhost:9000/order/checkout",
+                finalOrderData
+            );
+            console.log("✅ [DEBUG] 최종 주문 응답:", orderResponse.data);
+            if (orderResponse.status === 201) {
+                setCartList([]); // 장바구니 비우기
+                localStorage.setItem("orderData", JSON.stringify(finalOrderData));
+                navigate("/order-success");
+            }
+        } catch (error) {
+            console.error(
+                "❌ 주문 저장 오류 발생:",
+                error.response?.data || error.message
+            );
+            alert("주문 처리 중 오류가 발생했습니다.");
+        }
+    };
+
+    // 카카오페이 승인 처리 (QR 인증 후)
+    const handleKakaoPayApprove = async (pgToken) => {
+        const id = localStorage.getItem("user_id");
+        const tid = localStorage.getItem("tid");
+        const totalPrice = localStorage.getItem("total_price");
+        try {
+            const res = await axios.post("http://localhost:9000/payment/approve", {
+                pg_token: pgToken,
+                tid,
+                id,
+                total_amount: totalPrice,
+            });
+            console.log("✅ [DEBUG] 카카오페이 승인 성공:", res.data);
+            localStorage.removeItem("tid");
+            localStorage.removeItem("total_price");
+            // localStorage에 저장했던 주문 데이터를 가져와 DB에 주문 생성
+            const storedOrderData = JSON.parse(localStorage.getItem("orderData"));
+            await confirmPayment(storedOrderData, tid);
+        } catch (error) {
+            console.error("❌ 카카오페이 승인 실패:", error);
+            alert("결제 승인 중 오류 발생");
+        }
+    };
+
+    // pg_token이 있을 경우 카카오페이 승인 처리 실행 (QR 인증 후 리다이렉트 시)
+    useEffect(() => {
+        if (pgToken) {
+            handleKakaoPayApprove(pgToken);
+        }
+    }, [pgToken]);
+
+    // 결제하기 버튼 클릭 시 실행
+    const handleSubmit = async () => {
         if (!zipcode) {
             setZipcodeError("주소 검색을 통해 배송지를 선택해주세요.");
             zipcodeRef.current?.focus();
@@ -134,22 +219,35 @@ export default function PaymentPage() {
             detailAddressRef.current?.focus();
             return;
         }
+
+        const cartItems = cartList.map((item) => ({
+            product_id: item.pid,
+            product_name: item.cname,
+            qty: item.qty,
+            unit_price: item.price,
+            color: item.color,
+            case_type: item.caseType,
+            product_image: item.image,
+        }));
+
+        const orderData = {
+            member_id: localStorage.getItem("user_id"),
+            total_price: totalPrice,
+            payment_method: paymentMethod,
+            zipcode,
+            address,
+            detail_address: detailAddress,
+            cartItems,
+        };
+
+        console.log("🔍 [DEBUG] 주문 데이터:", orderData);
+
         if (paymentMethod === "creditCard") {
-            validateCardNumber();
-            const cleanedCard = cardNumber.replace(/-/g, "");
-            if (!cardNumber || cleanedCard.length < 16) return;
-            validateExpiryDate();
-            if (!expiryDate || expiryDate.length !== 5) return;
-            validateCvcNumber();
-            if (!cvcNumber || cvcNumber.length !== 3) return;
+            await handleCreditCardPayment(orderData);
         } else if (paymentMethod === "kakaoPay") {
-            handleKakaoPayPayment();
-            return;
+            await handleKakaoPayPayment(orderData);
         }
-        // alert("결제가 완료되었습니다.");
-        // navigate("/");
     };
-    
 
     return (
         <div className="flex justify-center w-full min-h-screen mt-66">
@@ -157,9 +255,27 @@ export default function PaymentPage() {
                 <div className="w-[50%] p-8 border-x-2 overflow-y-auto">
                     <div className="mb-8">
                         <h2 className="mb-10 font-bold text-20">구매자 정보</h2>
-                        <InputField id="buyerName" type="text" label="이름" value={userData.name} readOnly />
-                        <InputField id="buyerEmail" type="text" label="이메일" value={userData.email} readOnly />
-                        <InputField id="buyerPhone" type="text" label="전화번호" value={userData.phone} readOnly />
+                        <InputField
+                            id="buyerName"
+                            type="text"
+                            label="이름"
+                            value={userData.name}
+                            readOnly
+                        />
+                        <InputField
+                            id="buyerEmail"
+                            type="text"
+                            label="이메일"
+                            value={userData.email}
+                            readOnly
+                        />
+                        <InputField
+                            id="buyerPhone"
+                            type="text"
+                            label="전화번호"
+                            value={userData.phone}
+                            readOnly
+                        />
                     </div>
 
                     <div className="mb-8">
@@ -183,7 +299,14 @@ export default function PaymentPage() {
                                 refElement={zipcodeRef}
                                 error={zipcodeError}
                             />
-                            <InputField id="address" type="text" label="주소" value={address} readOnly refElement={addressRef} />
+                            <InputField
+                                id="address"
+                                type="text"
+                                label="주소"
+                                value={address}
+                                readOnly
+                                refElement={addressRef}
+                            />
                             <InputField
                                 id="detailAddress"
                                 type="text"
@@ -291,7 +414,6 @@ export default function PaymentPage() {
 
                 <div className="w-[50%] p-8 border-r-2 overflow-y-auto">
                     <h2 className="mb-4 font-bold text-20">주문 상품 정보</h2>
-                    {/* 카트에 담긴 상품 출력 */}
                     <PaymentCartItems />
                 </div>
             </div>
