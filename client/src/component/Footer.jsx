@@ -6,7 +6,7 @@ export default function Footer() {
 
   useEffect(() => {
     axios
-      .get("/data/menu.json")
+      .get("/data/footerMenu.json")
       .then((res) => setFootMenu(res.data))
       .catch((error) => console.log(error));
   }, []);
@@ -15,14 +15,15 @@ export default function Footer() {
   const firstItems = footMenu.length > 0 ? footMenu[0].items : [];
 
   return (
-    <footer className="text-white footer">
+    <footer className="text-white bg-black footer">
       {/* footer-top */}
       <div className="footer-top">
-        <div className="leading-[2] pl-[32px] pr-[32px] pt-[24px]">
-          <div className="flex gap-10 justify-start pt-[20px] pb-[20px]">
-            <div className="mr-20">
-              <h2 className="pb-3">{firstCategory}</h2>
-              <ul className="flex gap-5">
+        <div className="px-24 pt-32 leading-2">
+          <div className="flex justify-around py-20">
+            {/* sns icon */}
+            <div>
+              <h2 className="pb-10 text-16">{firstCategory}</h2>
+              <ul className="flex gap-10">
                 {firstItems.map((item, index) => (
                   <li key={index} className="sns">
                     <img src={item} alt="" />
@@ -31,23 +32,28 @@ export default function Footer() {
               </ul>
             </div>
             <>
+              {/* 기종 카테고리 부분 */}
               {footMenu &&
                 footMenu.slice(1, -1).map((section, index) => (
-                  <div key={index}>
-                    <h3>{section.category}</h3>
-                    <ul>
+                  <div key={index} className="flex flex-col gap-10">
+                    <h3 className="text-16">{section.category}</h3>
+                    <ul className="flex flex-col gap-10 text-14">
                       {section.category === "기종"
                         ? section.items.map((device, deviceIndex) => (
-                            <li key={deviceIndex}>
+                            <li
+                              key={deviceIndex}
+                              className="flex flex-col gap-10"
+                            >
                               <strong>{device.brand}</strong>
-                              <ul>
+                              <ul className="flex flex-col gap-10">
                                 {device.models.map((model, modelIndex) => (
                                   <li key={modelIndex}>{model}</li>
                                 ))}
                               </ul>
                             </li>
                           ))
-                        : section.items.map((item, i) => (
+                        : // 공통 카테고리 부분
+                          section.items.map((item, i) => (
                             <li key={i}>{item}</li>
                           ))}
                     </ul>
@@ -56,16 +62,27 @@ export default function Footer() {
             </>
           </div>
         </div>
-        {/* <div className="text-white pl-[20px] pr-[20px] pt-[22px] pb-[24px] flex justify-center">
-          <ul>
-            <li>{footMenu[footMenu.length - 1].items}</li>
-          </ul>
-        </div> */}
+        <div className="flex justify-center p-20 pb-24 text-white pt-22 text-14">
+          <div className="flex items-center justify-center gap-10">
+            <span>Average</span>
+            <img
+              src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-3.5.svg"
+              alt=""
+              className="w-80"
+            />
+            <span>130,341 reviews</span>
+            <img
+              src="https://cdn.trustpilot.net/brand-assets/4.3.0/logo-white.svg"
+              alt=""
+              className="pb-5 w-80"
+            />
+          </div>
+        </div>
       </div>
 
       {/* footer-bottom */}
       <div className="footer-bottom">
-        <div className="flex flex-col justify-center items-center text-xs border-t-[1px] border-white text-gray-400 pl-[10px] pr-[10px] pb-[22px]">
+        <div className="flex flex-col justify-center items-center text-12 border-t-[1px] border-white text-grayph px-10 pb-22">
           <p>
             케이스티파이: 케이스타그램 리미티드(Casetify: Casetagram Limited) |
             케이스티파이 유한회사 (CASETiFY) | 대표: 응푸이순 웨슬리 (Wesley Ng)
@@ -80,7 +97,7 @@ export default function Footer() {
           </p>
           <p>휴무: 토요일, 일요일, 공휴일 휴무</p>
         </div>
-        <div className="pl-[16px] pr-[16px] pt-[20px] pb-[20px]">
+        <div className="px-16 py-20 text-12 ">
           <p>개인정보 처리방침 | 약관</p>
           <p className="mt-[16px]">Copyright © 2025 CASETiFY</p>
         </div>
