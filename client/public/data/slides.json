@@ -7,7 +7,8 @@
       "description": "Magnify Your Galaxy.",
       "src": "https://cdn-stamplib.casetify.com/cms/video/4a7a7c1cd669bf005e2cdc596b0345fa.mp4",
       "textBgColor": "yellow",
-      "titleColor": "blue"
+      "titleColor": "blue",
+      "iconColor": "white"
     },
     {
       "pid": "2",
@@ -17,7 +18,8 @@
       "src": "https://cdn-stamplib.casetify.com/cms/video/8fe8b493e4cee12c8506d6d11f8481fc.mp4",
       "textBgColor": "blue",
       "titleColor": "yellow",
-      "textColor": "white"
+      "textColor": "white",
+      "iconColor": "white"
     },
     {
       "pid": "3",
@@ -53,7 +55,8 @@
       "description": "Elevate Your Samsung S25 with Snappy Products",
       "src": "https://cdn-stamplib.casetify.com/cms/image/0738017a78a70038e2b7dfb5deba231c.jpg",
       "textBgColor": "yellow",
-      "titleColor": "blue"
+      "titleColor": "blue",
+      "iconColor": "white"
     }
   ],
   "featuredCollection": [
