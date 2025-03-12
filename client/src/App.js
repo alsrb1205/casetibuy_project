@@ -20,6 +20,7 @@ import NewProduct from "./pages/NewProduct.jsx";
 import Mypage from "./pages/Mypage.jsx";
 import Settings from "./pages/Settings.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
+import OrderSuccessPage from "./pages/OrderSuccessPage.jsx";
 import { DetailProvider } from "./context/DetailContext.js";
 import { CartProvider } from "./context/CartContext";
 import { PListProvider } from "./context/PListContext.js";
@@ -56,6 +57,7 @@ function App() {
                       }
                     />
                     <Route path="/setting" element={<Settings />} />
+                    <Route path="/order-success" element={<OrderSuccessPage />} />
                     <Route path="/payment" element={<PaymentPage />} />
                     <Route path="/allproduct" element={<AllProduct />} />
                     <Route path="/iphoneall" element={<IphoneAll />} />
