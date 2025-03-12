@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
+import { useTheme } from "../../context/ThemeContext";
 import axios from "axios";
 import HomeProduct from "../home/HomeProduct.jsx";
 import SlideVisual from "./SlideVisual.jsx";
@@ -9,10 +10,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../style/swiper.css";
+import { useLocation } from "react-router-dom";
 
 export default function Slide({ id, pagination, navigation, className }) {
   const swiperRef = useRef(null);
   const [slideList, setSlideList] = useState([]);
+  const { setIconColor } = useTheme(); // Header 아이콘 색상 변경
+  const location = useLocation();
 
   useEffect(() => {
     axios
@@ -27,6 +31,12 @@ export default function Slide({ id, pagination, navigation, className }) {
 
         if (className === "visual") {
           setSlideList(visualSlideImage);
+          // 초기 아이콘 색상 설정
+          if (visualSlideImage.length > 0) {
+            setIconColor(
+              visualSlideImage[0]?.iconColor === "white" ? "white" : "black"
+            );
+          }
         } else if (className === "collaborator") {
           setSlideList(collaborator);
         } else if (className === "common") {
@@ -37,7 +47,14 @@ export default function Slide({ id, pagination, navigation, className }) {
         }
       })
       .catch((error) => console.log(error));
-  }, [className]);
+  }, [className, setIconColor]);
+
+  // 홈(`/home`)으로 돌아올 때 슬라이드 첫 번째 이미지의 `iconColor`를 강제로 적용
+  useEffect(() => {
+    if (location.pathname === "/home" && slideList.length > 0) {
+      setIconColor(slideList[0]?.iconColor === "white" ? "white" : "black");
+    }
+  }, [location.pathname, slideList, setIconColor]);
 
   return (
     <div className={`swiper-container-${id}`}>
@@ -72,6 +89,14 @@ export default function Slide({ id, pagination, navigation, className }) {
               }
         }
         modules={[Pagination, Navigation, Autoplay]}
+        onSlideChange={(swiper) => {
+          if (slideList.length > 0) {
+            const activeSlide = slideList[swiper.realIndex]; // Swiper에서 현재 실제 인덱스 가져오기
+            setIconColor(
+              activeSlide?.iconColor === "white" ? "white" : "black"
+            );
+          }
+        }}
         className={`custom-swiper ${className}`}
       >
         {/* 슬라이드 내용 */}
