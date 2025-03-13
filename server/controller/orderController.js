@@ -62,8 +62,9 @@ export const createOrder = async (req, res) => {
 
 
 export const getOrders = async (req, res) => {
+  
   try {
-    const { memberId } = req.params;
+    const { memberId } = req.body;
     if (!memberId) {
       return res.status(400).json({ message: "Member id is required." });
     }

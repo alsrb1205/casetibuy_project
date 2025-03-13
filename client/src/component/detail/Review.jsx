@@ -1,13 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ReviewBars from './review/ReviewBars.jsx';
 import ReviewForm from './review/ReviewForm.jsx';
 import ReviewList from './review/ReviewList.jsx';
 import axios from 'axios';
 import { ReviewContext } from '../../context/ReviewContext.js';
 import useReview from '../../hooks/useReview.js';
+import useOrder from '../../hooks/useOrder.js';
 
 export default function Review() {
     const {reviewForm, setReviewForm,rating, setRating, comment, setComment} = useContext(ReviewContext);
+    const{getOrderList, orderList} = useOrder();
+
+    useEffect(() => {
+        getOrderList();
+    }, [getOrderList]);
+
+
+console.log(orderList);
 
 
     return (
