@@ -35,7 +35,6 @@ export function DetailProvider({ children }) {
     mimpact: ["black", "purple", "skyblue"],
     podbounce: ["charcoal", "pink", "skyblue"]
   };
-  console.log(activeCase);
   
   const matchColor = {
     "black": "블랙",

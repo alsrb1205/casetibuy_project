@@ -26,6 +26,8 @@ use casetibuy;
 select * from casetibuy_product;
 select * from casetibuy_member;
 
+truncate table casetibuy_product;
+
 alter table casetibuy_product add column repImage varchar(300);
 -- 콜라보 항목 추가!!!!!! 
 alter table casetibuy_product add column isColab varchar(50) not null;
@@ -129,6 +131,10 @@ select * from view_cart_list;
 drop table casetibuy_product;
 drop table casetibuy_member;
 drop table casetibuy_cart;
+drop table casetibuy_order_detail;
+drop table casetibuy_review;
+
+
 DROP VIEW IF EXISTS view_cart_list;                
 
 -- 테이블 내용 삭제(카트랑 참조중 => 카트 먼저 삭제 후 멤버 삭제)
@@ -206,7 +212,7 @@ CREATE TABLE casetibuy_review (
         REFERENCES casetibuy_order (order_id)
         ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_review_member FOREIGN KEY (member_id)
-        REFERENCES casetibuy_member (member_id)
+        REFERENCES casetibuy_member (id)
         ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_review_product FOREIGN KEY (pid)
         REFERENCES casetibuy_product (pid)
