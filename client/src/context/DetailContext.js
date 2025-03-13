@@ -35,16 +35,21 @@ export function DetailProvider({ children }) {
     mimpact: ["black", "purple", "skyblue"],
     podbounce: ["charcoal", "pink", "skyblue"]
   };
-
+  console.log(activeCase);
+  
   const matchColor = {
     "black": "블랙",
     "skyblue": "스카이 블루",
     "purple": "퍼플",
     "babyblue": "베이비 블루",
-    "pink": (activeCase === "podbounce" ? "프림로즈 핑크" : "핑크"),
+    "pink": "프림로즈 핑크",
     "silver": "실버",
     "charcoal": "차콜"
-  }
+  };
+       // activeCase가 있고 해당 케이스에 대한 색상 목록이 있으면 사용, 없으면 전체 색상 사용
+       const availableColorKeys =
+       activeCase && matchCaseColor[activeCase] ? matchCaseColor[activeCase] : Object.keys(matchColor);
+
 
   const value = {
     activeCase,
@@ -64,7 +69,8 @@ export function DetailProvider({ children }) {
     detail,
     setDetail,
     matchCaseColor,
-    matchColor
+    matchColor,
+    availableColorKeys
   };
 
   return (

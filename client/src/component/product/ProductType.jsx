@@ -67,9 +67,7 @@ export default function ProductType() {
                 <div className='sticky top-0 z-20 w-full px-32 pt-16 pb-8 bg-white bg-opacity-90 backdrop-blur-[10px] '>
                     {/* ======================================================== */}
                     {/* 타이틀바 */}
-                    <div className='flex bg-[#fecad6] rounded-16 justify-between w-full md:min-h-84 items-center p-16 mb-8 min-h-66 h-full content-center
-                                                    
-                    '>
+                    <div className='flex items-center content-center justify-between w-full h-full p-16 mb-8 bg-bgpink rounded-16 md:min-h-84 min-h-66 '>
                         {/* 제목 */}
                         <div className=''>
                             <span className='text-16 font-extrabold leading-1.2 md:text-32
