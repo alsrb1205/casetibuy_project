@@ -119,8 +119,6 @@ select cc.cid,
 			  casetibuy_member cm,
               casetibuy_product cp
 		 where cc.id = cm.id and cc.pid = cp.pid;
-         
-
 
 select * from casetibuy_product;
 select * from casetibuy_member;
@@ -136,6 +134,8 @@ DROP VIEW IF EXISTS view_cart_list;
 -- 테이블 내용 삭제(카트랑 참조중 => 카트 먼저 삭제 후 멤버 삭제)
 TRUNCATE TABLE casetibuy_member;
 TRUNCATE TABLE casetibuy_cart;
+
+DELETE FROM casetibuy_product WHERE pid = 13;
 
 
 -- 결제관련 오더 테이블

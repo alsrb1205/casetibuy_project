@@ -34,7 +34,7 @@ export default function Footer() {
             <>
               {/* 기종 카테고리 부분 */}
               {footMenu &&
-                footMenu.slice(1, -1).map((section, index) => (
+                footMenu.slice(1).map((section, index) => (
                   <div key={index} className="flex flex-col gap-10">
                     <h3 className="text-16">{section.category}</h3>
                     <ul className="flex flex-col gap-10 text-14">
