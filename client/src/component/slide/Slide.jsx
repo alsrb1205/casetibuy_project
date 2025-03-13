@@ -10,7 +10,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../style/swiper.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Slide({ id, pagination, navigation, className }) {
   const swiperRef = useRef(null);
@@ -22,12 +22,7 @@ export default function Slide({ id, pagination, navigation, className }) {
     axios
       .get("/data/slides.json")
       .then((res) => {
-        const {
-          visualSlideImage,
-          featuredCollection,
-          collaborator,
-          commonSlides,
-        } = res.data;
+        const { visualSlideImage, featuredCollection, collaborator } = res.data;
 
         if (className === "visual") {
           setSlideList(visualSlideImage);
@@ -39,9 +34,6 @@ export default function Slide({ id, pagination, navigation, className }) {
           }
         } else if (className === "collaborator") {
           setSlideList(collaborator);
-        } else if (className === "common") {
-          const combinedSlides = commonSlides.map((category) => category.data);
-          setSlideList(combinedSlides);
         } else {
           setSlideList(featuredCollection);
         }
@@ -103,13 +95,25 @@ export default function Slide({ id, pagination, navigation, className }) {
         {slideList.map((slide, index) =>
           className === "visual" ? (
             <SwiperSlide key={index} className="relative">
-              <SlideVisual key={index} slide={slide} />
+              <Link
+                key={slide.pid}
+                to={`/detail/${slide.pid}`}
+                draggable="false"
+              >
+                <SlideVisual key={index} slide={slide} />
+              </Link>
             </SwiperSlide>
           ) : className === "collaborator" ? (
             <SwiperSlide key={index}>
-              <div className="px-20 py-10 overflow-hidden border border-grayhborder rounded-20">
-                <img src={slide.image} alt={index} className="w-full" />
-              </div>
+              <Link
+                key={slide.pid}
+                to={`/detail/${slide.pid}`}
+                draggable="false"
+              >
+                <div className="px-20 py-10 overflow-hidden border border-grayhborder rounded-20">
+                  <img src={slide.image} alt={index} className="w-full" />
+                </div>
+              </Link>
             </SwiperSlide>
           ) : (
             <SwiperSlide key={index}>
