@@ -6,18 +6,20 @@ import axios from 'axios';
 import { ReviewContext } from '../../context/ReviewContext.js';
 import useReview from '../../hooks/useReview.js';
 import useOrder from '../../hooks/useOrder.js';
+import { DetailContext } from '../../context/DetailContext.js';
 
 export default function Review() {
     const {reviewForm, setReviewForm,rating, setRating, comment, setComment} = useContext(ReviewContext);
+    const { detail } = useContext(DetailContext);
     const{getOrderList, orderList} = useOrder();
 
     useEffect(() => {
         getOrderList();
     }, [getOrderList]);
 
-
-console.log(orderList);
-
+    useEffect(() => {
+        setReviewForm(false);
+    }, [detail.pid, setReviewForm]);
 
     return (
         <div className='mx-auto mt-90 max-w-[1140px] text-center'>
