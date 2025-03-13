@@ -8,11 +8,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext.js";
+import { CartContext } from "../context/CartContext.js";
 import SeriesItem from "../component/product/SeriesItem.jsx";
 import Settings from "./Settings.jsx";
+import OrderList from "../component/OrderList.jsx";
 
 export default function Mypage() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { setCartList } = useContext(CartContext);
   const navigate = useNavigate();
   
   // 상태로 활성 메뉴("order" 또는 "settings")를 관리합니다.
@@ -20,14 +23,20 @@ export default function Mypage() {
 
   const handleLogout = () => {
     if (window.confirm("정말 로그아웃 하시겠습니까?")) {
+      // 토큰 및 사용자 정보 삭제
       localStorage.removeItem("token");
-      setIsLoggedIn(false);
-      alert("로그아웃 되었습니다.");
+      localStorage.removeItem("user_id");
+      // 우선 메인 페이지("/")로 강제 이동
       navigate("/");
-    } else {
-      
+      // 짧은 지연 후에 로그아웃 상태 업데이트 및 장바구니 초기화
+      setTimeout(() => {
+        setIsLoggedIn(false);
+        setCartList([]);
+        alert("로그아웃 되었습니다.");
+      }, 1000);
     }
   };
+  
 
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
@@ -76,7 +85,12 @@ export default function Mypage() {
       </nav>
 
       {/* 콘텐츠 영역 */}
-      <div className="w-full p-8">
+      {/* <div className="w-full p-8">
+        {activeMenu === "order" && <OrderList />}
+        {activeMenu === "settings" && <Settings />}
+      </div>     */}
+      {/* 콘텐츠 영역 */}
+      <div className="w-full p-8 border">
         {activeMenu === "order" && (
           <>
             <h2 className="font-bold text-32 mb-30">주문</h2>
@@ -86,7 +100,7 @@ export default function Mypage() {
               </span>
               <span className="px-20 py-10 border rounded-full">출고 완료</span>
             </div>
-
+            {/* 이 밑에 orderlist로 어쩌구 해야됨 */}
             <div className="px-24 pt-32 pb-40 border rounded-20 border-grayhborder">
               <ul className="flex flex-col gap-10">
                 <li className="flex items-center justify-between">
@@ -113,39 +127,19 @@ export default function Mypage() {
                 </li>
               </ul>
               <div className="flex gap-10 mt-20 border">
-                <SeriesItem
-                  imageSrc="https://cdn-image02.casetify.com/usr/4787/34787/~v11/33263431_pouch__color_black_16006701.png.560x560-w.m80.webp"
-                  title="Chiikawa Sunglass Earbuds Pouch" 
-                  className="w-200"
-                  titleClassName="mt-10 font-bold"
-                />
-                <SeriesItem
-                  imageSrc="https://cdn-image02.casetify.com/usr/4787/34787/~v11/33263431_pouch__color_black_16006701.png.560x560-w.m80.webp"
-                  title="Chiikawa Sunglass Earbuds Pouch" 
-                  className="w-200"
-                  titleClassName="mt-10 font-bold"
-                />
-                <SeriesItem
-                  imageSrc="https://cdn-image02.casetify.com/usr/4787/34787/~v11/33263431_pouch__color_black_16006701.png.560x560-w.m80.webp"
-                  title="Chiikawa Sunglass Earbuds Pouch" 
-                  className="w-200"
-                  titleClassName="mt-10 font-bold"
-                />
-                <SeriesItem
-                  imageSrc="https://cdn-image02.casetify.com/usr/4787/34787/~v11/33263431_pouch__color_black_16006701.png.560x560-w.m80.webp"
-                  title="Chiikawa Sunglass Earbuds Pouch" 
-                  className="w-200"
-                  titleClassName="mt-10 font-bold"
-                />
-
               </div>
             </div>
           </>
         )}
         {activeMenu === "settings" && (
-          <Settings />
+          <>
+            <h2 className="font-bold text-32 mb-30">설정</h2>
+            <div className="px-24 pt-32 pb-40 border rounded-20 border-grayhborder">
+              <p>여기는 설정 관련 내용이 표시됩니다.</p>
+            </div>
+          </>
         )}
       </div>
-    </div>
+      </div>
   );
-}
+} 

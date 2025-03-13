@@ -56,13 +56,21 @@ export default function Header() {
 
   // 로그아웃 함수
   const handleLogout = () => {
-    navigate("/");
-    localStorage.removeItem("token");
-    localStorage.removeItem("user_id");
-    setIsLoggedIn(false);
-    setCartList([]);
-    alert("로그아웃 되었습니다.");
+    if (window.confirm("정말 로그아웃 하시겠습니까?")) {
+      // 토큰 및 사용자 정보 삭제
+      localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
+      // 우선 메인 페이지("/")로 강제 이동
+      navigate("/");
+      // 짧은 지연 후에 로그아웃 상태 업데이트 및 장바구니 초기화
+      setTimeout(() => {
+        setIsLoggedIn(false);
+        setCartList([]);
+        alert("로그아웃 되었습니다.");
+      }, 1000);
+    }
   };
+
   const toggleDropdown = () => {
     if (!isLoggedIn) {
       navigate("/login");

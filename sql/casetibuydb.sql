@@ -212,3 +212,25 @@ CREATE TABLE casetibuy_review (
         REFERENCES casetibuy_product (pid)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+      SELECT 
+          o.order_id,
+          o.member_id,
+          o.total_price,
+          o.payment_method,
+          o.order_status,
+          o.order_date,
+          o.address,
+          o.detail_address,
+          od.product_id,
+          od.product_name as product_name,
+          od.qty,
+          od.unit_price,
+          od.color,
+          od.case_type,
+          CONCAT('http://localhost:9000/', od.product_image) AS image
+      FROM casetibuy_order o
+      INNER JOIN casetibuy_order_detail od ON o.order_id = od.order_id
+      WHERE o.member_id = 'rkdgusdn'
+      ORDER BY o.order_id DESC
+    ;

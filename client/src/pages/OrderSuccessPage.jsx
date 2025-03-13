@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { CartContext } from "../context/CartContext.js";
+import { DetailContext } from "../context/DetailContext.js";
 
 
 export default function OrderSuccessPage() {
@@ -10,6 +11,7 @@ export default function OrderSuccessPage() {
     const navigate = useNavigate();
     const { setCartList, setCartCount } = useContext(CartContext);
     const pg_token = searchParams.get("pg_token");
+    const {matchColor}= useContext(DetailContext);
 
     // console.log(`pg_token: ${pg_token}`);
 
@@ -50,7 +52,7 @@ export default function OrderSuccessPage() {
                                 localStorage.removeItem("tid");
                                 localStorage.removeItem("total_price");
                                 localStorage.removeItem("partner_order_id");
-                                localStorage.removeItem("orderData");
+                                // localStorage.removeItem("orderData");
                                 setCartList([]);
                                 setCartCount(0);
                                 setOrderData(orderObj);
@@ -77,22 +79,23 @@ export default function OrderSuccessPage() {
     return (
         <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-100">
             <div className="p-10 bg-white rounded-lg shadow-lg w-[500px] text-center">
-                <h1 className="mb-6 text-2xl font-bold text-green-600">
+                <h1 className="mb-6 text-2xl font-bold text-green">
                     🎉 주문이 완료되었습니다!
                 </h1>
-
+                <p className="my-10">주문한 상품은 마이페이지에서 확인이 가능합니다.</p>
                 {orderData ? (
+                    <>
                     <div>
-                        <p className="text-lg font-semibold">
+                        <p className="mb-10 text-lg font-semibold">
                             결제 방법: {orderData.payment_method}
                         </p>
-                        <p className="text-lg">
+                        <p className="mb-10 text-lg">
                             배송지: {orderData.address}, {orderData.detail_address}
                         </p>
-                        <p className="text-lg font-bold text-blue-600">
+                        <p className="text-lg font-bold text-blue-600 mb-30">
                             총 가격: {Number(orderData.total_price).toLocaleString()} 원
                         </p>
-                        <h2 className="mt-6 text-xl font-semibold">주문 상품</h2>
+                        <h2 className="mt-10 text-xl font-semibold text-left">주문 상품</h2>
                         <ul className="mt-4 text-left">
                             {orderData.cartItems.map((item, index) => (
                                 <li key={index} className="p-3 border-b">
@@ -100,12 +103,12 @@ export default function OrderSuccessPage() {
                                         <img
                                             src={item.product_image}
                                             alt={item.product_name}
-                                            className="w-20 h-20 rounded"
+                                            className="rounded w-80"
                                         />
                                         <div>
                                             <p className="font-semibold">{item.product_name}</p>
                                             <p className="text-sm text-gray-600">
-                                                색상: {item.color} | {item.case_type}
+                                                색상: {matchColor[item.color]} | {item.case_type}
                                             </p>
                                             <p className="text-sm font-bold">
                                                 ₩{Number(item.unit_price).toLocaleString()} × {item.qty}
@@ -116,6 +119,14 @@ export default function OrderSuccessPage() {
                             ))}
                         </ul>
                     </div>
+                    <Link
+                        to="/"
+                    >
+                    <button className="px-6 py-20 mt-10 text-white bg-blue w-150 rounded-12">
+                        메인으로 돌아가기
+                    </button>
+                    </Link>
+                    </>
                 ) : (
                     <p>주문 정보를 불러오는 중...</p>
                 )}

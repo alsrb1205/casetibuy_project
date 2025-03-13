@@ -12,7 +12,7 @@ import axios from "axios";
 
 export default function PaymentPage() {
     const { isLoggedIn } = useContext(AuthContext);
-    const { cartList, totalPrice, setCartList } = useContext(CartContext);
+    const { cartList, totalPrice, setCartCount, setCartList } = useContext(CartContext);
     const { getCartList, updateCartList, deleteCartItem } = useCart();
     const location = useLocation();
     const navigate = useNavigate();
@@ -122,6 +122,7 @@ export default function PaymentPage() {
             console.log("✅ [DEBUG] 주문 응답:", response.data);
             if (response.status === 201) {
                 setCartList([]); // 장바구니 비우기
+                setCartCount(0);
                 localStorage.setItem("orderData", JSON.stringify(orderData));
                 navigate("/order-success");
             }
@@ -257,6 +258,9 @@ export default function PaymentPage() {
             await handleKakaoPayPayment(orderData);
         }
     };
+
+    
+
 
     return (
         <div className="flex justify-center w-full min-h-screen mt-66">

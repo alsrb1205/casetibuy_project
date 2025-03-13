@@ -9,7 +9,7 @@ export default function SeriesItem({ onClick, imageSrc, title, className = '', t
       <img
         src={imageSrc}
         alt="img-err"
-        className="w-full rounded-16"
+        className="w-full bg-white rounded-16"
       />
       <p className={`${titleClassName}`}>
         {title}

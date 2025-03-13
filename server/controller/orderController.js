@@ -1,4 +1,5 @@
 import { db } from "../repository/db.js";
+import * as orderRepository from "../repository/orderRepository.js";import * as repository from "../repository/orderRepository.js";
 
 // 결제 완료 후 실행되는 주문 생성 함수
 export const createOrder = async (req, res) => {
@@ -55,4 +56,21 @@ export const createOrder = async (req, res) => {
     } finally {
         connection.release();
     }
+};
+
+
+
+
+export const getOrders = async (req, res) => {
+  try {
+    const { memberId } = req.params;
+    if (!memberId) {
+      return res.status(400).json({ message: "Member id is required." });
+    }
+    const orders = await orderRepository.getOrdersByMember(memberId);
+    return res.status(200).json(orders);
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    return res.status(500).json({ message: "Failed to fetch orders." });
+  }
 };
