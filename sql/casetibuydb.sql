@@ -192,16 +192,23 @@ select * from casetibuy_order;
 select * from casetibuy_order_detail;
 
 
-create table casetibuy_review (
-    review_id       INT 			AUTO_INCREMENT 		PRIMARY KEY,
-    member_id       VARCHAR(20) 	NOT NULL, -- 기존 'id' 컬럼과 일치
-    product_id      INT   			NOT NULL, 
-    rating			int  			not null,
-    comment			varchar(300)	not null,
-    case			varchar(20)		not null,
-    color
-    
-		
-
-    CONSTRAINT fk_order_member FOREIGN KEY (member_id) REFERENCES casetibuy_member(id)
+CREATE TABLE casetibuy_review (
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT NOT NULL,
+    pid INT NOT NULL,
+    member_id VARCHAR(50) NOT NULL,
+    color	varchar(30) not null,
+    casetype	varchar(30) not null,
+    comment TEXT NOT NULL,
+    rating INT CHECK (rating BETWEEN 1 AND 5),
+    review_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_review_order FOREIGN KEY (order_id)
+        REFERENCES casetibuy_order (order_id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_review_member FOREIGN KEY (member_id)
+        REFERENCES casetibuy_member (member_id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_review_product FOREIGN KEY (pid)
+        REFERENCES casetibuy_product (pid)
+        ON DELETE CASCADE ON UPDATE CASCADE
 );

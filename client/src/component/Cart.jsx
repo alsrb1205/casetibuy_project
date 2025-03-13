@@ -63,6 +63,7 @@ export default function Cart() {
     toggleCart(); // 장바구니 닫기
     navigate("/payment"); // 결제 페이지로 이동
   };
+console.log(cartList);
 
   return (
     <>
