@@ -22,7 +22,12 @@ export default function Slide({ id, pagination, navigation, className }) {
     axios
       .get("/data/slides.json")
       .then((res) => {
-        const { visualSlideImage, featuredCollection, collaborator } = res.data;
+        const {
+          visualSlideImage,
+          featuredCollection,
+          collaborator,
+          commonSlides,
+        } = res.data;
 
         if (className === "visual") {
           setSlideList(visualSlideImage);
@@ -34,6 +39,9 @@ export default function Slide({ id, pagination, navigation, className }) {
           }
         } else if (className === "collaborator") {
           setSlideList(collaborator);
+        } else if (className === "common") {
+          const combinedSlides = commonSlides.map((category) => category.data);
+          setSlideList(combinedSlides);
         } else {
           setSlideList(featuredCollection);
         }
@@ -95,21 +103,11 @@ export default function Slide({ id, pagination, navigation, className }) {
         {slideList.map((slide, index) =>
           className === "visual" ? (
             <SwiperSlide key={index} className="relative">
-              <Link
-                key={slide.pid}
-                to={`/detail/${slide.pid}`}
-                draggable="false"
-              >
-                <SlideVisual key={index} slide={slide} />
-              </Link>
+              <SlideVisual key={index} slide={slide} />
             </SwiperSlide>
           ) : className === "collaborator" ? (
             <SwiperSlide key={index}>
-              <Link
-                key={slide.pid}
-                to={`/detail/${slide.pid}`}
-                draggable="false"
-              >
+              <Link key={slide.pid} to={`/detail/${slide.pid}`}>
                 <div className="px-20 py-10 overflow-hidden border border-grayhborder rounded-20">
                   <img src={slide.image} alt={index} className="w-full" />
                 </div>

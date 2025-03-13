@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GoPlus } from "react-icons/go";
 import { HiOutlineMinus } from "react-icons/hi";
+import { DetailContext } from "../../context/DetailContext";
 
 export default function CartItem({ cartList, updateCartList, deleteCartItem }) {
+  const { matchColor } = useContext(DetailContext);
   return (
     <div className="mt-8">
       <>
@@ -36,7 +38,7 @@ export default function CartItem({ cartList, updateCartList, deleteCartItem }) {
                 </div>
                 <p className={`font-light text-grayph text-12`}>{item.cname}</p>
                 <p className={`font-light text-grayph text-12`}>
-                  색상: {item.color}
+                  색상: {matchColor[item.color]}
                 </p>
                 <div className="flex items-center justify-between w-full">
                   <div

@@ -38,7 +38,6 @@ export default function Cart() {
     };
   }, [isCartOpen]);
 
-  // <<< 지혜 / 교체 : 로그인 인증 로직 수정 >>>
   // 로그인 인증 체크
   useEffect(() => {
     if (!isCartOpen) return; // 장바구니가 열릴 때만 실행되도록
@@ -63,6 +62,7 @@ export default function Cart() {
     toggleCart(); // 장바구니 닫기
     navigate("/payment"); // 결제 페이지로 이동
   };
+  console.log(cartList);
 
   return (
     <>
