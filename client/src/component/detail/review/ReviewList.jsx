@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReviewItem from './ReviewItem';
+import useReview from '../../../hooks/useReview';
 
 export default function ReviewList() {
+    const {getReviewList, reviewList} = useReview();
+    useEffect(() => {
+        getReviewList();
+    }, [getReviewList]);
+
     return (
         <>
             <div className='w-[90%] mx-auto'>
