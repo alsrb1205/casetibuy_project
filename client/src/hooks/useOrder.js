@@ -10,6 +10,7 @@ export default function useOrder() {
             memberId: id,
         });
         setOrderList(result.data);
+        return result.data;
     },[])
 
 
