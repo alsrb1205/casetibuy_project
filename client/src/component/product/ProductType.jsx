@@ -57,6 +57,8 @@ export default function ProductType() {
         applyFilter();
       }, [productList, selectList, layoutType]);
       
+      console.log(productList);
+      
 
     return (
         <>

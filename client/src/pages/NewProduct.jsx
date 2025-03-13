@@ -18,6 +18,7 @@ export default function NewProduct() {
   const [formData, setFormData] = useState({
     productname: "",
     kinds: "",  // "iphone"|"airpod4"|"airpodMax"
+    isColab: "none",
     isNew: false,
     isHot: false,
     isRec: false,
@@ -82,7 +83,7 @@ export default function NewProduct() {
   }
 
   return (
-    <div>
+    <div className='mt-66'>
       <h1>상품등록</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -120,6 +121,102 @@ export default function NewProduct() {
               에어팟맥스
             </label>
           </li>
+          {/* 콜라보선택 라디오 */}          
+          <li>
+            <span>콜라보 : </span>
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="none"
+                checked={formData.isColab === "none"}
+                onChange={handleChange}
+              />
+              없음
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="diesel"
+                checked={formData.isColab === "diesel"}
+                onChange={handleChange}
+              />
+              디젤
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="cinderella"
+                checked={formData.isColab === "cinderella"}
+                onChange={handleChange}
+              />
+              신데렐라
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="tomjerry"
+                checked={formData.isColab === "tomjerry"}
+                onChange={handleChange}
+              />
+              톰과제리
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="maisonkitsune"
+                checked={formData.isColab === "maisonkitsune"}
+                onChange={handleChange}
+              />
+              메종키츠네
+            </label>            
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="chillguy"
+                checked={formData.isColab === "chillguy"}
+                onChange={handleChange}
+              />
+              칠가이
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="chiikawa"
+                checked={formData.isColab === "chiikawa"}
+                onChange={handleChange}
+              />
+              치이카와
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="hellokitty"
+                checked={formData.isColab === "hellokitty"}
+                onChange={handleChange}
+              />
+              헬로키티
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="isColab"
+                value="kuromi"
+                checked={formData.isColab === "kuromi"}
+                onChange={handleChange}
+              />
+              쿠로미
+            </label>
+          </li>
+
 
           {/* 상품명 */}
           <li>

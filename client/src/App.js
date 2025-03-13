@@ -26,9 +26,11 @@ import { CartProvider } from "./context/CartContext";
 import { PListProvider } from "./context/PListContext.js";
 import { ThemeProvider } from "./context/ThemeContext.js";
 import { AuthContext, AuthProvider } from "./context/AuthContext.js";
+import { ReviewProvider } from "./context/ReviewContext.js";
 
 function App() {
   return (
+    <ReviewProvider>
     <ThemeProvider>
       <AuthProvider>
         <PListProvider>
@@ -76,6 +78,7 @@ function App() {
         </PListProvider>
       </AuthProvider>
     </ThemeProvider>
+    </ReviewProvider>
   );
 }
 

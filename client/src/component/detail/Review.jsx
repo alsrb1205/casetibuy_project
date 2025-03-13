@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import ReviewBars from './review/ReviewBars.jsx';
 import ReviewForm from './review/ReviewForm.jsx';
 import ReviewList from './review/ReviewList.jsx';
+import axios from 'axios';
+import { ReviewContext } from '../../context/ReviewContext.js';
+import useReview from '../../hooks/useReview.js';
 
 export default function Review() {
-const  [reviewForm, setReviewForm] = useState(false);
+    const {reviewForm, setReviewForm,rating, setRating, comment, setComment} = useContext(ReviewContext);
 
 
     return (
@@ -38,7 +41,6 @@ const  [reviewForm, setReviewForm] = useState(false);
                     <ReviewBars/>
                 </div>
             </div>
-            <hr className='mt-40 mb-20 text-grayborder2'/>
             {
                 reviewForm && <ReviewForm/>
             }

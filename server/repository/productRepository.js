@@ -6,15 +6,16 @@ import { db } from "./db.js";
 
 export const registerProduct = async (formData) => {
     const sql = `
-        insert into casetibuy_product(pname,kinds, isnew, ishot, isrec, repImage, upload_file, source_file, pdate)
-            values(?,?,?,?,?,?,?,?,now())
+        insert into casetibuy_product(pname,kinds, isnew, ishot, isrec, isColab, repImage, upload_file, source_file, pdate)
+            values(?,?,?,?,?,?,?,?,?,now())
     `;
     const values = [
         formData.productname,
         formData.kinds,
         formData.isNew || false,
         formData.isHot || false,
-        formData.isRec || false,      
+        formData.isRec || false,     
+        formData.isColab || false, 
         formData.repImage || null,  
         formData.uploadFile || null,
         formData.sourceFile || null
@@ -34,6 +35,7 @@ export const getList = async () => {
                isNew,
                isHot,
                isRec,
+               isColab,
                repImage,
                upload_file,
                source_file,
