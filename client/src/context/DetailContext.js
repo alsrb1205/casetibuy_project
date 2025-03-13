@@ -27,6 +27,25 @@ export function DetailProvider({ children }) {
 
   const [detail, setDetail] = useState({});
 
+  const matchCaseColor = {
+    bounce: ["black", "pink", "babyblue"],
+    ring: ["black", "purple", "skyblue"],
+    mirror: ["black", "silver"],
+    impact: ["black", "purple", "skyblue"],
+    mimpact: ["black", "purple", "skyblue"],
+    podbounce: ["charcoal", "pink", "skyblue"]
+  };
+
+  const matchColor = {
+    "black": "블랙",
+    "skyblue": "스카이 블루",
+    "purple": "퍼플",
+    "babyblue": "베이비 블루",
+    "pink": (activeCase === "podbounce" ? "프림로즈 핑크" : "핑크"),
+    "silver": "실버",
+    "charcoal": "차콜"
+  }
+
   const value = {
     activeCase,
     setActiveCase,
@@ -44,6 +63,8 @@ export function DetailProvider({ children }) {
     setProductList,
     detail,
     setDetail,
+    matchCaseColor,
+    matchColor
   };
 
   return (
