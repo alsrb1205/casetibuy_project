@@ -17,7 +17,8 @@ export default function DetailProduct() {
   const { saveToCartList, updateCartList } = useCart();
   const { isLoggedIn } = useContext(AuthContext);
   const { cartList } = useContext(CartContext);
-  const { pid } = useParams();
+  const { getDetail, parseCaseAndColor } = useDetail();
+  const { state } = useLocation();
   const {
     detail,
     setDetail,
@@ -27,8 +28,6 @@ export default function DetailProduct() {
     setActiveColor,
     currentCase,
   } = useContext(DetailContext);
-  const { parseCaseAndColor } = useDetail();
-  const { state } = useLocation();
 
   useEffect(() => {
     if (state?.activeCase) setActiveCase(state.activeCase);
@@ -36,13 +35,8 @@ export default function DetailProduct() {
   }, [state, setActiveCase, setActiveColor]);
 
   useEffect(() => {
-    axios
-      .post("http://localhost:9000/product/detail", { pid: pid })
-      .then((res) => {
-        setDetail(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [pid]);
+    getDetail();
+  }, [getDetail]);
 
   const detailImage = detail.image || [];
   const filteredImages = detailImage.filter((imgPath) => {

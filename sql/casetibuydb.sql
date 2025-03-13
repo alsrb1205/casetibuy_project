@@ -212,3 +212,5 @@ CREATE TABLE casetibuy_review (
         REFERENCES casetibuy_product (pid)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+select * from casetibuy_review;
