@@ -39,12 +39,11 @@
 //   );
 // }
 
-
-
 /******************************************************************/
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import HomeProduct from "./HomeProduct.jsx";
+import { Link } from "react-router-dom";
 
 export default function HomeProductList() {
   const [productList, setProductList] = useState([]);
@@ -61,6 +60,11 @@ export default function HomeProductList() {
   return (
     <div className="grid grid-cols-1 gap-24 lg:grid-cols-3">
       {productList.map((product, index) => (
+        // <Link
+        //   key={product.pid}
+        //   to={`/detail/${product.pid}`}
+        //   className="block"
+        // >
         <HomeProduct
           key={product.id || index} // product.id가 없을 경우 index 사용
           {...product}
@@ -74,6 +78,7 @@ export default function HomeProductList() {
               : ""
           }
         />
+        // {/* </Link> */}
       ))}
     </div>
   );
