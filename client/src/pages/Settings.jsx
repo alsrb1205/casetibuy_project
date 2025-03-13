@@ -1,121 +1,96 @@
-import React, { useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCartShopping,
-    faGear,
-    faArrowRightFromBracket,
-    faAngleRight,
-} from "@fortawesome/free-solid-svg-icons";
-import HomeProduct from "../component/home/HomeProduct";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react';
+import InputField from '../component/InputField.jsx';
 
-import { AuthContext } from "../context/AuthContext.js";
 
 export default function Settings() {
-    const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        navigate("/");
-        localStorage.removeItem("token");
-        setIsLoggedIn(false);
-        alert("로그아웃 되었습니다.");
-    };
-
     return (
-        <div className="w-[1200px] m-auto border flex gap-10 bg-white">
-            {/* 네비게이션 */}
-            <nav className="h-full px-8 py-16 border rounded-15 w-[300px] bg-graynav">
-                <ul className="flex flex-col gap-5 ">
-                    <li className="flex gap-5 px-20 py-10 text-white bg-black border rounded-full">
-                        <FontAwesomeIcon
-                            className="w-20 h-20 text-white"
-                            icon={faCartShopping}
-                        />
-                        주문
-                    </li>
-                    <li className="flex gap-5 px-20 py-10">
-                        <Link
-                            to="/setting"
-                            className="block px-4 text-center py-14 hover:text-grayph text-14"
-                        >
-                            <FontAwesomeIcon className="w-20 h-20" icon={faGear} />
-                            설정
-                        </Link>
-                    </li>
-                    <li className="flex gap-5 px-20 py-10">
-                        <button onClick={handleLogout}>
-                            <FontAwesomeIcon
-                                className="w-20 h-20"
-                                icon={faArrowRightFromBracket}
-                            />
-                            로그아웃
-                        </button>
-                    </li>
-                </ul>
-            </nav>
+        <>
+            <h2 className="font-bold text-32 mb-30">계정 정보 수정하기</h2>
+                {/* 설정 관련 내용을 여기에 추가 */}
+                <form className="w-full p-8 mx-auto bg-white">
+                    {/* 사용자 아이디 (읽기 전용) */}
+                    <InputField
+                        id="userId"
+                        label="사용자 아이디"
+                        // value={userId}
+                        readOnly={true}
+                    />
 
-            {/* 주문 페이지 */}
-            <div className="w-full border">
-                <h2 className="font-bold text-32 mb-30">주문</h2>
+                    {/* 아이디 변경 */}
+                    <InputField
+                        id="newUserId"
+                        label="아이디 변경"
+                    // value={newUserId}
+                    // setValue={setNewUserId}
+                    />
 
-                <div className="flex gap-10 mb-10">
-                    <span className="px-20 py-10 text-white bg-black border rounded-full">
-                        모든 주문
-                    </span>
-                    <span className="px-20 py-10 border rounded-full">출고 완료</span>
-                </div>
+                    {/* 이름 */}
+                    <InputField
+                        id="name"
+                        label="이름"
+                    // value={name}
+                    // setValue={setName}
+                    />
 
-                <div className="px-24 pt-32 pb-40 border rounded-20 border-grayhborder">
-                    <ul className="flex flex-col gap-10">
-                        <li className="flex items-center justify-between">
-                            <span>
-                                주문 현황 : <span className="font-bold">Shipped</span>
-                            </span>
-                            <span>
-                                <span className="p-2 mr-5 bg-sky text-blue text-10">
-                                    포인트
-                                </span>
-                                <span className="text-blue">적립 완료</span>
-                                <FontAwesomeIcon icon={faAngleRight} className="ml-20" />
-                            </span>
-                        </li>
-                        <li>
-                            <span className="text-grayph">주문 번호</span>
-                            <span>5220417</span>
-                        </li>
-                        <li>
-                            <span className="text-grayph">소계</span> <span>$64.00 USD</span>
-                        </li>
-                        <li>
-                            <span className="text-grayph">주문 일자</span>
-                            <span>19 Dec 2020</span>
-                        </li>
-                    </ul>
-                    <div className="flex gap-10 border">
-                        <HomeProduct
-                            image="https://cdn-image02.casetify.com/usr/4787/34787/~v11/33263431_pouch__color_black_16006701.png.560x560-w.m80.webp"
-                            description="Chiikawa Sunglass Earbuds Pouch"
-                            bgColor="blue"
-                        />
-                        <HomeProduct
-                            image="https://cdn-image02.casetify.com/usr/4787/34787/~v1141/33530665_iphone-16-pro-max__color_white-titanium_16007135.png.560x560-w.m80.webp"
-                            description="Chiikawa Luggage Sticker Case"
-                            bgColor="green"
-                        />
-                        <HomeProduct
-                            image="https://cdn-image02.casetify.com/usr/4787/34787/~v1141/33530665_iphone-16-pro-max__color_white-titanium_16007135.png.560x560-w.m80.webp"
-                            description="Chiikawa Luggage Sticker Case"
-                            bgColor="orange"
-                        />
-                        <HomeProduct
-                            image="https://cdn-image02.casetify.com/usr/4787/34787/~v1141/33530665_iphone-16-pro-max__color_white-titanium_16007135.png.560x560-w.m80.webp"
-                            description="Chiikawa Luggage Sticker Case"
-                            bgColor="yellow"
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
+                    {/* 이메일 주소 */}
+                    <InputField
+                        id="email"
+                        label="이메일 주소"
+                    // value={email}
+                    // setValue={setEmail}
+                    />
+
+                    {/* 전화번호 (숫자만 입력하도록 설정) */}
+                    <InputField
+                        id="phone"
+                        label="전화번호"
+                        // value={phone}
+                        // setValue={setPhone}
+                        inputType="number-only"
+                    />
+
+                    {/* 생년월일 - 간단히 text 타입으로 사용 (원하는 경우 date 타입으로 변경 가능) */}
+                    <InputField
+                        id="birthdate"
+                        label="생년월일"
+                    // value={birthdate}
+                    // setValue={setBirthdate}
+                    />
+
+                    {/* 사용중인 비밀번호 */}
+                    <InputField
+                        id="currentPassword"
+                        label="사용중인 비밀번호"
+                        // value={currentPassword}
+                        // setValue={setCurrentPassword}
+                        type="password"
+                    />
+
+                    {/* 새 비밀번호 */}
+                    <InputField
+                        id="newPassword"
+                        label="새 비밀번호"
+                        // value={newPassword}
+                        // setValue={setNewPassword}
+                        type="password"
+                    />
+
+                    {/* 새 비밀번호 확인 */}
+                    <InputField
+                        id="confirmNewPassword"
+                        label="새 비밀번호 확인"
+                        // value={confirmNewPassword}
+                        // setValue={setConfirmNewPassword}
+                        type="password"
+                    />
+
+                    <button
+                        // type="submit"
+                        className="w-full py-4 mt-8 text-lg text-white rounded-md bg-blue"
+                    >
+                        설정 업데이트
+                    </button>
+                </form>
+        </>
     );
 }
