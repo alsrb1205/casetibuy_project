@@ -1,5 +1,5 @@
 import { db } from "../repository/db.js";
-import * as orderRepository from "../repository/orderRepository.js";import * as repository from "../repository/orderRepository.js";
+import * as orderRepository from "../repository/orderRepository.js";
 
 // 결제 완료 후 실행되는 주문 생성 함수
 export const createOrder = async (req, res) => {
