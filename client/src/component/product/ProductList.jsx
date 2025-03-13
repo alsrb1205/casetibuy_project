@@ -45,7 +45,7 @@ export default function ProductList({ productList, layoutType }) {
                                     {product.name}</p>
                                 <p>{product.kinds}</p>
                                 <p>{caseData.cname}</p>
-                                <p>{caseData.color}a</p>
+                                <p>{caseData.color}</p>
                             </div>
                             {/* 상품 가격 */}
                             <div className='py-10 bg-black rounded-full px-15 w-100 '>

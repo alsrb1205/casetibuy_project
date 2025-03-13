@@ -38,6 +38,7 @@ export default function Cart() {
     };
   }, [isCartOpen]);
 
+  // <<< 지혜 / 교체 : 로그인 인증 로직 수정 >>>
   // 로그인 인증 체크
   useEffect(() => {
     if (!isCartOpen) return; // 장바구니가 열릴 때만 실행되도록
@@ -56,13 +57,7 @@ export default function Cart() {
 
     getCartList();
   }, [isCartOpen, isLoggedIn]);
-
-  // 장바구니 결제 버튼
-  const handlePaymentClick = () => {
-    toggleCart(); // 장바구니 닫기
-    navigate("/payment"); // 결제 페이지로 이동
-  };
-
+  
   return (
     <>
       {/* 반투명 검은 배경 */}
@@ -143,16 +138,6 @@ export default function Cart() {
 
         {/* 장바구니 footer */}
         <CartFooter totalPrice={totalPrice} cartCount={cartCount} />
-
-        {/* 결제하기 버튼 */}
-        <div className="flex justify-center py-4 mt-8">
-          <button
-            onClick={handlePaymentClick} // 결제하기 클릭 시 장바구니 닫고 /payment 페이지로 이동
-            className="w-full px-4 py-2 text-white bg-blue-600 rounded-md text-14"
-          >
-            결제하기
-          </button>
-        </div>
       </div>
     </>
   );

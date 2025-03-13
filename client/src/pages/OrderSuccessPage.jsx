@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { CartContext } from "../context/CartContext.js";
+
 
 export default function OrderSuccessPage() {
     const [orderData, setOrderData] = useState(null);
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
+    const { setCartList, setCartCount } = useContext(CartContext);
     const pg_token = searchParams.get("pg_token");
 
-    console.log(`pg_token: ${pg_token}`);
+    // console.log(`pg_token: ${pg_token}`);
 
     // localStorage에서 주문 데이터를 불러옵니다.
     useEffect(() => {
@@ -47,6 +50,9 @@ export default function OrderSuccessPage() {
                                 localStorage.removeItem("tid");
                                 localStorage.removeItem("total_price");
                                 localStorage.removeItem("partner_order_id");
+                                localStorage.removeItem("orderData");
+                                setCartList([]);
+                                setCartCount(0);
                                 setOrderData(orderObj);
                             })
                             .catch((orderErr) => {

@@ -2,15 +2,18 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import InputField from "../component/InputField.jsx";
 import usePayment from "../hooks/usePayment.js";
 import AddressModal from "../component/AddressModal.jsx";
+import CartItem from "../component/cart/CartItem.jsx";
+import Summary from "../component/cart/Summary.jsx";
+import { useCart } from "../hooks/useCart.js";
 import { AuthContext } from "../context/AuthContext.js";
 import { CartContext } from "../context/CartContext.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import PaymentCartItems from "../component/PaymentCartItems.jsx";
 
 export default function PaymentPage() {
     const { isLoggedIn } = useContext(AuthContext);
     const { cartList, totalPrice, setCartList } = useContext(CartContext);
+    const { getCartList, updateCartList, deleteCartItem } = useCart();
     const location = useLocation();
     const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search);
@@ -20,6 +23,7 @@ export default function PaymentPage() {
     // 로그인 상태이면 사용자 정보 API 호출
     useEffect(() => {
         if (isLoggedIn) {
+            getCartList();
             const token = localStorage.getItem("token");
             fetch("http://localhost:9000/member/userinfo", {
                 method: "GET",
@@ -209,6 +213,11 @@ export default function PaymentPage() {
 
     // 결제하기 버튼 클릭 시 실행
     const handleSubmit = async () => {
+        if (!cartList || cartList.length === 0) {
+            alert("카트에 담긴 상품이 없습니다. 먼저 상품을 담아주세요.");
+            navigate("/");
+            return;
+        }
         if (!zipcode) {
             setZipcodeError("주소 검색을 통해 배송지를 선택해주세요.");
             zipcodeRef.current?.focus();
@@ -222,11 +231,11 @@ export default function PaymentPage() {
 
         const cartItems = cartList.map((item) => ({
             product_id: item.pid,
-            product_name: item.cname,
+            product_name: item.pname,
             qty: item.qty,
             unit_price: item.price,
             color: item.color,
-            case_type: item.caseType,
+            case_type: item.cname,
             product_image: item.image,
         }));
 
@@ -251,10 +260,10 @@ export default function PaymentPage() {
 
     return (
         <div className="flex justify-center w-full min-h-screen mt-66">
-            <div className="flex w-full max-w-[800px] min-h-screen font-sans">
-                <div className="w-[50%] p-8 border-x-2 overflow-y-auto">
+            <div className="flex w-full max-w-[1000px] min-h-screen font-sans">
+                <div className="w-[60%] p-8">
                     <div className="mb-8">
-                        <h2 className="mb-10 font-bold text-20">구매자 정보</h2>
+                        <h2 className="mb-20 font-bold text-32">구매자 정보</h2>
                         <InputField
                             id="buyerName"
                             type="text"
@@ -279,7 +288,7 @@ export default function PaymentPage() {
                     </div>
 
                     <div className="mb-8">
-                        <h2 className="mb-10 font-bold text-20">배송지 정보</h2>
+                        <h2 className="mb-20 font-bold text-32">배송지 정보</h2>
                         <div className="flex items-center justify-between mb-2">
                             <p className="text-14">배송 받으실 주소를 선택해주세요.</p>
                             <button
@@ -326,7 +335,7 @@ export default function PaymentPage() {
                     </div>
 
                     <div>
-                        <h2 className="mb-10 font-bold text-20">결제 수단</h2>
+                        <h2 className="mb-20 font-bold text-32">결제 수단</h2>
                         <div className="mb-20">
                             <div
                                 className={`mb-15 px-15 py-10 border rounded-12 cursor-pointer ${paymentMethod === "creditCard"
@@ -412,9 +421,16 @@ export default function PaymentPage() {
                     </div>
                 </div>
 
-                <div className="w-[50%] p-8 border-r-2 overflow-y-auto">
-                    <h2 className="mb-4 font-bold text-20">주문 상품 정보</h2>
-                    <PaymentCartItems />
+                <div className="w-[35%] ml-[5%] p-8">
+                    <h2 className="mb-20 font-bold text-32">주문 상품 정보</h2>
+                    <CartItem
+                        cartList={cartList}
+                        updateCartList={updateCartList}
+                        deleteCartItem={deleteCartItem}
+                    />
+                    <Summary 
+                        totalPrice={totalPrice}
+                    />
                 </div>
             </div>
         </div>

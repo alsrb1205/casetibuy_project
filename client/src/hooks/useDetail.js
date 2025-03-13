@@ -74,9 +74,10 @@
 
 
 /******************************************************************/
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { DetailContext } from "../context/DetailContext";
+import { useParams } from "react-router-dom";
 
 export function useDetail() {
   const {
@@ -117,23 +118,35 @@ export function useDetail() {
     setHoveredGauge(null);
   };
 
-  const getProductList = async () => {
+  const getProductList = useCallback(async () => {
     try {
       const res = await axios.get("http://localhost:9000/product/all");
-      setProductList(res.data || []); // 데이터가 없으면 빈 배열 할당
+      setProductList(res.data || []);
       return res.data;
     } catch (error) {
       console.error("상품 목록 가져오기 실패:", error);
       return [];
     }
-  };
+  }, [setProductList]);
 
-  const parseCaseAndColor = (fileName) => {
-    if (!fileName) return { caseType: "", color: "" }; // null 방지
+  const { pid } = useParams();
+  const getDetail = useCallback(async () => {
+    try {
+      const res = await axios.post("http://localhost:9000/product/detail", { pid: pid });
+      setDetail(res.data || []);
+      return res.data;
+    } catch (error) {
+      console.error("상품 정보 가져오기 실패:", error);
+      return [];
+    }
+  }, [setDetail, pid]);
+
+  const parseCaseAndColor = useCallback((fileName) => {
+    if (!fileName) return { caseType: "", color: "" };
     const match = fileName.match(/_case_([a-zA-Z]+)_color_([a-zA-Z]+)/);
     if (!match) return { caseType: "", color: "" };
     return { caseType: match[1], color: match[2] };
-  };
+  }, []);
 
   return {
     casesData,
@@ -142,5 +155,6 @@ export function useDetail() {
     handleLeave,
     getProductList,
     parseCaseAndColor,
+    getDetail
   };
 }
