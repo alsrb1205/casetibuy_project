@@ -96,23 +96,25 @@ export default function DetailProduct() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-detailbg">
-      <div className="detailpage max-w-[1382px] m-32 pt-66">
-        <div className="flex gap-32">
-          {/* 왼쪽 콘텐츠 */}
-          <DetailTopLeft detail={detail} filteredImages={filteredImages} />
-          {/* 오른쪽 콘텐츠 (sticky) */}
-          <DetailTopRight
-            detail={detail}
-            addCartItem={addCartItem}
-            detailImage={detailImage}
-            filteredImages={filteredImages}
-          />
+    <>
+      <div className="flex flex-col items-center bg-detailbg">
+        <div className="detailpage max-w-[1382px] m-32 pt-66">
+          <div className="flex gap-32">
+            {/* 왼쪽 콘텐츠 */}
+            <DetailTopLeft detail={detail} filteredImages={filteredImages} />
+            {/* 오른쪽 콘텐츠 (sticky) */}
+            <DetailTopRight
+              detail={detail}
+              addCartItem={addCartItem}
+              detailImage={detailImage}
+              filteredImages={filteredImages}
+            />
+          </div>
         </div>
+        <ProductFeatures />
+        <ProductInfo />
       </div>
-      <ProductFeatures />
-      <ProductInfo />
       <Review />
-    </div>
+    </>
   );
 }

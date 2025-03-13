@@ -27,7 +27,9 @@ select * from casetibuy_product;
 select * from casetibuy_member;
 
 alter table casetibuy_product add column repImage varchar(300);
-alter table casetibuy_product drop column repImage;
+-- 콜라보 항목 추가!!!!!! 
+alter table casetibuy_product add column isColab varchar(50) not null;
+
 SELECT 
                     pid,
                     pname as name,
@@ -188,3 +190,18 @@ WHERE o.member_id = 'rkdgusdn';
 
 select * from casetibuy_order;
 select * from casetibuy_order_detail;
+
+
+create table casetibuy_review (
+    review_id       INT 			AUTO_INCREMENT 		PRIMARY KEY,
+    member_id       VARCHAR(20) 	NOT NULL, -- 기존 'id' 컬럼과 일치
+    product_id      INT   			NOT NULL, 
+    rating			int  			not null,
+    comment			varchar(300)	not null,
+    case			varchar(20)		not null,
+    color
+    
+		
+
+    CONSTRAINT fk_order_member FOREIGN KEY (member_id) REFERENCES casetibuy_member(id)
+);
