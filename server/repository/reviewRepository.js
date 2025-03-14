@@ -12,13 +12,14 @@ export const getReviewList = async (pid) => {
 
 export const addReview = async (formData) => {
     const sql = `
-        insert into casetibuy_review (order_id, pid, member_id, color, casetype, comment, rating, review_date)
-        values (?, ?, ?, ?, ?, ?, ?, now())
+        insert into casetibuy_review (order_id, pid, member_id, kinds, color, casetype, comment, rating, review_date)
+        values (?, ?, ?, ?, ?, ?, ?, ?, now())
     `;
     const values = [
         formData.order_id,
         formData.pid,
         formData.member_id,
+        formData.kinds,
         formData.color,
         formData.case,
         formData.comment,

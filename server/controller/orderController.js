@@ -2,7 +2,7 @@ import { db } from "../repository/db.js";
 import * as orderRepository from "../repository/orderRepository.js";
 
 // 결제 완료 후 실행되는 주문 생성 함수
-export const createOrder = async (req, res) => {
+export const createOrder = async (req, res) => {  
     const { member_id, total_price, payment_method, zipcode, address, detail_address, cartItems } = req.body;
 
     if (!member_id || !total_price || !payment_method || !zipcode || !address || !detail_address || !cartItems) {
@@ -28,8 +28,8 @@ export const createOrder = async (req, res) => {
         const order_id = orderResult.insertId;
 
         const orderDetailSql = `
-                                    INSERT INTO casetibuy_order_detail (order_id, product_id, product_name, qty, unit_price, color, case_type, product_image)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+                                    INSERT INTO casetibuy_order_detail (order_id, product_id, product_name, qty, unit_price, kinds, color, case_type, product_image)
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
         for (const item of cartItems) {
             await connection.execute(orderDetailSql, [
@@ -38,6 +38,7 @@ export const createOrder = async (req, res) => {
                 item.product_name,
                 item.qty,
                 item.unit_price,
+                item.kinds,
                 item.color,
                 item.case_type,
                 item.product_image,

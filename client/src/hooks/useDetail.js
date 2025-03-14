@@ -148,6 +148,13 @@ export function useDetail() {
     return { caseType: match[1], color: match[2] };
   }, []);
 
+  const hasMatchingDetailImage = (detailImages, parseCaseAndColor, key, value) => {
+    return detailImages.some(image => {
+      const parsed = parseCaseAndColor(image);
+      return parsed[key] === value;
+    });
+  }
+
   return {
     casesData,
     handleCaseClick,
@@ -155,6 +162,7 @@ export function useDetail() {
     handleLeave,
     getProductList,
     parseCaseAndColor,
-    getDetail
+    getDetail,
+    hasMatchingDetailImage
   };
 }

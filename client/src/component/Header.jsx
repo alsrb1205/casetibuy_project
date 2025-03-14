@@ -155,7 +155,7 @@ export default function Header() {
                   : { onClick: toggleDropdown })}
               >
                 <FontAwesomeIcon
-                  className={`w-24 h-24 ${
+                  className={`py-20 w-24 h-24 ${
                     showSeries
                       ? "text-black"
                       : iconColor === "white"
@@ -166,7 +166,7 @@ export default function Header() {
                 />
               </button>
               {isDropdownOpen && (
-                <ul className="absolute top-[100%] right-0 rounded-15 mt-2 w-120 bg-white text-black shadow-2xl ">
+                <ul className="absolute right-0 mt-2 text-black bg-white shadow-2xl top-60 rounded-15 w-120 ">
                   {isLoggedIn ? (
                     <>
                       <li>

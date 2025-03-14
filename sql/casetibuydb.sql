@@ -140,6 +140,7 @@ DROP VIEW IF EXISTS view_cart_list;
 -- 테이블 내용 삭제(카트랑 참조중 => 카트 먼저 삭제 후 멤버 삭제)
 TRUNCATE TABLE casetibuy_member;
 TRUNCATE TABLE casetibuy_cart;
+TRUNCATE TABLE casetibuy_product;
 
 DELETE FROM casetibuy_product WHERE pid = 13;
 
@@ -238,9 +239,9 @@ CREATE TABLE casetibuy_review (
           CONCAT('http://localhost:9000/', od.product_image) AS image
       FROM casetibuy_order o
       INNER JOIN casetibuy_order_detail od ON o.order_id = od.order_id
-      WHERE o.member_id = 'rkdgusdn'
+      WHERE o.member_id = 'test123'
       ORDER BY o.order_id DESC
     ;
 
-select * from casetibuy_review;
+select * from casetibuy_review where pid = '1';
 

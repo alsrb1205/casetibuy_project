@@ -45,6 +45,13 @@ export function DetailProvider({ children }) {
     "silver": "실버",
     "charcoal": "차콜"
   };
+
+  const matchKinds = {
+    "iphone": "아이폰 16 Pro",
+    "airpod4": "아이폰 16 Pro",
+    "airpodmax": "아이폰 16 Pro",
+  };
+
        // activeCase가 있고 해당 케이스에 대한 색상 목록이 있으면 사용, 없으면 전체 색상 사용
        const availableColorKeys =
        activeCase && matchCaseColor[activeCase] ? matchCaseColor[activeCase] : Object.keys(matchColor);
@@ -69,7 +76,8 @@ export function DetailProvider({ children }) {
     setDetail,
     matchCaseColor,
     matchColor,
-    availableColorKeys
+    availableColorKeys,
+    matchKinds,
   };
 
   return (
