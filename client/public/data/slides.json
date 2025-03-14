@@ -1,16 +1,6 @@
 {
   "visualSlideImage": [
     {
-      "pid": "1",
-      "label": "01",
-      "title": "Dex's CHOICE",
-      "description": "Magnify Your Galaxy.",
-      "src": "https://cdn-stamplib.casetify.com/cms/video/4a7a7c1cd669bf005e2cdc596b0345fa.mp4",
-      "textBgColor": "yellow",
-      "titleColor": "blue",
-      "iconColor": "white"
-    },
-    {
       "pid": "6",
       "label": "02",
       "title": "DISEL + CASTIBUY",
@@ -22,50 +12,61 @@
       "iconColor": "white"
     },
     {
-      "pid": "3",
+      "pid": "7",
       "label": "03",
-      "title": "Upgrade Your Samsung S25 with a Kick-Stand",
-      "description": "Unlock more protection and more productivity",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/5b730b163767a29c90e65e519a6de9cd.jpg",
+      "title": "Cinderella",
+      "description": "신데렐라의 희망, 친절, 아름다움의 메시지가 담긴 디자인을 만나보세요.",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/6ee686eb270cd9fe8e8b07137cae95bd.jpg",
       "textBgColor": "green",
-      "titleColor": "yellow"
+      "titleColor": "yellow",
+      "textColor": "white",
+      "iconColor": "white"
     },
     {
-      "pid": "4",
+      "pid": "10",
+      "label": "02",
+      "title": "Chill Guy",
+      "description": "떨어지면 어떠하리. 별로 신경 쓰지 않는 당신을 위한 케이스.",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/5176aac3374db7ee45e23fe0d26bea92.png",
+      "textBgColor": "blue",
+      "titleColor": "yellow",
+      "textColor": "white"
+    },
+    {
+      "pid": "11",
       "label": "04",
-      "title": "Your Phone, Your Style",
-      "description": "Customize your iPhone 16",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/c639899a9049ddefbaa2ffb8462b09f5.jpg",
+      "title": "Chiikawa",
+      "description": "먼가 작고 귀여운 녀석들과 함께하는 치이카와 x 케이스티파이 컬렉션이 여러분을 세상에서 가장 귀여운 모험으로 안내합니다.",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/9f6a932bb41da822a8a7041c60ea3cc5.jpg",
       "textBgColor": "pink",
       "titleColor": "blue"
     },
     {
-      "pid": "5",
+      "pid": "8",
       "label": "05",
-      "title": "Butterbear | CASTIBUY",
-      "description": "Step into a paradise of spring desserts!",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/6f22430fa455e2df961f6d38a83c87d7.jpg",
+      "title": "Tom and Jerry | CASTIBUY",
+      "description": "톰과 제리의 이야기를 기념하는 케이스티파이 컬렉션 속으로 여러분을 초대합니다.",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/141e67d1524b9a13638daa0c2d341481.jpg",
       "textBgColor": "orange",
       "titleColor": "yellow"
     },
     {
       "pid": "6",
       "label": "06",
-      "title": "Magsafe Accessories",
-      "description": "Elevate Your Samsung S25 with Snappy Products",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/0738017a78a70038e2b7dfb5deba231c.jpg",
+      "title": "Maison Kitsuné",
+      "description": "요 퐉스",
+      "src": "https://cdn-stamplib.casetify.com/cms/image/b9bcf4c23207efcbf8136439db189bd9.png",
       "textBgColor": "yellow",
-      "titleColor": "blue",
-      "iconColor": "white"
+      "titleColor": "blue"
     }
   ],
   "featuredCollection": [
     {
-      "pid": "1",
+      "pid": "13",
       "label": "01",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
-      "title": "바운스 캐리어",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/ad63df5cadcd88e2bc964d07dbf94060.jpg.webp",
+      "title": "산리오캐릭터즈 - 쿠로미",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/5075a8c8e0317bd4082486393a3369bf.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
       "layout": "even",
@@ -73,11 +74,11 @@
       "contentPadding": "py-16 px-32"
     },
     {
-      "pid": "2",
+      "pid": "6",
       "label": "02",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
-      "title": "[NEW] 갤럭시 S25 클리어 케이스",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/3ceeff23d688e17e6e0615233c8e0a2a.jpg.webp",
+      "title": "DISEL + CASTIBUY",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/2aa2b0ce22d0fc24607bf26ef8f9e67a.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
       "layout": "even",
@@ -85,27 +86,27 @@
       "contentPadding": "py-16 px-32"
     },
     {
-      "pid": "3",
-      "label": "03",
-      "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
-      "title": "BioVeg 시리즈",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/dccbe375af1dbb515e7052c291588d65.jpg.webp",
-      "btnText": "Shop Now",
-      "btnStyle": "py-12 px-20 text-20 rounded-full border",
-      "layout": "odd",
-      "bgColor": "pink",
-      "contentPadding": "py-16 px-32"
-    },
-    {
-      "pid": "4",
+      "pid": "8",
       "label": "04",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
-      "title": "Dex's CHOICE",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/f5a43413db50ef3ca10b73c841e73ac8.png.webp",
+      "title": "Tom and Jerry",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/141e67d1524b9a13638daa0c2d341481.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
       "layout": "odd",
       "bgColor": "green",
+      "contentPadding": "py-16 px-32"
+    },
+    {
+      "pid": "11",
+      "label": "03",
+      "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
+      "title": "Chiikawa",
+      "image": "https://cdn-stamplib.casetify.com/cms/image/9f6a932bb41da822a8a7041c60ea3cc5.jpg",
+      "btnText": "Shop Now",
+      "btnStyle": "py-12 px-20 text-20 rounded-full border",
+      "layout": "odd",
+      "bgColor": "pink",
       "contentPadding": "py-16 px-32"
     }
   ],

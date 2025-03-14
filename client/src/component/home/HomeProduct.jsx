@@ -17,7 +17,7 @@ export default function HomeProduct({
 }) {
   return (
     <div
-      className={`w-full h-full rounded-20 overflow-hidden ${bgColor} ${className} ${cpadding}`}
+      className={`w-full h-full rounded-20 overflow-hidden block ${bgColor} ${className} ${cpadding}`}
     >
       <div className="w-full overflow-hidden">
         <img src={image} alt={title} className={`w-full ${cround}`} />
