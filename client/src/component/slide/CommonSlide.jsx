@@ -44,12 +44,16 @@ export default function CommonSlide({
         >
           {slidesData.map((slide, index) => (
             <SwiperSlide key={index}>
-              <Link key={slide.pid} to={`/detail/${slide.pid}`}
-              state={{ activeCase: slide.activeCase, activeColor: slide.activeColor }}
-              onClick={() => window.scrollTo(0, 0)}
-
+              <Link
+                key={slide.pid}
+                to={`/detail/${slide.pid}`}
+                state={{
+                  activeCase: slide.activeCase,
+                  activeColor: slide.activeColor,
+                }}
+                onClick={() => window.scrollTo(0, 0)}
               >
-                <HomeProduct {...slide} />
+                <HomeProduct {...slide} className="h-full" />
               </Link>
             </SwiperSlide>
           ))}

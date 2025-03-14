@@ -6,56 +6,13 @@ import Payment from "../component/cart/Payment.jsx";
 import Guarantee from "../component/cart/Guarantee.jsx";
 
 export default function Home() {
-  const paginationSettings = {
-    visual: true,
-    common: {
-      el: `.custom-pagination`,
-      clickable: true,
-      renderBullet: (index, className) => {
-        return `<span class="${className} custom-bullet"></span>`;
-      },
-    },
-  };
-
-  const navigationSettings = {
-    collaborator: true,
-    common: {
-      nextEl: `.custom-next`,
-      prevEl: `.custom-prev`,
-    },
-  };
-
   return (
     <div>
       {/* visual slider */}
-      <Slide
-        className="visual"
-        pagination={paginationSettings.visual}
-        navigation={false}
-        slidesPerView="1"
-        spaceBetween="0"
-        loop={true}
-        autoplay={true}
-      />
+      <Slide className="visual" pagination={true} navigation={false} />
 
       {/* collaborator */}
-      <Slide
-        className="collaborator"
-        pagination={false}
-        navigation={navigationSettings.collaborator}
-        slidesPerView="4.9"
-        spaceBetween="30"
-        autoplay={false}
-      />
-
-      {/* common 임시 */}
-      {/* <Slide
-        pagination={paginationSettings.common}
-        navigation={navigationSettings.common}
-        slidesPerView="3.2"
-        spaceBetween="30"
-        autoplay={false}
-      /> */}
+      <Slide className="collaborator" pagination={false} navigation={true} />
 
       {/* Featured Collection */}
       <div className="content product-container bg-bg">

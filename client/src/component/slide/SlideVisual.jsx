@@ -21,7 +21,7 @@ export default function SlideVisual({ slide }) {
   };
 
   return (
-    <>
+    <div className="relative">
       {slide.src.endsWith(".mp4") ? (
         <video autoPlay muted loop className="object-cover w-full h-full">
           <source src={slide.src} type="video/mp4" />
@@ -51,6 +51,6 @@ export default function SlideVisual({ slide }) {
           {slide.description}
         </span>
       </div>
-    </>
+    </div>
   );
 }

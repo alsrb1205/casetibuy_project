@@ -9,7 +9,6 @@ export const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  // <<< 지혜 / 삭제 :  userId, setUserId >>>
 
   return (
     <CartContext.Provider

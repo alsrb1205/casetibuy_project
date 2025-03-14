@@ -13,9 +13,6 @@ export const useCart = () => {
     totalPrice,
     setTotalPrice,
   } = useContext(CartContext);
-  // <<< 지혜 / 삭제 :  userId, setUserId >>>
-
-  // <<< 지혜 / 삭제 :  fetchUserInfo() >>>
 
   /**
    * 장바구니 전체 리스트 조회
@@ -33,7 +30,6 @@ export const useCart = () => {
   /**
    * 장바구니 새로운 아이템 저장
    */
-  // <<< 지혜 / 변경 : 기존 로직에서 변경했음 >>>
   const saveToCartList = async (formData) => {
     const result = await axios.post("http://localhost:9000/cart/add", formData);
     if (result.data.result_rows) {
@@ -106,6 +102,5 @@ export const useCart = () => {
     updateCartList,
     deleteCartItem,
     calculateTotalPrice,
-    // <<< 지혜 / 삭제 :  userId, fetchUserInfo >>>
   };
 };

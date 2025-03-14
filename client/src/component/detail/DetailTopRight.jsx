@@ -22,7 +22,9 @@ export default function DetailTopRight({
         </div>
         <div className="relative mt-3 mb-12 price-container">
           <div className="flex items-center gap-10">
-            <span className="text-[24px] pb-1">₩{currentCase.price}</span>
+            <span className="text-[24px] pb-1">
+              ₩{currentCase.price.toLocaleString()}
+            </span>
             <span className="border-[1px] border-orange text-orange text-[10px] text-center rounded-[40px] h-[18px] px-[8px] pt-1">
               무료 배송
             </span>

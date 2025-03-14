@@ -2,7 +2,6 @@ import React from "react";
 import CommonSlide from "./CommonSlide";
 
 export default function SlideSection({ slides }) {
-  // 사람이 보기 좋은 className 설정
   const title = {
     recommended: "Recommended Collection",
     hot: "Now Hot Designs!",
@@ -18,11 +17,15 @@ export default function SlideSection({ slides }) {
           title={title[key] || key}
           pagination
           navigation
-          slidesData={value.map(item => ({
+          slidesData={value.map((item) => ({
             ...item,
             link: `/detail/${item.pid}`,
-            state: { activeCase: item.activeCase, activeColor: item.activeColor },
-          }))}        />
+            state: {
+              activeCase: item.activeCase,
+              activeColor: item.activeColor,
+            },
+          }))}
+        />
       ))}
     </div>
   );
