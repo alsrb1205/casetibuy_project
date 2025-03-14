@@ -17,6 +17,7 @@ export async function getOrdersByMember(memberId) {
           od.product_id,
           od.product_name,
           od.qty,
+          od.kinds,
           od.unit_price,
           od.color,
           od.case_type,

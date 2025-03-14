@@ -5,14 +5,12 @@ import Color from "./Color";
 import "../../style/case-swiper.css";
 import "../../style/bar.css";
 import { DetailContext } from "../../context/DetailContext";
+import { useDetail } from "../../hooks/useDetail";
 
-export default function DetailTopRight({
-  detail,
-  addCartItem,
-  filteredImages,
-  detailImage,
-}) {
+export default function DetailTopRight({ detail, addCartItem, detailImage, }) {
   const { currentCase } = useContext(DetailContext);
+  const { hasMatchingDetailImage } = useDetail();
+
   return (
     <div className="sticky top-12 self-start w-[533px]">
       <div className="flex flex-col gap-10">
@@ -38,11 +36,14 @@ export default function DetailTopRight({
         <div className="mb-16">
           <Bars />
           <CaseSwiper
-            filteredImages={filteredImages}
             detailImage={detailImage}
+            hasMatchingDetailImage={hasMatchingDetailImage}
           />
         </div>
-        <Color />
+        <Color
+          detailImage={detailImage}
+          hasMatchingDetailImage={hasMatchingDetailImage}
+        />
         <div className="flex justify-center bg-sky rounded-[16px] mb-6">
           <div className="py-14">
             <span className="tracking-[0.015em] text-blue2">
@@ -94,6 +95,7 @@ export default function DetailTopRight({
             </div>
             <div className="text-12">사용 가능한 결제 방법</div>
           </div>
+
           {/* <div className="flex justify-between items-center px-20 py-16 bg-white rounded-[16px]">
             <strong className="text-black text-20">아티스트 소개</strong>
             <button className="text-black border-1 rounded-[40px] px-20 py-10">
