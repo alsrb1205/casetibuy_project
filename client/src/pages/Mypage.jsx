@@ -30,46 +30,49 @@ export default function Mypage() {
   const handleMenuClick = (menu) => setActiveMenu(menu);
 
   return (
-    <div className="w-[1200px] m-auto flex gap-10 bg-white mt-66">
-      {/* 네비게이션 영역 (가로폭 고정) */}
-      <nav className="w-[300px] h-full px-8 py-16 rounded-15 bg-graynav border-2">
-        <ul className="flex flex-col gap-5">
-          <li
-            onClick={() => handleMenuClick("order")}
-            className={`flex gap-5 px-20 py-10 rounded-full cursor-pointer transition-colors ${activeMenu === "order" ? "bg-black text-white" : " text-black"
+    <div className="mt-66 max-w-[1376px] mx-auto"> 
+      <div className="relative flex w-full gap-16 p-32">
+        {/* 네비게이션 영역 (20% 비율, sticky) */}
+        <nav className="sticky top-0 h-160 w-[20%] min-w-200 bg-graynav px-8 py-16 rounded-15">
+          <ul className="flex flex-col gap-5">
+            <li
+              onClick={() => handleMenuClick("order")}
+              className={`flex gap-5 px-20 py-10 rounded-full cursor-pointer transition-colors ${
+                activeMenu === "order" ? "bg-black text-white" : "text-black"
               }`}
-          >
-            <FontAwesomeIcon
-              icon={faCartShopping}
-              className={`w-20 h-20 ${activeMenu === "order" ? "text-white" : "text-black"}`}
-            />
-            주문
-          </li>
-          <li
-            onClick={() => handleMenuClick("settings")}
-            className={`flex gap-5 px-20 py-10 rounded-full cursor-pointer transition-colors ${activeMenu === "settings" ? "bg-black text-white" : " text-black"
+            >
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                className={`w-20 h-20 ${activeMenu === "order" ? "text-white" : "text-black"}`}
+              />
+              주문
+            </li>
+            <li
+              onClick={() => handleMenuClick("settings")}
+              className={`flex gap-5 px-20 py-10 rounded-full cursor-pointer transition-colors ${
+                activeMenu === "settings" ? "bg-black text-white" : "text-black"
               }`}
-          >
-            <FontAwesomeIcon
-              icon={faGear}
-              className={`w-20 h-20 ${activeMenu === "settings" ? "text-white" : "text-black"}`}
-            />
-            설정
-          </li>
-          <li className="flex gap-5 px-20 py-10 rounded-full cursor-pointer">
-            <button onClick={handleLogout} className="flex items-center w-full gap-5">
-              <FontAwesomeIcon icon={faArrowRightFromBracket} className="w-20 h-20" />
-              로그아웃
-            </button>
-          </li>
-        </ul>
-      </nav>
-
-      {/* 콘텐츠 영역 (flex-1로 나머지 영역 차지) */}
-      <div className="flex-1 p-8 border">
-        {/* order & settings 메뉴에 따라 렌더링 */}
-        {activeMenu === "order" && <OrderList />}
-        {activeMenu === "settings" && <Settings />}
+            >
+              <FontAwesomeIcon
+                icon={faGear}
+                className={`w-20 h-20 ${activeMenu === "settings" ? "text-white" : "text-black"}`}
+              />
+              설정
+            </li>
+            <li className="flex gap-5 px-20 py-10 rounded-full cursor-pointer">
+              <button onClick={handleLogout} className="flex items-center w-full gap-5">
+                <FontAwesomeIcon icon={faArrowRightFromBracket} className="w-20 h-20" />
+                로그아웃
+              </button>
+            </li>
+          </ul>
+        </nav>
+            
+        {/* 컨텐츠 영역 */}
+        <div className="w-[80%] min-w-[700px] p-8">
+          {activeMenu === "order" && <OrderList />}
+          {activeMenu === "settings" && <Settings />}
+        </div>
       </div>
     </div>
   );

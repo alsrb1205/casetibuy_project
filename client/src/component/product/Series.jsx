@@ -26,6 +26,8 @@ export default function Series() {
               handleList("all");
               navigate("/homelist");
             }}
+            className="w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green"
+
             imageSrc="/images/series/series2.png"
             title="전 상품"
             titleClassName="mt-8 font-extrabold text-12"
@@ -35,6 +37,7 @@ export default function Series() {
               handleList("iphone");
               navigate("/homelist");
             }}
+            className="w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green"
             imageSrc="/images/series/iphone.png"
             title="iPhone"
             titleClassName="mt-8 font-extrabold text-12"
@@ -44,6 +47,7 @@ export default function Series() {
               handleList("airpod4");
               navigate("/homelist");
             }}
+            className="w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green"
             imageSrc="/images/series/airpod4.png"
             title="AirPod 4"
             titleClassName="mt-8 font-extrabold text-12"
@@ -53,6 +57,7 @@ export default function Series() {
               handleList("airpodmax");
               navigate("/homelist");
             }}
+            className="w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green"
             imageSrc="/images/series/airpodmax.png"
             title="AirPod Max"
             titleClassName="mt-8 font-extrabold text-12"
