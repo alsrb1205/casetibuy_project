@@ -113,7 +113,7 @@ export default function OrderList() {
                                             className={`p-8 pb-16 cursor-pointer h-[280px] w-[200px] rounded-16 ${bg}`}
                                             imageSrc={item.image}
                                             // textColor(배경 반전 색)을 titleClassName에 포함
-                                            titleClassName={`mt-10 text-20 font-bold text-left ${text}`}
+                                            titleClassName={`mt-10 text-16 font-bold text-left ${text}`}
                                             title={item.product_name}
                                         />
                                     </SwiperSlide>

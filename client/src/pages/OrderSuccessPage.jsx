@@ -77,7 +77,7 @@ export default function OrderSuccessPage() {
     }, [pg_token, navigate]);
 
     return (
-        <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-100">
+        <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-100 mt-66">
             <div className="p-10 bg-white rounded-lg shadow-lg w-[500px] text-center">
                 <h1 className="mb-6 text-2xl font-bold text-green">
                     🎉 주문이 완료되었습니다!

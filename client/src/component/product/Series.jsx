@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import SeriesItem from "./SeriesItem.jsx";
 import { PListContext } from "../../context/PListContext.js";
+import useColorScheme from "../../hooks/useColorScheme.js";
 
 export default function Series() {
   const { setSelectList } = useContext(PListContext);
+  const getColorScheme = useColorScheme();
   const navigate = useNavigate();
 
   const handleList = (kinds) => {

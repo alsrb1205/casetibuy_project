@@ -243,5 +243,5 @@ CREATE TABLE casetibuy_review (
       ORDER BY o.order_id DESC
     ;
 
-select * from casetibuy_review where pid = '1';
+select * from casetibuy_review;
 

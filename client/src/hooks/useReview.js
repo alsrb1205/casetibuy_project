@@ -57,7 +57,7 @@ export default function useReview() {
           alert("리뷰가 등록되었습니다.");
           setReviewForm(false);
           await getReviewList();
-          // window.location.reload();
+          window.location.reload();
         } else {
           alert("리뷰 등록 실패");
         }
