@@ -233,12 +233,15 @@ export default function PaymentPage() {
         const cartItems = cartList.map((item) => ({
             product_id: item.pid,
             product_name: item.pname,
+            kinds: item.kinds,
             qty: item.qty,
             unit_price: item.price,
             color: item.color,
             case_type: item.cname,
             product_image: item.image,
         }));
+        console.log('카트리스트',cartList);
+        
 
         const orderData = {
             member_id: localStorage.getItem("user_id"),

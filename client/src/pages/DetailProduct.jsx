@@ -52,6 +52,7 @@ export default function DetailProduct() {
       const cartItem = {
         name: detail.name,
         pid: detail.pid,
+        kinds: detail.kinds,
         color: activeColor,
         image: filteredImagesFirst,
         price: currentCase.price,
@@ -59,6 +60,7 @@ export default function DetailProduct() {
         qty: 1,
         caseType: activeCase ?? "기본 케이스",
       };
+            
       const findItem =
         cartList &&
         cartList.find(
@@ -77,6 +79,7 @@ export default function DetailProduct() {
         const id = localStorage.getItem("user_id");
         const formData = { id: id, cartList: [cartItem] };
         const result = await saveToCartList(formData);
+
         result && alert("장바구니에 추가되었습니다.");
       }
     } else {

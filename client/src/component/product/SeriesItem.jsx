@@ -4,7 +4,7 @@ export default function SeriesItem({ onClick, imageSrc, title, className = '', t
   return (
     <div
       onClick={onClick}
-      className={`w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green ${className}`}
+      className={`${className}`}
     >
       <img
         src={imageSrc}

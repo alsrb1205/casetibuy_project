@@ -1,16 +1,28 @@
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { ReviewContext } from '../context/ReviewContext';
 import axios from 'axios';
 import useOrder from './useOrder';
 import { DetailContext } from '../context/DetailContext';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export default function useReview() {
   const { rating, setRating, comment, setComment,setReviewForm } = useContext(ReviewContext);
   const { orderList, getOrderList } = useOrder();
   const { detail } = useContext(DetailContext);
   const [reviewList, setReviewList] = useState([]);
+  const navigate = useNavigate();
+  const { pid } = useParams();
 
+  const getReviewList = useCallback(async () => {
+    const result = await axios.get("http://localhost:9000/review/list", {
+      params: { pid: pid },
+      t: new Date().getTime() // 캐시 우회를 위한 타임스탬프 추가
+    });    
+    setReviewList(result.data);        
+    return result.data;
+  }, [pid])
+
+  
   const reviewSubmit = async (e) => {
     e.preventDefault();
     const orders = await getOrderList();
@@ -31,6 +43,7 @@ export default function useReview() {
     const sendData = {
       order_id: targetOrder.order_id,       // 주문 번호 (예: 주문 상세 페이지나 주문 context에서 가져옴)
       pid: targetOrder.product_id,          // 상품 아이디 (예: detail.pid 등)
+      kinds: targetOrder.kinds,        // 상품의 종류 (예: detail.kinds) 
       member_id: targetOrder.member_id,       // 로그인한 회원의 아이디 (예: localStorage 또는 AuthContext에서 가져옴)
       color: targetOrder.color,      // 상품의 색상 정보
       case: targetOrder.case_type,        // 상품의 케이스 타입
@@ -39,11 +52,12 @@ export default function useReview() {
     };
     axios
       .post('http://localhost:9000/review/new', sendData)
-      .then(res => {
+      .then(async res => {
         if (res.data.result_rows === 1) {
           alert("리뷰가 등록되었습니다.");
           setReviewForm(false);
-          // navigate('/all')
+          await getReviewList();
+          // window.location.reload();
         } else {
           alert("리뷰 등록 실패");
         }
@@ -55,16 +69,6 @@ export default function useReview() {
     console.log("리뷰 제출:", sendData);
     return sendData;
   };
-
-  const { pid } = useParams();
-
-  const getReviewList = useCallback(async () => {
-    const result = await axios.get("http://localhost:9000/review/list", {
-      params: { pid: pid }
-    });    
-    setReviewList(result.data);
-    return result.data;
-  }, [pid])
 
   return {
     reviewSubmit,

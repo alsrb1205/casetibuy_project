@@ -1,27 +1,32 @@
-// src/components/OrderList.jsx
+// src/components/OrderList.jsx (발췌)
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext.js";
 import useOrder from "../hooks/useOrder.js";
 import SeriesItem from "./product/SeriesItem.jsx";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCartShopping,
-    faGear,
-    faArrowRightFromBracket,
-    faAngleRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import useColorScheme from "../hooks/useColorScheme.js";
+
+// 1) 색상 테마 배열 준비
+// const colorSchemes = [ // 초파빨노분
+//     { bg: "bg-green", text: "text-black" },     
+//     { bg: "bg-blue", text: "text-white" },      
+//     { bg: "bg-orange", text: "text-black" },     
+//     { bg: "bg-yellow", text: "text-black" },     
+//     { bg: "bg-pink", text: "text-black" }        
+// ];
 
 export default function OrderList() {
     const { isLoggedIn } = useContext(AuthContext);
-    const { getOrderList, orderList } = useOrder();  // useOrder 훅 사용
+    const { getOrderList } = useOrder();
     const [orderGroups, setOrderGroups] = useState([]);
-
+    const getColorScheme = useColorScheme();
     useEffect(() => {
         if (isLoggedIn) {
-            // 주문 데이터 가져오기
             getOrderList().then((data) => {
                 if (!data) return;
-                // orderList 데이터가져온 후 order_id별 그룹화
+                // order_id별 그룹화
                 const groups = {};
                 data.forEach((row) => {
                     if (!groups[row.order_id]) {
@@ -29,12 +34,10 @@ export default function OrderList() {
                     }
                     groups[row.order_id].push(row);
                 });
-
-                // 그룹 배열을 order_date 기준 내림차순 정렬(또는 order_id)
+                // 내림차순 정렬
                 const orderArray = Object.values(groups).sort(
                     (a, b) => new Date(b[0].order_date) - new Date(a[0].order_date)
                 );
-
                 setOrderGroups(orderArray);
             });
         }
@@ -53,19 +56,18 @@ export default function OrderList() {
                 </span>
                 <span className="px-20 py-10 border rounded-full">출고 완료</span>
             </div>
+
             {orderGroups.map((orderGroup) => {
-                // orderGroup은 하나의 주문(주문번호가 같은) 내 모든 상품을 담는다
                 const orderInfo = orderGroup[0];
                 return (
                     <div
                         key={orderInfo.order_id}
-                        className="p-16 border rounded-md shadow-sm"
+                        className="p-16 border shadow-sm border-[#d9d9d9] rounded-20 mb-15"
                     >
-                        {/* 주문 정보 영역 */}
-
+                        {/* 주문 정보 */}
                         <div className="mb-4">
                             <li className="flex items-center justify-between">
-                                <span>
+                                <span className="mb-16 font-bold">
                                     주문 현황 : <span className="font-bold">{orderInfo.order_status}</span>
                                 </span>
                                 <span className="flex items-center">
@@ -74,38 +76,50 @@ export default function OrderList() {
                                     <FontAwesomeIcon icon={faAngleRight} className="ml-20" />
                                 </span>
                             </li>
-                            <p>
-                                <span className="font-bold">주문 번호:</span>{" "}
-                                {orderInfo.order_id}
-                            </p>
-                            <p>
-                                <span className="font-bold">주문 일자:</span>{" "}
-                                {new Date(orderInfo.order_date).toLocaleString()}
-                            </p>
-                            <p>
-                                <span className="font-bold">총 금액:</span>{" "}
-                                {Number(orderInfo.total_price).toLocaleString()} 원
-                            </p>
-                            <p>
-                                <span className="font-bold">결제 방법:</span>{" "}
-                                {orderInfo.payment_method}
-                            </p>
-                            <p>
-                                <span className="font-bold">배송지:</span>{" "}
-                                {orderInfo.address}, {orderInfo.detail_address}
-                            </p>
+
+                            <div className="grid grid-flow-col gap-16 w-[400px]">
+                                <div className="flex flex-col text-[#8b8b8b]">
+                                    <span>주문 번호</span>
+                                    <span className="mt-8">주문 일자</span>
+                                    <span className="my-8">총 금액</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span>{orderInfo.order_id}</span>
+                                    <span className="mt-8">
+                                        {new Date(orderInfo.order_date).toLocaleString()}
+                                    </span>
+                                    <span className="my-8">
+                                        {Number(orderInfo.total_price).toLocaleString()} 원
+                                    </span>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="grid grid-cols-6 gap-16">
-                            {orderGroup.map((item, index) => (
-                                <SeriesItem
-                                    key={`${item.product_id}-${index}`}
-                                    imageSrc={item.image}
-                                    title={item.product_name}
-                                    titleClassName="mt-10"
-                                />
-                            ))}
-                        </div>
+                        <Swiper
+                            spaceBetween={8}
+                            breakpoints={{
+                                768: { slidesPerView: 3.2 },
+                                1024: { slidesPerView: 4 },
+                                1280: { slidesPerView: 4.8 },
+                            }}
+                        >
+                            {orderGroup.map((item, index) => {
+                                // 2) index를 이용해 colorScheme 순서 결정
+                                const { bg, text } = getColorScheme(index);
+
+                                return (
+                                    <SwiperSlide key={`${item.product_id}-${index}`}>
+                                        <SeriesItem
+                                            className={`p-8 pb-16 cursor-pointer h-[280px] w-[200px] rounded-16 ${bg}`}
+                                            imageSrc={item.image}
+                                            // textColor(배경 반전 색)을 titleClassName에 포함
+                                            titleClassName={`mt-10 text-20 font-bold text-left ${text}`}
+                                            title={item.product_name}
+                                        />
+                                    </SwiperSlide>
+                                );
+                            })}
+                        </Swiper>
                     </div>
                 );
             })}

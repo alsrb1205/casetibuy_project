@@ -37,6 +37,7 @@ export const addCart = async ({ id, cartList }) => {
         item.qty ?? 1,
         id,
         item.pid ?? null,
+        item.kinds ?? "종류 없음",
         item.cname ?? "이름 없음",
         item.color ?? "색상 없음",
         item.caseType ?? "기본 케이스",
@@ -49,8 +50,8 @@ export const addCart = async ({ id, cartList }) => {
 
       // <<< 지혜 / 추가 : image 컬럼 추가 >>>
       const sql = `
-insert into casetibuy_cart(qty, id, pid, cname, color, caseType, image, price, cdate)
-                        values(?, ?, ?, ?, ?, ?, ?, ?, now());
+insert into casetibuy_cart(qty, id, pid, kinds, cname, color, caseType, image, price, cdate)
+                        values(?, ?, ?, ?, ?, ?, ?, ?, ?, now());
                 `;
 
       const [result] = await db.execute(sql, values); //Promise형태로 실행
