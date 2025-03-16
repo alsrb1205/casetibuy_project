@@ -1,5 +1,5 @@
 import React from 'react';
-import { StarRating } from './ReviewForm';
+import StarRating from './StarRating';
 
 export default function ReviewItem ({member_id, review_date, kinds, caseType, color, rating, comment}) {
     const formattedDate = new Date(review_date).toLocaleDateString('en-US', {
@@ -24,7 +24,7 @@ export default function ReviewItem ({member_id, review_date, kinds, caseType, co
                 </div>
                 <div className='w-[20%] text-left'>
                     <div>
-                        <StarRating 
+                        <StarRating
                         className={'justify-start'}
                         starClassName={'w-30'}  
                         rating={rating} />

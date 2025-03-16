@@ -155,7 +155,7 @@ export default function Header() {
                   : { onClick: toggleDropdown })}
               >
                 <FontAwesomeIcon
-                  className={`w-24 h-24 ${
+                  className={`w-24 h-24 py-15 ${
                     showSeries
                       ? "text-black"
                       : iconColor === "white"
@@ -166,7 +166,7 @@ export default function Header() {
                 />
               </button>
               {isDropdownOpen && (
-                <ul className="absolute right-0 mt-2 text-black bg-white shadow-2xl top-30 rounded-15 w-120 ">
+                <ul className="absolute right-0 mt-2 text-black bg-white shadow-2xl top-50 rounded-15 w-120 ">
                   {isLoggedIn ? (
                     <>
                       <li>
@@ -232,7 +232,7 @@ export default function Header() {
                 />
               </button>
               {cartCount > 0 && (
-                <div className="relative w-16 h-16 pt-2 text-center text-white bg-black rounded-full -top-10 text-12">
+                <div className="relative w-16 h-16 pt-2 text-center text-white bg-black rounded-full top-4 text-12">
                   {cartCount}
                 </div>
               )}
@@ -243,7 +243,7 @@ export default function Header() {
       {/* 메뉴 버튼 토글 시 Series 컴포넌트 렌더링 */}
       {location.pathname !== "/homelist" && (
         <div
-          className="w-full overflow-hidden transition-all duration-700 ease-in-out origin-top h-[355px]"
+          className="w-full h-full overflow-hidden transition-all duration-700 ease-in-out origin-top bg-opacity-90"
           style={{ maxHeight: showSeries ? "600px" : "0px" }}
         >
           <Series />

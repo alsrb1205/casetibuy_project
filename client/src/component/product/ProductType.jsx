@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Classify from './Classify.jsx';
 import ProductList from './ProductList.jsx';
-import Series from './Series.jsx';
 import FilterSidebar from './filter/FilterSidebar.jsx';
 import { useDetail } from '../../hooks/useDetail.js';
+import { PListContext } from '../../context/PListContext.js';
 
 export default function ProductType() {
   // 상품 전체 데이터를 저장할 로컬 state
@@ -14,18 +14,18 @@ export default function ProductType() {
   const [layoutType, setLayoutType] = useState(4);
   const [icons, setIcons] = useState([]);
   const [selectedLayout, setSelectedLayout] = useState(4);
-  // 카테고리 선택값도 로컬 state로 관리
-  const [selectedCategory, setSelectedCategory] = useState('all');
   // 사이드바 열림 여부 (필요시 스크롤 제어에 사용)
   const [isOpen, setIsOpen] = useState(false);
-
   const { getProductList } = useDetail();
+  // PListContext에서 필터링 기준인 selectList를 가져옴
+  const { selectList } = useContext(PListContext);
 
   // JSON 아이콘 데이터 불러오기
   useEffect(() => {
-    axios.get('/data/icons.json')
-      .then(res => setIcons(res.data.layoutIcons))
-      .catch(error => console.error('아이콘 데이터를 불러오는 중 오류 발생:', error));
+    axios
+      .get('/data/icons.json')
+      .then((res) => setIcons(res.data.layoutIcons))
+      .catch((error) => console.error('아이콘 데이터를 불러오는 중 오류 발생:', error));
   }, []);
 
   // getProductList를 통해 상품 목록을 가져와 로컬 state에 저장
@@ -34,17 +34,16 @@ export default function ProductType() {
       const data = await getProductList();
       if (data && data.length > 0) {
         setAllProducts(data);
-        setFilteredProducts(data); // 초기에는 전체 데이터 출력
       }
     }
     fetchProducts();
   }, [getProductList]);
 
-  // 필터링 함수: allProducts에서 선택한 카테고리에 맞게 필터링
+  // 필터링 함수: allProducts에서 selectList에 맞게 필터링
   const applyFilter = () => {
     let filtered = allProducts;
-    if (selectedCategory && selectedCategory !== 'all') {
-      filtered = filtered.filter(product => product.kinds === selectedCategory);
+    if (selectList && selectList !== 'all') {
+      filtered = filtered.filter(product => product.kinds === selectList);
     }
     setFilteredProducts(filtered);
   };
@@ -53,18 +52,12 @@ export default function ProductType() {
   const handleLayoutChange = (type) => {
     setLayoutType(type);
     setSelectedLayout(type);
-    // 레이아웃 변경은 필터링 결과에 직접적인 영향이 없으므로 따로 applyFilter 호출은 필요하지 않음.
   };
 
-  // 카테고리 변경 시 selectedCategory 업데이트 후 필터 적용
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-  };
-
-  // allProducts나 selectedCategory가 변경되면 필터 재적용
+  // allProducts나 selectList가 변경되면 필터 재적용
   useEffect(() => {
     applyFilter();
-  }, [allProducts, selectedCategory]);
+  }, [allProducts, selectList]);
 
   // 스크롤 제어: 사이드바(isOpen)가 열렸을 때만 스크롤을 숨김
   useEffect(() => {
@@ -109,7 +102,8 @@ export default function ProductType() {
             </div>
           </div>
           <div>
-            <Classify onCategoryChange={handleCategoryChange} />
+            {/* Classify 컴포넌트에서 카테고리 변경 대신 selectList를 사용하는 구조로 변경 */}
+            <Classify />
           </div>
         </div>
         <div>

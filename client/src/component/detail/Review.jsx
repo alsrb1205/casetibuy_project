@@ -7,19 +7,26 @@ import { ReviewContext } from '../../context/ReviewContext.js';
 import useReview from '../../hooks/useReview.js';
 import useOrder from '../../hooks/useOrder.js';
 import { DetailContext } from '../../context/DetailContext.js';
+import StarRating from './review/StarRating.jsx';
 
 export default function Review() {
-    const {reviewForm, setReviewForm,rating, setRating, comment, setComment} = useContext(ReviewContext);
+    const { reviewForm, setReviewForm, rating, setRating, comment, setComment } = useContext(ReviewContext);
+    const { reviewList, getReviewList, averageRating, calculateCounts } = useReview();
     const { detail } = useContext(DetailContext);
-    const{getOrderList, orderList} = useOrder();
+    const { getOrderList, orderList } = useOrder();
 
     useEffect(() => {
         getOrderList();
-    }, [getOrderList]);
+        getReviewList();
+    }, []);
 
     useEffect(() => {
         setReviewForm(false);
     }, [detail.pid, setReviewForm]);
+
+    const counts = calculateCounts(reviewList);
+    console.log(reviewList);
+
 
     return (
         <div className='mx-auto mt-90 max-w-[1140px] text-center'>
@@ -29,19 +36,23 @@ export default function Review() {
             {/* average star */}
             <div className='mt-45 leading-[50px]'>
                 <div className='text-50'>
-                    5(평균)
+                    {averageRating % 1 === 0 ? averageRating : averageRating.toFixed(1)}
                 </div>
                 <div className='flex items-center justify-center h-50'>
-                ❤❤❤❤❤
+                    <StarRating
+                        className={'justify-start'}
+                        starClassName={'w-40'}
+                        rating={averageRating}
+                    />
                 </div>
                 <div className='text-12 text-gray3'>
-                    기준 () 리뷰
+                    기준 ({reviewList ? reviewList.length : 0}) 리뷰
                 </div>
-            <div className='text-end mr-67'>
-                <button onClick={()=>setReviewForm(prev=>!prev)}>
-                    리뷰 작성
-                </button>
-            </div>
+                <div className='text-end mr-67'>
+                    <button onClick={() => setReviewForm(prev => !prev)}>
+                        리뷰 작성
+                    </button>
+                </div>
             </div>
             {/* 별점갯수 */}
             <div className='mt-50 w-[969px] mx-auto'>
@@ -49,13 +60,15 @@ export default function Review() {
                     별점순으로 정렬
                 </div>
                 <div>
-                    <ReviewBars/>
+                    <ReviewBars
+                        counts={counts}
+                    />
                 </div>
             </div>
             {
-                reviewForm && <ReviewForm/>
+                reviewForm && <ReviewForm />
             }
-            <ReviewList/>
+            <ReviewList />
         </div>
     );
 }
