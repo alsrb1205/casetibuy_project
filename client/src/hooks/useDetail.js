@@ -92,13 +92,14 @@ export function useDetail() {
     productList,
     setDetail,
     detail,
+    availableColorKeys,
   } = useContext(DetailContext);
 
   const handleCaseClick = (caseId) => {
     if (casesData?.[caseId]) { // casesData가 null이면 오류 방지
       const caseData = casesData[caseId];
       setActiveCase(caseId);
-      setActiveColor("black");
+      setActiveColor(availableColorKeys[0]);
       setGauge({ protective: caseData.protective, weight: caseData.weight });
       setFeature(caseData.feature);
     }

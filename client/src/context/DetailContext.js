@@ -48,7 +48,7 @@ export function DetailProvider({ children }) {
 
   const matchKinds = {
     "iphone": "아이폰 16 Pro",
-    "airpod4": "아이폰 16 Pro",
+    "airpod4": "Airpod 4",
     "airpodmax": "아이폰 16 Pro",
   };
 
