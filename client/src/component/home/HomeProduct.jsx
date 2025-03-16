@@ -16,9 +16,20 @@ export default function HomeProduct({
   cround,
   contentPadding,
   pid,
+  activeCase,
+  activeColor,
 }) {
   return (
-    <Link key={pid} to={`/detail/${pid}`} className="block w-full h-full">
+    <Link
+      key={pid}
+      to={`/detail/${pid}`}
+      state={{
+        activeCase: activeCase,
+        activeColor: activeColor,
+      }}
+      onClick={() => window.scrollTo(0, 0)}
+      className="block w-full h-full"
+    >
       <div
         className={`w-full h-full rounded-20 overflow-hidden block ${bgColor} ${className} ${cpadding}`}
       >

@@ -49,6 +49,7 @@ export default function Home() {
         slidesPerView="4.9"
         spaceBetween="30"
         autoplay={false}
+        loop={false}
       />
 
       {/* common 임시 */}
@@ -60,6 +61,7 @@ export default function Home() {
           slidesPerView="3.2"
           spaceBetween="30"
           autoplay={false}
+          loop={false}
         />
       ))} */}
 
