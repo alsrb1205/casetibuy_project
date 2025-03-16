@@ -1,8 +1,10 @@
 import React from "react";
 import CommonSlide from "./CommonSlide";
+import { useSlide } from "../../hooks/useSlide.js";
 
-export default function SlideSection({ slides }) {
-  // 사람이 보기 좋은 className 설정
+export default function SlideSection() {
+  const { hnrSlides } = useSlide();
+
   const title = {
     recommended: "Recommended Collection",
     hot: "Now Hot Designs!",
@@ -11,18 +13,22 @@ export default function SlideSection({ slides }) {
 
   return (
     <div>
-      {Object.entries(slides).map(([key, value]) => (
+      {Object.entries(hnrSlides).map(([key, value]) => (
         <CommonSlide
           key={key}
           className={key}
           title={title[key] || key}
           pagination
           navigation
-          slidesData={value.map(item => ({
+          slidesData={value.map((item) => ({
             ...item,
             link: `/detail/${item.pid}`,
-            state: { activeCase: item.activeCase, activeColor: item.activeColor },
-          }))}        />
+            state: {
+              activeCase: item.activeCase,
+              activeColor: item.activeColor,
+            },
+          }))}
+        />
       ))}
     </div>
   );

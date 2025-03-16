@@ -36,7 +36,7 @@
       "pid": "11",
       "label": "04",
       "title": "Chiikawa",
-      "description": "먼가 작고 귀여운 녀석들과 함께하는 치이카와 x 케이스티파이 컬렉션이 여러분을 세상에서 가장 귀여운 모험으로 안내합니다.",
+      "description": "치이카와 컬렉션이 여러분을 세상에서 가장 귀여운 모험으로 안내합니다.",
       "src": "https://cdn-stamplib.casetify.com/cms/image/9f6a932bb41da822a8a7041c60ea3cc5.jpg",
       "textBgColor": "pink",
       "titleColor": "blue"
@@ -51,7 +51,7 @@
       "titleColor": "yellow"
     },
     {
-      "pid": "6",
+      "pid": "9",
       "label": "06",
       "title": "Maison Kitsuné",
       "description": "요 퐉스",
@@ -87,7 +87,7 @@
     },
     {
       "pid": "8",
-      "label": "04",
+      "label": "03",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
       "title": "Tom and Jerry",
       "image": "https://cdn-stamplib.casetify.com/cms/image/141e67d1524b9a13638daa0c2d341481.jpg",
@@ -99,7 +99,7 @@
     },
     {
       "pid": "11",
-      "label": "03",
+      "label": "04",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
       "title": "Chiikawa",
       "image": "https://cdn-stamplib.casetify.com/cms/image/9f6a932bb41da822a8a7041c60ea3cc5.jpg",

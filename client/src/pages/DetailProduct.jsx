@@ -76,9 +76,10 @@ export default function DetailProduct() {
         result && alert("장바구니에 추가되었습니다.");
       } else {
         //새로 추가
-        const id = localStorage.getItem("user_id"); // <<< 지혜 / 추가 >>>
-        const formData = { id: id, cartList: [cartItem] };        
-        const result = await saveToCartList(formData);        
+        const id = localStorage.getItem("user_id");
+        const formData = { id: id, cartList: [cartItem] };
+        const result = await saveToCartList(formData);
+
         result && alert("장바구니에 추가되었습니다.");
       }
     } else {

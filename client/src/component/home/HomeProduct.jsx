@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HomeProduct({
   className,
@@ -14,24 +15,27 @@ export default function HomeProduct({
   cpadding,
   cround,
   contentPadding,
+  pid,
 }) {
   return (
-    <div
-      className={`w-full h-full rounded-20 overflow-hidden block ${bgColor} ${className} ${cpadding}`}
-    >
-      <div className="w-full overflow-hidden">
-        <img src={image} alt={title} className={`w-full ${cround}`} />
-      </div>
+    <Link key={pid} to={`/detail/${pid}`} className="block w-full h-full">
       <div
-        className={`flex flex-col items-start justify-between ${contentPadding}`}
+        className={`w-full h-full rounded-20 overflow-hidden block ${bgColor} ${className} ${cpadding}`}
       >
-        <span className={`${labelStyle}`}>{label}</span>
-        <div>
-          <h2 className={`mt-10 font-bold text-26`}>{title}</h2>
-          <p>{description}</p>
+        <div className="w-full overflow-hidden">
+          <img src={image} alt={title} className={`w-full ${cround}`} />
         </div>
-        <button className={`mt-30 ${btnStyle} ${btnColor}`}>{btnText}</button>
+        <div
+          className={`w-full h-[200px] flex flex-col items-start justify-between ${contentPadding}`}
+        >
+          <span className={`${labelStyle}`}>{label}</span>
+          <div>
+            <h2 className={`mt-10 font-bold text-26`}>{title}</h2>
+            <p>{description}</p>
+          </div>
+          <button className={`mt-30 ${btnStyle} ${btnColor}`}>{btnText}</button>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
