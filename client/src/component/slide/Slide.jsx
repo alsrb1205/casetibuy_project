@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import "../../style/swiper.css";
 
 export default function Slide({
+  slidesData,
   pagination,
   navigation,
   className,
@@ -25,18 +26,10 @@ export default function Slide({
   const { setIconColor } = useTheme(); // Header 아이콘 색상 변경
   const { slideList } = useSlide();
 
-  // className에 맞는 슬라이드 데이터 필터링
-  const filteredSlides =
-    className === "visual"
-      ? slideList.visualSlideImage || []
-      : className === "collaborator"
-      ? slideList.collaborator || []
-      : slideList.featuredCollection || [];
-
   // 홈(`/home`)으로 돌아올 때 슬라이드 첫 번째 이미지의 `iconColor` 적용
-  if (className === "visual" && filteredSlides.length > 0) {
-    setIconColor(filteredSlides[0]?.iconColor === "white" ? "white" : "black");
-  }
+  // if (className === "visual" && filteredSlides.length > 0) {
+  //   setIconColor(filteredSlides[0]?.iconColor === "white" ? "white" : "black");
+  // }
 
   return (
     <div className={`swiper-container`}>
@@ -63,7 +56,7 @@ export default function Slide({
         className={`custom-swiper ${className}`}
       >
         {/* 슬라이드 내용 */}
-        {filteredSlides.map((slide, index) =>
+        {slidesData.map((slide, index) =>
           className === "visual" ? (
             <SwiperSlide key={index}>
               <Link
