@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { ReviewContext } from '../context/ReviewContext';
 import axios from 'axios';
 import useOrder from './useOrder';
@@ -6,7 +6,7 @@ import { DetailContext } from '../context/DetailContext';
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function useReview() {
-  const { rating, setRating, comment, setComment,setReviewForm } = useContext(ReviewContext);
+  const { rating, setRating, comment, setComment, setReviewForm } = useContext(ReviewContext);
   const { orderList, getOrderList } = useOrder();
   const { detail } = useContext(DetailContext);
   const [reviewList, setReviewList] = useState([]);
@@ -17,12 +17,12 @@ export default function useReview() {
     const result = await axios.get("http://localhost:9000/review/list", {
       params: { pid: pid },
       t: new Date().getTime() // 캐시 우회를 위한 타임스탬프 추가
-    });    
-    setReviewList(result.data);        
+    });
+    setReviewList(result.data);
     return result.data;
   }, [pid])
 
-  
+
   const reviewSubmit = async (e) => {
     e.preventDefault();
     const orders = await getOrderList();
@@ -70,10 +70,34 @@ export default function useReview() {
     return sendData;
   };
 
+  const averageRating = useMemo(() => {
+    if (!reviewList || reviewList.length === 0) return 0;
+    const sum = reviewList.reduce((acc, review) => acc + review.rating, 0);
+    return sum / reviewList.length;
+  }, [reviewList]);
+
+  // 별점 분포 계산 함수
+  const calculateCounts = (reviewList) => {
+    // 각 별점의 갯수를 저장할 객체
+    const counts = { '5': 0, '4': 0, '3': 0, '2': 0, '1': 0 };
+    
+    reviewList.forEach(review => {
+      const rating = review.rating.toString(); // 숫자를 문자열로 변환하여 키로 사용
+      if (counts[rating] !== undefined) {
+        counts[rating] += 1;
+      }
+    });
+    
+    return counts;
+  };
+  
+
   return {
     reviewSubmit,
     getReviewList,
-    reviewList
+    reviewList,
+    averageRating,
+    calculateCounts
   };
 }
 

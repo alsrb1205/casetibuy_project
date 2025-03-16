@@ -40,7 +40,7 @@ export default function Series() {
               navigate("/homelist");
             }}
             className="w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green"
-            imageSrc="/images/series/iphone.png"
+            imageSrc="/images/iphone16pro/common/iphone16p_common_back_case_impact_color_black.jpg"
             title="iPhone"
             titleClassName="mt-8 font-extrabold text-12"
           />
@@ -50,7 +50,7 @@ export default function Series() {
               navigate("/homelist");
             }}
             className="w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green"
-            imageSrc="/images/series/airpod4.png"
+            imageSrc="/images/airpod4/airpod4_common_charcoal.png"
             title="AirPod 4"
             titleClassName="mt-8 font-extrabold text-12"
           />
@@ -60,7 +60,7 @@ export default function Series() {
               navigate("/homelist");
             }}
             className="w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 bg-green"
-            imageSrc="/images/series/airpodmax.png"
+            imageSrc="/images/airpod4/airpodmax_ripple_case_airpodmax_color_white1.png"
             title="AirPod Max"
             titleClassName="mt-8 font-extrabold text-12"
           />
