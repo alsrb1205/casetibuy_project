@@ -1,26 +1,18 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
 import Classify from './Classify.jsx';
 import ProductList from './ProductList.jsx';
-import FilterSidebar from './filter/FilterSidebar.jsx';
 import { useDetail } from '../../hooks/useDetail.js';
 import { PListContext } from '../../context/PListContext.js';
+import useProduct from '../../hooks/useProduct.js';
 
 export default function ProductType() {
-  // 상품 전체 데이터를 저장할 로컬 state
-  const [allProducts, setAllProducts] = useState([]);
-  // 필터링 후 출력할 상품 목록 state
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [layoutType, setLayoutType] = useState(4);
   const [icons, setIcons] = useState([]);
   const [selectedLayout, setSelectedLayout] = useState(4);
-  // 사이드바 열림 여부 (필요시 스크롤 제어에 사용)
   const [isOpen, setIsOpen] = useState(false);
-  const { getProductList } = useDetail();
-  // PListContext에서 필터링 기준인 selectList를 가져옴
-  const { selectList } = useContext(PListContext);
-
-  // JSON 아이콘 데이터 불러오기
+  const { getProductList, filteredProducts, updateProducts, applyFilter, allProducts} = useProduct();
+  const { selectList, originalProducts, setOriginalProducts } = useContext(PListContext);
   useEffect(() => {
     axios
       .get('/data/icons.json')
@@ -28,36 +20,43 @@ export default function ProductType() {
       .catch((error) => console.error('아이콘 데이터를 불러오는 중 오류 발생:', error));
   }, []);
 
-  // getProductList를 통해 상품 목록을 가져와 로컬 state에 저장
+  // 전체 상품 목록 가져오기 (원본 데이터)
   useEffect(() => {
     async function fetchProducts() {
       const data = await getProductList();
       if (data && data.length > 0) {
-        setAllProducts(data);
+        setOriginalProducts(data);
+        updateProducts(data);
       }
     }
     fetchProducts();
-  }, [getProductList]);
+  }, [getProductList, updateProducts, setOriginalProducts]);
 
-  // 필터링 함수: allProducts에서 selectList에 맞게 필터링
-  const applyFilter = () => {
-    let filtered = allProducts;
-    if (selectList && selectList !== 'all') {
-      filtered = filtered.filter(product => product.kinds === selectList);
+
+  // 1차 필터: Series(기종) 필터링을 원본 데이터 기준으로 적용
+  useEffect(() => {
+    if (originalProducts.length > 0) {
+      const primaryFiltered =
+        selectList === "all"
+          ? originalProducts
+          : originalProducts.filter((product) => product.kinds === selectList);
+      updateProducts(primaryFiltered);
     }
-    setFilteredProducts(filtered);
-  };
+  }, [originalProducts, selectList, updateProducts]);
+
+  // 2차 필터 변경 콜백 (Classify에서 전달)
+  const handleFilterChange = useCallback(
+    (filterType) => {
+      applyFilter(filterType);
+    },
+    [applyFilter]
+  );
 
   // 레이아웃 변경 시 호출
   const handleLayoutChange = (type) => {
     setLayoutType(type);
     setSelectedLayout(type);
   };
-
-  // allProducts나 selectList가 변경되면 필터 재적용
-  useEffect(() => {
-    applyFilter();
-  }, [allProducts, selectList]);
 
   // 스크롤 제어: 사이드바(isOpen)가 열렸을 때만 스크롤을 숨김
   useEffect(() => {
@@ -71,6 +70,8 @@ export default function ProductType() {
     };
   }, [isOpen]);
 
+  console.log(filteredProducts);
+
   return (
     <>
       <div>
@@ -82,9 +83,9 @@ export default function ProductType() {
             </div>
             <div className='flex gap-12'>
               {/* 필터 버튼 자리 (필요 시 isOpen 상태로 스크롤 제어) */}
-              <div>
+              {/* <div>
                 <FilterSidebar isOpen={isOpen} setIsOpen={setIsOpen} />
-              </div>
+              </div> */}
               {/* 레이아웃 변경 버튼 */}
               <div>
                 <div className="flex gap-8 p-2 px-4 border-2 border-solid border-[#000000] rounded-100">
@@ -103,7 +104,10 @@ export default function ProductType() {
           </div>
           <div>
             {/* Classify 컴포넌트에서 카테고리 변경 대신 selectList를 사용하는 구조로 변경 */}
-            <Classify />
+            <Classify
+              productList={allProducts}
+              onFilterChange={handleFilterChange}
+            />
           </div>
         </div>
         <div>

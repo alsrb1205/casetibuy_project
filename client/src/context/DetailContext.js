@@ -16,7 +16,6 @@ export function DetailProvider({ children }) {
   // 제품 feature 정보 (선택된 케이스의 feature)
 
   const [feature, setFeature] = useState([]);
-  const [productList, setProductList] = useState([]);
   const currentCase = casesData[activeCase] || {}; // 선택된 케이스 데이터
   useEffect(() => {
     axios
@@ -70,8 +69,6 @@ export function DetailProvider({ children }) {
     gauge,
     setGauge,
     currentCase,
-    productList,
-    setProductList,
     detail,
     setDetail,
     matchCaseColor,

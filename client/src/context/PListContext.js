@@ -6,9 +6,10 @@ export const PListContext = createContext();
 export function PListProvider({ children }) {
     const [productList, setProductList] = useState([]);
     const [selectList, setSelectList]= useState('all');
+    const [originalProducts, setOriginalProducts] = useState([]);
 
 
-    const value = {productList, setProductList,selectList, setSelectList}
+    const value = {productList, setProductList,selectList, setSelectList,originalProducts, setOriginalProducts}
 
 
     return (
