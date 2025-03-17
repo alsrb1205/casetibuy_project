@@ -69,7 +69,7 @@ export default function Mypage() {
         </nav>
             
         {/* 컨텐츠 영역 */}
-        <div className="w-[80%] min-w-[700px] p-8">
+        <div className="w-[80%] min-w-[700px]">
           {activeMenu === "order" && <OrderList />}
           {activeMenu === "settings" && <Settings />}
         </div>
