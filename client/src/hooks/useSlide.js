@@ -19,7 +19,6 @@ export const useSlide = () => {
     axios
       .get("/data/slides.json")
       .then((res) => {
-        console.log("[SlideList] ==>", res.data);
         setSlideList(res.data);
       })
       .catch((error) => console.log(error));

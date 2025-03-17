@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
-import { useSlide } from "../../hooks/useSlide.js";
 import HomeProduct from "../home/HomeProduct.jsx";
 import SlideVisual from "./SlideVisual.jsx";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -24,12 +24,18 @@ export default function Slide({
 }) {
   const swiperRef = useRef(null);
   const { setIconColor } = useTheme(); // Header 아이콘 색상 변경
-  const { slideList } = useSlide();
+  const location = useLocation();
 
   // 홈(`/home`)으로 돌아올 때 슬라이드 첫 번째 이미지의 `iconColor` 적용
-  // if (className === "visual" && filteredSlides.length > 0) {
-  //   setIconColor(filteredSlides[0]?.iconColor === "white" ? "white" : "black");
-  // }
+  useEffect(() => {
+    if (
+      location.pathname === "/home" &&
+      className === "visual" &&
+      slidesData.length > 0
+    ) {
+      setIconColor(slidesData[0]?.iconColor === "white" ? "white" : "black");
+    }
+  }, [location.pathname, slidesData, className, setIconColor]);
 
   return (
     <div className={`swiper-container`}>
@@ -46,11 +52,10 @@ export default function Slide({
         navigation={navigation}
         modules={[Pagination, Navigation, Autoplay]}
         onSlideChange={(swiper) => {
-          if (slideList.length > 0) {
-            const activeSlide = slideList[swiper.realIndex]; // Swiper에서 현재 실제 인덱스 가져오기
-            setIconColor(
-              activeSlide?.iconColor === "white" ? "white" : "black"
-            );
+          const activeSlide = slidesData?.[swiper.realIndex]; // 현재 활성화된 슬라이드 가져오기
+          // console.log("Active Slide:", activeSlide); // 디버깅 로그 추가
+          if (activeSlide) {
+            setIconColor(activeSlide.iconColor === "white" ? "white" : "black");
           }
         }}
         className={`custom-swiper ${className}`}
@@ -80,7 +85,7 @@ export default function Slide({
               </Link>
             </SwiperSlide>
           ) : (
-            <SwiperSlide key={index}>
+            <SwiperSlide key={index} className="relative">
               <HomeProduct {...slide} />
             </SwiperSlide>
           )
@@ -89,22 +94,26 @@ export default function Slide({
 
       {className !== "visual" && className !== "collaborator" && (
         <div
-          className={`relative flex justify-between w-full p-24 mt-16 pagination-wrapper`}
+          className={`relative flex justify-between w-full p-24 mt-16 pagination-wrapper-${className}`}
         >
           {/* 페이지네이션 */}
           {pagination && (
             <div
-              className={`flex items-center justify-center gap-8 custom-pagination`}
+              className={`flex items-center justify-center gap-8 custom-pagination-${className}`}
             ></div>
           )}
 
           {/* 네비게이션 버튼 */}
           {navigation && (
             <div className="absolute right-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2">
-              <button className={`px-24 py-4 bg-black rounded-30 custom-prev`}>
+              <button
+                className={`px-24 py-4 bg-black rounded-30 custom-prev-${className}`}
+              >
                 <HiArrowLongLeft />
               </button>
-              <button className={`px-24 py-4 bg-black rounded-30 custom-next`}>
+              <button
+                className={`px-24 py-4 bg-black rounded-30 custom-next-${className}`}
+              >
                 <HiArrowLongRight />
               </button>
             </div>

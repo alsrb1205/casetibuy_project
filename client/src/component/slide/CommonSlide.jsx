@@ -26,7 +26,7 @@ export default function CommonSlide({
         <Swiper
           ref={swiperRef}
           slidesPerView={3.2}
-          slidesPerGroup={3}
+          slidesPerGroup={3.2}
           spaceBetween={30}
           pagination={{
             el: `.custom-pagination-${className}`,
@@ -44,17 +44,7 @@ export default function CommonSlide({
         >
           {slidesData.map((slide, index) => (
             <SwiperSlide key={index}>
-              <Link
-                key={slide.pid}
-                to={`/detail/${slide.pid}`}
-                state={{
-                  activeCase: slide.activeCase,
-                  activeColor: slide.activeColor,
-                }}
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                <HomeProduct {...slide} className="h-full" />
-              </Link>
+              <HomeProduct {...slide} slide={slide} className="h-full" />
             </SwiperSlide>
           ))}
         </Swiper>
