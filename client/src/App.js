@@ -104,7 +104,7 @@ function App() {
                         <Route path="/modelall" element={<ModelAll />} />
                         <Route path="/productlist" element={<ProductList />} />
                         <Route path="/homelist" element={<HomeList />} />
-                        <Route path="/title" element={<Title />} />
+                        {/* <Route path="/title" element={<Title />} /> */}
                       </Route>
                     </Routes>
                     <Cart />
