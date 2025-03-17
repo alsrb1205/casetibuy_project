@@ -5,30 +5,29 @@ import InputField from './InputField.jsx';
 
 export default function EditAccount() {
     const {
-        currentId, name, birthdate, newId,
-        email, phone,
-        currentPassword, newPassword, confirmNewPassword,
+        currentId,
+        name, setName,
+        birthdate, setBirthdate,
+        email, setEmail,
+        phone, setPhone,
 
-        setName, setBirthdate, setNewId,
-        setEmail, setPhone,
-        setCurrentPassword, setNewPassword, setConfirmNewPassword,
+        currentPassword, setCurrentPassword,
+        newPassword, setNewPassword,
+        confirmNewPassword, setConfirmNewPassword,
 
-        newIdError, emailError, phoneError,
-        currentPasswordError, newPasswordError, confirmNewPasswordError,
-        birthdateError,
+        emailError, phoneError, currentPasswordError,
+        newPasswordError, confirmNewPasswordError, birthdateError,
 
-        newIdRef,
+        currentPasswordShake, newPasswordShake, confirmNewPasswordShake,
+        birthdateShake, emailShake, phoneShake,
+
+        currentPasswordRef, newPasswordRef, confirmNewPasswordRef,
+        birthdateRef, emailRef, phoneRef,
+
         handleUpdateAccount,
-        checkNewIdAutomatically,
     } = useAccountEdit();
 
-    // onBlur 이벤트 핸들러
-    const handleNewIdBlur = () => {
-        checkNewIdAutomatically();
-    };
-
     const handleFormSubmit = (e) => {
-        // “설정 업데이트” 버튼 클릭 시
         e.preventDefault();
         handleUpdateAccount(e);
     };
@@ -37,22 +36,10 @@ export default function EditAccount() {
         <>
             {/* 현재 아이디 (읽기 전용) */}
             <InputField
-                id="user_Id"
-                label="유저 아이디"
-                readOnly={true}
+                id="currentId"
+                label="아이디"
                 value={currentId}
-            />
-
-            {/* 새 아이디 */}
-            <InputField
-                id="newUserId"
-                label="새 아이디 (6~20자)"
-                value={newId}
-                setValue={setNewId}
-                error={newIdError}
-                refElement={newIdRef}
-                onBlur={handleNewIdBlur}
-                maxLength={20}
+                readOnly={true}
             />
 
             {/* 이름 */}
@@ -62,7 +49,8 @@ export default function EditAccount() {
                 value={name}
                 setValue={setName}
             />
-            {/* 생년월일 */}
+
+            {/* 생년월일(YYYYMMDD) */}
             <InputField
                 id="birthdate"
                 label="생년월일(YYYYMMDD)"
@@ -70,7 +58,11 @@ export default function EditAccount() {
                 setValue={setBirthdate}
                 error={birthdateError}
                 maxLength={8}
+                inputType="number-only"
+                refElement={birthdateRef}
+                shake={birthdateShake}
             />
+
             {/* 이메일 */}
             <InputField
                 id="email"
@@ -78,7 +70,10 @@ export default function EditAccount() {
                 value={email}
                 setValue={setEmail}
                 error={emailError}
+                shake={emailShake}
+                refElement={emailRef}
             />
+
             {/* 전화번호 */}
             <InputField
                 id="phone"
@@ -86,6 +81,10 @@ export default function EditAccount() {
                 value={phone}
                 setValue={setPhone}
                 error={phoneError}
+                maxLength={11}
+                inputType="number-only"
+                shake={phoneShake}
+                refElement={phoneRef}
             />
 
             {/* 현재 비밀번호 */}
@@ -96,16 +95,23 @@ export default function EditAccount() {
                 value={currentPassword}
                 setValue={setCurrentPassword}
                 error={currentPasswordError}
+                shake={currentPasswordShake}
+                refElement={currentPasswordRef}
             />
+
             {/* 새 비밀번호 */}
             <InputField
                 id="newPassword"
                 type="password"
-                label="새 비밀번호"
+                label="새 비밀번호 (6~20자)"
                 value={newPassword}
                 setValue={setNewPassword}
                 error={newPasswordError}
+                shake={newPasswordShake}
+                refElement={newPasswordRef}
+                maxLength={20}
             />
+
             {/* 새 비밀번호 확인 */}
             <InputField
                 id="confirmNewPassword"
@@ -114,6 +120,9 @@ export default function EditAccount() {
                 value={confirmNewPassword}
                 setValue={setConfirmNewPassword}
                 error={confirmNewPasswordError}
+                shake={confirmNewPasswordShake}
+                refElement={confirmNewPasswordRef}
+                maxLength={20}
             />
 
             {/* 하단 버튼 (설정 업데이트) */}
