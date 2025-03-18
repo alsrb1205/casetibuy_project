@@ -72,7 +72,7 @@ export default function Home() {
       </div>
 
       {/* Common Slides */}
-      <SlideSection />
+      <SlideSection className="common" />
     </div>
   );
 }

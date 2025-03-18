@@ -3,8 +3,8 @@
     {
       "pid": "6",
       "label": "02",
-      "title": "DISEL + CASTIBUY",
-      "description": "Keep your tech edgy, stylish + protected.",
+      "title": "디젤 + CASTIBUY",
+      "description": "당신의 기기를 스타일리쉬하게 보호하세요.",
       "src": "https://cdn-stamplib.casetify.com/cms/video/8fe8b493e4cee12c8506d6d11f8481fc.mp4",
       "textBgColor": "blue",
       "titleColor": "yellow",
@@ -14,7 +14,7 @@
     {
       "pid": "7",
       "label": "03",
-      "title": "Cinderella",
+      "title": "신데렐라",
       "description": "신데렐라의 희망, 친절, 아름다움의 메시지가 담긴 디자인을 만나보세요.",
       "src": "https://cdn-stamplib.casetify.com/cms/image/6ee686eb270cd9fe8e8b07137cae95bd.jpg",
       "textBgColor": "green",
@@ -25,7 +25,7 @@
     {
       "pid": "10",
       "label": "02",
-      "title": "Chill Guy",
+      "title": "칠가이",
       "description": "떨어지면 어떠하리. 별로 신경 쓰지 않는 당신을 위한 케이스.",
       "src": "https://cdn-stamplib.casetify.com/cms/image/5176aac3374db7ee45e23fe0d26bea92.png",
       "textBgColor": "blue",
@@ -35,7 +35,7 @@
     {
       "pid": "11",
       "label": "04",
-      "title": "Chiikawa",
+      "title": "치이카와",
       "description": "치이카와 컬렉션이 여러분을 세상에서 가장 귀여운 모험으로 안내합니다.",
       "src": "https://cdn-stamplib.casetify.com/cms/image/9f6a932bb41da822a8a7041c60ea3cc5.jpg",
       "textBgColor": "pink",
@@ -44,7 +44,7 @@
     {
       "pid": "8",
       "label": "05",
-      "title": "Tom and Jerry | CASTIBUY",
+      "title": "톰과 제리 | CASTIBUY",
       "description": "톰과 제리의 이야기를 기념하는 케이스티파이 컬렉션 속으로 여러분을 초대합니다.",
       "src": "https://cdn-stamplib.casetify.com/cms/image/141e67d1524b9a13638daa0c2d341481.jpg",
       "textBgColor": "orange",
@@ -53,8 +53,8 @@
     {
       "pid": "9",
       "label": "06",
-      "title": "Maison Kitsuné",
-      "description": "요 퐉스",
+      "title": "메종 키츠네",
+      "description": "Maison Kitsuné",
       "src": "https://cdn-stamplib.casetify.com/cms/image/b9bcf4c23207efcbf8136439db189bd9.png",
       "textBgColor": "yellow",
       "titleColor": "blue"
@@ -77,7 +77,7 @@
       "pid": "6",
       "label": "02",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
-      "title": "DISEL + CASTIBUY",
+      "title": "디젤 + CASTIBUY",
       "image": "https://cdn-stamplib.casetify.com/cms/image/2aa2b0ce22d0fc24607bf26ef8f9e67a.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
@@ -89,7 +89,7 @@
       "pid": "8",
       "label": "03",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
-      "title": "Tom and Jerry",
+      "title": "톰과 제리",
       "image": "https://cdn-stamplib.casetify.com/cms/image/141e67d1524b9a13638daa0c2d341481.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
@@ -101,7 +101,7 @@
       "pid": "11",
       "label": "04",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
-      "title": "Chiikawa",
+      "title": "치이카와",
       "image": "https://cdn-stamplib.casetify.com/cms/image/9f6a932bb41da822a8a7041c60ea3cc5.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
@@ -114,42 +114,42 @@
     {
       "pid": "6",
       "title": "Diesel",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/47d76cd3743063321a4341816c26ef01.png.webp"
+      "image": "/images/iphone16pro/collabo/1/iphone16p_case_ring_color_black.webp"
     },
     {
       "pid": "7",
       "title": "Cinderella",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/b390251c3d3d307e54e458bf22cb40d2.png.webp"
+      "image": "/images/iphone16pro/collabo/2/iphone16p_case_mirror_color_black.webp"
     },
     {
       "pid": "8",
       "title": "Tom and Jerry",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/d5df6fa8674c8f2369b02e3d4ac0dd75.png.webp"
+      "image": "/images/iphone16pro/collabo/3/iphone16p_case_mirror_color_black.webp"
     },
     {
       "pid": "9",
       "title": "Maison Kitsuné",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/4c2b7b430f06df259a30671774b7df57.png.webp"
+      "image": "/images/iphone16pro/collabo/4/iphone16p_case_ring_color_black.webp"
     },
     {
       "pid": "10",
       "title": "Chill Guy",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/5bb5e72d797d604a9a017b56dc99f2d8.png.webp"
+      "image": "/images/iphone16pro/collabo/5/iphone16p_case_mirror_color_black.webp"
     },
     {
       "pid": "11",
       "title": "Chiikawa",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/7cc45cd006a560191ba3770dea2c6e4c.png.webp"
+      "image": "/images/iphone16pro/collabo/6/iphone16p_case_mirror_color_black.webp"
     },
     {
       "pid": "12",
       "title": "Hello Kitty",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/8ded8f26d9234c934d3c828c655fcf73.png.webp"
+      "image": "/images/iphone16pro/collabo/7/iphone16p_case_bounce_color_black.webp"
     },
     {
       "pid": "13",
       "title": "Kuromi",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/798123f8fc50e5ccd5d1a886b3bc8a40.png.webp"
+      "image": "/images/iphone16pro/collabo/8/iphone16p_case_bounce_color_black.webp"
     }
   ]
 }
