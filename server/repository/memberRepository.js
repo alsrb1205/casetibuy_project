@@ -73,3 +73,48 @@ export const getUserInfo = async (userId) => {
     const [result] = await db.execute(sql, [userId]);
     return result[0];
 }
+
+/**
+ * 계정 정보 수정
+ * @param {object} formData
+ * @param {string} formData.oldId - 기존 아이디 (변경 전)
+ * @param {string} formData.newPwd - 변경할 비밀번호
+ * @param {string} formData.name - 변경할 이름
+ * @param {string} formData.birthdate - 변경할 생년월일
+ * @param {string} formData.email - 변경할 이메일
+ * @param {string} formData.phone - 변경할 전화번호
+ */
+export async function updateMember(formData) {
+  const connection = await db.getConnection();
+  try {
+    await connection.beginTransaction();
+
+    const sql = `
+      UPDATE casetibuy_member
+         SET pwd = ?,
+             name = ?,
+             birthdate = ?,
+             email = ?,
+             phone = ?,
+             mdate = NOW()
+       WHERE id = ?
+    `;
+    const values = [
+      formData.newPwd,
+      formData.name,
+      formData.birthdate,
+      formData.email,
+      formData.phone,
+      formData.oldId, // WHERE 조건
+    ];
+    const [result] = await connection.execute(sql, values);
+
+    await connection.commit();
+    return { result_rows: result.affectedRows };
+  } catch (error) {
+    await connection.rollback();
+    throw error;
+  } finally {
+    connection.release();
+  }
+}

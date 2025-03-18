@@ -7,6 +7,8 @@ router
     .post('/signup', controller.registerMember)
     .post('/idcheck', controller.getIdCheck)
     .post('/login', controller.checkLogin)
-    .get('/userinfo', controller.getUserInfo);
+    .get('/userinfo', controller.getUserInfo)
+    .post("/checkPassword", controller.checkPassword)
+    .put("/update", controller.updateMember);
 
 export default router;
