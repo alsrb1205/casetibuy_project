@@ -157,3 +157,29 @@ export const updateMember = async (req, res) => {
     return res.status(500).json({ error: "계정 정보 수정 중 오류가 발생했습니다." });
   }
 };
+
+/**
+ * 계정 삭제
+ */
+export const deleteMember = async (req, res) => {
+  try {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) {
+      return res.status(401).json({ error: "토큰이 제공되지 않았습니다." });
+    }
+    const token = authHeader.split(" ")[1];
+    const decoded = jwt.verify(token, "64dAeD");
+    const userId = decoded.userId;
+
+    // DB에서 해당 사용자 삭제 (repository 함수 호출)
+    const result = await repository.deleteMember(userId);
+    if (result.affectedRows > 0) {
+      return res.status(200).json({ message: "계정이 삭제되었습니다." });
+    } else {
+      return res.status(500).json({ error: "계정 삭제 실패" });
+    }
+  } catch (error) {
+    console.error("deleteMember error:", error);
+    return res.status(500).json({ error: "계정 삭제 중 오류가 발생했습니다." });
+  }
+};
