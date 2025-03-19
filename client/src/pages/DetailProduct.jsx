@@ -29,21 +29,10 @@ export default function DetailProduct() {
     currentCase,
   } = useContext(DetailContext);
 
-  // useEffect(() => {
-  //   if (state?.activeCase) setActiveCase(state.activeCase);
-  //   if (state?.activeColor) setActiveColor(state.activeColor);
-  // }, [state, setActiveCase, setActiveColor]);
-
   useEffect(() => {
     if (state?.activeCase) setActiveCase(state.activeCase);
     if (state?.activeColor) setActiveColor(state.activeColor);
-    // slide collabo - color, case 매칭
-    if (detail.image?.length > 0) {
-      const { caseType, color } = parseCaseAndColor(detail.image[0]);
-      setActiveCase(caseType);
-      setActiveColor(color);
-    }
-  }, [state, setActiveCase, setActiveColor, detail]);
+  }, [state, setActiveCase, setActiveColor]);
 
   useEffect(() => {
     getDetail();

@@ -7,6 +7,8 @@ import { useTheme } from "../../context/ThemeContext";
 import HomeProduct from "../home/HomeProduct.jsx";
 import SlideVisual from "./SlideVisual.jsx";
 
+import { useDetail } from "../../hooks/useDetail.js";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -21,11 +23,12 @@ export default function Slide({
   spaceBetween,
   loop,
   autoplay,
-  navStyle,
 }) {
   const swiperRef = useRef(null);
   const { setIconColor } = useTheme(); // Header 아이콘 색상 변경
   const location = useLocation();
+
+  const { parseCaseAndColor } = useDetail();
 
   // 홈(`/home`)으로 돌아올 때 슬라이드 첫 번째 이미지의 `iconColor` 적용
   useEffect(() => {
@@ -62,12 +65,15 @@ export default function Slide({
         className={`custom-swiper ${className}`}
       >
         {/* 슬라이드 내용 */}
-        {slidesData.map((slide, index) =>
-          className === "visual" ? (
+        {slidesData.map((slide, index) => {
+          // caseType과 color를 이미지 경로에서 추출
+          const { caseType, color } = parseCaseAndColor(slide.src);
+          return className === "visual" ? (
             <SwiperSlide key={index}>
               <Link
                 key={slide.pid}
                 to={`/detail/${slide.pid}`}
+                state={{ activeCase: caseType, activeColor: color }} // caseType과 color 함께 전달
                 draggable="false"
               >
                 <SlideVisual key={index} slide={slide} />
@@ -78,6 +84,7 @@ export default function Slide({
               <Link
                 key={slide.pid}
                 to={`/detail/${slide.pid}`}
+                state={{ activeCase: caseType, activeColor: color }} // caseType과 color 함께 전달
                 draggable="false"
               >
                 <div className="px-20 py-10 overflow-hidden border border-grayhborder rounded-20">
@@ -89,8 +96,8 @@ export default function Slide({
             <SwiperSlide key={index} className="relative">
               <HomeProduct {...slide} />
             </SwiperSlide>
-          )
-        )}
+          );
+        })}
       </Swiper>
 
       {className !== "visual" && className !== "collaborator" && (
@@ -106,14 +113,14 @@ export default function Slide({
 
           {/* 네비게이션 버튼 */}
           {navigation && (
-            <div className={`navigation-common ${navStyle}`}>
+            <div className={`navigation-common`}>
               <button
-                className={`px-24 py-4 bg-black rounded-30 custom-prev ${className}`}
+                className={`px-24 py-4 bg-black rounded-30 custom-prev-${className}`}
               >
                 <HiArrowLongLeft />
               </button>
               <button
-                className={`px-24 py-4 bg-black rounded-30 custom-next ${className}`}
+                className={`px-24 py-4 bg-black rounded-30 custom-next-${className}`}
               >
                 <HiArrowLongRight />
               </button>

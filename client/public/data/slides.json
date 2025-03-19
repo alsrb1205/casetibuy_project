@@ -5,7 +5,7 @@
       "label": "02",
       "title": "디젤 + CASTIBUY",
       "description": "당신의 기기를 스타일리쉬하게 보호하세요.",
-      "src": "https://cdn-stamplib.casetify.com/cms/video/8fe8b493e4cee12c8506d6d11f8481fc.mp4",
+      "src": "/images/iphone16pro/collabo/iphone16p_visual_diesel_case_mirror_color_black.mp4",
       "textBgColor": "blue",
       "titleColor": "yellow",
       "textColor": "white",
@@ -16,7 +16,7 @@
       "label": "03",
       "title": "신데렐라",
       "description": "신데렐라의 희망, 친절, 아름다움의 메시지가 담긴 디자인을 만나보세요.",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/6ee686eb270cd9fe8e8b07137cae95bd.jpg",
+      "src": "/images/iphone16pro/collabo/iphone16p_visual_cinderella_case_mirror_color_black.jpg",
       "textBgColor": "green",
       "titleColor": "yellow",
       "textColor": "white",
@@ -27,7 +27,7 @@
       "label": "02",
       "title": "칠가이",
       "description": "떨어지면 어떠하리. 별로 신경 쓰지 않는 당신을 위한 케이스.",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/5176aac3374db7ee45e23fe0d26bea92.png",
+      "src": "/images/iphone16pro/collabo/iphone16p_visual_chillguy_case_ring_color_black.png",
       "textBgColor": "blue",
       "titleColor": "yellow",
       "textColor": "white"
@@ -37,7 +37,7 @@
       "label": "04",
       "title": "치이카와",
       "description": "치이카와 컬렉션이 여러분을 세상에서 가장 귀여운 모험으로 안내합니다.",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/9f6a932bb41da822a8a7041c60ea3cc5.jpg",
+      "src": "/images/iphone16pro/collabo/iphone16p_visual_chiikawa_case_impact_color_black.jpg",
       "textBgColor": "pink",
       "titleColor": "blue"
     },
@@ -46,7 +46,7 @@
       "label": "05",
       "title": "톰과 제리 | CASTIBUY",
       "description": "톰과 제리의 이야기를 기념하는 케이스티파이 컬렉션 속으로 여러분을 초대합니다.",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/141e67d1524b9a13638daa0c2d341481.jpg",
+      "src": "/images/iphone16pro/collabo/iphone16p_visual_tomandjerry_case_impact_color_black.jpg",
       "textBgColor": "orange",
       "titleColor": "yellow"
     },
@@ -55,7 +55,7 @@
       "label": "06",
       "title": "메종 키츠네",
       "description": "Maison Kitsuné",
-      "src": "https://cdn-stamplib.casetify.com/cms/image/b9bcf4c23207efcbf8136439db189bd9.png",
+      "src": "/images/iphone16pro/collabo/iphone16p_visual_maisonkitsune_case_ring_color_black.png",
       "textBgColor": "yellow",
       "titleColor": "blue"
     }
@@ -66,7 +66,7 @@
       "label": "01",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
       "title": "산리오캐릭터즈 - 쿠로미",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/5075a8c8e0317bd4082486393a3369bf.jpg",
+      "image": "/images/iphone16pro/collabo/iphone16p_visual_kuromi_case_mimpact_color_black.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
       "layout": "even",
@@ -78,7 +78,7 @@
       "label": "02",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
       "title": "디젤 + CASTIBUY",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/2aa2b0ce22d0fc24607bf26ef8f9e67a.jpg",
+      "image": "/images/iphone16pro/collabo/iphone16p_visual_diesel_case_bounce_color_black.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
       "layout": "even",
@@ -90,7 +90,7 @@
       "label": "03",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
       "title": "톰과 제리",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/141e67d1524b9a13638daa0c2d341481.jpg",
+      "image": "/images/iphone16pro/collabo/iphone16p_visual_tomandjerry_case_impact_color_black.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
       "layout": "odd",
@@ -102,7 +102,7 @@
       "label": "04",
       "labelStyle": "px-20 py-4 text-12 text-white bg-black rounded-20",
       "title": "치이카와",
-      "image": "https://cdn-stamplib.casetify.com/cms/image/9f6a932bb41da822a8a7041c60ea3cc5.jpg",
+      "image": "/images/iphone16pro/collabo/iphone16p_visual_chiikawa_case_impact_color_black.jpg",
       "btnText": "Shop Now",
       "btnStyle": "py-12 px-20 text-20 rounded-full border",
       "layout": "odd",
@@ -114,42 +114,42 @@
     {
       "pid": "6",
       "title": "Diesel",
-      "image": "/images/iphone16pro/collabo/1/iphone16p_case_ring_color_black.webp"
+      "image": "/images/iphone16pro/collabo/iphone16p_diesel_ring_color_black.webp"
     },
     {
       "pid": "7",
       "title": "Cinderella",
-      "image": "/images/iphone16pro/collabo/2/iphone16p_case_mirror_color_black.webp"
+      "image": "/images/iphone16pro/collabo/iphone16p_cinderella_case_mirror_color_black.webp"
     },
     {
       "pid": "8",
       "title": "Tom and Jerry",
-      "image": "/images/iphone16pro/collabo/3/iphone16p_case_mirror_color_black.webp"
+      "image": "/images/iphone16pro/collabo/iphone16p_tomandjarry_case_mirror_color_black.webp"
     },
     {
       "pid": "9",
       "title": "Maison Kitsuné",
-      "image": "/images/iphone16pro/collabo/4/iphone16p_case_ring_color_black.webp"
+      "image": "/images/iphone16pro/collabo/iphone16p_maisonkitsune_case_ring_color_black.webp"
     },
     {
       "pid": "10",
       "title": "Chill Guy",
-      "image": "/images/iphone16pro/collabo/5/iphone16p_case_mirror_color_black.webp"
+      "image": "/images/iphone16pro/collabo/iphone16p_chillguy_case_mirror_color_black.webp"
     },
     {
       "pid": "11",
       "title": "Chiikawa",
-      "image": "/images/iphone16pro/collabo/6/iphone16p_case_mirror_color_black.webp"
+      "image": "/images/iphone16pro/collabo/iphone16p_chiikawa_case_mirror_color_black.webp"
     },
     {
       "pid": "12",
       "title": "Hello Kitty",
-      "image": "/images/iphone16pro/collabo/7/iphone16p_case_bounce_color_black.webp"
+      "image": "/images/iphone16pro/collabo/iphone16p_hellokitty_case_bounce_color_black.webp"
     },
     {
       "pid": "13",
       "title": "Kuromi",
-      "image": "/images/iphone16pro/collabo/8/iphone16p_case_bounce_color_black.webp"
+      "image": "/images/iphone16pro/collabo/iphone16p_kuromi_case_bounce_color_black.webp"
     }
   ]
 }
