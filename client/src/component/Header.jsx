@@ -11,7 +11,7 @@ import {
 import { useCart } from "../hooks/useCart.js";
 import { CartContext } from "../context/CartContext.js";
 import { AuthContext } from "../context/AuthContext.js";
-import Series from "./product/Series"; // 추가: Series 컴포넌트 import
+import Series from "./product/Series"; // Series 컴포넌트 import
 import { useTheme } from "../context/ThemeContext.js";
 
 export default function Header() {
@@ -25,7 +25,7 @@ export default function Header() {
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { iconColor, setIconColor } = useTheme();
 
-  //로그인 상태에 따라 cartCount 값 변경
+  // 로그인 상태에 따라 cartCount 값 변경
   useEffect(() => {
     isLoggedIn ? getCount() : setCount(0);
   }, [isLoggedIn]);
@@ -60,9 +60,7 @@ export default function Header() {
       // 토큰 및 사용자 정보 삭제
       localStorage.removeItem("token");
       localStorage.removeItem("user_id");
-      // 우선 메인 페이지("/")로 강제 이동
       navigate("/");
-      // 짧은 지연 후에 로그아웃 상태 업데이트 및 장바구니 초기화
       setTimeout(() => {
         setIsLoggedIn(false);
         setCartList([]);
@@ -85,69 +83,28 @@ export default function Header() {
 
   return (
     <>
-      {/* 지혜 / 추가 : 임시 */}
-      {/* <div
-        className="relative flex items-center justify-center bg-orangebanner p-20 
-                    text-xs font-medium leading-[1.2] basis-full flex-shrink-0 overflow-hidden"
-        style={{ fontFamily: 'var(--nav-font-family, "PP Pangram Sans")' }}
-      >
-        <p className="absolute animate-slide-left-fade">
-          첫 번째 이벤트 문구입니다.
-        </p>
-        <p
-          className="absolute animate-slide-right-fade"
-          style={{ animationDelay: "3s" }}
-        >
-          두 번째 이벤트 문구입니다.
-        </p>
-      </div> */}
+      {/* 상단 배너 등 다른 콘텐츠 */}
       <div className="absolute z-30 w-full bg-transparent">
         <div className="relative flex items-center justify-between px-32 h-66">
           <div className="flex gap-20">
-            {/* 메뉴 버튼: 클릭 시 Series 토글 */}
-            <button
-              type="button"
-              onClick={() => setShowSeries((prev) => !prev)}
-            >
+            <button type="button" onClick={() => setShowSeries((prev) => !prev)}>
               <FontAwesomeIcon
-                className={`w-24 h-24 ${
-                  showSeries
-                    ? "text-black"
-                    : iconColor === "white"
-                    ? "text-white"
-                    : "text-black"
-                }`}
+                className={`w-24 h-24 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
                 icon={faBars}
               />
             </button>
-            {/* 검색 */}
             <button type="button">
               <FontAwesomeIcon
-                className={`w-24 h-24 ${
-                  showSeries
-                    ? "text-black"
-                    : iconColor === "white"
-                    ? "text-white"
-                    : "text-black"
-                }`}
+                className={`w-24 h-24 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
                 icon={faMagnifyingGlass}
               />
             </button>
           </div>
-          {/* 로고 */}
           <Link to="/" className="h-40 w-120">
-            <img
-              src="https://cdn.casetify.com/img/ui/casetify-logo.png"
-              alt=""
-            />
+            <img src="https://cdn.casetify.com/img/ui/casetify-logo.png" alt="" />
           </Link>
           <div className="flex gap-20">
-            {/* 로그인/마이페이지 드롭다운 */}
-            <div
-              className="relative"
-              ref={dropdownRef}
-              onMouseLeave={closeDropdown}
-            >
+            <div className="relative" ref={dropdownRef} onMouseLeave={closeDropdown}>
               <button
                 type="button"
                 {...(isLoggedIn
@@ -155,42 +112,37 @@ export default function Header() {
                   : { onClick: toggleDropdown })}
               >
                 <FontAwesomeIcon
-                  className={`w-24 h-24 py-15 ${
-                    showSeries
-                      ? "text-black"
-                      : iconColor === "white"
-                      ? "text-white"
-                      : "text-black"
-                  }`}
+                  className={`w-24 h-24 py-15 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
                   icon={faUser}
                 />
               </button>
               {isDropdownOpen && (
-                <ul className="absolute right-0 mt-2 text-black bg-white shadow-2xl top-50 rounded-15 w-120 ">
-                  {isLoggedIn ? (
-                    <>
-                      <li>
-                        <Link
-                          to="/mypage"
-                          className="block px-4 text-center py-14 hover:text-grayph text-14"
-                          onClick={closeDropdown}
-                        >
-                          마이페이지
-                        </Link>
-                      </li>
-                      <li>
-                        <button
-                          onClick={() => {
-                            handleLogout();
-                            closeDropdown();
-                          }}
-                          className="block w-full px-4 text-center py-14 hover:text-grayph text-14"
-                        >
-                          로그아웃
-                        </button>
-                      </li>
-                    </>
-                  ) : (
+                <ul className="absolute right-0 mt-2 text-black bg-white shadow-2xl top-50 rounded-15 w-120">
+                  {isLoggedIn && location.pathname !== "/mypage" && (
+                    <li>
+                      <Link
+                        to="/mypage"
+                        className="block px-4 text-center py-14 hover:text-grayph text-14"
+                        onClick={closeDropdown}
+                      >
+                        마이페이지
+                      </Link>
+                    </li>
+                  )}
+                  {isLoggedIn && (
+                    <li>
+                      <button
+                        onClick={() => {
+                          handleLogout();
+                          closeDropdown();
+                        }}
+                        className="block w-full px-4 text-center py-14 hover:text-grayph text-14"
+                      >
+                        로그아웃
+                      </button>
+                    </li>
+                  )}
+                  {!isLoggedIn && (
                     <li>
                       <Link
                         to="/login"
@@ -204,30 +156,16 @@ export default function Header() {
                 </ul>
               )}
             </div>
-            {/* Language */}
             <button>
               <FontAwesomeIcon
-                className={`w-24 h-24 ${
-                  showSeries
-                    ? "text-black"
-                    : iconColor === "white"
-                    ? "text-white"
-                    : "text-black"
-                }`}
+                className={`w-24 h-24 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
                 icon={faGlobe}
               />
             </button>
             <div className="flex gap-2">
-              {/* 장바구니 */}
               <button type="button" onClick={toggleCart} className="relative">
                 <FontAwesomeIcon
-                  className={`w-24 h-24 ${
-                    showSeries
-                      ? "text-black"
-                      : iconColor === "white"
-                      ? "text-white"
-                      : "text-black"
-                  }`}
+                  className={`w-24 h-24 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
                   icon={faCartShopping}
                 />
               </button>
@@ -240,7 +178,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {/* 메뉴 버튼 토글 시 Series 컴포넌트 렌더링 */}
       {location.pathname !== "/homelist" && (
         <div
           className="w-full h-full overflow-hidden transition-all duration-700 ease-in-out origin-top bg-opacity-90"

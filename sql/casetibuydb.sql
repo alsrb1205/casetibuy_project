@@ -173,6 +173,19 @@ CREATE TABLE casetibuy_order_detail (
     CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES casetibuy_product(pid)
 );
 
+-- 계정을 삭제하기 위한 제약키 수정
+ALTER TABLE casetibuy_order DROP FOREIGN KEY fk_order_member;
+
+ALTER TABLE casetibuy_order ADD CONSTRAINT fk_order_member
+FOREIGN KEY (member_id) REFERENCES casetibuy_member(id)
+ON DELETE CASCADE;
+
+ALTER TABLE casetibuy_order_detail DROP FOREIGN KEY fk_order;
+
+ALTER TABLE casetibuy_order_detail ADD CONSTRAINT fk_order
+FOREIGN KEY (order_id) REFERENCES casetibuy_order(order_id)
+ON DELETE CASCADE;
+
 show tables;
 
 -- 유저가 구매한 상품 조회
