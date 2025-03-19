@@ -6,12 +6,13 @@ import Footer from "../component/Footer.jsx";
 export default function Layout() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
+  const isOrderSuccessPage = location.pathname === "/order-success";
 
   return (
     <div className="relative">
       <Header />
       <Outlet />
-      {!isLoginPage && <Footer />}
+      {!isLoginPage && !isOrderSuccessPage&& <Footer />}
     </div>
   );
 }
