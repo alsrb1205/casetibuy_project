@@ -86,8 +86,6 @@ export function useDetail() {
     setHoveredGauge,
     casesData,
     currentCase,
-    setProductList,
-    productList,
     setDetail,
     detail,
     availableColorKeys,
@@ -118,17 +116,6 @@ export function useDetail() {
   const handleLeave = () => {
     setHoveredGauge(null);
   };
-
-  const getProductList = useCallback(async () => {
-    try {
-      const res = await axios.get("http://localhost:9000/product/all");
-      setProductList(res.data || []);
-      return res.data;
-    } catch (error) {
-      console.error("상품 목록 가져오기 실패:", error);
-      return [];
-    }
-  }, [setProductList]);
 
   const { pid } = useParams();
   const getDetail = useCallback(async () => {
@@ -168,7 +155,6 @@ export function useDetail() {
     handleCaseClick,
     handleHover,
     handleLeave,
-    getProductList,
     parseCaseAndColor,
     getDetail,
     hasMatchingDetailImage,

@@ -43,6 +43,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import HomeProduct from "./HomeProduct.jsx";
+import { useDetail } from "../../hooks/useDetail.js";
 
 export default function HomeProductList() {
   const [productList, setProductList] = useState([]);
@@ -56,12 +57,15 @@ export default function HomeProductList() {
       .catch((error) => console.error("데이터 불러오기 실패:", error));
   }, []);
 
+  const { parseCaseAndColor } = useDetail();
   return (
     <div className="grid w-full grid-cols-1 gap-24 lg:grid-cols-3">
-      {productList.map((product, index) => (
-        <div
-          key={product.pid}
-          className={`w-full      
+      {productList.map((product, index) => {
+        const { caseType, color } = parseCaseAndColor(product.src);
+        return (
+          <div
+            key={product.pid}
+            className={`w-full      
                 ${
                   index === 0
                     ? "sm:col-span-1 lg:col-span-2"
@@ -71,14 +75,17 @@ export default function HomeProductList() {
                     ? "sm:col-span-1 lg:col-span-2"
                     : ""
                 }`}
-        >
-          <HomeProduct
-            key={product.id || index} // product.id가 없을 경우 index 사용
-            {...product}
-            pid={product.pid}
-          />
-        </div>
-      ))}
+          >
+            <HomeProduct
+              key={product.id || index} // product.id가 없을 경우 index 사용
+              {...product}
+              pid={product.pid}
+              caseType={caseType}
+              color={color}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }

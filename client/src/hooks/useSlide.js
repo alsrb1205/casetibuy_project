@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { SlideContext } from "../context/SlideContext.js";
 import { useDetail } from "../hooks/useDetail.js";
+import useProduct from "../hooks/useProduct.js";
 
 export const useSlide = () => {
   const { slideList, setSlideList } = useContext(SlideContext);
-  const { getProductList, parseCaseAndColor } = useDetail();
+  const { parseCaseAndColor } = useDetail();
+  const { getProductList } = useProduct();
   const [hnrSlides, setHnrSlides] = useState({
     recommended: [],
     hot: [],

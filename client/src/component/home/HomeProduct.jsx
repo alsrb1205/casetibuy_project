@@ -18,15 +18,14 @@ export default function HomeProduct({
   pid,
   activeCase,
   activeColor,
+  caseType,
+  color,
 }) {
   return (
     <Link
       key={pid}
       to={`/detail/${pid}`}
-      state={{
-        activeCase: activeCase,
-        activeColor: activeColor,
-      }}
+      state={{ activeCase: caseType, activeColor: color }} // caseType과 color 함께 전달
       onClick={() => window.scrollTo(0, 0)}
       className="block w-full h-full"
     >
