@@ -4,6 +4,8 @@ import Slide from "../component/slide/Slide.jsx";
 import SlideSection from "../component/slide/SlideSection.jsx";
 import { useSlide } from "../hooks/useSlide.js";
 
+import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
+
 export default function Home() {
   const { slideList, hnrSlides } = useSlide();
 
@@ -50,6 +52,7 @@ export default function Home() {
         spaceBetween="30"
         autoplay={false}
         loop={false}
+        navStyle="navigation-collabo"
       />
 
       {/* common 임시 */}
