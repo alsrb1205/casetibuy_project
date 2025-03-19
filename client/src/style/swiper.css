@@ -46,3 +46,11 @@
 .collaborator .swiper-slide.swiper-slide-active {
   margin: 0;
 }
+
+/* .swiper-button-prev::after {
+  @apply absolute w-4 py-10 pl-40 text-white bg-black rounded-full pr-65 left-10;
+} */
+
+.navigation-common {
+  @apply absolute right-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2;
+}

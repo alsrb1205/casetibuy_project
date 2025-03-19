@@ -105,7 +105,7 @@ export default function Slide({
 
           {/* 네비게이션 버튼 */}
           {navigation && (
-            <div className="absolute right-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2">
+            <div className={`navigation-common`}>
               <button
                 className={`px-24 py-4 bg-black rounded-30 custom-prev-${className}`}
               >

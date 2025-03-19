@@ -71,8 +71,6 @@
 //   };
 // }
 
-
-
 /******************************************************************/
 import { useCallback, useContext, useEffect, useState } from "react";
 import axios from "axios";
@@ -96,7 +94,8 @@ export function useDetail() {
   } = useContext(DetailContext);
 
   const handleCaseClick = (caseId) => {
-    if (casesData?.[caseId]) { // casesData가 null이면 오류 방지
+    if (casesData?.[caseId]) {
+      // casesData가 null이면 오류 방지
       const caseData = casesData[caseId];
       setActiveCase(caseId);
       setActiveColor(availableColorKeys[0]);
@@ -106,7 +105,8 @@ export function useDetail() {
   };
 
   const handleHover = (caseId) => {
-    if (casesData?.[caseId]) { // casesData가 null이면 오류 방지
+    if (casesData?.[caseId]) {
+      // casesData가 null이면 오류 방지
       const caseData = casesData[caseId];
       setHoveredGauge({
         protective: caseData.protective,
@@ -133,7 +133,9 @@ export function useDetail() {
   const { pid } = useParams();
   const getDetail = useCallback(async () => {
     try {
-      const res = await axios.post("http://localhost:9000/product/detail", { pid: pid });
+      const res = await axios.post("http://localhost:9000/product/detail", {
+        pid: pid,
+      });
       setDetail(res.data || []);
       return res.data;
     } catch (error) {
@@ -149,12 +151,17 @@ export function useDetail() {
     return { caseType: match[1], color: match[2] };
   }, []);
 
-  const hasMatchingDetailImage = (detailImages, parseCaseAndColor, key, value) => {
-    return detailImages.some(image => {
+  const hasMatchingDetailImage = (
+    detailImages,
+    parseCaseAndColor,
+    key,
+    value
+  ) => {
+    return detailImages.some((image) => {
       const parsed = parseCaseAndColor(image);
       return parsed[key] === value;
     });
-  }
+  };
 
   return {
     casesData,
@@ -164,6 +171,6 @@ export function useDetail() {
     getProductList,
     parseCaseAndColor,
     getDetail,
-    hasMatchingDetailImage
+    hasMatchingDetailImage,
   };
 }
