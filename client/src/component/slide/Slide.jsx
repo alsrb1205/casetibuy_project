@@ -21,6 +21,7 @@ export default function Slide({
   spaceBetween,
   loop,
   autoplay,
+  navStyle,
 }) {
   const swiperRef = useRef(null);
   const { setIconColor } = useTheme(); // Header 아이콘 색상 변경
@@ -105,14 +106,14 @@ export default function Slide({
 
           {/* 네비게이션 버튼 */}
           {navigation && (
-            <div className={`navigation-common`}>
+            <div className={`navigation-common ${navStyle}`}>
               <button
-                className={`px-24 py-4 bg-black rounded-30 custom-prev-${className}`}
+                className={`px-24 py-4 bg-black rounded-30 custom-prev ${className}`}
               >
                 <HiArrowLongLeft />
               </button>
               <button
-                className={`px-24 py-4 bg-black rounded-30 custom-next-${className}`}
+                className={`px-24 py-4 bg-black rounded-30 custom-next ${className}`}
               >
                 <HiArrowLongRight />
               </button>
