@@ -40,32 +40,16 @@
 // }
 
 /******************************************************************/
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import HomeProduct from "./HomeProduct.jsx";
-import { useDetail } from "../../hooks/useDetail.js";
 
-export default function HomeProductList() {
-  const [productList, setProductList] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("/data/slides.json")
-      .then((res) => {
-        setProductList(res.data.featuredCollection || []); // 데이터가 없을 경우 빈 배열로 처리
-      })
-      .catch((error) => console.error("데이터 불러오기 실패:", error));
-  }, []);
-
-  const { parseCaseAndColor } = useDetail();
+export default function HomeProductList({ slidesData }) {
   return (
     <div className="grid w-full grid-cols-1 gap-24 lg:grid-cols-3">
-      {productList.map((product, index) => {
-        const { caseType, color } = parseCaseAndColor(product.src);
-        return (
-          <div
-            key={product.pid}
-            className={`w-full      
+      {slidesData.map((product, index) => (
+        <div
+          key={product.pid}
+          className={`w-full      
                 ${
                   index === 0
                     ? "sm:col-span-1 lg:col-span-2"
@@ -75,17 +59,10 @@ export default function HomeProductList() {
                     ? "sm:col-span-1 lg:col-span-2"
                     : ""
                 }`}
-          >
-            <HomeProduct
-              key={product.id || index} // product.id가 없을 경우 index 사용
-              {...product}
-              pid={product.pid}
-              caseType={caseType}
-              color={color}
-            />
-          </div>
-        );
-      })}
+        >
+          <HomeProduct key={index} {...product} />
+        </div>
+      ))}
     </div>
   );
 }

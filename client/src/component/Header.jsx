@@ -6,7 +6,6 @@ import {
   faMagnifyingGlass,
   faUser,
   faCartShopping,
-  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../hooks/useCart.js";
 import { CartContext } from "../context/CartContext.js";
@@ -87,24 +86,46 @@ export default function Header() {
       <div className="absolute z-30 w-full bg-transparent">
         <div className="relative flex items-center justify-between px-32 h-66">
           <div className="flex gap-20">
-            <button type="button" onClick={() => setShowSeries((prev) => !prev)}>
+            <button
+              type="button"
+              onClick={() => setShowSeries((prev) => !prev)}
+            >
               <FontAwesomeIcon
-                className={`w-24 h-24 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
+                className={`w-24 h-24 ${
+                  showSeries
+                    ? "text-black"
+                    : iconColor === "white"
+                    ? "text-white"
+                    : "text-black"
+                }`}
                 icon={faBars}
               />
             </button>
             <button type="button">
               <FontAwesomeIcon
-                className={`w-24 h-24 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
+                className={`w-24 h-24 ${
+                  showSeries
+                    ? "text-black"
+                    : iconColor === "white"
+                    ? "text-white"
+                    : "text-black"
+                }`}
                 icon={faMagnifyingGlass}
               />
             </button>
           </div>
           <Link to="/" className="h-40 w-120">
-            <img src="https://cdn.casetify.com/img/ui/casetify-logo.png" alt="" />
+            <img
+              src="https://cdn.casetify.com/img/ui/casetify-logo.png"
+              alt=""
+            />
           </Link>
           <div className="flex gap-20">
-            <div className="relative" ref={dropdownRef} onMouseLeave={closeDropdown}>
+            <div
+              className="relative"
+              ref={dropdownRef}
+              onMouseLeave={closeDropdown}
+            >
               <button
                 type="button"
                 {...(isLoggedIn
@@ -112,7 +133,13 @@ export default function Header() {
                   : { onClick: toggleDropdown })}
               >
                 <FontAwesomeIcon
-                  className={`w-24 h-24 py-15 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
+                  className={`w-24 h-24 py-15 ${
+                    showSeries
+                      ? "text-black"
+                      : iconColor === "white"
+                      ? "text-white"
+                      : "text-black"
+                  }`}
                   icon={faUser}
                 />
               </button>
@@ -156,16 +183,16 @@ export default function Header() {
                 </ul>
               )}
             </div>
-            <button>
-              <FontAwesomeIcon
-                className={`w-24 h-24 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
-                icon={faGlobe}
-              />
-            </button>
             <div className="flex gap-2">
               <button type="button" onClick={toggleCart} className="relative">
                 <FontAwesomeIcon
-                  className={`w-24 h-24 ${showSeries ? "text-black" : iconColor === "white" ? "text-white" : "text-black"}`}
+                  className={`w-24 h-24 ${
+                    showSeries
+                      ? "text-black"
+                      : iconColor === "white"
+                      ? "text-white"
+                      : "text-black"
+                  }`}
                   icon={faCartShopping}
                 />
               </button>

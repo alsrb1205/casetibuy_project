@@ -44,7 +44,7 @@ export default function Footer() {
         {/* footer-top */}
         <div className="footer-top">
           <div className="px-24 pt-32 leading-2">
-            <div className="flex justify-around py-20">
+            <div className="flex justify-between py-20 mr-[7rem]">
               {/* sns icon */}
               <div>
                 <h2 className="pb-10 text-16">{firstCategory}</h2>
