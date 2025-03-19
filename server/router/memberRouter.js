@@ -9,6 +9,7 @@ router
     .post('/login', controller.checkLogin)
     .get('/userinfo', controller.getUserInfo)
     .post("/checkPassword", controller.checkPassword)
-    .put("/update", controller.updateMember);
+    .put("/update", controller.updateMember)
+    .delete("/delete", controller.deleteMember);
 
 export default router;

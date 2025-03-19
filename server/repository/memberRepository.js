@@ -90,15 +90,15 @@ export async function updateMember(formData) {
     await connection.beginTransaction();
 
     const sql = `
-      UPDATE casetibuy_member
-         SET pwd = ?,
-             name = ?,
-             birthdate = ?,
-             email = ?,
-             phone = ?,
-             mdate = NOW()
-       WHERE id = ?
-    `;
+                UPDATE casetibuy_member
+                  SET pwd = ?,
+                      name = ?,
+                      birthdate = ?,
+                      email = ?,
+                      phone = ?,
+                      mdate = NOW()
+                WHERE id = ?
+              `;
     const values = [
       formData.newPwd,
       formData.name,
@@ -118,3 +118,14 @@ export async function updateMember(formData) {
     connection.release();
   }
 }
+
+/**
+ * 계정 삭제 함수
+ * @param {string} userId - 삭제할 사용자 아이디
+ * @returns {Promise<Object>} 삭제 결과 (affectedRows)
+ */
+export const deleteMember = async (userId) => {
+  const sql = `DELETE FROM casetibuy_member WHERE id = ?`;
+  const [result] = await db.execute(sql, [userId]);
+  return result;
+};
