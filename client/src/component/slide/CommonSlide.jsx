@@ -44,7 +44,7 @@ export default function CommonSlide({
         >
           {slidesData.map((slide, index) => (
             <SwiperSlide key={index}>
-              <HomeProduct {...slide} slide={slide} className="h-full" />
+              <HomeProduct {...slide} className="h-full" />
             </SwiperSlide>
           ))}
         </Swiper>
