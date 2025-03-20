@@ -4,8 +4,6 @@ import Slide from "../component/slide/Slide.jsx";
 import SlideSection from "../component/slide/SlideSection.jsx";
 import { useSlide } from "../hooks/useSlide.js";
 
-import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
-
 export default function Home() {
   const { slideList, hnrSlides } = useSlide();
 
@@ -56,17 +54,24 @@ export default function Home() {
       />
 
       {/* common 임시 */}
-      {/* {Object.entries(hnrSlides).map(([key, value]) => (
-        <Slide
-          slidesData={value}
-          pagination={paginationSettings.common}
-          navigation={navigationSettings.common}
-          slidesPerView="3.2"
-          spaceBetween="30"
-          autoplay={false}
-          loop={false}
-        />
-      ))} */}
+      {/* <div className="content bg-bg">
+        <h2 className="pt-32 pb-16 pl-32 font-bold text-36">
+          Featured Collection
+        </h2>
+        <div className="common">
+          {Object.entries(hnrSlides).map(([key, value]) => (
+            <Slide
+              slidesData={value}
+              pagination={paginationSettings.common}
+              navigation={navigationSettings.common}
+              slidesPerView="3.2"
+              spaceBetween="30"
+              autoplay={false}
+              loop={false}
+            />
+          ))}
+        </div>
+      </div> */}
 
       {/* Featured Collection */}
       <div className="content product-container bg-bg">

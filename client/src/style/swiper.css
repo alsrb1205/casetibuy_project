@@ -83,10 +83,22 @@
   pointer-events: auto; /* 클릭 활성화 */
 }
 
+/* common 슬라이드 스타일 */
 .navigation-common {
   @apply absolute right-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2;
 }
 
 .navigation-collabo {
   @apply absolute left-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2;
+}
+
+.common > .swiper-container > .swiper .swiper-slide:first-child {
+  @apply ml-32;
+}
+.common > .swiper-container > .swiper .swiper-slide:last-child {
+  @apply mr-64;
+}
+
+.common > .swiper-container .pagination-wrapper {
+  @apply mr-32;
 }
