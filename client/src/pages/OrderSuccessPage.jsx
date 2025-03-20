@@ -78,7 +78,7 @@ export default function OrderSuccessPage() {
 
     return (
         <div className="flex flex-col items-center justify-center w-full min-h-screen bg-gray-100">
-            <div className="p-[30px] mt-20 bg-white rounded-lg shadow-lg w-[500px] text-center border-2 h-[500px] overflow-y-scroll">
+            <div className="p-[30px] mt-20 bg-white rounded-lg shadow-lg w-[500px] text-center border-2 h-[440px] overflow-y-scroll">
                     <h1 className="mb-40 text-2xl font-bold text-green">
                         🎉 주문이 완료되었습니다!
                     </h1>

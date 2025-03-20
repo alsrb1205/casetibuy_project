@@ -12,7 +12,7 @@ export default function Layout() {
     <div className="relative">
       <Header />
       <Outlet />
-      {!isLoginPage && !isOrderSuccessPage&& <Footer />}
+      {!isLoginPage && !isOrderSuccessPage && <Footer />}
     </div>
   );
 }

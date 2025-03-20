@@ -1,46 +1,47 @@
-// src/component/EditAccount.jsx
-import React from 'react';
-import useAccountEdit from '../hooks/useAccountEdit.js';
-import InputField from './InputField.jsx';
+import React from "react";
+import InputField from "./InputField.jsx";
 
-export default function EditAccount() {
+export default function EditAccount(props) {
     const {
         currentId,
         name, setName,
         birthdate, setBirthdate,
         email, setEmail,
         phone, setPhone,
-
         currentPassword, setCurrentPassword,
         newPassword, setNewPassword,
         confirmNewPassword, setConfirmNewPassword,
-
-        emailError, phoneError, currentPasswordError,
-        newPasswordError, confirmNewPasswordError, birthdateError,
-
-        currentPasswordShake, newPasswordShake, confirmNewPasswordShake,
-        birthdateShake, emailShake, phoneShake,
-
-        currentPasswordRef, newPasswordRef, confirmNewPasswordRef,
-        birthdateRef, emailRef, phoneRef,
-
-        handleUpdateAccount,
-    } = useAccountEdit();
-
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-        handleUpdateAccount(e);
-    };
+        nameError, // 추가: 이름 에러 상태
+        birthdateError,
+        emailError,
+        phoneError,
+        currentPasswordError,
+        newPasswordError,
+        confirmNewPasswordError,
+        // 쉐이크 및 ref 등도 동일하게 전달
+        currentPasswordShake,
+        newPasswordShake,
+        confirmNewPasswordShake,
+        birthdateShake,
+        emailShake,
+        phoneShake,
+        nameShake,
+        currentPasswordRef,
+        newPasswordRef,
+        confirmNewPasswordRef,
+        birthdateRef,
+        emailRef,
+        phoneRef,
+        nameRef,
+        validateCurrentPassword,
+        validateNewPassword,
+        validateConfirmNewPassword,
+    } = props;
 
     return (
         <>
             {/* 현재 아이디 (읽기 전용) */}
-            <InputField
-                id="currentId"
-                label="아이디"
-                value={currentId}
-                readOnly={true}
-            />
+            <InputField id="currentId" label="아이디" value={currentId} readOnly={true} />
 
             {/* 이름 */}
             <InputField
@@ -48,9 +49,12 @@ export default function EditAccount() {
                 label="이름"
                 value={name}
                 setValue={setName}
+                error={nameError} // 수정: 이름 에러는 nameError 사용
+                refElement={nameRef}
+                shake={nameShake}
             />
 
-            {/* 생년월일(YYYYMMDD) */}
+            {/* 생년월일 (YYYYMMDD) */}
             <InputField
                 id="birthdate"
                 label="생년월일(YYYYMMDD)"
@@ -97,6 +101,8 @@ export default function EditAccount() {
                 error={currentPasswordError}
                 shake={currentPasswordShake}
                 refElement={currentPasswordRef}
+                maxLength={20}
+                onBlur={validateCurrentPassword} // 포커스 해제 시 검증
             />
 
             {/* 새 비밀번호 */}
@@ -110,6 +116,7 @@ export default function EditAccount() {
                 shake={newPasswordShake}
                 refElement={newPasswordRef}
                 maxLength={20}
+                onBlur={validateNewPassword}
             />
 
             {/* 새 비밀번호 확인 */}
@@ -123,17 +130,8 @@ export default function EditAccount() {
                 shake={confirmNewPasswordShake}
                 refElement={confirmNewPasswordRef}
                 maxLength={20}
+                onBlur={validateConfirmNewPassword}
             />
-
-            {/* 하단 버튼 (설정 업데이트) */}
-            <div className="mt-8 text-center">
-                <button
-                    onClick={handleFormSubmit}
-                    className="p-15 bg-black border-2 text-18 text-white rounded-20 w-[300px]"
-                >
-                    설정 업데이트
-                </button>
-            </div>
         </>
     );
 }
