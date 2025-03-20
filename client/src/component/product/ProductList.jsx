@@ -5,12 +5,12 @@ import { DetailContext } from "../../context/DetailContext";
 import { useDetail } from "../../hooks/useDetail";
 
 export default function ProductList({ productList, layoutType }) {
-  const { casesData } = useContext(DetailContext);
+  const { casesData, matchKinds } = useContext(DetailContext);
   const { parseCaseAndColor } = useDetail();
 
   return (
     <div
-      className={`grid gap-4 ${
+      className={`grid  ${
         layoutType === 2
           ? "grid-cols-2"
           : layoutType === 4
@@ -44,23 +44,18 @@ export default function ProductList({ productList, layoutType }) {
                 />
               </div>
               {/* 상품 내용 */}
-              <div className="relative flex flex-col mt-6 ">
+              <div className="relative flex flex-col justify-between mt-16">
                 {/* 상품 정보 */}
-                <div
-                  className="mt-12 gap-10 flex flex-col text-#8c8c8c 
-                                            p-5 
-                                            "
-                >
-                  <p className="font-semibold text-black">{product.name}</p>
-                  <p>{product.kinds}</p>
-                  <p>{caseData.cname}</p>
-                  <p>{caseData.color}</p>
+                <div className="mt-12 gap-10 flex flex-col text-#8c8c8c">
+                  <p className="truncate text-16">{product.name}</p>
+                  <p className="text-14 text-name">{matchKinds[product.kinds]}</p>
+                  <p className="truncate text-14 text-name">{caseData.cname}</p>
                 </div>
                 {/* 상품 가격 */}
-                <div className="py-10 bg-black rounded-full px-15 w-100 ">
-                  <p className="text-center text-white text-14">
-                    ₩{caseData.price.toLocaleString()}
-                  </p>
+                <div className="mt-30">
+                  <span className="px-20 py-10 text-center text-white bg-black rounded-40 text-16 ">
+                    ₩{caseData.price}
+                  </span>
                 </div>
               </div>
             </div>

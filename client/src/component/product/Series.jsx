@@ -5,40 +5,21 @@ import { PListContext } from "../../context/PListContext.js";
 import useColorScheme from "../../hooks/useColorScheme.js";
 
 export default function Series() {
-  const { setSelectList } = useContext(PListContext);
+  const { setSelectList,seriesData,setSelectedSeries } = useContext(PListContext);
+  
   const getColorScheme = useColorScheme();
   const navigate = useNavigate();
-
-  // 시리즈 데이터를 JSON 형식의 배열로 정의
-  const seriesData = [
-    {
-      kinds: "all",
-      imageSrc: "/images/series/series2.png",
-      title: "전 상품"
-    },
-    {
-      kinds: "iphone",
-      imageSrc: "/images/iphone16pro/common/iphone16p_common_back_case_impact_color_black.jpg",
-      title: "iPhone"
-    },
-    {
-      kinds: "airpod4",
-      imageSrc: "/images/airpod4/airpod4_common_charcoal.png",
-      title: "AirPod 4"
-    },
-    {
-      kinds: "airpodmax",
-      imageSrc: "/images/airpod4/airpodmax_ripple_case_airpodmax_color_white1.png",
-      title: "AirPod Max"
-    }
-  ];
 
   const handleList = (kinds) => {
     setSelectList(kinds);
   };
-
+  // 시리즈 선택 변경 함수
+  const handleSeriesChange = (series) => {
+    setSelectedSeries(series);
+    // 여기서 series.kinds에 따라 selectList나 필터링 작업을 추가할 수 있음
+  };
   return (
-    <div className="px-32 pt-98">
+    <div className="px-32 pb-16 pt-98">
       {/* 시리즈 타이틀 */}
       <div className="mb-8">
         <p className="font-bold text-26">시리즈</p>
@@ -53,6 +34,8 @@ export default function Series() {
               onClick={() => {
                 handleList(item.kinds);
                 navigate("/homelist");
+                handleSeriesChange(item);
+                
               }}
               className={`w-[10%] h-full min-h-100 min-w-116 rounded-16 cursor-pointer p-8 pb-16 ${getColorScheme(index).bg}`}
               imageSrc={item.imageSrc}

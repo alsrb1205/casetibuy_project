@@ -15,6 +15,7 @@ module.exports = {
       "bg-silver",
       "bg-charcoal",
       "bg-rosepink",
+      "bg-cobaltblue",
     ],
   },
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -64,6 +65,7 @@ module.exports = {
         yellow: "#f6e163",
         charcoal: "#4b4846",
         rosepink: "#d4abab",
+        cobaltblue:"#2d59c5"
       },
       borderWidth: px0_10,
       fontSize: px0_100,

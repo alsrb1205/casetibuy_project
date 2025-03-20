@@ -49,7 +49,16 @@ export default function Review() {
                     기준 ({reviewList ? reviewList.length : 0}) 리뷰
                 </div>
                 <div className='text-end mr-67'>
-                    <button onClick={() => setReviewForm(prev => !prev)}>
+                    <button 
+                     onClick={() => {
+                        // 리뷰폼이 닫혀있는 상태라면 열기 전에 초기화
+                        if (!reviewForm) {
+                          setRating(0);
+                          setComment("");
+                        }
+                        setReviewForm(prev => !prev);
+                      }}
+                    >
                         리뷰 작성
                     </button>
                 </div>

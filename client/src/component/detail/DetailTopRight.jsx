@@ -10,6 +10,7 @@ import { useDetail } from "../../hooks/useDetail";
 export default function DetailTopRight({ detail, addCartItem, detailImage, }) {
   const { currentCase } = useContext(DetailContext);
   const { hasMatchingDetailImage } = useDetail();
+console.log(detail.kinds);
 
   return (
     <div className="sticky top-12 self-start w-[533px]">
@@ -37,12 +38,17 @@ export default function DetailTopRight({ detail, addCartItem, detailImage, }) {
         </div> */}
         <div className="mb-16">
           <Bars />
+          {
+            detail.kinds==="airpodmax" ? ""
+            :
           <CaseSwiper
             detailImage={detailImage}
             hasMatchingDetailImage={hasMatchingDetailImage}
-          />
+            />
+          }
         </div>
         <Color
+        detail={detail}
           detailImage={detailImage}
           hasMatchingDetailImage={hasMatchingDetailImage}
         />

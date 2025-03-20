@@ -5,7 +5,7 @@ import { DetailContext } from '../../context/DetailContext';
 import { useDetail } from '../../hooks/useDetail';
 
 
-export default function Color({ detailImage, hasMatchingDetailImage
+export default function Color({ detail, detailImage, hasMatchingDetailImage
 }) {
     const { activeColor, setActiveColor, activeCase, matchColor, availableColorKeys } = useContext(DetailContext);
     const { parseCaseAndColor } = useDetail();
@@ -38,7 +38,11 @@ export default function Color({ detailImage, hasMatchingDetailImage
                                         `}
                                         >
                                             {/* 원형 내부 장식 */}
-                                            <span className='block absolute aspect-square w-26 top-0 rounded-full bg-[radial-gradient(circle_at_50%_50%,_hsla(0,0%,100%,0.45),_transparent)]'></span>
+                                            {
+                                                detail.kinds === "airpodmax"
+                                                    ? ""
+                                                    : <span className='block absolute aspect-square w-26 top-0 rounded-full bg-[radial-gradient(circle_at_50%_50%,_hsla(0,0%,100%,0.45),_transparent)]'></span>
+                                            }
                                         </div>
                                     </SwiperSlide>
                                 )

@@ -410,8 +410,7 @@
         ]
     },
     "airpodmax": {
-        "cname": "바운스 케이스",
-        "price": 115000,
+        "price": 70000,
         "protective": "100%",
         "weight": "75%",
         "colorImg": [
@@ -432,28 +431,24 @@
         ],
         "feature": [
             {
-                "image": "/images/detail/bounce/feature/1.png",
-                "desc": "바운스 코너"
+                "image": "/images/detail/airpodmax/feature/1.png",
+                "desc": "부드러운 촉감의\n프리미엄 실리콘"
             },
             {
-                "image": "/images/detail/bounce/feature/2.png",
-                "desc": "6.5m\n낙하 테스트 통과"
+                "image": "/images/detail/airpodmax/feature/2.png",
+                "desc": "정밀한 설계로\n꼭 맞는 핏"
             },
             {
-                "image": "/images/detail/bounce/feature/3.png",
-                "desc": "6x\nMIL-STD-810G"
+                "image": "/images/detail/airpodmax/feature/3.png",
+                "desc": "손쉬운 버튼 사용"
             },
             {
-                "image": "/images/detail/bounce/feature/4.png",
-                "desc": "카메라 컨트롤 버튼에\n부드러운 액세스"
+                "image": "/images/detail/airpodmax/feature/4.png",
+                "desc": "100% 재활용 패키지"
             },
             {
-                "image": "/images/detail/bounce/feature/5.png",
-                "desc": "TesseLock™\n소재"
-            },
-            {
-                "image": "/images/detail/bounce/feature/6.png",
-                "desc": "무선 충전 및\n맥세이프 호환"
+                "image": "/images/detail/airpodmax/feature/5.png",
+                "desc": "더스트 프루프"
             }
         ],
         "info": [
