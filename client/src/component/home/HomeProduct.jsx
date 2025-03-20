@@ -16,6 +16,8 @@ export default function HomeProduct({
   cround,
   contentPadding,
   pid,
+  activeCase,
+  activeColor,
   caseType,
   color,
 }) {
@@ -23,7 +25,7 @@ export default function HomeProduct({
     <Link
       key={pid}
       to={`/detail/${pid}`}
-      state={{ activeCase: caseType, activeColor: color }}
+      state={{ activeCase: caseType, activeColor: color }} // caseType과 color 함께 전달
       onClick={() => window.scrollTo(0, 0)}
       className="block w-full h-full"
     >
