@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import HomeProduct from "../home/HomeProduct.jsx";
-import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -31,7 +30,7 @@ export default function CommonSlide({
           pagination={{
             el: `.custom-pagination-${className}`,
             clickable: true,
-            renderBullet: (index, className) => {
+            renderBullet: (className) => {
               return `<span class="${className} custom-bullet"></span>`;
             },
           }}
