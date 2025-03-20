@@ -30,7 +30,7 @@ export default function Mypage() {
   const handleMenuClick = (menu) => setActiveMenu(menu);
 
   return (
-    <div className="mt-66 max-w-[1376px] mx-auto"> 
+    <div className="mt-66 max-w-[1200px] mx-auto"> 
       <div className="relative flex w-full gap-16 p-32">
         {/* 네비게이션 영역 (20% 비율, sticky) */}
         <nav className="sticky top-0 h-160 w-[20%] min-w-200 bg-graynav px-8 py-16 rounded-15">
@@ -69,7 +69,7 @@ export default function Mypage() {
         </nav>
             
         {/* 컨텐츠 영역 */}
-        <div className="w-[80%] min-w-[700px]">
+        <div className="w-[80%] min-w-[400px]">
           {activeMenu === "order" && <OrderList />}
           {activeMenu === "settings" && <Settings />}
         </div>
