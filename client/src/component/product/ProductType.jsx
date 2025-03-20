@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 import axios from 'axios';
 import Classify from './Classify.jsx';
 import ProductList from './ProductList.jsx';
-import { useDetail } from '../../hooks/useDetail.js';
 import { PListContext } from '../../context/PListContext.js';
 import useProduct from '../../hooks/useProduct.js';
 
@@ -12,7 +11,8 @@ export default function ProductType() {
   const [selectedLayout, setSelectedLayout] = useState(4);
   const [isOpen, setIsOpen] = useState(false);
   const { getProductList, filteredProducts, updateProducts, applyFilter, allProducts} = useProduct();
-  const { selectList, originalProducts, setOriginalProducts } = useContext(PListContext);
+  const { selectList, originalProducts, setOriginalProducts,selectedSeries } = useContext(PListContext);
+  
   useEffect(() => {
     axios
       .get('/data/icons.json')
@@ -76,10 +76,10 @@ export default function ProductType() {
     <>
       <div>
         {/* 고정 Header */}
-        <div className='sticky top-0 z-20 w-full px-32 pt-16 pb-8 bg-white bg-opacity-90 backdrop-blur-[10px]'>
-          <div className='flex items-center justify-between w-full p-16 mb-8 bg-bgpink rounded-16'>
+        <div className='sticky top-0 z-20 w-full px-32 pb-8 bg-white bg-opacity-90 backdrop-blur-[10px]'>
+          <div className='flex items-center justify-between w-full p-16 mb-8 min-h-84 bg-bgpink rounded-16'>
             <div>
-              <span className='font-extrabold text-16 md:text-32'>전 상품</span>
+              <span className='font-extrabold text-16 md:text-32'>{selectedSeries.title}</span>
             </div>
             <div className='flex gap-12'>
               {/* 필터 버튼 자리 (필요 시 isOpen 상태로 스크롤 제어) */}

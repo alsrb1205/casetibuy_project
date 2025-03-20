@@ -32,7 +32,8 @@ export function DetailProvider({ children }) {
     mirror: ["black", "silver"],
     impact: ["black", "purple", "skyblue"],
     mimpact: ["black", "purple", "skyblue"],
-    podbounce: ["charcoal", "pink", "skyblue"]
+    podbounce: ["charcoal", "pink", "skyblue"],
+    airpodmax: ["white", "pink", "skyblue","cobaltblue"],
   };
   
   const matchColor = {
@@ -42,7 +43,9 @@ export function DetailProvider({ children }) {
     "babyblue": "베이비 블루",
     "pink": "프림로즈 핑크",
     "silver": "실버",
-    "charcoal": "차콜"
+    "charcoal": "차콜",
+    "white":"화이트",
+    "cobaltblue":"코발트 블루"
   };
 
   const matchKinds = {

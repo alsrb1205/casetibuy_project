@@ -114,8 +114,8 @@ export default function NewProduct() {
               <input
                 type="radio"
                 name="kinds"
-                value="airpodMax"
-                checked={formData.kinds === "airpodMax"}
+                value="airpodmax"
+                checked={formData.kinds === "airpodmax"}
                 onChange={handleChange}
               />
               에어팟맥스
