@@ -99,7 +99,7 @@ export default function OrderList() {
                                 return (
                                     <SwiperSlide key={`${item.product_id}-${index}`}>
                                         <SeriesItem
-                                            className={`p-8 pb-16 cursor-pointer h-[280px] w-[200px] rounded-16 ${bg}`}
+                                            className={`p-8 pb-16 cursor-pointer h-[230px] w-[200px] rounded-16 ${bg}`}
                                             imageSrc={item.image}
                                             titleClassName={`mt-10 text-16 font-bold text-left ${text}`}
                                             title={item.product_name}

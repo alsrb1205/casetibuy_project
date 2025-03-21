@@ -29,9 +29,19 @@ export function PListProvider({ children }) {
     const [selectList, setSelectList]= useState('all');
     const [originalProducts, setOriginalProducts] = useState([]);
     const [selectedSeries, setSelectedSeries] = useState(seriesData[0]);  
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState(null);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [classifyFilter, setClassifyFilter] = useState('all'); // 추가(2차) 필터
+      const [selectedItem, setSelectedItem] = useState("");
+        const [category, setCategory] = useState(false);
+      
+    
+  
 
 
-    const value = {productList, setProductList,selectList, setSelectList,originalProducts, setOriginalProducts,selectedSeries,setSelectedSeries,seriesData}
+
+    const value = {productList, setProductList,selectList, setSelectList,originalProducts, setOriginalProducts,selectedSeries,setSelectedSeries,seriesData,searchTerm,setSearchTerm,searchResults, setSearchResults,filteredProducts, setFilteredProducts,classifyFilter, setClassifyFilter,selectedItem, setSelectedItem,category,setCategory}
 
 
     return (
