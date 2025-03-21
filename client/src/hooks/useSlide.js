@@ -15,41 +15,15 @@ export const useSlide = () => {
   });
 
   /**
-   * slides.json 전체 데이터, case, color 가져오기
+   * slides.json 전체 데이터 가져오기
    */
   useEffect(() => {
     axios
       .get("/data/slides.json")
       .then((res) => {
-        // 데이터가 객체이므로, 원하는 키에 맞는 배열을 선택
-        const { visualSlideImage, featuredCollection, collaborator } = res.data;
-
-        // visualSlideImage에 대해 `parseCaseAndColor()` 적용
-        const visualSlides = visualSlideImage.map((slide) => {
-          const { caseType, color } = parseCaseAndColor(slide.src);
-          return { ...slide, caseType, color };
-        });
-
-        // collaborator에 대해 `parseCaseAndColor()` 적용
-        const collabSlides = collaborator.map((slide) => {
-          const { caseType, color } = parseCaseAndColor(slide.image);
-          return { ...slide, caseType, color };
-        });
-
-        // featuredCollection에도 `parseCaseAndColor()` 적용
-        const featuredSlides = featuredCollection.map((slide) => {
-          const { caseType, color } = parseCaseAndColor(slide.image);
-          return { ...slide, caseType, color };
-        });
-
-        // SlideContext에 저장
-        setSlideList({
-          visualSlideImage: visualSlides,
-          featuredCollection: featuredSlides,
-          collaborator: collabSlides,
-        });
+        setSlideList(res.data);
       })
-      .catch((error) => console.log("Axios Error:", error));
+      .catch((error) => console.log(error));
   }, []);
 
   /**
@@ -84,8 +58,8 @@ export const useSlide = () => {
           bgColor: bgColors[item.pid % bgColors.length],
           cpadding: "p-24",
           cround: "rounded-20",
-          caseType: caseType,
-          color: color,
+          activeCase: caseType,
+          activeColor: color,
         };
 
         if (item.isRec === 1) categorizedData.recommended.push(productData);
