@@ -38,7 +38,7 @@ export default function HomeProduct({
         >
           <span className={`${labelStyle}`}>{label}</span>
           <div>
-            <h2 className={`mt-10 font-bold text-26`}>{title}</h2>
+            <h2 className={`mt-10 font-bold text-26 text-start`}>{title}</h2>
             <p>{description}</p>
           </div>
           <button className={`mt-30 ${btnStyle} ${btnColor}`}>{btnText}</button>

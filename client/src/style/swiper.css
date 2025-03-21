@@ -68,22 +68,29 @@
   display: none;
 }
 
-/* 기본 상태에서는 네비게이션 버튼 숨김 */
+/* 기본 상태 - 전부 숨기기 */
 .swiper-button-prev,
 .swiper-button-next {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-  pointer-events: none; /* 클릭 방지 */
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease;
 }
 
-/* 마우스를 올리면 네비게이션 버튼 표시 */
-.swiper-container:hover .swiper-button-prev,
-.swiper-container:hover .swiper-button-next {
-  opacity: 1;
-  pointer-events: auto; /* 클릭 활성화 */
+/* 마우스 호버 시 전부 보이기 */
+.swiper:hover .swiper-button-prev,
+.swiper:hover .swiper-button-next {
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
-/* common 슬라이드 스타일 */
+/* disabled + 호버 상태일 때 흐리게 (보이긴 보여야 하니까) */
+.swiper:hover .swiper-button-prev.swiper-button-disabled,
+.swiper:hover .swiper-button-next.swiper-button-disabled {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+}
+
+/* 슬라이드 스타일 */
 .navigation-common {
   @apply absolute right-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2;
 }
@@ -92,7 +99,9 @@
   @apply absolute left-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2;
 }
 
-.common > .swiper-container > .swiper .swiper-slide:first-child {
+/* 네비게이션 */
+
+/* .common > .swiper-container > .swiper .swiper-slide:first-child {
   @apply ml-32;
 }
 .common > .swiper-container > .swiper .swiper-slide:last-child {
@@ -101,4 +110,4 @@
 
 .common > .swiper-container .pagination-wrapper {
   @apply mr-32;
-}
+} */

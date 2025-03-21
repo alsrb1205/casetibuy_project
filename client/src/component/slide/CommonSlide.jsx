@@ -8,13 +8,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../style/swiper.css";
 
-export default function CommonSlide({
-  className,
-  pagination,
-  navigation,
-  slidesData,
-  title,
-}) {
+export default function CommonSlide({ className, slidesData, title }) {
   const swiperRef = useRef(null);
 
   return (
@@ -30,7 +24,7 @@ export default function CommonSlide({
           pagination={{
             el: `.custom-pagination-${className}`,
             clickable: true,
-            renderBullet: (className) => {
+            renderBullet: (index, className) => {
               return `<span class="${className} custom-bullet"></span>`;
             },
           }}
@@ -43,32 +37,28 @@ export default function CommonSlide({
         >
           {slidesData.map((slide, index) => (
             <SwiperSlide key={index}>
-              <HomeProduct {...slide} className="h-full" />
+              <HomeProduct {...slide} slide={slide} className="h-full" />
             </SwiperSlide>
           ))}
         </Swiper>
 
         {/* 페이지네이션 & 네비게이션 */}
         <div className="relative flex justify-between w-full p-24 mt-16">
-          {pagination && (
-            <div
-              className={`flex items-center justify-center gap-8 custom-pagination-${className}`}
-            ></div>
-          )}
-          {navigation && (
-            <div className="absolute right-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2">
-              <button
-                className={`px-24 py-4 bg-black rounded-30 custom-prev-${className}`}
-              >
-                <HiArrowLongLeft />
-              </button>
-              <button
-                className={`px-24 py-4 bg-black rounded-30 custom-next-${className}`}
-              >
-                <HiArrowLongRight />
-              </button>
-            </div>
-          )}
+          <div
+            className={`flex items-center justify-center gap-8 custom-pagination-${className}`}
+          ></div>
+          <div className="absolute right-0 flex justify-end gap-24 text-5xl text-white -translate-y-1/2 top-1/2">
+            <button
+              className={`px-24 py-4 bg-black rounded-30 custom-prev-${className}`}
+            >
+              <HiArrowLongLeft />
+            </button>
+            <button
+              className={`px-24 py-4 bg-black rounded-30 custom-next-${className}`}
+            >
+              <HiArrowLongRight />
+            </button>
+          </div>
         </div>
       </div>
     </div>
