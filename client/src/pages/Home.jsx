@@ -76,7 +76,7 @@ export default function Home() {
       {/* Featured Collection */}
       <div className="content product-container bg-bg">
         <h2 className="pb-16 font-bold text-36">Featured Collection</h2>
-        <HomeProductList />
+        <HomeProductList slidesData={slideList.featuredCollection || []} />
       </div>
 
       {/* Common Slides */}

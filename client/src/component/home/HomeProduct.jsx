@@ -16,8 +16,6 @@ export default function HomeProduct({
   cround,
   contentPadding,
   pid,
-  activeCase,
-  activeColor,
   caseType,
   color,
 }) {
@@ -25,7 +23,7 @@ export default function HomeProduct({
     <Link
       key={pid}
       to={`/detail/${pid}`}
-      state={{ activeCase: caseType, activeColor: color }} // caseType과 color 함께 전달
+      state={{ activeCase: caseType, activeColor: color }}
       onClick={() => window.scrollTo(0, 0)}
       className="block w-full h-full"
     >
@@ -40,7 +38,7 @@ export default function HomeProduct({
         >
           <span className={`${labelStyle}`}>{label}</span>
           <div>
-            <h2 className={`mt-10 font-bold text-26 text-start`}>{title}</h2>
+            <h2 className={`mt-10 font-bold text-26`}>{title}</h2>
             <p>{description}</p>
           </div>
           <button className={`mt-30 ${btnStyle} ${btnColor}`}>{btnText}</button>
