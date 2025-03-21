@@ -2,8 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext.js";
 import useOrder from "../hooks/useOrder.js";
 import SeriesItem from "./product/SeriesItem.jsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useColorScheme from "../hooks/useColorScheme.js";
 
@@ -12,6 +10,7 @@ export default function OrderList() {
     const { getOrderList } = useOrder();
     const [orderGroups, setOrderGroups] = useState([]);
     const getColorScheme = useColorScheme();
+
     useEffect(() => {
         if (isLoggedIn) {
             getOrderList().then((data) => {
@@ -40,13 +39,6 @@ export default function OrderList() {
     return (
         <div className="flex flex-col gap-8">
             <h2 className="font-bold text-32 mb-30">주문</h2>
-            {/* <div className="flex gap-10 mb-10">
-                <span className="px-20 py-10 text-white bg-black border rounded-full">
-                    모든 주문
-                </span>
-                <span className="px-20 py-10 border rounded-full">출고 완료</span>
-            </div> */}
-
             {orderGroups.map((orderGroup) => {
                 const orderInfo = orderGroup[0];
                 return (
@@ -54,19 +46,8 @@ export default function OrderList() {
                         key={orderInfo.order_id}
                         className="p-16 border shadow-sm border-[#d9d9d9] rounded-20 mb-15"
                     >
-                        {/* 주문 정보 */}
-                        <div className="mb-4">
-                            <li className="flex items-center justify-between">
-                                <span className="mb-16 font-bold">
-                                    {/* 주문 현황 : <span className="font-bold">{orderInfo.order_status}</span> */}
-                                </span>
-                                <span className="flex items-center">
-                                    <span className="p-2 mr-5 bg-sky text-blue text-10">포인트</span>
-                                    <span className="text-blue">적립 완료</span>
-                                    {/* <FontAwesomeIcon icon={faAngleRight} className="ml-20" /> */}
-                                </span>
-                            </li>
-
+                        {/* 주문 정보 영역: 주문 정보와 포인트 정보를 flex 컨테이너로 배치 */}
+                        <div className="flex items-start justify-between mb-4">
                             <div className="grid grid-flow-col w-[400px]">
                                 <div className="flex flex-col text-[#8b8b8b]">
                                     <span>주문 번호</span>
@@ -79,27 +60,27 @@ export default function OrderList() {
                                         {new Date(orderInfo.order_date).toLocaleString()}
                                     </span>
                                     <span className="my-8">
-                                        {Number(orderInfo.total_price).toLocaleString()} 원
+                                        ￦ {Number(orderInfo.total_price).toLocaleString()}
                                     </span>
                                 </div>
+                            </div>
+                            <div className="flex items-center">
+                                <span className="p-2 mr-5 bg-sky text-blue text-10">포인트</span>
+                                <span className="text-blue">적립 완료</span>
                             </div>
                         </div>
 
                         <Swiper
                             spaceBetween={8}
-                            breakpoints={{
-                                768: { slidesPerView: 3.2 },
-                                1024: { slidesPerView: 4 },
-                                1280: { slidesPerView: 4.8 },
-                            }}
+                            slidesPerView={'auto'}
                         >
                             {orderGroup.map((item, index) => {
                                 const { bg, text } = getColorScheme(index);
 
                                 return (
-                                    <SwiperSlide key={`${item.product_id}-${index}`}>
-                                        <SeriesItem
-                                            className={`p-8 pb-16 cursor-pointer h-[280px] w-[200px] rounded-16 ${bg}`}
+                                    <SwiperSlide key={`${item.product_id}-${index}`}
+                                    className="!w-[200px] h-[250px]  ">                                        <SeriesItem
+                                            className={`p-8 pb-16 cursor-pointer h-[250px]  rounded-16 ${bg}`}
                                             imageSrc={item.image}
                                             titleClassName={`mt-10 text-16 font-bold text-left ${text}`}
                                             title={item.product_name}
