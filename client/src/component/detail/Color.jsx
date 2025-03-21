@@ -20,10 +20,13 @@ export default function Color({ detail, detailImage, hasMatchingDetailImage
                 <div className=''>
                     <div className='pt-2 pb-6'>
                         <Swiper
-                            slidesPerView={9.7}
+                            slidesPerView={7}
                             spaceBetween={0}
-                            className="mySwiper"
-                        >
+                            breakpoints={{
+                                1024: {
+                                    slidesPerView: 9.7,
+                                },
+                            }}                        >
                             {availableColorKeys.map((colorKey) => {
                                 const hasColor = hasMatchingDetailImage(detailImage, parseCaseAndColor, 'color', colorKey);
                                 // 해당 케이스 타입에 맞는 이미지가 없으면 해당 슬라이드는 렌더링하지 않음

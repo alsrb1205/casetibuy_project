@@ -54,68 +54,68 @@ function PublicRoute({ children }) {
 
 function App() {
   return (
-    <SlideProvider>
-      <ReviewProvider>
-        <ThemeProvider>
-          <AuthProvider>
-            <PListProvider>
-              <CartProvider>
-                <DetailProvider>
-                  <BrowserRouter>
-                    <ClearOrderDataWrapper />
-                    <Routes>
-                      <Route path="/" element={<Layout />}>
-                        <Route index element={<Home />} />
-                        <Route
-                          path="/detail/:pid"
-                          element={<DetailProduct />}
-                        />
-                        <Route path="/new" element={<NewProduct />} />
-                        <Route
-                          path="/login"
-                          element={
-                            <PublicRoute>
-                              <Login />
-                            </PublicRoute>
-                          }
-                        />
-                        <Route
-                          path="/mypage"
-                          element={
-                            <PrivateRoute>
-                              <Mypage />
-                            </PrivateRoute>
-                          }
-                        />
-                        <Route path="/setting" element={<Settings />} />
-                        <Route
-                          path="/order-success"
-                          element={
-                            <OrderSuccessRoute>
-                              <OrderSuccessPage />
-                            </OrderSuccessRoute>
-                          }
-                        />
-                        <Route path="/payment" element={<PaymentPage />} />
-                        <Route path="/allproduct" element={<AllProduct />} />
-                        <Route path="/iphoneall" element={<IphoneAll />} />
-                        <Route path="/iphonetype" element={<IphoneType />} />
-                        <Route path="/model" element={<Model />} />
-                        <Route path="/modelall" element={<ModelAll />} />
-                        <Route path="/productlist" element={<ProductList />} />
-                        <Route path="/homelist" element={<HomeList />} />
-                        {/* <Route path="/title" element={<Title />} /> */}
-                      </Route>
-                    </Routes>
-                    <Cart />
-                  </BrowserRouter>
-                </DetailProvider>
-              </CartProvider>
-            </PListProvider>
-          </AuthProvider>
-        </ThemeProvider>
-      </ReviewProvider>
-    </SlideProvider>
+      <SlideProvider>
+        <ReviewProvider>
+          <ThemeProvider>
+            <AuthProvider>
+              <PListProvider>
+                <CartProvider>
+                  <DetailProvider>
+                    <BrowserRouter>
+                      <ClearOrderDataWrapper />
+                      <Routes>
+                        <Route path="/" element={<Layout />}>
+                          <Route index element={<Home />} />
+                          <Route
+                            path="/detail/:pid"
+                            element={<DetailProduct />}
+                          />
+                          <Route path="/new" element={<NewProduct />} />
+                          <Route
+                            path="/login"
+                            element={
+                              <PublicRoute>
+                                <Login />
+                              </PublicRoute>
+                            }
+                          />
+                          <Route
+                            path="/mypage"
+                            element={
+                              <PrivateRoute>
+                                <Mypage />
+                              </PrivateRoute>
+                            }
+                          />
+                          <Route path="/setting" element={<Settings />} />
+                          <Route
+                            path="/order-success"
+                            element={
+                              <OrderSuccessRoute>
+                                <OrderSuccessPage />
+                              </OrderSuccessRoute>
+                            }
+                          />
+                          <Route path="/payment" element={<PaymentPage />} />
+                          <Route path="/allproduct" element={<AllProduct />} />
+                          <Route path="/iphoneall" element={<IphoneAll />} />
+                          <Route path="/iphonetype" element={<IphoneType />} />
+                          <Route path="/model" element={<Model />} />
+                          <Route path="/modelall" element={<ModelAll />} />
+                          <Route path="/productlist" element={<ProductList />} />
+                          <Route path="/homelist" element={<HomeList />} />
+                          {/* <Route path="/title" element={<Title />} /> */}
+                        </Route>
+                      </Routes>
+                      <Cart />
+                    </BrowserRouter>
+                  </DetailProvider>
+                </CartProvider>
+              </PListProvider>
+            </AuthProvider>
+          </ThemeProvider>
+        </ReviewProvider>
+      </SlideProvider>
   );
 }
 
