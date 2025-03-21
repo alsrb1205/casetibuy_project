@@ -9,14 +9,14 @@ export default function ProductType() {
   const [layoutType, setLayoutType] = useState(4);
   const [icons, setIcons] = useState([]);
   const [selectedLayout, setSelectedLayout] = useState(4);
-  
+
   const { getProductList, getSearch } = useProduct();
-  const { 
-    selectList, 
-    originalProducts, 
-    setOriginalProducts, 
-    selectedSeries, 
-    searchTerm, 
+  const {
+    selectList,
+    originalProducts,
+    setOriginalProducts,
+    selectedSeries,
+    searchTerm,
     classifyFilter,
     setFilteredProducts,
     filteredProducts
@@ -76,7 +76,7 @@ export default function ProductType() {
     <div>
       {/* Header 영역 */}
       <header className="sticky top-0 z-20 w-full px-32 pb-8 bg-white bg-opacity-90 backdrop-blur-[10px]">
-        <div className={`flex items-center justify-between w-full px-16 mb-8 min-h-84 ${searchTerm ?'bg-yellow' :'bg-bgpink'} rounded-16`}>
+        <div className={`flex items-center justify-between w-full px-16 mb-8 min-h-84 ${searchTerm ? 'bg-yellow' : 'bg-bgpink'} rounded-16`}>
           <div>
             {searchTerm ? (
               <div className="flex flex-col">
@@ -94,9 +94,10 @@ export default function ProductType() {
               {icons.map((icon) => (
                 <div
                   key={icon.type}
-                  className={`cursor-pointer flex justify-center items-center w-34 h-34 p-6 rounded-[34px] ${
-                    selectedLayout === icon.type ? 'bg-black text-bgpink' : ''
-                  }`}
+                  className={`cursor-pointer flex justify-center items-center w-34 h-34 p-6 rounded-[34px] ${selectedLayout === icon.type
+                      ? `bg-black ${searchTerm ? 'text-yellow' : 'text-bgpink'}`
+                      : ''
+                    }`}
                   onClick={() => handleLayoutChange(icon.type)}
                 >
                   <div dangerouslySetInnerHTML={{ __html: icon.svg.replace(/className=/g, "class=") }} />
