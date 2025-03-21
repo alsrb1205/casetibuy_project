@@ -5,7 +5,7 @@ import { PListContext } from "../../context/PListContext.js";
 import useColorScheme from "../../hooks/useColorScheme.js";
 
 export default function Series() {
-  const { setSelectList,seriesData,setSelectedSeries } = useContext(PListContext);
+  const { setSelectList,seriesData,setSelectedSeries,setSearchTerm,setSearchResults,setClassifyFilter,setSelectedItem,setCategory } = useContext(PListContext);
   
   const getColorScheme = useColorScheme();
   const navigate = useNavigate();
@@ -15,7 +15,13 @@ export default function Series() {
   };
   // 시리즈 선택 변경 함수
   const handleSeriesChange = (series) => {
+    setSearchTerm('');        // 검색어 초기화
+    setSearchResults(null);   // 검색 결과 초기화
     setSelectedSeries(series);
+    setClassifyFilter('')
+    setSelectedItem('')
+    setCategory(false)
+
     // 여기서 series.kinds에 따라 selectList나 필터링 작업을 추가할 수 있음
   };
   return (

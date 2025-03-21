@@ -10,21 +10,26 @@ import {
 import { useCart } from "../hooks/useCart.js";
 import { CartContext } from "../context/CartContext.js";
 import { AuthContext } from "../context/AuthContext.js";
-import Series from "./product/Series"; // Series 컴포넌트 import
+import Series from "./product/Series";
 import { useTheme } from "../context/ThemeContext.js";
+
+// 방금 만든 SearchModal
+import Search from "./Search";
 
 export default function Header() {
   const navigate = useNavigate();
-  const location = useLocation(); // 현재 경로 확보
+  const location = useLocation();
   const { cartCount, setCartList } = useContext(CartContext);
   const { toggleCart, getCount, setCount } = useCart();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [showSeries, setShowSeries] = useState(false); // Series 토글 상태 추가
+  const [showSeries, setShowSeries] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false); // 검색 모달 open 여부
   const dropdownRef = useRef(null);
   const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
   const { iconColor, setIconColor } = useTheme();
 
-  // 로그인 상태에 따라 cartCount 값 변경
+  // 인기 검색어 샘플 데이터
+
   useEffect(() => {
     isLoggedIn ? getCount() : setCount(0);
   }, [isLoggedIn]);
@@ -32,31 +37,28 @@ export default function Header() {
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        closeDropdown();
+        setIsDropdownOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownRef]);
+  }, []);
 
   useEffect(() => {
-    setShowSeries(false); // Series 토글 상태 초기화
+    setShowSeries(false);
   }, [location]);
 
-  // 슬라이드가 없는 페이지에서는 icon 무조건 black으로 설정
   useEffect(() => {
-    const slidePages = ["/", "/home"]; // 슬라이드가 있는 페이지
+    const slidePages = ["/", "/home"];
     if (!slidePages.includes(location.pathname)) {
       setIconColor("black");
     }
   }, [location.pathname, setIconColor]);
 
-  // 로그아웃 함수
   const handleLogout = () => {
     if (window.confirm("정말 로그아웃 하시겠습니까?")) {
-      // 토큰 및 사용자 정보 삭제
       localStorage.removeItem("token");
       localStorage.removeItem("user_id");
       navigate("/");
@@ -76,13 +78,24 @@ export default function Header() {
     }
   };
 
-  const closeDropdown = () => {
-    setIsDropdownOpen(false);
+  // 검색 실행 함수 (SearchModal -> onSearch)
+  const handleSearch = (search) => {
+    console.log("검색어:", search);
+    // 여기서 검색 로직 수행 (API 호출 등)
+    
+    setIsSearchOpen(false);
   };
 
   return (
     <>
-      {/* 상단 배너 등 다른 콘텐츠 */}
+      {/* 검색 모달 */}
+      <Search
+        isSearchOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onSearch={handleSearch}
+      />
+
+      {/* 헤더 영역 */}
       <div className="absolute z-30 w-full bg-transparent">
         <div className="relative flex items-center justify-between px-32 h-66">
           <div className="flex gap-20">
@@ -101,7 +114,11 @@ export default function Header() {
                 icon={faBars}
               />
             </button>
-            <button type="button">
+            {/* 검색 아이콘 클릭 시 모달 오픈 */}
+            <button
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+            >
               <FontAwesomeIcon
                 className={`w-24 h-24 ${
                   showSeries
@@ -117,14 +134,14 @@ export default function Header() {
           <Link to="/" className="h-40 w-120">
             <img
               src="https://cdn.casetify.com/img/ui/casetify-logo.png"
-              alt=""
+              alt="Casetify 로고"
             />
           </Link>
           <div className="flex gap-20">
             <div
               className="relative"
               ref={dropdownRef}
-              onMouseLeave={closeDropdown}
+              onMouseLeave={() => setIsDropdownOpen(false)}
             >
               <button
                 type="button"
@@ -150,7 +167,7 @@ export default function Header() {
                       <Link
                         to="/mypage"
                         className="block px-4 text-center py-14 hover:text-grayph text-14"
-                        onClick={closeDropdown}
+                        onClick={() => setIsDropdownOpen(false)}
                       >
                         마이페이지
                       </Link>
@@ -161,7 +178,7 @@ export default function Header() {
                       <button
                         onClick={() => {
                           handleLogout();
-                          closeDropdown();
+                          setIsDropdownOpen(false);
                         }}
                         className="block w-full px-4 text-center py-14 hover:text-grayph text-14"
                       >
@@ -174,7 +191,7 @@ export default function Header() {
                       <Link
                         to="/login"
                         className="block px-4 py-2 hover:text-grayph text-14"
-                        onClick={closeDropdown}
+                        onClick={() => setIsDropdownOpen(false)}
                       >
                         로그인
                       </Link>

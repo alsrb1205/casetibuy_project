@@ -10,10 +10,10 @@ import { useDetail } from "../../hooks/useDetail";
 export default function DetailTopRight({ detail, addCartItem, detailImage, }) {
   const { currentCase } = useContext(DetailContext);
   const { hasMatchingDetailImage } = useDetail();
-console.log(detail.kinds);
+  console.log(detail.kinds);
 
   return (
-    <div className="sticky top-12 self-start w-[533px]">
+    <div className="sticky top-12 self-start w-[370px] lg:w-[533px]">
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-5">
           <h2 className="text-[36px] font-extrabold">{detail.name}</h2>
@@ -33,22 +33,19 @@ console.log(detail.kinds);
             <span className="text-[8px] pt-0">12345678</span>
           </div>
         </div>
-        {/* <div className="w-full border-1 h-48 border-black rounded-[16px] mb-15 flex items-center">
-          <span>기종선택 컨테이너</span>
-        </div> */}
         <div className="mb-16">
           <Bars />
           {
-            detail.kinds==="airpodmax" ? ""
-            :
-          <CaseSwiper
-            detailImage={detailImage}
-            hasMatchingDetailImage={hasMatchingDetailImage}
-            />
+            detail.kinds === "airpodmax" ? ""
+              :
+              <CaseSwiper
+                detailImage={detailImage}
+                hasMatchingDetailImage={hasMatchingDetailImage}
+              />
           }
         </div>
         <Color
-        detail={detail}
+          detail={detail}
           detailImage={detailImage}
           hasMatchingDetailImage={hasMatchingDetailImage}
         />
@@ -60,12 +57,6 @@ console.log(detail.kinds);
           </div>
         </div>
         <div>
-          {/* <div className="flex justify-between items-center px-20 py-16 bg-blue2 rounded-[16px] mb-24">
-            <strong className="text-white text-20">제품 비교</strong>
-            <button className="text-white border-1 rounded-[40px] px-20 py-10">
-              비교하기
-            </button>
-          </div> */}
           <button
             onClick={() => addCartItem()}
             className="w-full text-20 text-white bg-black rounded-[16px] py-19 mb-24"
@@ -103,13 +94,6 @@ console.log(detail.kinds);
             </div>
             <div className="text-12">사용 가능한 결제 방법</div>
           </div>
-
-          {/* <div className="flex justify-between items-center px-20 py-16 bg-white rounded-[16px]">
-            <strong className="text-black text-20">아티스트 소개</strong>
-            <button className="text-black border-1 rounded-[40px] px-20 py-10">
-              아티스트 갤러리 둘러보기
-            </button>
-          </div> */}
         </div>
       </div>
     </div>

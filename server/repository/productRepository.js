@@ -69,3 +69,29 @@ export const getProduct = async (pid) => {
     const [result] = await db.execute(sql, [pid]); // result = [[{pid:4,~~}],[컬럼명 fields]]
     return result[0];
 }
+
+/**
+ * 검색 결과 조회
+ */
+export const getSearch = async (search) => {
+    const sql = `
+      SELECT 
+        pid,
+        pname AS name,
+        kinds,
+        isNew,
+        isHot,
+        isRec,
+        isColab,
+        repImage,
+        upload_file,
+        source_file,
+        pdate
+      FROM casetibuy_product
+      WHERE pname LIKE ?
+    `;
+    // %search% 형태로 전달하여 부분 일치를 처리
+    const [result] = await db.execute(sql, [`%${search}%`]);
+    return result;
+  }
+

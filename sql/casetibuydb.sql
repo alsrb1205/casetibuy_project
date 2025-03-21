@@ -258,3 +258,17 @@ CREATE TABLE casetibuy_review (
 
 select * from casetibuy_review;
 
+
+        select pid,
+               pname as name,
+               kinds,
+               isNew,
+               isHot,
+               isRec,
+               isColab,
+               repImage,
+               upload_file,
+               source_file,
+               pdate
+         from casetibuy_product
+         where pname = 'test2'

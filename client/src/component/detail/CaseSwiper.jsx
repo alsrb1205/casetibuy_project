@@ -13,7 +13,15 @@ export default function CaseSwiper({ detailImage, hasMatchingDetailImage }) {
 
   return (
     <div>
-      <Swiper slidesPerView={"auto"} spaceBetween={16} className="mySwiper">
+      <Swiper 
+      spaceBetween={16} 
+      slidesPerView={2.5}
+      breakpoints={{
+          1024: {
+            slidesPerView:"auto"
+          },
+      }}
+      >
         {Object.keys(casesData).map((caseId) => {
           // detailImage 배열에 해당 케이스 타입(caseId)의 이미지가 있는지 확인
           const hasImage = hasMatchingDetailImage(detailImage, parseCaseAndColor, 'caseType', caseId);
