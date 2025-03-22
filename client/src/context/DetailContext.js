@@ -50,8 +50,8 @@ export function DetailProvider({ children }) {
 
   const matchKinds = {
     "iphone": "아이폰 16 Pro",
-    "airpod4": "Airpod 4",
-    "airpodmax": "아이폰 16 Pro",
+    "airpod4": "Airpods 4",
+    "airpodmax": "Airpods Max",
   };
 
        // activeCase가 있고 해당 케이스에 대한 색상 목록이 있으면 사용, 없으면 전체 색상 사용
