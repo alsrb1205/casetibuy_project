@@ -16,35 +16,39 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `casetibuy_order`
+-- Table structure for table `casetibuy_cart`
 --
 
-DROP TABLE IF EXISTS `casetibuy_order`;
+DROP TABLE IF EXISTS `casetibuy_cart`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `casetibuy_order` (
-  `order_id` int NOT NULL AUTO_INCREMENT,
-  `member_id` varchar(20) NOT NULL,
-  `total_price` int NOT NULL,
-  `payment_method` enum('creditCard','kakaoPay') NOT NULL,
-  `order_status` enum('pending','completed','canceled') DEFAULT 'pending',
-  `order_date` datetime DEFAULT CURRENT_TIMESTAMP,
-  `zipcode` varchar(10) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `detail_address` varchar(255) NOT NULL,
-  PRIMARY KEY (`order_id`),
-  KEY `fk_order_member` (`member_id`),
-  CONSTRAINT `fk_order_member` FOREIGN KEY (`member_id`) REFERENCES `casetibuy_member` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `casetibuy_cart` (
+  `cid` int NOT NULL AUTO_INCREMENT,
+  `cname` varchar(30) NOT NULL,
+  `qty` int NOT NULL,
+  `color` varchar(30) NOT NULL,
+  `caseType` varchar(30) NOT NULL,
+  `image` varchar(200) NOT NULL,
+  `price` int NOT NULL,
+  `id` varchar(30) NOT NULL,
+  `pid` int NOT NULL,
+  `cdate` datetime DEFAULT NULL,
+  `kinds` varchar(30) NOT NULL,
+  PRIMARY KEY (`cid`),
+  KEY `fk_id_casetibuy_member_id` (`id`),
+  KEY `fk_pid_casetibuy_product_pid` (`pid`),
+  CONSTRAINT `fk_id_casetibuy_member_id` FOREIGN KEY (`id`) REFERENCES `casetibuy_member` (`id`),
+  CONSTRAINT `fk_pid_casetibuy_product_pid` FOREIGN KEY (`pid`) REFERENCES `casetibuy_product` (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `casetibuy_order`
+-- Dumping data for table `casetibuy_cart`
 --
 
-LOCK TABLES `casetibuy_order` WRITE;
-/*!40000 ALTER TABLE `casetibuy_order` DISABLE KEYS */;
-/*!40000 ALTER TABLE `casetibuy_order` ENABLE KEYS */;
+LOCK TABLES `casetibuy_cart` WRITE;
+/*!40000 ALTER TABLE `casetibuy_cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `casetibuy_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -56,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-22 18:10:39
+-- Dump completed on 2025-03-22 18:17:20

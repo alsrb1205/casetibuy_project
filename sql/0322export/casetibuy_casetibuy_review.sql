@@ -16,38 +16,40 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `casetibuy_cart`
+-- Table structure for table `casetibuy_review`
 --
 
-DROP TABLE IF EXISTS `casetibuy_cart`;
+DROP TABLE IF EXISTS `casetibuy_review`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `casetibuy_cart` (
-  `cid` int NOT NULL AUTO_INCREMENT,
-  `cname` varchar(30) NOT NULL,
-  `qty` int NOT NULL,
-  `color` varchar(30) NOT NULL,
-  `caseType` varchar(30) NOT NULL,
-  `image` varchar(200) NOT NULL,
-  `price` int NOT NULL,
-  `id` varchar(30) NOT NULL,
+CREATE TABLE `casetibuy_review` (
+  `review_id` int NOT NULL AUTO_INCREMENT,
+  `order_id` int NOT NULL,
   `pid` int NOT NULL,
-  `cdate` datetime DEFAULT NULL,
-  PRIMARY KEY (`cid`),
-  KEY `fk_id_casetibuy_member_id` (`id`),
-  KEY `fk_pid_casetibuy_product_pid` (`pid`),
-  CONSTRAINT `fk_id_casetibuy_member_id` FOREIGN KEY (`id`) REFERENCES `casetibuy_member` (`id`),
-  CONSTRAINT `fk_pid_casetibuy_product_pid` FOREIGN KEY (`pid`) REFERENCES `casetibuy_product` (`pid`)
+  `member_id` varchar(50) NOT NULL,
+  `color` varchar(30) NOT NULL,
+  `casetype` varchar(30) NOT NULL,
+  `comment` text NOT NULL,
+  `rating` int DEFAULT NULL,
+  `review_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`review_id`),
+  KEY `fk_review_order` (`order_id`),
+  KEY `fk_review_member` (`member_id`),
+  KEY `fk_review_product` (`pid`),
+  CONSTRAINT `fk_review_member` FOREIGN KEY (`member_id`) REFERENCES `casetibuy_member` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_review_order` FOREIGN KEY (`order_id`) REFERENCES `casetibuy_order` (`order_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_review_product` FOREIGN KEY (`pid`) REFERENCES `casetibuy_product` (`pid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `casetibuy_review_chk_1` CHECK ((`rating` between 1 and 5))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `casetibuy_cart`
+-- Dumping data for table `casetibuy_review`
 --
 
-LOCK TABLES `casetibuy_cart` WRITE;
-/*!40000 ALTER TABLE `casetibuy_cart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `casetibuy_cart` ENABLE KEYS */;
+LOCK TABLES `casetibuy_review` WRITE;
+/*!40000 ALTER TABLE `casetibuy_review` DISABLE KEYS */;
+/*!40000 ALTER TABLE `casetibuy_review` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -59,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-22 18:10:40
+-- Dump completed on 2025-03-22 18:17:20

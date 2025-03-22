@@ -16,37 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `casetibuy_order_detail`
+-- Table structure for table `casetibuy_order`
 --
 
-DROP TABLE IF EXISTS `casetibuy_order_detail`;
+DROP TABLE IF EXISTS `casetibuy_order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `casetibuy_order_detail` (
-  `order_detail_id` int NOT NULL AUTO_INCREMENT,
-  `order_id` int NOT NULL,
-  `product_id` int NOT NULL,
-  `product_name` varchar(50) NOT NULL,
-  `qty` int NOT NULL,
-  `unit_price` int NOT NULL,
-  `color` varchar(30) NOT NULL,
-  `case_type` varchar(30) NOT NULL,
-  `product_image` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`order_detail_id`),
-  KEY `fk_order` (`order_id`),
-  KEY `fk_product` (`product_id`),
-  CONSTRAINT `fk_order` FOREIGN KEY (`order_id`) REFERENCES `casetibuy_order` (`order_id`),
-  CONSTRAINT `fk_product` FOREIGN KEY (`product_id`) REFERENCES `casetibuy_product` (`pid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `casetibuy_order` (
+  `order_id` int NOT NULL AUTO_INCREMENT,
+  `member_id` varchar(20) NOT NULL,
+  `total_price` int NOT NULL,
+  `payment_method` enum('creditCard','kakaoPay') NOT NULL,
+  `order_status` enum('pending','completed','canceled') DEFAULT 'pending',
+  `order_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `zipcode` varchar(10) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `detail_address` varchar(255) NOT NULL,
+  PRIMARY KEY (`order_id`),
+  KEY `fk_order_member` (`member_id`),
+  CONSTRAINT `fk_order_member` FOREIGN KEY (`member_id`) REFERENCES `casetibuy_member` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `casetibuy_order_detail`
+-- Dumping data for table `casetibuy_order`
 --
 
-LOCK TABLES `casetibuy_order_detail` WRITE;
-/*!40000 ALTER TABLE `casetibuy_order_detail` DISABLE KEYS */;
-/*!40000 ALTER TABLE `casetibuy_order_detail` ENABLE KEYS */;
+LOCK TABLES `casetibuy_order` WRITE;
+/*!40000 ALTER TABLE `casetibuy_order` DISABLE KEYS */;
+INSERT INTO `casetibuy_order` VALUES (2,'test123',122000,'creditCard','pending','2025-03-22 18:15:36','06035','서울 강남구 가로수길 5 (신사동)','1층');
+/*!40000 ALTER TABLE `casetibuy_order` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -58,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-03-22 18:10:40
+-- Dump completed on 2025-03-22 18:17:19
