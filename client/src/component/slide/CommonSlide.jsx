@@ -25,7 +25,7 @@ export default function CommonSlide({
         <Swiper
           ref={swiperRef}
           slidesPerView={3.2}
-          slidesPerGroup={3.2}
+          slidesPerGroup={3}
           spaceBetween={30}
           pagination={{
             el: `.custom-pagination-${className}`,

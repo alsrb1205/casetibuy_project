@@ -5,7 +5,7 @@ import SlideSection from "../component/slide/SlideSection.jsx";
 import { useSlide } from "../hooks/useSlide.js";
 
 export default function Home() {
-  const { slideList, hnrSlides } = useSlide();
+  const { slideList } = useSlide();
 
   const paginationSettings = {
     visual: true,

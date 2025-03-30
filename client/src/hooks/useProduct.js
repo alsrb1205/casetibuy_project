@@ -1,5 +1,4 @@
 import React, { useCallback, useContext, useState } from "react";
-import { DetailContext } from "../context/DetailContext";
 import axios from "axios";
 import { PListContext } from "../context/PListContext";
 
@@ -9,7 +8,7 @@ export default function useProduct(initialProducts) {
     initialProducts || []
   );
   const [productList, setProductList] = useState([]);
-  const {searchResults, setSearchResults,originalProducts}=useContext(PListContext);
+  const { originalProducts } = useContext(PListContext);
 
   const getProductList = useCallback(async () => {
     try {

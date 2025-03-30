@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { DetailContext } from "../../context/DetailContext";
 import { useDetail } from "../../hooks/useDetail";
