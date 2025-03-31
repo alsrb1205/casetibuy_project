@@ -11,14 +11,13 @@ export default function EditAccount(props) {
         currentPassword, setCurrentPassword,
         newPassword, setNewPassword,
         confirmNewPassword, setConfirmNewPassword,
-        nameError, // 추가: 이름 에러 상태
+        nameError,
         birthdateError,
         emailError,
         phoneError,
         currentPasswordError,
         newPasswordError,
         confirmNewPasswordError,
-        // 쉐이크 및 ref 등도 동일하게 전달
         currentPasswordShake,
         newPasswordShake,
         confirmNewPasswordShake,
@@ -33,6 +32,11 @@ export default function EditAccount(props) {
         emailRef,
         phoneRef,
         nameRef,
+        // 유효성 함수들
+        validateName,
+        validateBirthdate,
+        validateEmail,
+        validatePhone,
         validateCurrentPassword,
         validateNewPassword,
         validateConfirmNewPassword,
@@ -49,9 +53,10 @@ export default function EditAccount(props) {
                 label="이름"
                 value={name}
                 setValue={setName}
-                error={nameError} // 수정: 이름 에러는 nameError 사용
+                error={nameError}
                 refElement={nameRef}
                 shake={nameShake}
+                validate={validateName}
             />
 
             {/* 생년월일 (YYYYMMDD) */}
@@ -65,6 +70,7 @@ export default function EditAccount(props) {
                 inputType="number-only"
                 refElement={birthdateRef}
                 shake={birthdateShake}
+                validate={validateBirthdate}
             />
 
             {/* 이메일 */}
@@ -76,6 +82,7 @@ export default function EditAccount(props) {
                 error={emailError}
                 shake={emailShake}
                 refElement={emailRef}
+                validate={validateEmail}
             />
 
             {/* 전화번호 */}
@@ -89,6 +96,7 @@ export default function EditAccount(props) {
                 inputType="number-only"
                 shake={phoneShake}
                 refElement={phoneRef}
+                validate={validatePhone}
             />
 
             {/* 현재 비밀번호 */}
@@ -102,7 +110,7 @@ export default function EditAccount(props) {
                 shake={currentPasswordShake}
                 refElement={currentPasswordRef}
                 maxLength={20}
-                onBlur={validateCurrentPassword} // 포커스 해제 시 검증
+                onBlur={validateCurrentPassword}
             />
 
             {/* 새 비밀번호 */}

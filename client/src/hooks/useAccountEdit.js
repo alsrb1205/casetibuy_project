@@ -252,6 +252,7 @@ export default function useAccountEdit() {
       if (res.status === 200) {
         alert("계정 정보가 수정되었습니다.");
         navigate("/");
+        window.scrollTo(0, 0);
       }
     } catch (error) {
       console.error("계정 정보 수정 오류:", error);

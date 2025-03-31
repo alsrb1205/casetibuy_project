@@ -23,7 +23,7 @@ export default function Mypage() {
         setIsLoggedIn(false);
         setCartList([]);
         alert("로그아웃 되었습니다.");
-      }, 1000);
+      }, 500);
     }
   };
 

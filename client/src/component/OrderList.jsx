@@ -2,16 +2,16 @@ import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext.js";
 import useOrder from "../hooks/useOrder.js";
 import SeriesItem from "./product/SeriesItem.jsx";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useColorScheme from "../hooks/useColorScheme.js";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderList() {
     const { isLoggedIn } = useContext(AuthContext);
     const { getOrderList } = useOrder();
     const [orderGroups, setOrderGroups] = useState([]);
     const getColorScheme = useColorScheme();
+    const navigate = useNavigate();
     useEffect(() => {
         if (isLoggedIn) {
             getOrderList().then((data) => {
@@ -99,7 +99,11 @@ export default function OrderList() {
                                 return (
                                     <SwiperSlide key={`${item.product_id}-${index}`}>
                                         <SeriesItem
-                                            className={`p-8 pb-16 cursor-pointer h-[230px] w-[200px] rounded-16 ${bg}`}
+                                            onClick={() => {
+                                                navigate(`/detail/${item.product_id}`);
+                                                window.scrollTo(0, 0);
+                                            }}
+                                            className={`p-8 pb-16 h-[250px] w-[200px] rounded-16 ${bg}`}
                                             imageSrc={item.image}
                                             titleClassName={`mt-10 text-16 font-bold text-left ${text}`}
                                             title={item.product_name}

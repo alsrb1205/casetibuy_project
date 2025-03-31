@@ -5,7 +5,7 @@ import { useSlide } from "../hooks/useSlide.js";
 
 export default function Home() {
   const { slideList, hnrSlides } = useSlide();
-
+  
   const title = {
     recommended: "Recommended Collection",
     hot: "Now Hot Designs!",
@@ -74,7 +74,7 @@ export default function Home() {
               spaceBetween="30"
               autoplay={false}
               loop={false}
-              slidesPerGroup={3.5}
+              slidesPerGroup={3}
               slidesOffsetBefore={32}
               slidesOffsetAfter={32}
             />

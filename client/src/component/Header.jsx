@@ -6,7 +6,6 @@ import {
   faMagnifyingGlass,
   faUser,
   faCartShopping,
-  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../hooks/useCart.js";
 import { CartContext } from "../context/CartContext.js";
@@ -67,7 +66,7 @@ export default function Header() {
         setIsLoggedIn(false);
         setCartList([]);
         alert("로그아웃 되었습니다.");
-      }, 1000);
+      }, 500);
     }
   };
 
@@ -83,7 +82,7 @@ export default function Header() {
   const handleSearch = (search) => {
     console.log("검색어:", search);
     // 여기서 검색 로직 수행 (API 호출 등)
-
+    
     setIsSearchOpen(false);
   };
 
@@ -116,7 +115,10 @@ export default function Header() {
               />
             </button>
             {/* 검색 아이콘 클릭 시 모달 오픈 */}
-            <button type="button" onClick={() => setIsSearchOpen(true)}>
+            <button
+              type="button"
+              onClick={() => setIsSearchOpen(true)}
+            >
               <FontAwesomeIcon
                 className={`w-24 h-24 ${
                   showSeries
@@ -198,18 +200,6 @@ export default function Header() {
                 </ul>
               )}
             </div>
-            <button>
-              <FontAwesomeIcon
-                className={`w-24 h-24 ${
-                  showSeries
-                    ? "text-black"
-                    : iconColor === "white"
-                    ? "text-white"
-                    : "text-black"
-                }`}
-                icon={faGlobe}
-              />
-            </button>
             <div className="flex gap-2">
               <button type="button" onClick={toggleCart} className="relative">
                 <FontAwesomeIcon
