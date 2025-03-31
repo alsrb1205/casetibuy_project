@@ -14,6 +14,9 @@ export default function Settings() {
         currentPasswordShake, newPasswordShake, confirmNewPasswordShake, birthdateShake, emailShake, phoneShake, nameShake,
         currentPasswordRef, newPasswordRef, confirmNewPasswordRef, birthdateRef, emailRef, phoneRef, nameRef,
         handleUpdateAccount,
+        // 유효성 검증 함수들
+        validateName, validateBirthdate, validateEmail, validatePhone,
+        validateCurrentPassword, validateNewPassword, validateConfirmNewPassword,
     } = useAccountEdit();
 
     const handleFormSubmit = (e) => {
@@ -42,7 +45,7 @@ export default function Settings() {
                     setNewPassword={setNewPassword}
                     confirmNewPassword={confirmNewPassword}
                     setConfirmNewPassword={setConfirmNewPassword}
-                    nameError={nameError}            
+                    nameError={nameError}
                     emailError={emailError}
                     phoneError={phoneError}
                     currentPasswordError={currentPasswordError}
@@ -63,6 +66,14 @@ export default function Settings() {
                     emailRef={emailRef}
                     phoneRef={phoneRef}
                     nameRef={nameRef}
+                    // 전달할 유효성 함수들
+                    validateName={validateName}
+                    validateBirthdate={validateBirthdate}
+                    validateEmail={validateEmail}
+                    validatePhone={validatePhone}
+                    validateCurrentPassword={validateCurrentPassword}
+                    validateNewPassword={validateNewPassword}
+                    validateConfirmNewPassword={validateConfirmNewPassword}
                 />
                 {/* 연락처 수정 영역 */}
                 <ContactEdit />

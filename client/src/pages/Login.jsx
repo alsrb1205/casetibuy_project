@@ -110,10 +110,6 @@ export default function Login() {
                 />
                 <button type="submit" className="w-full p-12 text-white transition-all duration-300 bg-blue rounded-12 text-16">로그인</button>
                 {loginError && <p className="mt-10 text-sm text-red-500">{loginError}</p>}
-                <div className="flex justify-start w-full gap-10 mt-12">
-                  <span className="text-sm text-gray-600 underline cursor-pointer text-blue">아이디 찾기</span>
-                  <span className="text-sm text-gray-600 underline cursor-pointer text-blue">비밀번호 찾기</span>
-                </div>
               </div>
             ) : (
               <SignUp setIsSignUp={setIsSignUp} />
