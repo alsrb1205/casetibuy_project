@@ -40,11 +40,12 @@ export default function Footer() {
           hidden="hidden"
         />
       </div>
+
       <footer className="text-white bg-black footer">
         {/* footer-top */}
         <div className="footer-top">
           <div className="px-24 pt-32 leading-2">
-            <div className="flex justify-between py-20 mr-[7rem]">
+            <div className="flex justify-between py-20 pr-80">
               {/* sns icon */}
               <div>
                 <h2 className="pb-10 text-16">{firstCategory}</h2>
@@ -107,7 +108,7 @@ export default function Footer() {
 
         {/* footer-bottom */}
         <div className="footer-bottom">
-          <div className="flex flex-col justify-center items-center text-12 border-t-[1px] border-white text-grayph px-10 pb-22">
+          <div className="flex flex-col justify-center items-center text-12 border-t-[1px] border-white text-[#666] px-10 pb-22 gap-10 pt-5">
             <p>
               케이스티파이: 케이스타그램 리미티드(Casetify: Casetagram Limited)
               | 케이스티파이 유한회사 (CASETiFY) | 대표: 응푸이순 웨슬리 (Wesley
@@ -117,15 +118,16 @@ export default function Footer() {
               사업자등록번호: 580-88-02026 | 통신판매업 신고번호: 제
               2021-서울강남-03049 호
             </p>
-            <p>
-              주소: 서울특별시 강남구 선릉로 818 6층, 케이스티파이 CS Center:
-              hello@casetify.com
-            </p>
+            <p>주소: 서울특별시 강남구 선릉로 818 6층, 케이스티파이</p>
+            <p>CS Center: hello@casetify.com</p>
             <p>휴무: 토요일, 일요일, 공휴일 휴무</p>
           </div>
-          <div className="px-16 py-20 text-12 ">
-            <p>개인정보 처리방침 | 약관</p>
-            <p className="mt-[16px]">Copyright © 2025 CASETiFY</p>
+          <div className="py-25 px-42 text-14">
+            <p>
+              Copyright © 2025 CASETiFY<span className="px-12">|</span>개인정보
+              처리방침
+              <span className="px-12">|</span>약관
+            </p>
           </div>
         </div>
       </footer>

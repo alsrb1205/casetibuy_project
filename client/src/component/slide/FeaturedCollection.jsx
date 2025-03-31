@@ -1,7 +1,7 @@
 import React from "react";
-import HomeProduct from "./HomeProduct.jsx";
+import SlideItem from "./SlideItem.jsx";
 
-export default function HomeProductList({ slidesData }) {
+export default function FeaturedCollection({ slidesData }) {
   return (
     <div className="grid w-full grid-cols-1 gap-24 lg:grid-cols-3">
       {slidesData.map((product, index) => (
@@ -18,7 +18,7 @@ export default function HomeProductList({ slidesData }) {
                     : ""
                 }`}
         >
-          <HomeProduct key={index} {...product} />
+          <SlideItem key={index} {...product} />
         </div>
       ))}
     </div>

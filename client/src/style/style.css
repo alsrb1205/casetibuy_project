@@ -43,7 +43,6 @@
   
   ******************************************* */
 
-
 .sns {
   width: 30px;
   height: 30px;
@@ -65,54 +64,6 @@
   *   final date : 2025/02/09
   
   ******************************************* */
-
-.featured-collection {
-  border: 1px solid red;
-  background-color: #f6e163;
-  border-radius: 20px;
-  overflow: hidden;
-}
-.featured-collection img {
-  width: 100%;
-}
-.pid {
-  background-color: var(--color-black);
-  color: var(--color-white);
-  border-radius: 20px;
-  padding: 6px 20px;
-  height: 100%;
-}
-.ptitle {
-  font-size: 36px;
-  font-weight: bold;
-  padding: 32px 0;
-}
-.pbutton {
-  border: 1px solid #000;
-  border-radius: 40px;
-  padding: 12px 20px;
-  height: 100%;
-}
-.product-item {
-  padding: 16px 32px;
-}
-.product-item > div {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-}
-.products-even {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 15px;
-}
-.products-odd {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto auto;
-  gap: 15px;
-}
 
 /* Home 배경 색상 */
 .yellow {
