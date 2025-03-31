@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function HomeProduct({
+export default function SlideItem({
   className,
   title,
   image,
@@ -34,7 +34,7 @@ export default function HomeProduct({
           <img src={image} alt={title} className={`w-full ${cround}`} />
         </div>
         <div
-          className={`w-full h-[200px] flex flex-col items-start justify-between ${contentPadding}`}
+          className={`w-full h-[200px] flex flex-col items-start justify-between text-start ${contentPadding}`}
         >
           <span className={`${labelStyle}`}>{label}</span>
           <div>

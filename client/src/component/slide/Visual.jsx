@@ -1,7 +1,7 @@
 import React from "react";
 import "../../style/swiper.css";
 
-export default function SlideVisual({ slide }) {
+export default function Visual({ slide }) {
   const bgColor = {
     yellow: "bg-yellow",
     blue: "bg-blue",

@@ -1,29 +1,15 @@
 import React from "react";
-import HomeProductList from "../component/home/HomeProductList.jsx";
+import FeaturedCollection from "../component/slide/FeaturedCollection.jsx";
 import Slide from "../component/slide/Slide.jsx";
-import SlideSection from "../component/slide/SlideSection.jsx";
 import { useSlide } from "../hooks/useSlide.js";
 
 export default function Home() {
   const { slideList, hnrSlides } = useSlide();
 
-  const paginationSettings = {
-    visual: true,
-    common: {
-      el: `.custom-pagination`,
-      clickable: true,
-      renderBullet: (index, className) => {
-        return `<span class="${className} custom-bullet"></span>`;
-      },
-    },
-  };
-
-  const navigationSettings = {
-    collaborator: true,
-    common: {
-      nextEl: `.custom-next`,
-      prevEl: `.custom-prev`,
-    },
+  const title = {
+    recommended: "Recommended Collection",
+    hot: "Now Hot Designs!",
+    new: "#CasetibuyNew",
   };
 
   return (
@@ -32,12 +18,13 @@ export default function Home() {
       <Slide
         slidesData={slideList.visualSlideImage || []}
         className="visual"
-        pagination={paginationSettings.visual}
+        pagination={true}
         navigation={false}
         slidesPerView="1"
         spaceBetween="0"
         loop={true}
         autoplay={true}
+        slidesPerGroup={1}
       />
 
       {/* collaborator */}
@@ -45,42 +32,55 @@ export default function Home() {
         slidesData={slideList.collaborator || []}
         className="collaborator"
         pagination={false}
-        navigation={navigationSettings.collaborator}
+        navigation={true}
         slidesPerView="4.9"
         spaceBetween="30"
         autoplay={false}
         loop={false}
         navStyle="navigation-collabo"
+        slidesPerGroup={1}
       />
-
-      {/* common 임시 */}
-      {/* <div className="content bg-bg">
-        <h2 className="pt-32 pb-16 pl-32 font-bold text-36">
-          Featured Collection
-        </h2>
-        <div className="common">
-          {Object.entries(hnrSlides).map(([key, value]) => (
-            <Slide
-              slidesData={value}
-              pagination={paginationSettings.common}
-              navigation={navigationSettings.common}
-              slidesPerView="3.2"
-              spaceBetween="30"
-              autoplay={false}
-              loop={false}
-            />
-          ))}
-        </div>
-      </div> */}
 
       {/* Featured Collection */}
       <div className="content product-container bg-bg">
         <h2 className="pb-16 font-bold text-36">Featured Collection</h2>
-        <HomeProductList slidesData={slideList.featuredCollection || []} />
+        <FeaturedCollection slidesData={slideList.featuredCollection || []} />
       </div>
 
       {/* Common Slides */}
-      <SlideSection className="common" />
+      {Object.entries(hnrSlides).map(([key, value]) => (
+        <div className="overflow-visible content bg-bg">
+          <h2 className="pt-32 pb-16 pl-32 font-bold text-36">
+            {title[key] || key}
+          </h2>
+          <div className="pb-32">
+            <Slide
+              slideKey={key}
+              className="common"
+              slidesData={value}
+              pagination={{
+                el: `.custom-pagination-${key}`,
+                clickable: true,
+                renderBullet: (index, className) => {
+                  console.log("bullet class:", className);
+                  return `<span class="${className} custom-bullet"></span>`;
+                },
+              }}
+              navigation={{
+                nextEl: `.custom-next-${key}`,
+                prevEl: `.custom-prev-${key}`,
+              }}
+              slidesPerView={3.5}
+              spaceBetween="30"
+              autoplay={false}
+              loop={false}
+              slidesPerGroup={3.5}
+              slidesOffsetBefore={32}
+              slidesOffsetAfter={32}
+            />
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
