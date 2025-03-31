@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { ReviewContext } from '../context/ReviewContext';
 import axios from 'axios';
 import useOrder from './useOrder';

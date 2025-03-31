@@ -12,13 +12,13 @@ export default function SignUp() {
         email, setEmail,
         phoneNumber, setPhoneNumber,
 
-        nameError, setNameError,
-        birthdateError, setBirthdateError,
+        nameError,
+        birthdateError,
         usernameError, setUsernameError,
-        passwordError, setPasswordError,
-        passwordConfirmError, setPasswordConfirmError,
-        emailError, setEmailError,
-        phoneNumberError, setPhoneNumberError,
+        passwordError,
+        passwordConfirmError,
+        emailError,
+        phoneNumberError,
 
         nameFocused, setNameFocused,
         birthdateFocused, setBirthdateFocused,
@@ -42,8 +42,6 @@ export default function SignUp() {
         signupError, setSignupError,
         checkIdAvailability,
         isIdAvailable,
-        setIsIdAvailable,
-
         handleSignUp,
         validateName, validateBirthdate, validateUsername, validatePassword, validatePasswordConfirm, validateEmail, validatePhoneNumber,
     } = useSignUp();

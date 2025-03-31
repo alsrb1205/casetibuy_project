@@ -21,12 +21,34 @@ create table casetibuy_member(
         phone			char(11)		not null,
         mdate			datetime
 );
+INSERT INTO casetibuy_member (name, birthdate, id, pwd, email, phone, mdate) VALUES
+('김민수', '19850115', 'minsuglow', '123456', 'minsuglow@smartmail.com', '01011112222', '2025-01-10 08:15:00'),
+('이서연', '19900220', 'seoyeonvivid', '123456', 'seoyeonvivid@smartmail.com', '01022223333', '2025-01-25 12:30:00'),
+('박지훈', '19881130', 'jihoonfire', '123456', 'jihoonfire@smartmail.com', '01033334444', '2025-02-03 09:45:00'),
+('최은정', '19920515', 'eunjeongwave', '123456', 'eunjeongwave@smartmail.com', '01044445555', '2025-02-15 14:20:00'),
+('정현우', '19870707', 'hyunwoofresh', '123456', 'hyunwoofresh@smartmail.com', '01055556666', '2025-02-20 16:50:00'),
+('윤지민', '19911201', 'jiminvibe', '123456', 'jiminvibe@smartmail.com', '01066667777', '2025-02-25 11:10:00'),
+('오수빈', '19930505', 'subinlight', '123456', 'subinlight@smartmail.com', '01077778888', '2025-03-01 07:05:00'),
+('문재영', '19890312', 'jaeyoungjoy', '123456', 'jaeyoungjoy@smartmail.com', '01088889999', '2025-03-03 19:30:00'),
+('임지원', '19940723', 'jiwoncharm', '123456', 'jiwoncharm@smartmail.com', '01099990000', '2025-03-05 15:45:00'),
+('유성민', '19861230', 'seongminedge', '123456', 'seongminedge@smartmail.com', '01010101010', '2025-03-07 10:00:00'),
+('신다은', '19930317', 'daeunshine', '123456', 'daeunshine@smartmail.com', '01012121212', '2025-03-09 18:20:00'),
+('강동혁', '19890625', 'donghyeokpulse', '123456', 'donghyeokpulse@smartmail.com', '01013131313', '2025-03-11 13:35:00'),
+('배수현', '19911010', 'baesuhyeonbeat', '123456', 'baesuhyeonbeat@smartmail.com', '01014141414', '2025-03-13 21:55:00'),
+('곽동혁', '19880508', 'kwakdaring', '123456', 'kwakdaring@smartmail.com', '01015151515', '2025-03-15 08:25:00'),
+('서민지', '19921111', 'seominjirise', '123456', 'seominjirise@smartmail.com', '01016161616', '2025-03-16 16:00:00'),
+('조동현', '19870707', 'jodonghyunvibe', '123456', 'jodonghyunvibe@smartmail.com', '01017171717', '2025-03-17 12:10:00'),
+('한예림', '19930530', 'hanyerimglow', '123456', 'hanyerimglow@smartmail.com', '01018181818', '2025-03-18 09:05:00'),
+('노진우', '19890109', 'nojinwooflare', '123456', 'nojinwooflare@smartmail.com', '01019191919', '2025-03-19 17:50:00'),
+('송혜민', '19940404', 'songhyemindream', '123456', 'songhyemindream@smartmail.com', '01020202020', '2025-03-20 14:40:00'),
+('김도현', '19911011', 'kimdohyeonswift', '123456', 'kimdohyeonswift@smartmail.com', '01021212121', '2025-03-21 11:55:00');
+
 
 use casetibuy;
 select * from casetibuy_product;
 select * from casetibuy_member;
 
-truncate table casetibuy_product;
+truncate table casetibuy_member;
 
 alter table casetibuy_product add column repImage varchar(300);
 -- 콜라보 항목 추가!!!!!! 
@@ -132,6 +154,7 @@ drop table casetibuy_product;
 drop table casetibuy_member;
 drop table casetibuy_cart;
 drop table casetibuy_order_detail;
+drop table casetibuy_order;
 drop table casetibuy_review;
 
 
@@ -141,8 +164,18 @@ DROP VIEW IF EXISTS view_cart_list;
 TRUNCATE TABLE casetibuy_member;
 TRUNCATE TABLE casetibuy_cart;
 TRUNCATE TABLE casetibuy_product;
+TRUNCATE TABLE casetibuy_order;
+TRUNCATE TABLE casetibuy_order_detail;
+TRUNCATE TABLE casetibuy_review;
+ALTER TABLE casetibuy_order DROP FOREIGN KEY fk_order_member;
+DROP TABLE casetibuy_member;
+ALTER TABLE casetibuy_cart DROP FOREIGN KEY fk_pid_casetibuy_product_pid;
+DROP TABLE casetibuy_product;
 
-DELETE FROM casetibuy_product WHERE pid = 13;
+ALTER TABLE casetibuy_order_detail DROP FOREIGN KEY fk_product;
+DROP TABLE casetibuy_product;
+
+DELETE FROM casetibuy_product WHERE pid = 21;
 
 
 -- 결제관련 오더 테이블
@@ -271,4 +304,9 @@ select * from casetibuy_review;
                source_file,
                pdate
          from casetibuy_product
-         where pname = 'test2'
+         where pname = 'test2';
+
+select * from casetibuy_product;
+UPDATE casetibuy_product
+SET pid = 25
+WHERE pid = 39;

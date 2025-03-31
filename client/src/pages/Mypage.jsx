@@ -9,7 +9,7 @@ import Settings from "./Settings.jsx";
 import OrderList from "../component/OrderList.jsx";
 
 export default function Mypage() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { setIsLoggedIn } = useContext(AuthContext);
   const { setCartList } = useContext(CartContext);
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState("order");

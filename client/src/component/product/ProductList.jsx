@@ -1,5 +1,4 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { DetailContext } from "../../context/DetailContext";
 import { useDetail } from "../../hooks/useDetail";
@@ -49,7 +48,7 @@ export default function ProductList({ productList, layoutType }) {
                 <div className="mt-12 gap-10 flex flex-col text-#8c8c8c">
                   <p className="truncate text-16">{product.name}</p>
                   <p className="text-14 text-name">{matchKinds[product.kinds]}</p>
-                  <p className="truncate text-14 text-name">{caseData.cname}</p>
+                  <p className="h-[16.8px] truncate text-14 text-name">{caseData.cname}</p>
                 </div>
                 {/* 상품 가격 */}
                 <div className="mt-30">
