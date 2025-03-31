@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext.js";
 import useOrder from "../hooks/useOrder.js";
+import { useDetail } from "../hooks/useDetail.js";
 import SeriesItem from "./product/SeriesItem.jsx";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useColorScheme from "../hooks/useColorScheme.js";
@@ -9,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function OrderList() {
     const { isLoggedIn } = useContext(AuthContext);
     const { getOrderList } = useOrder();
+    const { parseCaseAndColor } = useDetail();
     const [orderGroups, setOrderGroups] = useState([]);
     const getColorScheme = useColorScheme();
     const navigate = useNavigate();
@@ -94,16 +96,21 @@ export default function OrderList() {
                             }}
                         >
                             {orderGroup.map((item, index) => {
+                                const { caseType, color } = parseCaseAndColor(item.image)
                                 const { bg, text } = getColorScheme(index);
 
                                 return (
-                                    <SwiperSlide key={`${item.product_id}-${index}`}>
+                                    <SwiperSlide
+                                        key={`${item.product_id}-${index}`}
+                                        onClick={() => {
+                                            navigate(`/detail/${item.product_id}`, {
+                                                state: { activeCase: caseType, activeColor: color },
+                                            });
+                                            window.scrollTo(0, 0);
+                                        }}
+                                    >
                                         <SeriesItem
-                                            onClick={() => {
-                                                navigate(`/detail/${item.product_id}`);
-                                                window.scrollTo(0, 0);
-                                            }}
-                                            className={`p-8 pb-16 h-[250px] w-[200px] rounded-16 ${bg}`}
+                                            className={`p-8 pb-16 h-[250px] cursor-pointer w-[200px] rounded-16 ${bg}`}
                                             imageSrc={item.image}
                                             titleClassName={`mt-10 text-16 font-bold text-left ${text}`}
                                             title={item.product_name}
