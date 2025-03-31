@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useRef } from "react";
+import React, { useEffect, useContext } from "react";
 import CartItem from "./cart/CartItem.jsx";
 import CartFooter from "./cart/CartFooter.jsx";
 import Summary from "./cart/Summary.jsx";
@@ -43,7 +43,7 @@ export default function Cart() {
 
     if (!isLoggedIn) {
       const select = window.confirm(
-        "로그인 서비스가 필요합니다. \n로그인 하시겠습니까?"
+        "로그인이 필요한 서비스입니다. \n로그인 하시겠습니까?"
       );
       toggleCart(); // 장바구니 닫기
 

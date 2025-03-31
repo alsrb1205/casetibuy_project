@@ -4,8 +4,8 @@ import Slide from "../component/slide/Slide.jsx";
 import { useSlide } from "../hooks/useSlide.js";
 
 export default function Home() {
-  const { slideList,hnrSlides } = useSlide();
-
+  const { slideList, hnrSlides } = useSlide();
+  
   const title = {
     recommended: "Recommended Collection",
     hot: "Now Hot Designs!",

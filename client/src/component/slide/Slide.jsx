@@ -29,6 +29,19 @@ export default function Slide({
   const location = useLocation();
   const { setIconColor } = useTheme(); // Header 아이콘 색상 변경
 
+  useEffect(() => {
+    const swiperInstance = swiperRef.current?.swiper;
+
+    // autoplay 강제 시작 (특히 visual 슬라이드)
+    if (className === "visual" && swiperInstance?.autoplay) {
+      // 비디오가 있는 경우 약간의 지연을 주고 autoplay 시작
+      setTimeout(() => {
+        swiperInstance.autoplay.stop();
+        swiperInstance.autoplay.start();
+      }, 100); // 100~300ms 정도 지연 추천
+    }
+  }, [slidesData]);
+
   // 홈(`/home`)으로 돌아올 때 슬라이드 첫 번째 이미지의 `iconColor` 적용
   useEffect(() => {
     if (
@@ -70,6 +83,7 @@ export default function Slide({
                 key={slide.pid}
                 to={`/detail/${slide.pid}`}
                 state={{ activeCase: slide.caseType, activeColor: slide.color }} // caseType과 color 함께 전달
+                onClick={() => window.scrollTo(0, 0)}
                 draggable="false"
               >
                 <Visual key={index} slide={slide} />
@@ -81,6 +95,7 @@ export default function Slide({
                 key={slide.pid}
                 to={`/detail/${slide.pid}`}
                 state={{ activeCase: slide.caseType, activeColor: slide.color }} // caseType과 color 함께 전달
+                onClick={() => window.scrollTo(0, 0)}
                 draggable="false"
               >
                 <div className="px-20 py-10 overflow-hidden border border-grayhborder rounded-20">
