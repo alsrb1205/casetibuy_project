@@ -5,7 +5,7 @@
   
   .bar::before {
     position: absolute;
-    left: 0; /* 초기 노브 위치 */
+    left: 0; 
     content: "";
     display: block;
     width: 7px;
@@ -18,7 +18,6 @@
     transition: .3s ease;
   }
   
-  /* 노브의 위치는 CSS 변수(--gauge)를 기반으로 계산 (노브의 너비 7px 보정) */
   .bar.hovered::before {
     left: calc(var(--gauge, 50%) - 7px);
   }
@@ -36,7 +35,6 @@
     top: 3px;
   }
   
-  /* 게이지 채워지는 부분의 width를 CSS 변수(--gauge)로 지정 */
   .bartext::after {
     margin-top: 2px;
     position: relative;

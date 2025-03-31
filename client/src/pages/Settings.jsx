@@ -3,10 +3,8 @@ import EditAccount from '../component/EditAccount.jsx';
 import ContactEdit from '../component/ContactEdit.jsx';
 import DeleteAccount from '../component/DeleteAccount.jsx';
 import useAccountEdit from '../hooks/useAccountEdit.js';
-import { useNavigate } from 'react-router-dom';
 
 export default function Settings() {
-    const navigate = useNavigate();
     const {
         currentId, name, birthdate, email, phone,
         currentPassword, newPassword, confirmNewPassword,

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import '../../style/color-swiper.css'
 import { DetailContext } from '../../context/DetailContext';
 import { useDetail } from '../../hooks/useDetail';
 

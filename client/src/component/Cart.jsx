@@ -72,9 +72,8 @@ export default function Cart() {
         ></div>
       )}
       <div
-        className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-lg transform ${
-          isCartOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out z-50 
+        className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-lg transform ${isCartOpen ? "translate-x-0" : "translate-x-full"
+          } transition-transform duration-300 ease-in-out z-50 
           max-h-screen overflow-y-auto`}
       >
         {/* 장바구니 헤더 */}

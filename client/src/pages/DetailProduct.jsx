@@ -4,7 +4,6 @@ import DetailTopRight from "../component/detail/DetailTopRight";
 import ProductFeatures from "../component/detail/ProductFeature";
 import ProductInfo from "../component/detail/ProductInfo";
 import { DetailContext } from "../context/DetailContext";
-import axios from "axios";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import { useDetail } from "../hooks/useDetail";
 import { useCart } from "../hooks/useCart.js";
@@ -21,7 +20,6 @@ export default function DetailProduct() {
   const { state } = useLocation();
   const {
     detail,
-    setDetail,
     activeColor,
     activeCase,
     setActiveCase,
