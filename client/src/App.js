@@ -8,8 +8,6 @@ import DetailProduct from "./pages/DetailProduct.jsx";
 import Login from "./pages/Login.jsx";
 import Cart from "./component/Cart.jsx";
 import Home from "./pages/Home.jsx";
-import ProductList from "./component/product/ProductList.jsx";
-import HomeList from "./component/product/HomeList.jsx";
 import NewProduct from "./pages/NewProduct.jsx";
 import Mypage from "./pages/Mypage.jsx";
 import Settings from "./pages/Settings.jsx";
@@ -23,6 +21,7 @@ import { AuthContext, AuthProvider } from "./context/AuthContext.js";
 import { ReviewProvider } from "./context/ReviewContext.js";
 import { SlideProvider } from "./context/SlideContext.js";
 import ClearOrderDataWrapper from "./component/ClearOrderDataWrapper.jsx";
+import ProductPage from "./component/product/ProductPage.jsx";
 
 // OrderSuccessRoute: orderData가 없으면 접근 불가
 function OrderSuccessRoute({ children }) {
@@ -91,8 +90,7 @@ function App() {
                             }
                           />
                           <Route path="/payment" element={<PaymentPage />} />
-                          <Route path="/productlist" element={<ProductList />} />
-                          <Route path="/homelist" element={<HomeList />} />
+                          <Route path="/products" element={<ProductPage />} />
                         </Route>
                       </Routes>
                       <Cart />

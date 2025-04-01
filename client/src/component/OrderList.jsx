@@ -42,13 +42,6 @@ export default function OrderList() {
     return (
         <div className="flex flex-col gap-8">
             <h2 className="font-bold text-32 mb-30">주문</h2>
-            {/* <div className="flex gap-10 mb-10">
-                <span className="px-20 py-10 text-white bg-black border rounded-full">
-                    모든 주문
-                </span>
-                <span className="px-20 py-10 border rounded-full">출고 완료</span>
-            </div> */}
-
             {orderGroups.map((orderGroup) => {
                 const orderInfo = orderGroup[0];
                 return (
@@ -60,12 +53,10 @@ export default function OrderList() {
                         <div className="mb-4">
                             <li className="flex items-center justify-between">
                                 <span className="mb-16 font-bold">
-                                    {/* 주문 현황 : <span className="font-bold">{orderInfo.order_status}</span> */}
                                 </span>
                                 <span className="flex items-center">
                                     <span className="p-2 mr-5 bg-sky text-blue text-10">포인트</span>
                                     <span className="text-blue">적립 완료</span>
-                                    {/* <FontAwesomeIcon icon={faAngleRight} className="ml-20" /> */}
                                 </span>
                             </li>
 

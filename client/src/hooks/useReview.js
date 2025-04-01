@@ -1,16 +1,15 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import { useCallback, useContext, useMemo, useState } from 'react';
 import { ReviewContext } from '../context/ReviewContext';
 import axios from 'axios';
 import useOrder from './useOrder';
 import { DetailContext } from '../context/DetailContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 export default function useReview() {
-  const { rating, setRating, comment, setComment, setReviewForm } = useContext(ReviewContext);
-  const { orderList, getOrderList } = useOrder();
+  const { rating, comment, setReviewForm } = useContext(ReviewContext);
+  const { getOrderList } = useOrder();
   const { detail } = useContext(DetailContext);
   const [reviewList, setReviewList] = useState([]);
-  const navigate = useNavigate();
   const { pid } = useParams();
 
   const getReviewList = useCallback(async () => {

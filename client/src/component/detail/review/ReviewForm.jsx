@@ -1,15 +1,12 @@
-import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ReviewContext } from "../../../context/ReviewContext";
 import useReview from "../../../hooks/useReview";
 import StarRating from "./StarRating";
 
-// 리뷰 작성 폼 컴포넌트
 export default function ReviewForm ()  {
   const {rating, setRating, comment, setComment} = useContext(ReviewContext);
   const {reviewSubmit} = useReview();
   
-
   return (
   <>
     <form onSubmit={reviewSubmit} className="max-w-md p-4 mx-auto mt-40">

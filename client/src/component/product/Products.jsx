@@ -5,7 +5,7 @@ import ProductList from './ProductList.jsx';
 import { PListContext } from '../../context/PListContext.js';
 import useProduct from '../../hooks/useProduct.js';
 
-export default function ProductType() {
+export default function Products() {
   const [layoutType, setLayoutType] = useState(4);
   const [icons, setIcons] = useState([]);
   const [selectedLayout, setSelectedLayout] = useState(4);

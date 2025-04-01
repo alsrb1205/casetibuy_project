@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReviewBars from './review/ReviewBars.jsx';
 import ReviewForm from './review/ReviewForm.jsx';
 import ReviewList from './review/ReviewList.jsx';
-import axios from 'axios';
 import { ReviewContext } from '../../context/ReviewContext.js';
 import useReview from '../../hooks/useReview.js';
 import useOrder from '../../hooks/useOrder.js';
@@ -10,10 +9,10 @@ import { DetailContext } from '../../context/DetailContext.js';
 import StarRating from './review/StarRating.jsx';
 
 export default function Review() {
-    const { reviewForm, setReviewForm, rating, setRating, comment, setComment } = useContext(ReviewContext);
+    const { reviewForm, setReviewForm, setRating, setComment } = useContext(ReviewContext);
     const { reviewList, getReviewList, averageRating, calculateCounts } = useReview();
     const { detail } = useContext(DetailContext);
-    const { getOrderList, orderList } = useOrder();
+    const { getOrderList } = useOrder();
 
     useEffect(() => {
         getOrderList();

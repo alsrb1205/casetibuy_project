@@ -42,9 +42,6 @@ export function useLogin() {
         } else {
           setLoginError("아이디 또는 비밀번호를 확인해주세요.");
         }
-      } else {
-        // axios는 HTTP 에러 상태 코드 (4xx, 5xx)를 throw error로 처리하지 않습니다.
-        // response.status로 상태 코드를 직접 확인해야 합니다. (하지만 이 코드에서는 try-catch로 에러를 잡아낼 것이므로 else 블록은 사실상 불필요)
       }
     } catch (error) {
       console.error("로그인 실패:", error);

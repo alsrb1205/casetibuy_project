@@ -98,16 +98,15 @@ export default function Header() {
           <div className="flex gap-20">
             <button
               type="button"
-              onClick={() =>location.pathname !== "/login" && setShowSeries((prev) => !prev)}
+              onClick={() => location.pathname !== "/login" && setShowSeries((prev) => !prev)}
             >
               <FontAwesomeIcon
-                className={`w-24 h-24 ${
-                  showSeries
+                className={`w-24 h-24 ${showSeries
                     ? "text-black"
                     : iconColor === "white"
-                    ? "text-white"
-                    : "text-black"
-                }`}
+                      ? "text-white"
+                      : "text-black"
+                  }`}
                 icon={faBars}
               />
             </button>
@@ -117,13 +116,12 @@ export default function Header() {
               onClick={() => setIsSearchOpen(true)}
             >
               <FontAwesomeIcon
-                className={`w-24 h-24 ${
-                  showSeries
+                className={`w-24 h-24 ${showSeries
                     ? "text-black"
                     : iconColor === "white"
-                    ? "text-white"
-                    : "text-black"
-                }`}
+                      ? "text-white"
+                      : "text-black"
+                  }`}
                 icon={faMagnifyingGlass}
               />
             </button>
@@ -147,13 +145,12 @@ export default function Header() {
                   : { onClick: toggleDropdown })}
               >
                 <FontAwesomeIcon
-                  className={`w-24 h-24 py-15 ${
-                    showSeries
+                  className={`w-24 h-24 py-15 ${showSeries
                       ? "text-black"
                       : iconColor === "white"
-                      ? "text-white"
-                      : "text-black"
-                  }`}
+                        ? "text-white"
+                        : "text-black"
+                    }`}
                   icon={faUser}
                 />
               </button>
@@ -189,13 +186,12 @@ export default function Header() {
             <div className="flex gap-2">
               <button type="button" onClick={toggleCart} className="relative">
                 <FontAwesomeIcon
-                  className={`w-24 h-24 ${
-                    showSeries
+                  className={`w-24 h-24 ${showSeries
                       ? "text-black"
                       : iconColor === "white"
-                      ? "text-white"
-                      : "text-black"
-                  }`}
+                        ? "text-white"
+                        : "text-black"
+                    }`}
                   icon={faCartShopping}
                 />
               </button>
@@ -208,7 +204,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {location.pathname !== "/homelist" &&  (
+      {location.pathname !== "/products" && (
         <div
           className="w-full h-full overflow-hidden transition-all duration-700 ease-in-out origin-top bg-opacity-90"
           style={{ maxHeight: showSeries ? "600px" : "0px" }}

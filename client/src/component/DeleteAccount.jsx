@@ -1,4 +1,3 @@
-// src/component/DeleteAccount.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 

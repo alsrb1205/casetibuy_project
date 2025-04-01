@@ -6,11 +6,9 @@ export const useCart = () => {
   const {
     isCartOpen,
     setIsCartOpen,
-    cartList,
     setCartList,
     cartCount,
     setCartCount,
-    totalPrice,
     setTotalPrice,
   } = useContext(CartContext);
 

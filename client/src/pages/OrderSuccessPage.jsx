@@ -4,7 +4,6 @@ import axios from "axios";
 import { CartContext } from "../context/CartContext.js";
 import { DetailContext } from "../context/DetailContext.js";
 
-
 export default function OrderSuccessPage() {
     const [orderData, setOrderData] = useState(null);
     const [searchParams] = useSearchParams();
@@ -82,9 +81,6 @@ export default function OrderSuccessPage() {
                     {orderData ? (
                         <>
                             <div>
-                                {/* <p className="mb-10 text-lg font-semibold">
-                            결제 방법: {orderData.payment_method}
-                        </p> */}
                                 <p className="mb-10">
                                     배송지: {orderData.address}, {orderData.detail_address}
                                 </p>
