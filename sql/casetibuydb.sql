@@ -53,7 +53,7 @@ truncate table casetibuy_member;
 alter table casetibuy_product add column repImage varchar(300);
 -- 콜라보 항목 추가!!!!!! 
 alter table casetibuy_product add column isColab varchar(50) not null;
-
+alter table casetibuy_review add column kinds varchar(50) not null;
 SELECT 
                     pid,
                     pname as name,
