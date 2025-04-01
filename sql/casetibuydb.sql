@@ -61,15 +61,15 @@ SELECT
                     upload_file as image,                                   
                     source_file as sourceFile,
                     pdate,
-                    concat('http://localhost:9000/',upload_file->>'$[0]') as firstImage,
+                    concat('http://54.180.155.70:9000/',upload_file->>'$[0]') as firstImage,
                     -- json_array() 사용해서 imgList 배열만듬
                     json_array(
-						concat('http://localhost:9000/',upload_file->>'$[0]'),
-						concat('http://localhost:9000/',upload_file->>'$[1]'),
-						concat('http://localhost:9000/',upload_file->>'$[2]')
+						concat('http://54.180.155.70:9000/',upload_file->>'$[0]'),
+						concat('http://54.180.155.70:9000/',upload_file->>'$[1]'),
+						concat('http://54.180.155.70:9000/',upload_file->>'$[2]')
                     ) as imgList,
                     json_arrayagg(
-						concat('http://localhost:9000/',jt.filename)
+						concat('http://54.180.155.70:9000/',jt.filename)
                     ) as detailImgList
                 FROM
                     casetibuy_product, 
@@ -120,7 +120,7 @@ select cc.cid,
        cm.id,
        cp.pid,
        cp.pname,
-       concat('http://localhost:9000/', cc.image) as image		
+       concat('http://54.180.155.70:9000/', cc.image) as image		
 		 from casetibuy_cart cc,
 			  casetibuy_member cm,
               casetibuy_product cp
@@ -138,7 +138,7 @@ select cc.cid,
        cm.id,
        cp.pid,
        cp.pname,
-       concat('http://localhost:9000/', cc.image) as image	
+       concat('http://54.180.155.70:9000/', cc.image) as image	
 		 from casetibuy_cart cc,
 			  casetibuy_member cm,
               casetibuy_product cp
@@ -302,7 +302,7 @@ SELECT
     od.unit_price,
     od.color,
     od.case_type,
-    CONCAT('http://localhost:9000/', od.product_image) AS image
+    CONCAT('http://54.180.155.70:9000/', od.product_image) AS image
 FROM casetibuy_order o
 INNER JOIN casetibuy_order_detail od ON o.order_id = od.order_id
 WHERE o.member_id = 'rkdgusdn';
@@ -348,7 +348,7 @@ CREATE TABLE casetibuy_review (
           od.unit_price,
           od.color,
           od.case_type,
-          CONCAT('http://localhost:9000/', od.product_image) AS image
+          CONCAT('http://54.180.155.70:9000/', od.product_image) AS image
       FROM casetibuy_order o
       INNER JOIN casetibuy_order_detail od ON o.order_id = od.order_id
       WHERE o.member_id = 'test123'

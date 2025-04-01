@@ -19,9 +19,9 @@ export const paymentKakaopay = async (req, res) => {
                 quantity: 1,
                 total_amount,
                 tax_free_amount: 0,
-                approval_url: "http://localhost:3000/order-success",
-                cancel_url: "http://localhost:3000/payment/cancel",
-                fail_url: "http://localhost:3000/payment/fail",
+                approval_url: "http://54.180.155.70:3000/order-success",
+                cancel_url: "http://54.180.155.70:3000/payment/cancel",
+                fail_url: "http://54.180.155.70:3000/payment/fail",
             },
             {
                 headers: {
