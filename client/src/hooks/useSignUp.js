@@ -70,7 +70,6 @@ export function useSignUp() {
 
             if (response.status === 200) {
                 const data = response.data;
-                console.log("회원가입 성공:", data);
                 alert("회원가입 성공!");
                 window.location.href = "/login";
             } else {

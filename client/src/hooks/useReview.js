@@ -76,7 +76,6 @@ export default function useReview() {
         alert("리뷰 등록 실패");
         console.log(err)
       });
-    console.log("리뷰 제출:", sendData);
     return sendData;
   };
 

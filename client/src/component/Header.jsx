@@ -80,9 +80,6 @@ export default function Header() {
 
   // 검색 실행 함수 (SearchModal -> onSearch)
   const handleSearch = (search) => {
-    console.log("검색어:", search);
-    // 여기서 검색 로직 수행 (API 호출 등)
-    
     setIsSearchOpen(false);
   };
 
@@ -101,7 +98,7 @@ export default function Header() {
           <div className="flex gap-20">
             <button
               type="button"
-              onClick={() => setShowSeries((prev) => !prev)}
+              onClick={() =>location.pathname !== "/login" && setShowSeries((prev) => !prev)}
             >
               <FontAwesomeIcon
                 className={`w-24 h-24 ${
@@ -133,7 +130,7 @@ export default function Header() {
           </div>
           <Link to="/" className="h-40 w-120">
             <img
-              src="https://cdn.casetify.com/img/ui/casetify-logo.png"
+              src="/images/casetibuy-logo.png"
               alt="Casetify 로고"
             />
           </Link>
@@ -222,7 +219,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {location.pathname !== "/homelist" && (
+      {location.pathname !== "/homelist" &&  (
         <div
           className="w-full h-full overflow-hidden transition-all duration-700 ease-in-out origin-top bg-opacity-90"
           style={{ maxHeight: showSeries ? "600px" : "0px" }}

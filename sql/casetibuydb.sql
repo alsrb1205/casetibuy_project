@@ -153,6 +153,67 @@ UPDATE casetibuy_product
 SET upload_file = '["upload_files\\\\1742631005803_283883963iphone16p_FunFriends_case_bounce_color_babyblue1.webp", "upload_files\\\\1742631005803_335937676iphone16p_FunFriends_case_bounce_color_babyblue2.webp", "upload_files\\\\1742631005810_964446295iphone16p_FunFriends_case_bounce_color_black1.webp", "upload_files\\\\1742631005813_945712843iphone16p_FunFriends_case_bounce_color_black2.webp", "upload_files\\\\1742631005813_31566268iphone16p_FunFriends_case_bounce_color_primrose1.webp", "upload_files\\\\1742631005816_865499992iphone16p_FunFriends_case_bounce_color_primrose2.webp", "upload_files\\\\1742631005818_24358371iphone16p_FunFriends_case_impact_color_black1.webp", "upload_files\\\\1742631005818_792833932iphone16p_FunFriends_case_impact_color_black2.webp", "upload_files\\\\1742631005819_333562088iphone16p_FunFriends_case_impact_color_skyblue1.webp", "upload_files\\\\1742631005820_66581673iphone16p_FunFriends_case_impact_color_skyblue2.webp", "upload_files\\\\1742631005822_589037516iphone16p_FunFriends_case_impact_color_purple1.webp", "upload_files\\\\1742631005824_184024889iphone16p_FunFriends_case_impact_color_purple2.webp", "upload_files\\\\1742631005824_974243790iphone16p_FunFriends_case_mimpact_color_black1.webp", "upload_files\\\\1742631005826_849243052iphone16p_FunFriends_case_mimpact_color_black2.webp", "upload_files\\\\1742631005826_403897319iphone16p_FunFriends_case_mimpact_color_purple1.webp", "upload_files\\\\1742631005827_23132531iphone16p_FunFriends_case_mimpact_color_purple2.webp", "upload_files\\\\1742631005828_953541468iphone16p_FunFriends_case_mimpact_color_skyblue1.webp", "upload_files\\\\1742631005830_213976238iphone16p_FunFriends_case_mimpact_color_skyblue2.webp", "upload_files\\\\1742631005830_148344505iphone16p_FunFriends_case_mirror_color_black1.webp", "upload_files\\\\1742631005832_799083695iphone16p_FunFriends_case_mirror_color_black2.webp", "upload_files\\\\1742631005833_556790996iphone16p_FunFriends_case_mirror_color_silver1.webp", "upload_files\\\\1742631005833_103583020iphone16p_FunFriends_case_mirror_color_silver2.webp", "upload_files\\\\1742631005834_747542401iphone16p_FunFriends_case_ring_color_black1.webp", "upload_files\\\\1742631005835_455215194iphone16p_FunFriends_case_ring_color_black2.webp", "upload_files\\\\1742631005836_897873423iphone16p_FunFriends_case_ring_color_purple1.webp", "upload_files\\\\1742631005838_554200424iphone16p_FunFriends_case_ring_color_purple2.webp", "upload_files\\\\1742631005838_941123318iphone16p_FunFriends_case_ring_color_skyblue1.webp", "upload_files\\\\1742631005839_634581551iphone16p_FunFriends_case_ring_color_skyblue2.webp"]'
 WHERE pid = 16;
 
+update casetibuy_product
+set kinds = 'iphone'
+where pid = 22;
+
+update casetibuy_product
+set upload_file = '[
+    "upload_files\\\\1742631576581_957426795iphone16p_pink_organza_ribbon_case_bounce_color_babyblue1.webp",
+    "upload_files\\\\1742631576582_690654219iphone16p_pink_organza_ribbon_case_bounce_color_babyblue2.webp",
+    "upload_files\\\\1742631576582_954633319iphone16p_pink_organza_ribbon_case_bounce_color_black1.webp",
+    "upload_files\\\\1742631576583_430084487iphone16p_pink_organza_ribbon_case_bounce_color_black2.webp",
+    "upload_files\\\\1742631576584_513236773iphone16p_pink_organza_ribbon_case_bounce_color_pink1.webp",
+    "upload_files\\\\1742631576585_56930290iphone16p_pink_organza_ribbon_case_bounce_color_pink2.webp",
+    "upload_files\\\\1742631576586_928848550iphone16p_pink_organza_ribbon_case_impact_color_black1.webp",
+    "upload_files\\\\1742631576587_737235710iphone16p_pink_organza_ribbon_case_impact_color_black2.webp",
+    "upload_files\\\\1742631576587_284884584iphone16p_pink_organza_ribbon_case_impact_color_purple1.webp",
+    "upload_files\\\\1742631576588_484776084iphone16p_pink_organza_ribbon_case_impact_color_purple2.webp",
+    "upload_files\\\\1742631576589_420172140iphone16p_pink_organza_ribbon_case_impact_color_skyblue1.webp",
+    "upload_files\\\\1742631576590_370655571iphone16p_pink_organza_ribbon_case_impact_color_skyblue2.webp",
+    "upload_files\\\\1742631576590_218255402iphone16p_pink_organza_ribbon_case_mimpact_color_black1.webp",
+    "upload_files\\\\1742631576591_719895818iphone16p_pink_organza_ribbon_case_mimpact_color_black2.webp",
+    "upload_files\\\\1742631576593_236101830iphone16p_pink_organza_ribbon_case_mimpact_color_purple1.webp",
+    "upload_files\\\\1742631576594_969978271iphone16p_pink_organza_ribbon_case_mimpact_color_purple2.webp",
+    "upload_files\\\\1742631576595_267703593iphone16p_pink_organza_ribbon_case_mimpact_color_skyblue1.webp",
+    "upload_files\\\\1742631576595_203307216iphone16p_pink_organza_ribbon_case_mimpact_color_skyblue2.webp",
+    "upload_files\\\\1742631576598_778536445iphone16p_pink_organza_ribbon_case_ring_color_black1.webp",
+    "upload_files\\\\1742631576599_73170157iphone16p_pink_organza_ribbon_case_ring_color_black2.webp",
+    "upload_files\\\\1742631576600_815467956iphone16p_pink_organza_ribbon_case_ring_color_purple1.webp",
+    "upload_files\\\\1742631576601_763067842iphone16p_pink_organza_ribbon_case_ring_color_purple2.webp",
+    "upload_files\\\\1742631576602_11389866iphone16p_pink_organza_ribbon_case_ring_color_skyblue1.webp",
+    "upload_files\\\\1742631576603_245684723iphone16p_pink_organza_ribbon_case_ring_color_skyblue2.webp"
+]'
+where pid=20;
+
+update casetibuy_product
+set upload_file ='[
+    "upload_files\\\\1742628167234_665226029iphone16p_black_organza_ribbon_case_bounce_color_babyblue1.webp",
+    "upload_files\\\\1742628167234_971258297iphone16p_black_organza_ribbon_case_bounce_color_babyblue2.webp",
+    "upload_files\\\\1742628167235_249886564iphone16p_black_organza_ribbon_case_bounce_color_black1.webp",
+    "upload_files\\\\1742628167236_315632533iphone16p_black_organza_ribbon_case_bounce_color_black2.webp",
+    "upload_files\\\\1742628167236_94731983iphone16p_black_organza_ribbon_case_bounce_color_pink1.webp",
+    "upload_files\\\\1742628167237_444972184iphone16p_black_organza_ribbon_case_bounce_color_pink2.webp",
+    "upload_files\\\\1742628167245_255020995iphone16p_black_organza_ribbon_case_impact_color_black1.webp",
+    "upload_files\\\\1742628167246_493614710iphone16p_black_organza_ribbon_case_impact_color_black2.webp",
+    "upload_files\\\\1742628167246_359371232iphone16p_black_organza_ribbon_case_impact_color_purple1.webp",
+    "upload_files\\\\1742628167246_657843775iphone16p_black_organza_ribbon_case_impact_color_purple2.webp",
+    "upload_files\\\\1742628167246_626506368iphone16p_black_organza_ribbon_case_impact_color_skyblue1.webp",
+    "upload_files\\\\1742628167247_893801203iphone16p_black_organza_ribbon_case_impact_color_skyblue2.webp",
+    "upload_files\\\\1742628167247_120924276iphone16p_black_organza_ribbon_case_mimpact_color_black1.webp",
+    "upload_files\\\\1742628167247_403984858iphone16p_black_organza_ribbon_case_mimpact_color_black2.webp",
+    "upload_files\\\\1742628167247_492837433iphone16p_black_organza_ribbon_case_mimpact_color_purple1.webp",
+    "upload_files\\\\1742628167247_31670936iphone16p_black_organza_ribbon_case_mimpact_color_purple2.webp",
+    "upload_files\\\\1742628167247_94780497iphone16p_black_organza_ribbon_case_mimpact_color_skyblue1.webp",
+    "upload_files\\\\1742628167248_372049369iphone16p_black_organza_ribbon_case_mimpact_color_skyblue2.webp",
+    "upload_files\\\\1742628167249_271605597iphone16p_black_organza_ribbon_case_ring_color_black1.webp",
+    "upload_files\\\\1742628167250_900684476iphone16p_black_organza_ribbon_case_ring_color_black2.webp",
+    "upload_files\\\\1742628167251_345109699iphone16p_black_organza_ribbon_case_ring_color_purple1.webp",
+    "upload_files\\\\1742628167252_530002025iphone16p_black_organza_ribbon_case_ring_color_purple2.webp",
+    "upload_files\\\\1742628167253_924157763iphone16p_black_organza_ribbon_case_ring_color_skyblue1.webp",
+    "upload_files\\\\1742628167254_185301693iphone16p_black_organza_ribbon_case_ring_color_skyblue2.webp"
+]'
+where pid = 6;
 
 -- 테이블 삭제(카트랑 참조중 => 카트 먼저 삭제 후 멤버 삭제)
 drop table casetibuy_product;

@@ -25,8 +25,6 @@ export default function Review() {
     }, [detail.pid, setReviewForm]);
 
     const counts = calculateCounts(reviewList);
-    console.log(reviewList);
-
 
     return (
         <div className='mx-auto mt-90 max-w-[1140px] text-center'>
@@ -64,7 +62,7 @@ export default function Review() {
                 </div>
             </div>
             {/* 별점갯수 */}
-            <div className='mt-50 w-[969px] mx-auto'>
+            <div className='mt-50 max-w-[969px] mx-auto'>
                 <div className='font-bold text-left text-18'>
                     별점순으로 정렬
                 </div>

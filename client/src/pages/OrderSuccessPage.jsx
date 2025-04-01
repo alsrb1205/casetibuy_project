@@ -13,8 +13,6 @@ export default function OrderSuccessPage() {
     const pg_token = searchParams.get("pg_token");
     const { matchColor } = useContext(DetailContext);
 
-    // console.log(`pg_token: ${pg_token}`);
-
     // localStorage에서 주문 데이터를 불러옵니다.
     useEffect(() => {
         const storedOrder = localStorage.getItem("orderData");
@@ -40,7 +38,6 @@ export default function OrderSuccessPage() {
                     partner_order_id, // 클라이언트가 저장한 partner_order_id 사용
                 })
                 .then((res) => {
-                    console.log("✅ [DEBUG] 카카오페이 승인 성공:", res.data);
                     // 승인 후 localStorage에 저장된 주문 데이터를 DB로 전송
                     const storedOrder = localStorage.getItem("orderData");
                     if (storedOrder) {
@@ -48,7 +45,6 @@ export default function OrderSuccessPage() {
                         axios
                             .post("http://localhost:9000/order/checkout", orderObj)
                             .then((orderRes) => {
-                                console.log("✅ [DEBUG] 주문 생성 응답:", orderRes.data);
                                 localStorage.removeItem("tid");
                                 localStorage.removeItem("total_price");
                                 localStorage.removeItem("partner_order_id");

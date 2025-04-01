@@ -34,7 +34,6 @@ export const useCart = () => {
     const result = await axios.post("http://localhost:9000/cart/add", formData);
     if (result.data.result_rows) {
       setCartCount(cartCount + 1);
-      console.log("서버로 보낼 데이터:", formData);
       getCartList();
     }
     return result.data.result_rows;

@@ -33,7 +33,6 @@ export function useLogin() {
       if (response.status === 200) {
         // axios는 성공 시 status가 200번대, response.data로 데이터 접근
         const data = response.data;
-        console.log("로그인 성공:", data);
         if (data.token) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user_id", data.id); /// <<< 지혜 / 추가 : 로컬스토리지 아이디 저장>>>
@@ -41,7 +40,7 @@ export function useLogin() {
           alert("로그인 성공!");
           window.location.href = "/";
         } else {
-          setLoginError("존재하지 않는 아이디입니다.");
+          setLoginError("아이디 또는 비밀번호를 확인해주세요.");
         }
       } else {
         // axios는 HTTP 에러 상태 코드 (4xx, 5xx)를 throw error로 처리하지 않습니다.

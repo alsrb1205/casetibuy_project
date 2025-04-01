@@ -73,7 +73,7 @@ export default function Login() {
       />
       <div className="fixed top-0 left-0 z-0 w-full h-full bg-black"></div>
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <div className="absolute text-center text-black transition-all duration-300 bg-white rounded-xl shadow-2xl w-[400px] top-[20px] left-1/2 lg:left-[70%] transform -translate-x-1/2 z-20 ">
+        <div className="absolute text-center text-black transition-all duration-300 bg-white rounded-xl shadow-2xl w-[400px] top-[100px] left-1/2 lg:left-[75%] transform -translate-x-1/2 z-20 ">
           {isSignUp ? "" : <div className="w-full overflow-hidden h-[180px]">
             <img src="/images/login/skater_john.jpg" alt="Skater" className="object-cover w-full h-full rounded-t-md" />
           </div>}
