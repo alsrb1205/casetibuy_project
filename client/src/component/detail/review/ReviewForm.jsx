@@ -31,7 +31,7 @@ export default function ReviewForm ()  {
       </div>
       <button
         type="submit"
-        className="px-4 py-2 rounded bg-blue hover:bg-blue-600"
+        className="px-12 py-8 mt-10 text-white text-l rounded-8 bg-blue"
       >
         리뷰 제출
       </button>

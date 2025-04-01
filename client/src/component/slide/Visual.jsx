@@ -1,7 +1,7 @@
 import React from "react";
 import "../../style/swiper.css";
 
-export default function Visual({ slide }) {
+export default function Visual({ slide, swiperRef }) {
   const bgColor = {
     yellow: "bg-yellow",
     blue: "bg-blue",
@@ -23,7 +23,18 @@ export default function Visual({ slide }) {
   return (
     <div className="relative">
       {slide.src.endsWith(".mp4") ? (
-        <video autoPlay muted loop className="object-cover w-full h-full">
+        <video
+          autoPlay
+          muted
+          loop
+          className="object-cover w-full h-full"
+          onLoadedData={() => {
+            if (swiperRef.current) {
+              swiperRef.current.slideTo(0, 0);
+              swiperRef.current.update();
+            }
+          }}
+        >
           <source src={slide.src} type="video/mp4" />
         </video>
       ) : (
