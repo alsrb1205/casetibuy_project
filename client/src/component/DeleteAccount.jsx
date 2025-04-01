@@ -65,7 +65,7 @@ export default function DeleteAccount() {
                     >
                         <div className="mb-5 font-bold text-21">계정 삭제 확인</div>
                         <div className="mb-20 text-[#666]">
-                            주문 등 정보를 포함한 모든 프로필이 영구적으로 삭제됩니다.
+                            주문내역, 리뷰 등 정보를 포함한 모든 프로필이 영구적으로 삭제됩니다.
                         </div>
                         <div className="flex flex-col items-center gap-5">
                             <button

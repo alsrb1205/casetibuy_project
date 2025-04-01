@@ -183,17 +183,6 @@ export default function Header() {
                       </button>
                     </li>
                   )}
-                  {!isLoggedIn && (
-                    <li>
-                      <Link
-                        to="/login"
-                        className="block px-4 py-2 hover:text-grayph text-14"
-                        onClick={() => setIsDropdownOpen(false)}
-                      >
-                        로그인
-                      </Link>
-                    </li>
-                  )}
                 </ul>
               )}
             </div>
