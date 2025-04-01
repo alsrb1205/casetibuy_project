@@ -1,4 +1,4 @@
-b# Team Project - **Casetibuy**
+# Team Project - **Casetibuy**
 
 > **Casetify**를 벤치마킹하여 구현한 쇼핑몰 팀 프로젝트입니다.  
 > **React + Node.js + MySQL** 기반의 **풀스택 SPA 쇼핑몰**을 구현하며, 클라이언트-서버-DB 간의 유기적인 연결을 중점으로 개발했습니다.
