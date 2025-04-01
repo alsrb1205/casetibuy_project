@@ -51,15 +51,6 @@ export default function OrderList() {
                     >
                         {/* 주문 정보 */}
                         <div className="mb-4">
-                            <li className="flex items-center justify-between">
-                                <span className="mb-16 font-bold">
-                                </span>
-                                <span className="flex items-center">
-                                    <span className="p-2 mr-5 bg-sky text-blue text-10">포인트</span>
-                                    <span className="text-blue">적립 완료</span>
-                                </span>
-                            </li>
-
                             <div className="grid grid-flow-col w-[400px]">
                                 <div className="flex flex-col text-[#8b8b8b]">
                                     <span>주문 번호</span>
