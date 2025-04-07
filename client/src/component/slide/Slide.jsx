@@ -4,8 +4,8 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { HiArrowLongRight, HiArrowLongLeft } from "react-icons/hi2";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
-import HomeProduct from "../home/HomeProduct.jsx";
-import SlideVisual from "./SlideVisual.jsx";
+import SlideItem from "./SlideItem.jsx";
+import Visual from "./Visual.jsx";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -20,10 +20,14 @@ export default function Slide({
   spaceBetween,
   loop,
   autoplay,
+  slidesPerGroup,
+  slideKey,
+  slidesOffsetBefore,
+  slidesOffsetAfter,
 }) {
   const swiperRef = useRef(null);
-  const { setIconColor } = useTheme(); // Header 아이콘 색상 변경
   const location = useLocation();
+  const { setIconColor } = useTheme(); // Header 아이콘 색상 변경
 
   // 홈(`/home`)으로 돌아올 때 슬라이드 첫 번째 이미지의 `iconColor` 적용
   useEffect(() => {
@@ -39,25 +43,29 @@ export default function Slide({
   return (
     <div className={`swiper-container`}>
       <Swiper
+        className={`custom-swiper ${className}`}
         ref={swiperRef}
-        slidesPerView={slidesPerView} // 보이는 슬라이드 수
-        slidesPerGroup={1} // 한 번 클릭할 때 한 개씩 이동
-        spaceBetween={spaceBetween} // 슬라이드 간격
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        observer={true}
+        observeParents={true}
+        slidesPerView={slidesPerView}
+        slidesPerGroup={slidesPerGroup}
+        slidesOffsetBefore={slidesOffsetBefore}
+        slidesOffsetAfter={slidesOffsetAfter}
+        spaceBetween={spaceBetween}
         loop={loop}
         autoplay={autoplay ? { delay: 5000 } : false}
-        // 페이지네이션 설정
         pagination={pagination}
-        // 네비게이션 설정
         navigation={navigation}
         modules={[Pagination, Navigation, Autoplay]}
         onSlideChange={(swiper) => {
-          const activeSlide = slidesData?.[swiper.realIndex]; // 현재 활성화된 슬라이드 가져오기
-          // console.log("Active Slide:", activeSlide); // 디버깅 로그 추가
+          const activeSlide = slidesData?.[swiper.realIndex];
           if (activeSlide) {
             setIconColor(activeSlide.iconColor === "white" ? "white" : "black");
           }
         }}
-        className={`custom-swiper ${className}`}
       >
         {/* 슬라이드 내용 */}
         {slidesData.map((slide, index) => {
@@ -67,9 +75,10 @@ export default function Slide({
                 key={slide.pid}
                 to={`/detail/${slide.pid}`}
                 state={{ activeCase: slide.caseType, activeColor: slide.color }} // caseType과 color 함께 전달
+                onClick={() => window.scrollTo(0, 0)}
                 draggable="false"
               >
-                <SlideVisual key={index} slide={slide} />
+                <Visual key={index} slide={slide} swiperRef={swiperRef} />
               </Link>
             </SwiperSlide>
           ) : className === "collaborator" ? (
@@ -78,6 +87,7 @@ export default function Slide({
                 key={slide.pid}
                 to={`/detail/${slide.pid}`}
                 state={{ activeCase: slide.caseType, activeColor: slide.color }} // caseType과 color 함께 전달
+                onClick={() => window.scrollTo(0, 0)}
                 draggable="false"
               >
                 <div className="px-20 py-10 overflow-hidden border border-grayhborder rounded-20">
@@ -87,7 +97,7 @@ export default function Slide({
             </SwiperSlide>
           ) : (
             <SwiperSlide key={index} className="relative">
-              <HomeProduct {...slide} />
+              <SlideItem {...slide} />
             </SwiperSlide>
           );
         })}
@@ -100,20 +110,20 @@ export default function Slide({
           {/* 페이지네이션 */}
           {pagination && (
             <div
-              className={`flex items-center justify-center gap-8 custom-pagination-${className}`}
+              className={`flex items-center justify-center gap-8 custom-pagination-${slideKey}`}
             ></div>
           )}
 
           {/* 네비게이션 버튼 */}
           {navigation && (
-            <div className={`navigation-common`}>
+            <div className={`navigation-common px-32`}>
               <button
-                className={`px-24 py-4 bg-black rounded-30 custom-prev-${className}`}
+                className={`px-24 py-4 bg-black rounded-30 custom-prev-${slideKey}`}
               >
                 <HiArrowLongLeft />
               </button>
               <button
-                className={`px-24 py-4 bg-black rounded-30 custom-next-${className}`}
+                className={`px-24 py-4 bg-black rounded-30 custom-next-${slideKey}`}
               >
                 <HiArrowLongRight />
               </button>

@@ -4,8 +4,6 @@ import * as repository from '../repository/productRepository.js';
  *상품 등록
  */
 export const registerProduct = async (req, res) => {
-    console.log(req.body);
-    
     const result = await repository.registerProduct(req.body); // 레파지토리 함수
     res.json(result);
     res.end();
@@ -30,10 +28,11 @@ export const getProduct = async(req,res)=>{
 }
 
 /**
- * 카트 정보 조회
+ * 검색 결과 조회
  */
-export const getCartItems= async (req,res) =>{
-    const result = await repository.getCartItems(req.body);
+export const getSearch = async(req,res)=>{
+    const result=await repository.getSearch(req.query.search);
     res.json(result);
     res.end();
 }
+

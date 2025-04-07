@@ -1,4 +1,3 @@
-// src/pages/Mypage.jsx
 import React, { useContext, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faGear, faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +8,7 @@ import Settings from "./Settings.jsx";
 import OrderList from "../component/OrderList.jsx";
 
 export default function Mypage() {
-  const { isLoggedIn, setIsLoggedIn } = useContext(AuthContext);
+  const { setIsLoggedIn } = useContext(AuthContext);
   const { setCartList } = useContext(CartContext);
   const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState("order");
@@ -23,7 +22,7 @@ export default function Mypage() {
         setIsLoggedIn(false);
         setCartList([]);
         alert("로그아웃 되었습니다.");
-      }, 1000);
+      }, 500);
     }
   };
 

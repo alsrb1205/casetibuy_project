@@ -1,15 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext.js";
 import useOrder from "../hooks/useOrder.js";
+import { useDetail } from "../hooks/useDetail.js";
 import SeriesItem from "./product/SeriesItem.jsx";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import useColorScheme from "../hooks/useColorScheme.js";
+import { useNavigate } from "react-router-dom";
 
 export default function OrderList() {
     const { isLoggedIn } = useContext(AuthContext);
     const { getOrderList } = useOrder();
+    const { parseCaseAndColor } = useDetail();
     const [orderGroups, setOrderGroups] = useState([]);
     const getColorScheme = useColorScheme();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -46,8 +50,8 @@ export default function OrderList() {
                         key={orderInfo.order_id}
                         className="p-16 border shadow-sm border-[#d9d9d9] rounded-20 mb-15"
                     >
-                        {/* 주문 정보 영역: 주문 정보와 포인트 정보를 flex 컨테이너로 배치 */}
-                        <div className="flex items-start justify-between mb-4">
+                        {/* 주문 정보 */}
+                        <div className="mb-4">
                             <div className="grid grid-flow-col w-[400px]">
                                 <div className="flex flex-col text-[#8b8b8b]">
                                     <span>주문 번호</span>
@@ -75,12 +79,23 @@ export default function OrderList() {
                             slidesPerView={'auto'}
                         >
                             {orderGroup.map((item, index) => {
+                                const { caseType, color } = parseCaseAndColor(item.image)
                                 const { bg, text } = getColorScheme(index);
 
                                 return (
-                                    <SwiperSlide key={`${item.product_id}-${index}`}
-                                    className="!w-[200px] h-[250px]  ">                                        <SeriesItem
-                                            className={`p-8 pb-16 cursor-pointer h-[250px]  rounded-16 ${bg}`}
+
+                                    <SwiperSlide
+                                        key={`${item.product_id}-${index}`}
+                                        onClick={() => {
+                                            navigate(`/detail/${item.product_id}`, {
+                                                state: { activeCase: caseType, activeColor: color },
+                                            });
+                                            window.scrollTo(0, 0);
+                                        }}
+                                    >
+                                        <SeriesItem
+                                            className={`p-8 pb-16 h-[250px] cursor-pointer w-[200px] rounded-16 ${bg}`}
+
                                             imageSrc={item.image}
                                             titleClassName={`mt-10 text-16 font-bold text-left ${text}`}
                                             title={item.product_name}

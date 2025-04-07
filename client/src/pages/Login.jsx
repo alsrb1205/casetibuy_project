@@ -73,7 +73,7 @@ export default function Login() {
       />
       <div className="fixed top-0 left-0 z-0 w-full h-full bg-black"></div>
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-        <div className="absolute text-center text-black transition-all duration-300 bg-white rounded-xl shadow-2xl w-[400px] top-[20px] left-1/2 lg:left-[70%] transform -translate-x-1/2 z-20 ">
+        <div className="absolute text-center text-black transition-all duration-300 bg-white rounded-xl shadow-2xl w-[400px] top-[100px] left-1/2 lg:left-[75%] transform -translate-x-1/2 z-20 ">
           {isSignUp ? "" : <div className="w-full overflow-hidden h-[180px]">
             <img src="/images/login/skater_john.jpg" alt="Skater" className="object-cover w-full h-full rounded-t-md" />
           </div>}
@@ -110,10 +110,6 @@ export default function Login() {
                 />
                 <button type="submit" className="w-full p-12 text-white transition-all duration-300 bg-blue rounded-12 text-16">로그인</button>
                 {loginError && <p className="mt-10 text-sm text-red-500">{loginError}</p>}
-                <div className="flex justify-start w-full gap-10 mt-12">
-                  <span className="text-sm text-gray-600 underline cursor-pointer text-blue">아이디 찾기</span>
-                  <span className="text-sm text-gray-600 underline cursor-pointer text-blue">비밀번호 찾기</span>
-                </div>
               </div>
             ) : (
               <SignUp setIsSignUp={setIsSignUp} />
