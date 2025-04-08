@@ -285,6 +285,14 @@ ALTER TABLE casetibuy_order_detail ADD CONSTRAINT fk_order
 FOREIGN KEY (order_id) REFERENCES casetibuy_order(order_id)
 ON DELETE CASCADE;
 
+ALTER TABLE casetibuy_cart
+DROP FOREIGN KEY fk_id_casetibuy_member_id;
+
+ALTER TABLE casetibuy_cart
+ADD CONSTRAINT fk_id_casetibuy_member_id
+FOREIGN KEY (id) REFERENCES casetibuy_member(id)
+ON DELETE CASCADE;
+
 show tables;
 
 -- 유저가 구매한 상품 조회
