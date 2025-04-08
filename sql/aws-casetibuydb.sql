@@ -12,6 +12,8 @@ select * from casetibuy_cart;
 drop view view_cart_list;
 select * from view_cart_list;
 
+delete from casetibuy_order where member_id = 'rkdgusdn';
+
 create view view_cart_list
 as
 select cc.cid,
