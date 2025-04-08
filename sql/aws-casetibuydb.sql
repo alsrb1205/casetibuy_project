@@ -56,3 +56,5 @@ ALTER TABLE casetibuy_cart
 ADD CONSTRAINT fk_id_casetibuy_member_id
 FOREIGN KEY (id) REFERENCES casetibuy_member(id)
 ON DELETE CASCADE;
+
+create database hrdb2019;
