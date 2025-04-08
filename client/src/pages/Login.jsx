@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import SignUp from "./SignUp.jsx";
 import { useLogin } from "../hooks/useLogin.js";
 import InputField from "../component/InputField.jsx";
@@ -26,6 +27,16 @@ export default function Login() {
     "/images/login/kuromi.mp4",
   ];
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+  const navigate = useNavigate();
+
+  // ✅ 토큰 있으면 로그인 페이지 진입 즉시 홈으로 리다이렉트
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/", { replace: true });
+    }
+  }, [navigate]);
 
   useEffect(() => {
     const handleTransition = () => {
@@ -57,12 +68,11 @@ export default function Login() {
     handleLogin(e);
   };
 
-  // 아이디 또는 비밀번호 input 필드에 focus 되면 loginError 를 초기화하는 useEffect
   useEffect(() => {
     if (usernameFocused || passwordFocused) {
-      setLoginError(""); // loginError 초기화
+      setLoginError("");
     }
-  }, [usernameFocused, passwordFocused, setLoginError]); // usernameFocused, passwordFocused, setLoginError 에 의존
+  }, [usernameFocused, passwordFocused, setLoginError]);
 
   return (
     <div className="flex items-center justify-center w-full h-[calc(100vh-66px)] overflow-hidden relative mt-66">
