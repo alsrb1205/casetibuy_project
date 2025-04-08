@@ -94,44 +94,49 @@ export default function Header() {
 
       {/* 헤더 영역 */}
       <div className="absolute z-30 w-full bg-transparent">
-        <div className="relative flex items-center justify-between px-32 h-66">
-          <div className="flex gap-20">
-            <button
-              type="button"
-              onClick={() => location.pathname !== "/login" && setShowSeries((prev) => !prev)}
-            >
-              <FontAwesomeIcon
-                className={`w-24 h-24 ${showSeries
-                    ? "text-black"
-                    : iconColor === "white"
-                      ? "text-white"
-                      : "text-black"
-                  }`}
-                icon={faBars}
-              />
-            </button>
-            {/* 검색 아이콘 클릭 시 모달 오픈 */}
-            <button
-              type="button"
-              onClick={() => setIsSearchOpen(true)}
-            >
-              <FontAwesomeIcon
-                className={`w-24 h-24 ${showSeries
-                    ? "text-black"
-                    : iconColor === "white"
-                      ? "text-white"
-                      : "text-black"
-                  }`}
-                icon={faMagnifyingGlass}
-              />
-            </button>
-          </div>
+        <div className={`relative flex items-center ${(location.pathname !=='/login') ?'justify-between':'justify-center'  } px-32 h-66`}>
+          {
+            (location.pathname !=='/login') &&
+            <div className="flex gap-20">
+              <button
+                type="button"
+                onClick={() => location.pathname !== "/login" && setShowSeries((prev) => !prev)}
+              >
+                <FontAwesomeIcon
+                  className={`w-24 h-24 ${showSeries
+                      ? "text-black"
+                      : iconColor === "white"
+                        ? "text-white"
+                        : "text-black"
+                    }`}
+                  icon={faBars}
+                />
+              </button>
+              {/* 검색 아이콘 클릭 시 모달 오픈 */}
+              <button
+                type="button"
+                onClick={() => setIsSearchOpen(true)}
+              >
+                <FontAwesomeIcon
+                  className={`w-24 h-24 ${showSeries
+                      ? "text-black"
+                      : iconColor === "white"
+                        ? "text-white"
+                        : "text-black"
+                    }`}
+                  icon={faMagnifyingGlass}
+                />
+              </button>
+            </div>
+          }
           <Link to="/" className="h-40 w-120">
             <img
               src="/images/casetibuy-logo.png"
               alt="Casetify 로고"
             />
           </Link>
+            {
+              (location.pathname !=='/login') &&
           <div className="flex gap-20">
             <div
               className="relative"
@@ -202,6 +207,7 @@ export default function Header() {
               )}
             </div>
           </div>
+            }
         </div>
       </div>
       {location.pathname !== "/products" && (
